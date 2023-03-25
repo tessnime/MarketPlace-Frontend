@@ -110,11 +110,11 @@
                                                         <!--====== Input Counter ======-->
                                                         <div class="input-counter">
 
-                                                            <span class="input-counter__minus fas fa-minus"></span>
+                                                            <span (click)="updateQuantity(pq.product.reference,pq.quantity-1)" class="input-counter__minus fas fa-minus"></span>
 
                                                             <input class="input-counter__text input-counter--text-primary-style" type="text" value="{{pq.quantity}}" data-min="1" data-max="1000">
 
-                                                            <span class="input-counter__plus fas fa-plus"></span></div>
+                                                            <span (click)="updateQuantity(pq.product.reference,pq.quantity+1)" class="input-counter__plus fas fa-plus"></span></div>
                                                         <!--====== End - Input Counter ======-->
                                                     </div>
                                                 </td>
@@ -137,7 +137,7 @@
                                             <span>CONTINUE SHOPPING</span></a></div>
                                     <div class="route-box__g2">
 
-                                        <a class="route-box__link" href="cart.component.html"><i class="fas fa-trash"></i>
+                                        <a (click)="deleteCarte()"  class="route-box__link"  ><i class="fas fa-trash"></i>
 
                                             <span>CLEAR CART</span></a>
 

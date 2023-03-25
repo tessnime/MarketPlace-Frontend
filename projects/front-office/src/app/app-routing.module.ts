@@ -35,10 +35,9 @@ const routes: Routes = [
   ]
 },
 {
-  path:'buyer',component:HomeComponent,
-  children:[
-    { path: 'cart', component: CartComponent }
-  ]
+  path:'buyer',component:HomeComponent},
+  {path: 'buyer/cart', component: CartComponent
+
 }
 
 

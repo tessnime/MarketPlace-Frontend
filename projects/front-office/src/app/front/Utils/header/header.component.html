@@ -1166,7 +1166,7 @@
 
           <button class="btn btn--icon toggle-button toggle-button--secondary fas fa-shopping-bag toggle-button-shop" type="button"></button>
 
-          <span class="total-item-round">2</span>
+          <span class="total-item-round">{{request.length}}</span>
 
           <!--====== Menu ======-->
           <div class="ah-lg-mode">
@@ -1185,7 +1185,7 @@
 
                 <a class="mini-cart-shop-link"><i class="fas fa-shopping-bag"></i>
 
-                  <span class="total-item-round">2</span></a>
+                  <span class="total-item-round">{{request.length}}</span></a>
 
                 <!--====== Dropdown ======-->
 
@@ -1196,7 +1196,7 @@
                   <div class="mini-product-container gl-scroll u-s-m-b-15">
 
                     <!--====== Card for mini cart ======-->
-                    <div class="card-mini-product">
+                    <div class="card-mini-product" *ngFor="let k of request">
                       <div class="mini-product">
                         <div class="mini-product__image-wrapper">
 
@@ -1207,104 +1207,21 @@
 
                                                             <span class="mini-product__category">
 
-                                                                <a href="../../../../assets/front-template/shop-side-version-2.html">Electronics</a></span>
+                                                                <a href="../../../../assets/front-template/shop-side-version-2.html">{{k.product.productCategory.name}}</a></span>
 
                           <span class="mini-product__name">
 
-                                                                <a href="../../../../assets/front-template/product-detail.html">Yellow Wireless Headphone</a></span>
+                                                                <a href="../../../../assets/front-template/product-detail.html">{{k.product.name}}</a></span>
 
-                          <span class="mini-product__quantity">1 x</span>
+                          <span class="mini-product__quantity">{{k.quantity}} x</span>
 
-                          <span class="mini-product__price">$8</span></div>
+                          <span class="mini-product__price">DT {{k.product.productPrice}}</span></div>
                       </div>
 
                       <a class="mini-product__delete-link far fa-trash-alt"></a>
                     </div>
                     <!--====== End - Card for mini cart ======-->
 
-
-                    <!--====== Card for mini cart ======-->
-                    <div class="card-mini-product">
-                      <div class="mini-product">
-                        <div class="mini-product__image-wrapper">
-
-                          <a class="mini-product__link" href="../../../../assets/front-template/product-detail.html">
-
-                            <img class="u-img-fluid" src="../../../../assets/front-template/images/product/electronic/product18.jpg" alt=""></a></div>
-                        <div class="mini-product__info-wrapper">
-
-                                                            <span class="mini-product__category">
-
-                                                                <a href="../../../../assets/front-template/shop-side-version-2.html">Electronics</a></span>
-
-                          <span class="mini-product__name">
-
-                                                                <a href="../../../../assets/front-template/product-detail.html">Nikon DSLR Camera 4k</a></span>
-
-                          <span class="mini-product__quantity">1 x</span>
-
-                          <span class="mini-product__price">$8</span></div>
-                      </div>
-
-                      <a class="mini-product__delete-link far fa-trash-alt"></a>
-                    </div>
-                    <!--====== End - Card for mini cart ======-->
-
-
-                    <!--====== Card for mini cart ======-->
-                    <div class="card-mini-product">
-                      <div class="mini-product">
-                        <div class="mini-product__image-wrapper">
-
-                          <a class="mini-product__link" href="../../../../assets/front-template/product-detail.html">
-
-                            <img class="u-img-fluid" src="../../../../assets/front-template/images/product/women/product8.jpg" alt=""></a></div>
-                        <div class="mini-product__info-wrapper">
-
-                                                            <span class="mini-product__category">
-
-                                                                <a href="../../../../assets/front-template/shop-side-version-2.html">Women Clothing</a></span>
-
-                          <span class="mini-product__name">
-
-                                                                <a href="../../../../assets/front-template/product-detail.html">New Dress D Nice Elegant</a></span>
-
-                          <span class="mini-product__quantity">1 x</span>
-
-                          <span class="mini-product__price">$8</span></div>
-                      </div>
-
-                      <a class="mini-product__delete-link far fa-trash-alt"></a>
-                    </div>
-                    <!--====== End - Card for mini cart ======-->
-
-
-                    <!--====== Card for mini cart ======-->
-                    <div class="card-mini-product">
-                      <div class="mini-product">
-                        <div class="mini-product__image-wrapper">
-
-                          <a class="mini-product__link" href="../../../../assets/front-template/product-detail.html">
-
-                            <img class="u-img-fluid" src="../../../../assets/front-template/images/product/men/product8.jpg" alt=""></a></div>
-                        <div class="mini-product__info-wrapper">
-
-                                                            <span class="mini-product__category">
-
-                                                                <a href="../../../../assets/front-template/shop-side-version-2.html">Men Clothing</a></span>
-
-                          <span class="mini-product__name">
-
-                                                                <a href="../../../../assets/front-template/product-detail.html">New Fashion D Nice Elegant</a></span>
-
-                          <span class="mini-product__quantity">1 x</span>
-
-                          <span class="mini-product__price">$8</span></div>
-                      </div>
-
-                      <a class="mini-product__delete-link far fa-trash-alt"></a>
-                    </div>
-                    <!--====== End - Card for mini cart ======-->
                   </div>
                   <!--====== End - Mini Product Container ======-->
 
@@ -1315,7 +1232,7 @@
 
                       <span class="subtotal-text">SUBTOTAL</span>
 
-                      <span class="subtotal-value">$16</span></div>
+                      <span class="subtotal-value">DT {{requestOrder.sum + requestOrder.deliveryPrice}}</span></div>
                     <div class="mini-action">
 
                       <a class="mini-link btn--e-brand-b-2" href="../../../../assets/front-template/checkout.html">PROCEED TO CHECKOUT</a>

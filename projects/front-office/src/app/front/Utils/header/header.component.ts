@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
+import {CartComponent} from "../../buyer/cart/cart.component";
+import {HomeService} from "../../buyer/services/home.service";
+import {ProductQuantity} from "../../../../../../../Models/ProductQuantity";
+import {Order} from "../../../../../../../Models/Order";
 
 @Component({
   selector: 'app-header',
@@ -7,8 +11,18 @@ import {Router} from "@angular/router";
   styleUrls: ['./header.component.css','../../../../assets/front-template/css/vendor.css','../../../../assets/front-template/css/utility.css','../../../../assets/front-template/css/app.css']
 })
 export class HeaderComponent {
-  constructor(private router : Router) {
+  constructor(private router : Router,private home:HomeService) {
   }
+  ngOnInit() {
+    this.getListProduct();
+    this.getBaskerOrder();
+  }
+  request!:ProductQuantity[];
+
+  getListProduct(){
+    this.home.loadPosts().subscribe(data =>{this.request=data});
+  }
+
   goToIndex()
   {
     this.router.navigate(["/buyer"])
@@ -17,4 +31,10 @@ export class HeaderComponent {
   {
     this.router.navigate(["/buyer/cart"])
   }
+
+  requestOrder!:Order;
+  getBaskerOrder(){
+    this.home.loadOrder().subscribe(data=>(this.requestOrder=data))
+  }
+
 }
