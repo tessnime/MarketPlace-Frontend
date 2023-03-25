@@ -12,7 +12,6 @@ const routes: Routes = [
       {path:'',component:UserDashboardComponent},
       {path:'userlist',component:UserListComponent}
      
-      
     ]
 },]
 
