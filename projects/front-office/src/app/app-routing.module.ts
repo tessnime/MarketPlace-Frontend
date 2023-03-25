@@ -9,6 +9,8 @@ import { SellerDashComponent } from './seller/seller-dash/seller-dash.component'
 import { RequestListComponent } from './freelancer/request-list/request-list.component';
 import { PickupListComponent } from './agency/pickup-list/pickup-list.component';
 import { AddPickupComponent } from './agency/add-pickup/add-pickup.component';
+import {HomeComponent} from "./front/buyer/home/home.component";
+import {CartComponent} from "./front/buyer/cart/cart.component";
 
 const routes: Routes = [
   {
@@ -30,6 +32,12 @@ const routes: Routes = [
   children:[
     {path:'',component:PickupListComponent},
     {path:'prods',component:AddPickupComponent}
+  ]
+},
+{
+  path:'buyer',component:HomeComponent,
+  children:[
+    { path: 'cart', component: CartComponent }
   ]
 }
 

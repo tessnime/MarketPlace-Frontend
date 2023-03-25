@@ -13,6 +13,8 @@ import { NewProductComponent } from './seller/new-product/new-product.component'
 import { RequestListComponent } from './freelancer/request-list/request-list.component';
 import { PickupListComponent } from './agency/pickup-list/pickup-list.component';
 import { AddPickupComponent } from './agency/add-pickup/add-pickup.component';
+import {FrontModule} from "./front/front.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { AddPickupComponent } from './agency/add-pickup/add-pickup.component';
     RouterModule,
     sellerlayout,
     freelancerlayout,
-    agencylayout
+    agencylayout,
+    FrontModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
