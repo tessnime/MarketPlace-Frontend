@@ -3,3 +3,4 @@ export class BadWords{
   name!:string;
 
 }
+//////
