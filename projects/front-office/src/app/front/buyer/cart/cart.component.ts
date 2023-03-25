@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {HomeService} from "../services/home.service";
-import {Product} from "../model/product";
-import {ProductQuantity} from "../model/productQuantity";
-import {Order} from "../model/order";
+import {Product} from "../../../../../../../Models/Product";
+import {ProductQuantity} from "../../../../../../../Models/ProductQuantity";
+import {Order} from "../../../model/order";
 
 @Component({
   selector: 'app-cart',
