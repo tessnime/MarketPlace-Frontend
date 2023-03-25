@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppLayoutComponent as sellerlayoutC} from './seller/layout/app.layout.component';
 import { AppLayoutComponent as freelancerlayoutC} from './freelancer/layout/app.layout.component';
 import { AppLayoutComponent as agencylayoutC} from './agency/layout/app.layout.component';
+import { AppLayoutComponent as sellerlayoutCMohsen} from './agency/layout/app.layout.component';
 
 import { NewProductComponent } from './seller/new-product/new-product.component';
 import { SellerDashComponent } from './seller/seller-dash/seller-dash.component';
@@ -11,6 +12,7 @@ import { PickupListComponent } from './agency/pickup-list/pickup-list.component'
 import { AddPickupComponent } from './agency/add-pickup/add-pickup.component';
 import {HomeComponent} from "./front/buyer/home/home.component";
 import {CartComponent} from "./front/buyer/cart/cart.component";
+import { StoreListComponent } from './sellerMohsen/store-list/store-list.component';
 
 const routes: Routes = [
   {
@@ -24,7 +26,9 @@ const routes: Routes = [
     path:'store',component:sellerlayoutC,
     children:[
       {path:'',component:SellerDashComponent},
-      {path:'prods',component:NewProductComponent}
+      {path:'prods',component:NewProductComponent},
+      {path:'MyStore',component:StoreListComponent}
+
     ]
 },
 {
@@ -39,9 +43,13 @@ const routes: Routes = [
   children:[
     { path: 'cart', component: CartComponent }
   ]
+},
+{
+  path:'Seller',component:sellerlayoutCMohsen,
+  children:[
+    { path: 'list', component: StoreListComponent }
+  ]
 }
-
-
 ];
 
 @NgModule({
