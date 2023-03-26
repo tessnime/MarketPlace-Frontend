@@ -13,6 +13,8 @@ import { AddPickupComponent } from './agency/add-pickup/add-pickup.component';
 import {HomeComponent} from "./front/buyer/home/home.component";
 import {CartComponent} from "./front/buyer/cart/cart.component";
 import { StoreListComponent } from './sellerMohsen/store-list/store-list.component';
+import { ListOfStoreComponent } from './sellerMohsen/list-of-store/list-of-store.component';
+import { OrderListMComponent } from './sellerMohsen/order-list-m/order-list-m.component';
 
 const routes: Routes = [
   {
@@ -47,7 +49,9 @@ const routes: Routes = [
 {
   path:'Seller',component:sellerlayoutCMohsen,
   children:[
-    { path: 'list', component: StoreListComponent }
+    { path: 'DashboardDelivery', component: StoreListComponent },
+    {path:'stores',component:ListOfStoreComponent},
+     {path:'stores/orders/:idStore',component:OrderListMComponent}
   ]
 }
 ];

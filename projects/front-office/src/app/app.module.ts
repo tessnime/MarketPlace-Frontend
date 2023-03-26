@@ -19,6 +19,8 @@ import { StoreListComponent } from './sellerMohsen/store-list/store-list.compone
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { ListOfStoreComponent } from './sellerMohsen/list-of-store/list-of-store.component';
+import { OrderListMComponent } from './sellerMohsen/order-list-m/order-list-m.component';
 
 
 
@@ -30,7 +32,9 @@ import { MatIconModule } from '@angular/material/icon';
     RequestListComponent,
     PickupListComponent,
     AddPickupComponent,
-    StoreListComponent
+    StoreListComponent,
+    ListOfStoreComponent,
+    OrderListMComponent
   ],
   imports: [
     BrowserModule,

@@ -15,14 +15,39 @@ export class StoreListComponent {
   store!:Store[];
   user!:User;
 ngOnInit(){
-  this.GetStoreList();
   this.GetUser()
-;}
-  GetStoreList(){
-    this.pickupService.getStoreByUser().subscribe(data=>{this.store=data});
-  }
+  this.CountPickupDeliverted();
+  this.CountPickupOnTheWay();
+  this.CountPickupPending();
+  this.CountPickupRefunbded();
+  this.CountPickupReturned();
+
+}
+
   GetUser(){
     this.pickupService.getUser().subscribe(data=>{this.user=data});
+  }
+  nbCountPickupPending!:number;
+  nbCountPickupRefunbded!:number;
+  nbCountPickupOnTheWay!:number;
+  nbCountPickupDeliverted!:number;
+  nbCountPickupReturned!:number;
+   //Stat Count To Seller
+   CountPickupPending(){
+   this.pickupService.CountPickupPending().subscribe(data=>{this.nbCountPickupPending=data});
+
+  }
+  CountPickupRefunbded(){
+    this.pickupService.CountPickupRefunbded().subscribe(data=>{this.nbCountPickupRefunbded=data});
+  }
+  CountPickupOnTheWay(){
+    this.pickupService.CountPickupOnTheWay().subscribe(data=>{this.nbCountPickupOnTheWay=data});
+  }
+  CountPickupDeliverted(){
+    this.pickupService.CountPickupDeliverted().subscribe(data=>{this.nbCountPickupDeliverted=data});
+  }
+  CountPickupReturned(){
+    this.pickupService.CountPickupReturned().subscribe(data=>{this.nbCountPickupReturned=data});
   }
 
 }
