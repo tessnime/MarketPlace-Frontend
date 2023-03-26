@@ -15,6 +15,7 @@ import { PickupListComponent } from './agency/pickup-list/pickup-list.component'
 import { AddPickupComponent } from './agency/add-pickup/add-pickup.component';
 import {FrontModule} from "./front/front.module";
 import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {HttpClientModule} from "@angular/common/http";
     RequestListComponent,
     PickupListComponent,
     AddPickupComponent
+
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import {HttpClientModule} from "@angular/common/http";
     freelancerlayout,
     agencylayout,
     FrontModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

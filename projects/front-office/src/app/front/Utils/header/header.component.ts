@@ -13,6 +13,12 @@ import {Order} from "../../../../../../../Models/Order";
 export class HeaderComponent {
   constructor(private router : Router,private home:HomeService) {
   }
+  refresh() {
+    const currentUrl = window.location.href;
+    // @ts-ignore
+    window.history.replaceState(null, null, currentUrl);
+    window.location.reload();
+  }
   ngOnInit() {
     this.getListProduct();
     this.getBaskerOrder();
@@ -35,6 +41,11 @@ export class HeaderComponent {
   requestOrder!:Order;
   getBaskerOrder(){
     this.home.loadOrder().subscribe(data=>(this.requestOrder=data))
+  }
+  deleteProductFromOrder(ref:string)
+  {
+    this.home.deleteProductFromOrder(ref).subscribe(()=>{this.getListProduct();});
+    this.refresh();
   }
 
 }

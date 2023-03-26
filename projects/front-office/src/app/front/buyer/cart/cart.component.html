@@ -121,7 +121,7 @@
                                                 <td>
                                                     <div class="table-p__del-wrap">
 
-                                                        <a class="far fa-trash-alt table-p__delete-link" href="#"></a></div>
+                                                        <a (click)="deleteProductFromOrder(pq.product.reference)" class="far fa-trash-alt table-p__delete-link" ></a></div>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -141,7 +141,7 @@
 
                                             <span>CLEAR CART</span></a>
 
-                                        <a class="route-box__link" href="cart.component.html"><i class="fas fa-sync"></i>
+                                        <a class="route-box__link" (click)="refresh()" ><i class="fas fa-sync"></i>
 
                                             <span>UPDATE CART</span></a></div>
                                 </div>
@@ -173,11 +173,8 @@
 
                                                     <!--====== Select Box ======-->
 
-                                                    <label class="gl-label" for="shipping-country">COUNTRY *</label><select class="select-box select-box--primary-style" id="shipping-country">
-                                                        <option selected value="">Choose Country</option>
-                                                        <option value="uae">United Arab Emirate (UAE)</option>
-                                                        <option value="uk">United Kingdom (UK)</option>
-                                                        <option value="us">United States (US)</option>
+                                                    <label class="gl-label" for="shipping-gouvernorat">Gouvernorat *</label><select class="select-box select-box--primary-style" id="shipping-gouvernorat">
+                                                        <option *ngFor="let g of city" [value]="g.name">{{ g.name }}</option>
                                                     </select>
                                                     <!--====== End - Select Box ======-->
                                                 </div>
@@ -186,21 +183,20 @@
                                                     <!--====== Select Box ======-->
 
                                                     <label class="gl-label" for="shipping-state">STATE/PROVINCE *</label><select class="select-box select-box--primary-style" id="shipping-state">
-                                                        <option selected value="">Choose State/Province</option>
-                                                        <option value="al">Alabama</option>
-                                                        <option value="al">Alaska</option>
-                                                        <option value="ny">New York</option>
+                                                  <optgroup *ngFor="let g of city"  label="{{g.name}}">
+                                                    <option *ngFor="let i of g.cities" [value]="i">{{ i }}</option>
+                                                  </optgroup>
                                                     </select>
                                                     <!--====== End - Select Box ======-->
                                                 </div>
                                                 <div class="u-s-m-b-30">
 
-                                                    <label class="gl-label" for="shipping-zip">ZIP/POSTAL CODE *</label>
+                                                    <label class="gl-label" for="shipping-zip">EXACTE ADRESS *</label>
 
-                                                    <input class="input-text input-text--primary-style" type="text" id="shipping-zip" placeholder="Zip/Postal Code"></div>
+                                                    <input class="input-text input-text--primary-style" type="text" id="shipping-zip" placeholder="EXACTE ADRESS..."></div>
                                                 <div class="u-s-m-b-30">
 
-                                                    <a class="f-cart__ship-link btn--e-transparent-brand-b-2" href="cart.component.html">CALCULATE SHIPPING</a></div>
+                                                    <a class="f-cart__ship-link btn--e-transparent-brand-b-2" href="cart.component.html">ADD SHIPPING GEOLOCATION</a></div>
 
                                                 <span class="gl-text">Note: There are some countries where free shipping is available otherwise our flat rate charges or country delivery charges will be apply.</span>
                                             </div>

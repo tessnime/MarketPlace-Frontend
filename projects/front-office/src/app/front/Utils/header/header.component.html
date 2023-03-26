@@ -1166,7 +1166,7 @@
 
           <button class="btn btn--icon toggle-button toggle-button--secondary fas fa-shopping-bag toggle-button-shop" type="button"></button>
 
-          <span class="total-item-round">{{request.length}}</span>
+         <span  class="total-item-round">{{request.length}}</span>
 
           <!--====== Menu ======-->
           <div class="ah-lg-mode">
@@ -1185,12 +1185,12 @@
 
                 <a class="mini-cart-shop-link"><i class="fas fa-shopping-bag"></i>
 
-                  <span class="total-item-round">{{request.length}}</span></a>
+                <span *ngIf="request.length>0" class="total-item-round">{{request.length}}</span></a>
 
                 <!--====== Dropdown ======-->
 
-                <span class="js-menu-toggle"></span>
-                <div class="mini-cart">
+                <span  class="js-menu-toggle"></span>
+                <div *ngIf="request.length>0" class="mini-cart">
 
                   <!--====== Mini Product Container ======-->
                   <div class="mini-product-container gl-scroll u-s-m-b-15">
@@ -1218,7 +1218,7 @@
                           <span class="mini-product__price">DT {{k.product.productPrice}}</span></div>
                       </div>
 
-                      <a class="mini-product__delete-link far fa-trash-alt"></a>
+                      <a (click)="deleteProductFromOrder(k.product.reference)" class="mini-product__delete-link far fa-trash-alt"></a>
                     </div>
                     <!--====== End - Card for mini cart ======-->
 
