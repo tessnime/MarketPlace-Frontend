@@ -2461,6 +2461,14 @@ input::-ms-clear {
     border-radius: 5px;
     font-size: 13px; }
 
+
+
+
+.banner-bg1 {
+  padding: 7em 0;
+  background-size: cover; }
+
+
 .banner-bg {
   padding: 7em 0;
   position: relative;

@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {ProductQuantity} from "../../../../../../../Models/ProductQuantity";
 import {Order} from "../../../../../../../Models/Order";
 import {Product} from "../../../../../../../Models/Product";
+import {EventModel} from "../../../../../../../Models/EventModel";
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,12 @@ export class HomeService {
   DeleteBasket='http://localhost:8081/order/DeleteBasket';
   UpdateQuantityInOrder='http://localhost:8081/order/UpdateQuantityInOrder?refProuct=&quantity=';
   DeleteProductFromOrder='http://localhost:8081/order/DeleteProductFromOrder?refProduct=';
+  DisplayAllLastVued='http://localhost:8081/LastVued/DisplayAllLastVued';
+  displayAllEvents='http://localhost:8081/Event/displayAllEvents'
+  GetProductsForEvent='http://localhost:8081/Event/GetProductsForEvent?id='
+
+
+
 
 
   constructor(private http:HttpClient) { }
@@ -57,4 +64,20 @@ export class HomeService {
     return this.http.get<Product[]>(url,this.options);
 
   }
+
+  lastVude()
+  {
+    return this.http.get<Product[]>(this.DisplayAllLastVued,this.options);
+  }
+
+  eventDisplay()
+  {
+    return this.http.get<EventModel[]>(this.displayAllEvents,this.options);
+  }
+
+  productsInEvents(id:number)
+  {
+    return this.http.get<Product[]>(this.GetProductsForEvent+`${id}`,this.options);
+  }
+
 }

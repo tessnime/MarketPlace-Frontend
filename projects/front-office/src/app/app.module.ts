@@ -16,7 +16,10 @@ import { AddPickupComponent } from './agency/add-pickup/add-pickup.component';
 import {FrontModule} from "./front/front.module";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import {MAT_CHIPS_DEFAULT_OPTIONS, MatChipsModule} from '@angular/material/chips';
+import {COMMA, SPACE} from "@angular/cdk/keycodes";
 
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +41,14 @@ import {FormsModule} from "@angular/forms";
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_CHIPS_DEFAULT_OPTIONS,
+      useValue: {
+        separatorKeyCodes: [COMMA, SPACE]
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
