@@ -4,23 +4,30 @@ import {ProductQuantity} from "../../../../../../../Models/ProductQuantity";
 import {Order} from "../../../../../../../Models/Order";
 import {Router} from "@angular/router";
 import {Shipping} from "../../../../../../../Models/Shipping";
-import {NgForm} from "@angular/forms";
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatSnackBar} from "@angular/material/snack-bar";
+
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css','../../../../assets/front-template/css/vendor.css','../../../../assets/front-template/css/utility.css','../../../../assets/front-template/css/app.css']
 })
+/**
+ * @title Snack-bar with configurable position
+ */
 export class CartComponent {
-  addForm(ship: NgForm) {
-    this.shipping.governorate=ship.controls['governorate'].value;
-    this.shipping.city=ship.controls['city'].value;
-    this.shipping.gpsPoint=ship.controls['gpsPoint'].value;
-    alert(this.shipping.governorate);
+
+
+
+  selectedValue!: string;
+  requestOrder!:Order;
+  form:any={};
+  shipping!:Shipping;
+  order!:Order;
+
+  constructor(private router : Router,private home:HomeService,private snackBar: MatSnackBar) {
   }
-  constructor(private router : Router,private home:HomeService) {
-  }
+
   refresh() {
     const currentUrl = window.location.href;
     // @ts-ignore
@@ -32,37 +39,47 @@ export class CartComponent {
     this.getListProduct();
     this.getBaskerOrder();
   }
-  request!:ProductQuantity[];
-  getListProduct(){
-    this.home.loadPosts().subscribe(data =>{this.request=data});
+
+
+
+  addForm() {
+    for (let i = 0; i < this.city.length; i++) {
+      if (this.city[i].cities.includes(this.form.city)) {
+        this.form.governorate = this.city[i].name;
+      }
+    }
+    this.home.addShippingToOrder(this.form).subscribe(data =>{this.order=data;this.refresh();});
   }
 
 
-  requestOrder!:Order;
+
+  request!:ProductQuantity[];
+  getListProduct(){
+    this.home.loadPosts().subscribe(data =>{this.request=data;});
+  }
+
+
   getBaskerOrder(){
-    this.home.loadOrder().subscribe(data=>(this.requestOrder=data))
+    this.home.loadOrder().subscribe(data=> {this.requestOrder=data})
   }
 
   deleteCarte()
   {
-    this.home.deleteCart().subscribe(()=>{this.getListProduct();});
-    this.refresh();
+    this.home.deleteCart().subscribe(()=>{this.getListProduct();this.refresh();});
+
   }
 
   updateQuantity(ref:string,quan:number)
   {
-    this.home.updateQuantity(ref,quan).subscribe(data => {console.log(data);})
-    this.refresh();
+    this.home.updateQuantity(ref,quan).subscribe(data => {console.log(data);this.refresh();})
+
   }
 
   deleteProductFromOrder(ref:string)
   {
-  this.home.deleteProductFromOrder(ref).subscribe(()=>{this.getListProduct();});
-   this.refresh();
+  this.home.deleteProductFromOrder(ref).subscribe(()=>{this.getListProduct();this.refresh();});
   }
 
-  shipping!:Shipping;
-  selectedValue!: string;
   changedGouvernorat()
   {
     alert(this.selectedValue);

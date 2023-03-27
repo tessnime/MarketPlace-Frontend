@@ -5,6 +5,7 @@ import {PromotionCode} from "./PromotionCode";
 import {Store} from "./Store";
 import {Review} from "./Review";
 import {SupplierRequest} from "./SupplierRequest";
+import {SafeResourceUrl} from "@angular/platform-browser";
 
 export class Product{
   id!: number;
@@ -33,5 +34,6 @@ export class Product{
   store!: Store;
   reviews: Review[] = [];
   supplierRequests: SupplierRequest[] = [];
+  videoLink!:string;
 }
 

@@ -15,6 +15,11 @@ export class HomeComponent {
   }
 
 
+  gotoDetails(id:number)
+  {
+    this.router.navigate(["/buyer/details",id]);
+  }
+
   ngOnInit()
   {
     this.searchProduct(0,0,'','','','MOST_REQUESTED');
