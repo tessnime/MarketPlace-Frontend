@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { User } from 'Models/User';
+import { Router,ActivatedRoute  } from '@angular/router';
 import { first } from 'rxjs';
-import { accessToken } from '../Dto/accessToken';
-import { JwtResponse } from '../Dto/jwt-response';
-import { LoginInfo } from '../Dto/login-info';
 import { LoginUserService } from '../Services/login-user.service';
 import { TokenStorageService } from '../token/token-storage.service';
 
@@ -16,27 +12,30 @@ import { TokenStorageService } from '../token/token-storage.service';
 export class SignInComponent implements OnInit {
 
   form:any ={}
-  token!:accessToken;
-  
- 
+  loading = false;
+  submitted = false;
+  //returnUrl!: string;
+  error = '';
 
-  constructor( private LoginUserService:LoginUserService ,private tokenStorage: TokenStorageService,private router:Router){}
-  ngOnInit(): void {
+  constructor( private LoginUserService:LoginUserService ,private tokenStorage: TokenStorageService,private router:Router ,private route: ActivatedRoute){}
+  ngOnInit() {
    
   }
   userLogin(){
-  
-  alert(this.form.password)
-    this.LoginUserService.login(new LoginInfo(this.form.email,this.form.password ))
+  this.loading =true;
+  this.LoginUserService.login(this.form.email,this.form.password)
+  .pipe(first())
    .subscribe
    (
-     data => {this.token=data;
-      alert(this.token.accessToken)
-   
-    })
-    alert("error");
-    
-  }
+    () => {
+      this.router.navigate(['/buyer/cart']);
+    },
 
+error =>{
+  this.error =error;
+  this.loading=false;
+});
+
+  }
 
 }

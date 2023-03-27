@@ -1,7 +1,4 @@
-export class JwtResponse {
-    accessToken!: string;
-    type!:string;
-    email!:string;
-    authorities!:string[];
+export interface JwtResponse {
+  token:string;
 
 }

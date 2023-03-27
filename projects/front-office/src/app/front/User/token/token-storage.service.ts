@@ -7,7 +7,7 @@ const AUTHORITIES_KEY ='AuthAuthorities';
   providedIn: 'root'
 })
 export class TokenStorageService {
-  private roles:Array<string> =[];
+ /* private roles:Array<string> =[];
 
 
   constructor() { }

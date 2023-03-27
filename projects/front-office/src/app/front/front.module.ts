@@ -4,7 +4,7 @@ import { HeaderComponent } from './Utils/header/header.component';
 import { HomeComponent } from './buyer/home/home.component';
 import { CartComponent } from './buyer/cart/cart.component';
 import { FooterComponent } from './Utils/footer/footer.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './User/sign-in/sign-in.component';
 
 
@@ -24,7 +24,8 @@ import { SignInComponent } from './User/sign-in/sign-in.component';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class FrontModule { }
