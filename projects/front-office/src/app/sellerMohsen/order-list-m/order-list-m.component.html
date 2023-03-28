@@ -1,11 +1,11 @@
 <div class="pd-ltr-20 xs-pd-20-10">
   <div class="min-height-200px">
-    <div class="container pd-0">
+
       <div class="page-header">
         <div class="row">
           <div class="col-md-12 col-sm-12">
             <div class="title">
-              <h4>Contact Directory</h4>
+              <h4>Orders</h4>
             </div>
             <nav aria-label="breadcrumb" role="navigation">
               <ol class="breadcrumb">
@@ -23,9 +23,31 @@
           </div>
         </div>
       </div>
+<div class="row">
+      <div class="col-md-3 mb-30" *ngFor="let o of order; let i = index" >
+
+        <div class="card-box pricing-card mt-30 mb-30">
+          <div class="pricing-icon">
+            <img src="../../../assets/vendors/images/icon-online-wallet.png" alt="" />
+          </div>
+          <div class="price-title">Order Ref#{{o.ref}}</div>
+          <div class="pricing-price" >{{SumProduct[i]}}<sub>/Dt</sub></div>
+          <div class="text">
+            <div *ngFor="let p of product; let c = index ">
+                <p>Product Name: {{ p.name[c] }}</p>
+          </div>
+        </div>
+          <div class="cta">
+            <a [routerLink]="['/Seller/stores/orders', idStore, o.id]" class="btn btn-primary btn-rounded btn-lg">Picked Now</a>
+          </div>
+        </div>
+      </div>
 
     </div>
+
+
   </div>
+
 
 
 

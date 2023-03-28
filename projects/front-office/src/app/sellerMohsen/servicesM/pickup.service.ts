@@ -1,5 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Order } from 'Models/Order';
+import { Pickup } from 'Models/Pickup';
+import { Product } from 'Models/Product';
+import { ProductQuantity } from 'Models/ProductQuantity';
+import { Shipping } from 'Models/Shipping';
 import { Store } from 'Models/Store';
 import { User } from 'Models/User';
 
@@ -12,14 +17,29 @@ export class PickupService {
   //Url Seller
   urlstore="http://localhost:8081/Pickup/RetrieveStoreOfUser";
   urlUser="http://localhost:8081/Pickup/getUserNOw";
+  urlorder="http://localhost:8081/Pickup/retrieveOrderByseller?idStore=";
+  urlGetOrderById="http://localhost:8081/Pickup/GetOrderById?IdOrder=";
+  urlAddProduct="http://localhost:8081/Pickup/AssignPickupByStoreAndOrder?id=";
   urlCountPickupPending="http://localhost:8081/Pickup/countPickupSellerPendingToday";
   urlCountPickupRefunbded="http://localhost:8081/Pickup/countPickupSellerRefundedToday";
   urlCountPickupOnTheWay="http://localhost:8081/Pickup/countPickupSelleronTheWayToday";
   urlCountPickupReturned="http://localhost:8081/Pickup/countPickupSellerReturnToday";
   urlCountPickupDeliverted="http://localhost:8081/Pickup/countPickupSellerDeliveredToday";
   urlcountOrderByStoreNoPickup="http://localhost:8081/Pickup/countOrderBySellerNoPickup?idStore=";
+  urlgetListProductOfOrder="http://localhost:8081/Pickup/getListProductOfOrder?idOrder=";
+  urlgetSumPriceProductOfOrder="http://localhost:8081/Pickup/getSumPriceProductOfOrder?idOrder=";
+  urlGetShippingByOrder="http://localhost:8081/Pickup/GetShippingByOrder?IdOrder=";
+  urlGetBuyerByOrder="http://localhost:8081/Pickup/GetBuyerByOrder?IdOrder=";
+  urlgetAllproductQuantity="http://localhost:8081/Pickup/getAllProductQuantity";
+  urlRetrievePickupWaitingBySeller="http://localhost:8081/Pickup/retrievePickupBysellerAttent";
+  urlDeletePickup="http://localhost:8081/Pickup/RemovePickup?id=";
+  urlupdatePickup="http://localhost:8081/Pickup/UpdatePickup?idPikup=";
+  urlGetPickupById="http://localhost:8081/Pickup/RetrievePickup?id=";
+  urlGetOrderBiPickupId="http://localhost:8081/Pickup/GetOrderByPickupId?idPickup=";
+  urlGetShippingByPickupId="http://localhost:8081/Pickup/GetShippingByPickupId?idPickup=";
+  urlGetBuyerByPickupId="http://localhost:8081/Pickup/GetBuyerByPickupId?idPickup=";
 
-//component List Of Store
+  //component List Of Store
   //FctgetStoreByUser
   getStoreByUser(){
     const options = { withCredentials: true };
@@ -28,6 +48,69 @@ export class PickupService {
   countOrderByStoreNoPickup(idStore:number){
     const options = { withCredentials: true };
     return this.http.get<number>(this.urlcountOrderByStoreNoPickup+`${idStore}`,options)
+  }
+  getOrderByStore(id:number){
+    const options = { withCredentials: true };
+    return this.http.get<Order[]>(this.urlorder+`${id}`,options);
+  }
+  GetOrderById(idOrder:number){
+    const options = { withCredentials: true };
+       return this.http.get<Order>(this.urlGetOrderById+`${idOrder}`,options);
+  }
+  getListProductOfOrder(idOrder:number,idStore:number)
+  {
+    const options = { withCredentials: true };
+     return this.http.get<Product[]>(this.urlgetListProductOfOrder+`${idOrder}`+'&idStore='+`${idStore}`,options);
+  }
+  getSumPriceProductOfOrder(idOrder:number,idStore:number)
+  {
+    const options = { withCredentials: true };
+     return this.http.get<number>(this.urlgetSumPriceProductOfOrder+`${idOrder}`+'&idStore='+`${idStore}`,options);
+  }
+  getAllproductQuantity(){
+    const options = { withCredentials: true };
+    return this.http.get<ProductQuantity[]>(this.urlgetAllproductQuantity,options)
+  }
+    ///add PickupSeller
+  addPickup(p:Pickup,idOrder:number,idStore:number){
+    const options = { withCredentials: true };
+    return this.http.post<Pickup>(this.urlAddProduct+`${idOrder}`+'&IdSotre='+`${idStore}`,p,options);
+  }
+  GetShippingByOrder(idOrder:number){
+    const options = { withCredentials: true };
+    return this.http.get<Shipping>(this.urlGetShippingByOrder+`${idOrder}`,options);
+   }
+   GetBuyerByOrder(idOrder:number){
+    const options = { withCredentials: true };
+    return this.http.get<User>(this.urlGetBuyerByOrder+`${idOrder}`,options)
+   }
+   GetPickupBySellerWaiting(){
+    const options = { withCredentials: true };
+    return this.http.get<Pickup[]>(this.urlRetrievePickupWaitingBySeller,options);
+  }
+  DeletePickup(idPickup:number){
+    const options = { withCredentials: true };
+    return this.http.delete<Pickup>(this.urlDeletePickup+`${idPickup}`,options);
+  }
+  UpdatePickup(p:Pickup,idPickup:number){
+    const options = { withCredentials: true };
+    return this.http.put<Pickup>(this.urlupdatePickup+`${idPickup}`,p,options);
+  }
+  GetPickupById(idPickup:number){
+    const options = { withCredentials: true };
+     return this.http.get<Pickup>(this.urlGetPickupById+`${idPickup}`,options);
+  }
+  GetOrderByPickupId(idPickup:number){
+    const options = { withCredentials: true };
+    return this.http.get<Order>(this.urlGetOrderBiPickupId+`${idPickup}`,options);
+  }
+  GetShippingByPickupId(idPickup:number){
+    const options = { withCredentials: true };
+    return this.http.get<Shipping>(this.urlGetShippingByPickupId+`${idPickup}`,options);
+  }
+  GetBuyerByPickupId(idPickup:number){
+    const options = { withCredentials: true };
+    return this.http.get<User>(this.urlGetBuyerByPickupId+`${idPickup}`,options);
   }
     //Fct get User Connected
     getUser(){
