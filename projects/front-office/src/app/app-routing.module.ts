@@ -11,6 +11,7 @@ import { PickupListComponent } from './agency/pickup-list/pickup-list.component'
 import { AddPickupComponent } from './agency/add-pickup/add-pickup.component';
 import {HomeComponent} from "./front/buyer/home/home.component";
 import {CartComponent} from "./front/buyer/cart/cart.component";
+import { ProductListComponent } from './seller/product-list/product-list.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,9 @@ const routes: Routes = [
     path:'store',component:sellerlayoutC,
     children:[
       {path:'',component:SellerDashComponent},
-      {path:'prods',component:NewProductComponent}
+      {path:'prods',component:NewProductComponent},
+      {path:'list',component:ProductListComponent}
+
     ]
 },
 {

@@ -15,6 +15,17 @@ import { PickupListComponent } from './agency/pickup-list/pickup-list.component'
 import { AddPickupComponent } from './agency/add-pickup/add-pickup.component';
 import {FrontModule} from "./front/front.module";
 import {HttpClientModule} from "@angular/common/http";
+import { ProductListComponent } from './seller/product-list/product-list.component';
+import { DataViewModule } from 'primeng/dataview';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { RatingModule } from 'primeng/rating';
+import { PickListModule } from 'primeng/picklist';
+import { OrderListModule } from 'primeng/orderlist';
+import { FormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
@@ -23,7 +34,8 @@ import {HttpClientModule} from "@angular/common/http";
     NewProductComponent,
     RequestListComponent,
     PickupListComponent,
-    AddPickupComponent
+    AddPickupComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +45,16 @@ import {HttpClientModule} from "@angular/common/http";
     freelancerlayout,
     agencylayout,
     FrontModule,
-    HttpClientModule
+    HttpClientModule,
+  	DataViewModule,
+		InputTextModule,
+		DropdownModule,
+		ButtonModule,
+    RatingModule,
+    OrderListModule,
+    PickListModule,
+    FormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AppLayoutModule } from './layoutB/app.layout.module';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UserListComponent } from './user-list/user-list.component';
     BrowserModule,
     AppRoutingModule,
     AppLayoutModule,
-    RouterModule
+    RouterModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
