@@ -39,7 +39,7 @@ export class PickupService {
   urlGetShippingByPickupId="http://localhost:8081/Pickup/GetShippingByPickupId?idPickup=";
   urlGetBuyerByPickupId="http://localhost:8081/Pickup/GetBuyerByPickupId?idPickup=";
 
-  //component List Of Store
+  //component List Of Store /seller
   //FctgetStoreByUser
   getStoreByUser(){
     const options = { withCredentials: true };
@@ -139,6 +139,61 @@ export class PickupService {
       const options = { withCredentials: true };
       return this.http.get<number>(this.urlCountPickupReturned,options)
     }
+
+     //Agency
+
+   //Url
+   urlRetrievePickupBeTAgencyAndStore="http://localhost:8081/Pickup/RetrievePickupsbetweenAgencyBranchAndStoreInTheSomeGovernorat";
+   RetrievePickupBeTAgencyAndStore(){
+    const options = { withCredentials: true };
+    return this.http.get<Pickup[]>(this.urlRetrievePickupBeTAgencyAndStore,options);
+   }
+   //stat
+   countRequestRejectedTodayAgency(){
+    const options = { withCredentials: true };
+    return this.http.get<number>('http://localhost:8081/Pickup/countRequestApprovedAgencyToday',options);
+   }
+   countRequestApprovedTodayAgency(){
+    const options = { withCredentials: true };
+    return this.http.get<number>('http://localhost:8081/Pickup/countRequestRejectedAgencyToday',options);
+   }
+   countDeliveryMenInAllAgencyBranchesForAgench(){
+    const options = { withCredentials: true };
+    return this.http.get<number>('http://localhost:8081/AgencyBranch/countDeliveryMenInAllAgencyBranchesForAgench',options);
+   }
+   countAgencyBranchesInAgency(){
+    const options = { withCredentials: true };
+    return this.http.get<number>('http://localhost:8081/AgencyBranch/countAgencyBranchesInAgency',options);
+   }
+   countRequestTotalForAgencyPending(){
+    const options = { withCredentials: true };
+    return this.http.get<number>('http://localhost:8081/RequestController/countRequestTotalForAgencyPending',options);
+   }
+   countRequestRejectForAgency(){
+    const options = { withCredentials: true };
+    return this.http.get<number>('http://localhost:8081/RequestController/countRequestRejectForAgency',options);
+   }
+   countRequestApprovedForAgency(){
+    const options = { withCredentials: true };
+    return this.http.get<number>('http://localhost:8081/RequestController/countRequestApprovedForAgency',options);
+   }
+   countPickupDeliveredForAgency(){
+    const options = { withCredentials: true };
+    return this.http.get<number>('http://localhost:8081/Pickup/countPickupDeliveredForAgency',options);
+   }
+   countPickupOnTheWayForAgency(){
+    const options = { withCredentials: true };
+    return this.http.get<number>('http://localhost:8081/Pickup/countPickupOnTheWayForAgency',options);
+   }
+   countPickupRefundedForAgency(){
+    const options = { withCredentials: true };
+    return this.http.get<number>('http://localhost:8081/Pickup/countPickupRefundedForAgency',options);
+   }
+   countPickupReturnedForAgency(){
+    const options = { withCredentials: true };
+    return this.http.get<number>('http://localhost:8081/Pickup/countPickupReturnedForAgency',options);
+   }
+   
 
 
 }

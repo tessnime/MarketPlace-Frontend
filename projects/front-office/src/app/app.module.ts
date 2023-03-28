@@ -12,7 +12,6 @@ import { SellerDashComponent } from './seller/seller-dash/seller-dash.component'
 import { NewProductComponent } from './seller/new-product/new-product.component';
 import { RequestListComponent } from './freelancer/request-list/request-list.component';
 import { PickupListComponent } from './agency/pickup-list/pickup-list.component';
-import { AddPickupComponent } from './agency/add-pickup/add-pickup.component';
 import { AddPickupComponent as addpickupseller} from './sellerMohsen/add-pickup/add-pickup.component';
 import { PickupListComponent as PickupListSeller } from './sellerMohsen/pickup-list/pickup-list.component';
 
@@ -26,6 +25,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { ListOfStoreComponent } from './sellerMohsen/list-of-store/list-of-store.component';
 import { OrderListMComponent } from './sellerMohsen/order-list-m/order-list-m.component';
 import { PickupUpdateComponent } from './sellerMohsen/pickup-update/pickup-update.component';
+import { DashboardAgencyComponent } from './agency/dashboard-agency/dashboard-agency.component';
+import { RequestAgencyComponent } from './agency/request-agency/request-agency.component';
 
 
 
@@ -36,13 +37,14 @@ import { PickupUpdateComponent } from './sellerMohsen/pickup-update/pickup-updat
     NewProductComponent,
     RequestListComponent,
     PickupListComponent,
-    AddPickupComponent,
     StoreListComponent,
     ListOfStoreComponent,
     OrderListMComponent,
     addpickupseller,
     PickupListSeller,
-    PickupUpdateComponent
+    PickupUpdateComponent,
+    DashboardAgencyComponent,
+    RequestAgencyComponent
   ],
   imports: [
     BrowserModule,

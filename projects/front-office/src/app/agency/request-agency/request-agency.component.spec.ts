@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddPickupComponent } from './add-pickup.component';
+import { RequestAgencyComponent } from './request-agency.component';
 
-describe('AddPickupComponent', () => {
-  let component: AddPickupComponent;
-  let fixture: ComponentFixture<AddPickupComponent>;
+describe('RequestAgencyComponent', () => {
+  let component: RequestAgencyComponent;
+  let fixture: ComponentFixture<RequestAgencyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddPickupComponent ]
+      declarations: [ RequestAgencyComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AddPickupComponent);
+    fixture = TestBed.createComponent(RequestAgencyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

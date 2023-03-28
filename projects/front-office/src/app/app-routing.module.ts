@@ -9,7 +9,6 @@ import { NewProductComponent } from './seller/new-product/new-product.component'
 import { SellerDashComponent } from './seller/seller-dash/seller-dash.component';
 import { RequestListComponent } from './freelancer/request-list/request-list.component';
 import { PickupListComponent } from './agency/pickup-list/pickup-list.component';
-import { AddPickupComponent } from './agency/add-pickup/add-pickup.component';
 import { AddPickupComponent as addpickupseller } from './sellerMohsen/add-pickup/add-pickup.component';
 import {HomeComponent} from "./front/buyer/home/home.component";
 import {CartComponent} from "./front/buyer/cart/cart.component";
@@ -18,6 +17,8 @@ import { ListOfStoreComponent } from './sellerMohsen/list-of-store/list-of-store
 import { OrderListMComponent } from './sellerMohsen/order-list-m/order-list-m.component';
 import { PickupListComponent as PickupListSeller } from './sellerMohsen/pickup-list/pickup-list.component';
 import { PickupUpdateComponent } from './sellerMohsen/pickup-update/pickup-update.component';
+import { DashboardAgencyComponent } from './agency/dashboard-agency/dashboard-agency.component';
+import { RequestAgencyComponent } from './agency/request-agency/request-agency.component';
 
 
 const routes: Routes = [
@@ -40,9 +41,10 @@ const routes: Routes = [
 {
   path:'agency',component:agencylayoutC,
   children:[
-    {path:'',component:PickupListComponent},
-    {path:'prods',component:AddPickupComponent}
-  ]
+    {path:'',component:DashboardAgencyComponent},
+    {path:'Pickups',component:PickupListComponent},
+    {path:'Requests',component:RequestAgencyComponent}
+   ]
 },
 {
   path:'buyer',component:HomeComponent,
