@@ -23,6 +23,8 @@ export class ProductListComponent {
 
   orderCities: any[] = [];
 
+
+
   constructor(private productService: ProductSreviceService) { }
 
   ngOnInit() {
