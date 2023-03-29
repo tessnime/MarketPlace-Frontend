@@ -6,6 +6,7 @@ import { CartComponent } from './buyer/cart/cart.component';
 import { FooterComponent } from './Utils/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './User/sign-in/sign-in.component';
+import { RegisterComponent } from './User/register/register.component';
 
 
 
@@ -17,7 +18,8 @@ import { SignInComponent } from './User/sign-in/sign-in.component';
     HomeComponent,
     CartComponent,
     FooterComponent,
-    SignInComponent
+    SignInComponent,
+    RegisterComponent
    
   
 

@@ -13,7 +13,7 @@ export class SignInComponent implements OnInit {
 
   form:any ={}
   loading = false;
-  submitted = false;
+  //submitted = false;
   //returnUrl!: string;
   error = '';
 
@@ -28,7 +28,7 @@ export class SignInComponent implements OnInit {
    .subscribe
    (
     () => {
-      this.router.navigate(['/buyer/cart']);
+      this.router.navigate(['/buyer/buyer/cart']);
     },
 
 error =>{

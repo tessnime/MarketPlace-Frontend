@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { User } from 'Models/User';
 import { BehaviorSubject, map, Observable } from 'rxjs';
-import { LoginInfo } from '../Dto/login-info';
 import { TokenStorageService } from '../token/token-storage.service';
 
 const httpOptions ={
@@ -27,6 +27,11 @@ export class LoginUserService {
    }
 
   
+     register (user: User):Observable<Object>{
+
+      console.log(user);
+      return this.http.post('http://localhost:8081/User/add',user);
+     }
    
     login(email: string, password: string){
    
@@ -40,6 +45,7 @@ export class LoginUserService {
    }));
 
   
+ 
     }}
 
 
