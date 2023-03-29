@@ -4,12 +4,15 @@ import { HeaderComponent } from './Utils/header/header.component';
 import { HomeComponent } from './buyer/home/home.component';
 import { CartComponent } from './buyer/cart/cart.component';
 import { FooterComponent } from './Utils/footer/footer.component';
-import { FormsModule } from '@angular/forms';
-import { MatChipsModule} from "@angular/material/chips";
-import {MatIconModule} from "@angular/material/icon";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ProductDetailsComponent} from "./buyer/product-details/product-details.component";
-import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatButtonModule} from "@angular/material/button";
+import { ShopSideComponent } from './buyer/shop-side/shop-side.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {BrowserModule} from "@angular/platform-browser";
+import {HttpClientModule} from "@angular/common/http";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+import {AutocompleteLibModule} from "angular-ng-autocomplete";
 
 
 
@@ -19,15 +22,20 @@ import {MatButtonModule} from "@angular/material/button";
     HomeComponent,
     CartComponent,
     FooterComponent,
-    ProductDetailsComponent
-  ],
+    ProductDetailsComponent,
+    ShopSideComponent,
+],
   imports: [
     CommonModule,
     FormsModule,
-    MatChipsModule,
-    MatIconModule,
-    MatSnackBarModule,
-    MatButtonModule
+    BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    AutocompleteLibModule
   ]
 })
 export class FrontModule { }

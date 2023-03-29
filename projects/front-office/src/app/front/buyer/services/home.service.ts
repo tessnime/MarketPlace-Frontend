@@ -6,6 +6,7 @@ import {Product} from "../../../../../../../Models/Product";
 import {EventModel} from "../../../../../../../Models/EventModel";
 import {Shipping} from "../../../../../../../Models/Shipping";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {ProductCategory} from "../../../../../../../Models/ProductCategory";
 
 @Injectable({
   providedIn: 'root'
@@ -22,13 +23,20 @@ export class HomeService {
   GetProductsForEvent = 'http://localhost:8081/Event/GetProductsForEvent?id='
   AddShippingToCard = 'http://localhost:8081/order/AddShippingToCard'
   CreateNewVued = 'http://localhost:8081/LastVued/CreateNewVued?id=';
-  GetProductById = 'http://localhost:8081/order/GetProductById?id='
+  GetProductById = 'http://localhost:8081/order/GetProductById?id=';
+  AddProductToOrder = 'http://localhost:8081/order/AddProductToOrder'
+  Loyaltypoints='http://localhost:8081/Loyalty/points'
+  LoyaltyToken='http://localhost:8081/Loyalty/LoyaltyToken'
+  GetAllProductCategories='http://localhost:8081/productCategory/GetAllProductCategories\n'
+
 
 
   constructor(private http: HttpClient, public snackbar: MatSnackBar) {
   }
 
   options = {withCredentials: true};
+  option = {withCredentials: true, responseType: 'text'};
+
 
   loadPosts() {
     return this.http.get<ProductQuantity[]>(this.GetBasketProduct, this.options);
@@ -87,7 +95,28 @@ export class HomeService {
   }
 
   getProductById(idp: number) {
-    return this.http.get<Product>(this.GetProductById+ `${idp}`, this.options);
+    return this.http.get<Product>(this.GetProductById + `${idp}`, this.options);
   }
+
+  addProductToOrder(pq:ProductQuantity) {
+    return this.http.put(this.AddProductToOrder,pq,this.options)
+  }
+
+  lyaltypoints()
+  {
+    return this.http.get<number>(this.Loyaltypoints,this.options)
+  }
+
+  loyaltyToken()
+  {
+    // @ts-ignore
+    return this.http.get(this.LoyaltyToken,this.option);
+  }
+
+getAllProductCategories()
+{
+  return this.http.get<ProductCategory[]>(this.GetAllProductCategories,this.options)
+}
+
 
 }

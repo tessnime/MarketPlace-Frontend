@@ -15,10 +15,17 @@ import { PickupListComponent } from './agency/pickup-list/pickup-list.component'
 import { AddPickupComponent } from './agency/add-pickup/add-pickup.component';
 import {FrontModule} from "./front/front.module";
 import {HttpClientModule} from "@angular/common/http";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MAT_CHIPS_DEFAULT_OPTIONS, MatChipsModule} from '@angular/material/chips';
 import {COMMA, SPACE} from "@angular/cdk/keycodes";
 import {MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+import {NgImageSliderModule} from "ng-image-slider";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 // @ts-ignore
 @NgModule({
@@ -41,7 +48,19 @@ import {MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     FrontModule,
     HttpClientModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ReactiveFormsModule,
+    MatChipsModule,
+    MatIconModule,
+    MatSnackBarModule,
+    MatButtonModule,
+    BrowserModule,
+    NgImageSliderModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule
 
   ],
   providers: [

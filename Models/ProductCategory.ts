@@ -2,8 +2,8 @@ import {Product} from "./Product";
 
 export class ProductCategory{
   id!:number;
-  name!:String;
-  description!:String;
+  name!:string;
+  description!:string;
   products:Product[]=[];
   category!:ProductCategory;
   subCategory:ProductCategory[]=[];

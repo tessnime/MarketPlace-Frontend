@@ -11,7 +11,7 @@ x!:String;
 y!:String;
 IBAN!:String;
 products:Product[]=[];
-seller:User[]=[];
+seller!:User;
 requestsellers:Request[]=[];
 pickups:Pickup[]=[];
 }

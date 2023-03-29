@@ -18,10 +18,10 @@ export class User {
   banned!: boolean;
   phoneNumber!: string;
   BirthDate!: Date;
-  image!: String;
+  image!: string;
   genderType!: GenderType;
   identity!: string;
-  BrandName!: string;
+  brandName!: string;
   BrandLogo!: string;
   justification!: string;
   governorate!: string;

@@ -1,14 +1,4 @@
-<!--====== Google Font ======-->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
 
-<!--====== Vendor Css ======-->
-<link rel="stylesheet" href="../../../../assets/front-template/css/vendor.css">
-
-<!--====== Utility-Spacing ======-->
-<link rel="stylesheet" href="../../../../assets/front-template/css/utility.css">
-
-<!--====== App ======-->
-<link rel="stylesheet" href="../../../../assets/front-template/css/app.css">
 <div class="config">
 
 <!--====== Main App ======-->
@@ -37,11 +27,11 @@
                 <li class="has-separator">
 
                   <a
-                    href="../../../../assets/front-template/shop-side-version-2.html">{{product.productCategory.name}}</a>
+                    href="../shop-side/shop-side.component.html">{{product.productCategory.name}}</a>
                 </li>
                 <li class="has-separator">
 
-                  <a href="../../../../assets/front-template/shop-side-version-2.html">{{product.name}}</a></li>
+                  <a href="../shop-side/shop-side.component.html">{{product.name}}</a></li>
               </ul>
             </div>
             <!--====== End - Product Breadcrumb ======-->
@@ -86,7 +76,7 @@
               <div class="u-s-m-b-15">
                 <div class="pd-detail__inline">
 
-                  <span class="pd-detail__stock" *ngIf="product.quantity">{{product.quantity}} in stock</span>
+                  <span class="pd-detail__stock" *ngIf="product.quantity>0">{{product.quantity}} in stock</span>
 
                   <span class="pd-detail__left" *ngIf="product.quantity==0">Out Of Stock</span></div>
               </div>
@@ -114,12 +104,23 @@
                     <a class="s-gplus--color-hover" href="https://www.facebook.com/profile.php?id=100090877331994" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>
                 </ul>
               </div>
+              <div class="table-p__input-counter-wrap">
+
+                <!--====== Input Counter ======-->
+                <div class="input-counter">
+                  <span  class="input-counter__minus fas fa-minus" (click)="updateQuantityNumber(-1)"></span>
+
+                  <input class="input-counter__text input-counter--text-primary-style" type="text" value="{{quantityNumber}}" data-min="1" data-max="1000">
+
+                  <span  class="input-counter__plus fas fa-plus"(click)="updateQuantityNumber(1)" ></span></div>
+                <!--====== End - Input Counter ======-->
+              </div>
               <div class="u-s-m-b-15">
                 <form class="pd-detail__form">
                   <div class="pd-detail-inline-2">
                     <div class="u-s-m-b-15">
 
-                      <button class="btn btn--e-brand-b-2" type="submit">Buy Now</button>
+                      <button class="btn btn--e-brand-b-2" (click)="addProductToCart()">Buy Now</button>
                     </div>
                   </div>
                 </form>
@@ -362,50 +363,51 @@
       <div class="section__content">
         <div class="container">
           <div class="row">
-            <div *ngFor="let v of Vued" class="col-lg-3 col-md-4 col-sm-6 u-s-m-b-30">
-              <div  class="product-r u-h-100">
-                <div  class="product-r__container">
+            <div class="slider-controls">
 
-                  <a class="aspect aspect--bg-grey aspect--square u-d-block" (click)="gotoDetails(v.id)">
+              <button class="slider-button slider-button-left" (click)="slideLeft()"><i class="fas fa-angle-left"></i></button>
+            </div>
+            <div class="slider-container" style="width:910px">
+              <div  *ngFor="let v of Vued" class="col-lg-3 col-md-6 col-sm-6 u-s-m-b-39">
+                <div  class="product-r u-h-100">
+                  <div  class="product-r__container">
 
-                    <img class="aspect__img" (click)="gotoDetails(v.id) " src="../../../../assets/front-template/images/product/{{v.image}}" alt=""></a>
-                  <div class="product-r__action-wrap">
-                    <ul class="product-r__action-list">
-                      <li>
+                    <a class="aspect aspect--bg-grey aspect--square u-d-block" (click)="gotoDetails(v.id)">
 
-                        <a data-modal="modal" data-modal-id="#quick-look"><i class="fas fa-search-plus"></i></a></li>
-                      <li>
+                      <img class="aspect__img" src="../../../../assets/front-template/images/product/{{v.image}}" alt=""></a>
+                    <div class="product-r__action-wrap">
+                      <ul class="product-r__action-list">
+                        <li>
 
-                        <a data-modal="modal" data-modal-id="#add-to-cart"><i class="fas fa-plus-circle"></i></a></li>
-                      <li>
-
-                        <a href="signin.html"><i class="fas fa-heart"></i></a></li>
-                      <li>
-
-                        <a href="signin.html"><i class="fas fa-envelope"></i></a></li>
-                    </ul>
+                          <a data-modal="modal" data-modal-id="#quick-look" (click)="gotoDetails(v.id)"><i class="fas fa-search-plus"></i></a></li>
+                      </ul>
+                    </div>
                   </div>
-                </div>
-                <div class="product-r__info-wrap">
+                  <div class="product-r__info-wrap">
 
                                         <span class="product-r__category">
 
                                             <a (click)="gotoDetails(v.id) ">{{v.productCategory.name}}</a></span>
-                  <div class="product-r__n-p-wrap">
+                    <div class="product-r__n-p-wrap">
 
                                             <span class="product-r__name">
 
                                                 <a (click)="gotoDetails(v.id) ">{{v.name}}</a></span>
 
-                    <span class="product-r__price">DT {{v.productPrice}}</span></div>
+                      <span class="product-r__price">DT {{v.productPrice}}</span></div>
 
-                  <span class="product-r__description">{{v.description}}</span>
+                    <span class="product-r__description">{{v.description}}</span>
+                  </div>
                 </div>
               </div>
+            </div>
+            <div class="slider-controls">
+              <button class="slider-button slider-button-right" (click)="slideRight()"><i class="fas fa-angle-right"></i></button>
             </div>
           </div>
         </div>
       </div>
+
       <!--====== End - Section Content ======-->
     </div>
     <!--====== End - Section 1 ======-->
