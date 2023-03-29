@@ -12,9 +12,9 @@ export class ProductSreviceService {
 
   url="http://localhost:8081/";
 
-  getAllProducts(){
+  getAllProductsBySeller(){
     const options = { withCredentials: true };
-    return this.http.get(this.url+'product/GetAllProducts',options)
+    return this.http.get(this.url+'product/retriveProductsByStore',options)
   }
   getProductById(id:number):Observable<Product>{
     return this.http.get<Product>(this.url+'GetProductById?id='+id)

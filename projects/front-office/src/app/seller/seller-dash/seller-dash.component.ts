@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Product } from 'Models/Product';
 import { ProductSreviceService } from '../services/product-srevice.service';
 
 @Component({
@@ -24,7 +23,7 @@ export class SellerDashComponent {
 
     ngOnInit() {
         this.initChart();
-        this.productService.getAllProducts().subscribe(res=>this.products=res);
+        this.productService.getAllProductsBySeller().subscribe(res=>this.products=res);
     }
 
     initChart() {

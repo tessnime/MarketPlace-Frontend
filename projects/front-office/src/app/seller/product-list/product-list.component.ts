@@ -26,7 +26,7 @@ export class ProductListComponent {
   constructor(private productService: ProductSreviceService) { }
 
   ngOnInit() {
-      this.productService.getAllProducts().subscribe(res=>{console.log(res);this.products=res});
+      this.productService.getAllProductsBySeller().subscribe(res=>{console.log(res);this.products=res});
 
       this.sourceCities = [
           { name: 'San Francisco', code: 'SF' },

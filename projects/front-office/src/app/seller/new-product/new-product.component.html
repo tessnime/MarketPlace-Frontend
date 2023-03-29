@@ -1,1 +1,53 @@
-<p>new-product works!!!</p>
+<div class="card">
+<form #form="ngForm">
+<div class="grid p-fluid mt-3">
+    <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+            <input type="text" id="inputtext" pInputText ngModel>
+            <label for="inputtext"> Name</label>
+        </span>
+    </div>
+    <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+            <input type="number" id="inputtext" pInputText ngModel>
+            <label for="inputtext"> Price (TND)</label>
+        </span>
+    </div>
+    <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+            <input type="number" id="inputtext" pInputText>
+            <label for="inputtext"> Weight (Kg)</label>
+        </span>
+    </div>
+</div>
+<div class="grid p-fluid mt-3">
+    <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+            <p-inputNumber mode="decimal" [showButtons]="true" [min]="0" [max]="100">
+			</p-inputNumber>
+            <label for="inputNumber">Available Quantity</label>
+        </span>
+    </div>
+  
+    <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+            <p-autoComplete [(ngModel)]="selectedCategoryAdvanced" [suggestions]="filteredCategories" (completeMethod)="filterCategories($event)" field="name" [dropdown]="true">
+			</p-autoComplete>
+            <label for="autocomplete">Category</label>
+        </span>
+        
+    </div>
+    <div  class="field col-12 md:col-4">
+        <span class="p-float-label">
+            <p-autoComplete [(ngModel)]="selectedSubAdvanced" [suggestions]="filteredSubCategories" (completeMethod)="filterSubCategories($event)" field="name" [dropdown]="true">
+			</p-autoComplete>
+            <label for="autocomplete">Subcategory</label>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+</form>
+</div>

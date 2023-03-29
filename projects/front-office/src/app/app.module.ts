@@ -24,6 +24,27 @@ import { RatingModule } from 'primeng/rating';
 import { PickListModule } from 'primeng/picklist';
 import { OrderListModule } from 'primeng/orderlist';
 import { FormsModule } from '@angular/forms';
+import { AutoCompleteModule } from "primeng/autocomplete";
+import { CalendarModule } from "primeng/calendar";
+import { ChipsModule } from "primeng/chips";
+import { ChipModule } from "primeng/chip";
+import { InputMaskModule } from "primeng/inputmask";
+import { InputNumberModule } from "primeng/inputnumber";
+import { CascadeSelectModule } from "primeng/cascadeselect";
+import { MultiSelectModule } from "primeng/multiselect";
+import { InputTextareaModule } from "primeng/inputtextarea";
+import { KnobModule } from 'primeng/knob';
+import { ListboxModule } from 'primeng/listbox';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { CheckboxModule } from 'primeng/checkbox';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { ColorPickerModule } from 'primeng/colorpicker';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { SliderModule } from 'primeng/slider';
+import{	FileUploadModule } from 'primeng/fileupload';
+
+
 
 
 
@@ -35,7 +56,7 @@ import { FormsModule } from '@angular/forms';
     RequestListComponent,
     PickupListComponent,
     AddPickupComponent,
-    ProductListComponent
+    ProductListComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +74,30 @@ import { FormsModule } from '@angular/forms';
     RatingModule,
     OrderListModule,
     PickListModule,
-    FormsModule
+    FormsModule,
+    AutoCompleteModule,
+    CalendarModule,
+		ChipsModule,
+		DropdownModule,
+		InputMaskModule,
+		InputNumberModule,
+		ColorPickerModule,
+		CascadeSelectModule,
+		MultiSelectModule,
+		ToggleButtonModule,
+		SliderModule,
+		InputTextareaModule,
+		RadioButtonModule,
+		InputTextModule,
+		RatingModule,
+		ChipModule,
+		KnobModule,
+		InputSwitchModule,
+		ListboxModule,
+		SelectButtonModule,
+		CheckboxModule,
+		ButtonModule,
+    FileUploadModule,
     
   ],
   providers: [],
