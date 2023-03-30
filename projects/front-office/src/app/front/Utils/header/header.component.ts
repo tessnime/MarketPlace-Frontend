@@ -40,18 +40,19 @@ export class HeaderComponent {
   goToCart() {
     this.router.navigate(["/buyer/cart"])
   }
-
+  gotoFinalize()
+  {
+    this.router.navigate(["buyer/cart/finaliseOrder"]);
+  }
   requestOrder!: Order;
 
   getBaskerOrder() {
     this.home.loadOrder().subscribe(data => (this.requestOrder = data))
   }
 
-  deleteProductFromOrder(ref: string) {
-    this.home.deleteProductFromOrder(ref).subscribe(() => {
-      this.getListProduct();
-    });
-    this.refresh();
+  deleteProductFromOrder(ref:string)
+  {
+    this.home.deleteProductFromOrder(ref).subscribe(()=>{this.getListProduct();this.refresh();});
   }
 
   points!: number

@@ -28,6 +28,7 @@ export class HomeService {
   Loyaltypoints='http://localhost:8081/Loyalty/points'
   LoyaltyToken='http://localhost:8081/Loyalty/LoyaltyToken'
   GetAllProductCategories='http://localhost:8081/productCategory/GetAllProductCategories\n'
+  GetAllUserShippings='http://localhost:8081/buyerShipping/getAllUserShippings?id=1';
 
 
 
@@ -86,7 +87,7 @@ export class HomeService {
     return this.http.get<Product[]>(this.GetProductsForEvent + `${id}`, this.options);
   }
 
-  addShippingToOrder(ship: Shipping) {
+  addShippingToOrder(ship: number) {
     return this.http.put<Order>(this.AddShippingToCard, ship, this.options);
   }
 
@@ -118,5 +119,9 @@ getAllProductCategories()
   return this.http.get<ProductCategory[]>(this.GetAllProductCategories,this.options)
 }
 
+getAllUserShippings()
+{
+  return this.http.get<Shipping[]>(this.GetAllUserShippings,this.options)
+}
 
 }

@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {HomeService} from "../services/home.service";
 import {ProductQuantity} from "../../../../../../../Models/ProductQuantity";
 import {Order} from "../../../../../../../Models/Order";
 import {Router} from "@angular/router";
 import {Shipping} from "../../../../../../../Models/Shipping";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {PaymentType} from "../../../../../../../Models/Enum/PaymentType";
 
 
 @Component({
@@ -17,15 +18,28 @@ import {MatSnackBar} from "@angular/material/snack-bar";
  */
 export class CartComponent {
 
-
-
+  state:PaymentType=PaymentType.CASH_ON_DELIVERY;
+  request!:ProductQuantity[];
   selectedValue!: string;
-  requestOrder!:Order;
   form:any={};
   shipping!:Shipping;
   order!:Order;
+  requestOrder!:Order;
 
   constructor(private router : Router,private home:HomeService,private snackBar: MatSnackBar) {
+  }
+
+  gotoHome()
+  {
+    this.router.navigate(["/buyer"]);
+  }
+  gotoCart()
+  {
+    this.router.navigate(["/buyer/cart"]);
+  }
+  gotoFinalize()
+  {
+    this.router.navigate(["buyer/cart/finaliseOrder"]);
   }
 
   refresh() {
@@ -40,20 +54,6 @@ export class CartComponent {
     this.getBaskerOrder();
   }
 
-
-
-  addForm() {
-    for (let i = 0; i < this.city.length; i++) {
-      if (this.city[i].cities.includes(this.form.city)) {
-        this.form.governorate = this.city[i].name;
-      }
-    }
-    this.home.addShippingToOrder(this.form).subscribe(data =>{this.order=data;this.refresh();});
-  }
-
-
-
-  request!:ProductQuantity[];
   getListProduct(){
     this.home.loadPosts().subscribe(data =>{this.request=data;});
   }
@@ -78,11 +78,6 @@ export class CartComponent {
   deleteProductFromOrder(ref:string)
   {
   this.home.deleteProductFromOrder(ref).subscribe(()=>{this.getListProduct();this.refresh();});
-  }
-
-  changedGouvernorat()
-  {
-    alert(this.selectedValue);
   }
 
 

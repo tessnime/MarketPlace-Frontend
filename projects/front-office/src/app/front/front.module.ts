@@ -13,7 +13,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {AutocompleteLibModule} from "angular-ng-autocomplete";
-
+import {FinalizeOrderComponent} from "./buyer/finalize-order/finalize-order.component";
 
 
 @NgModule({
@@ -24,6 +24,7 @@ import {AutocompleteLibModule} from "angular-ng-autocomplete";
     FooterComponent,
     ProductDetailsComponent,
     ShopSideComponent,
+    FinalizeOrderComponent
 ],
   imports: [
     CommonModule,

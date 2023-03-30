@@ -65,8 +65,8 @@
                 </div>
               </div>
               <div class="u-s-m-b-15">
-                <div class="pd-detail__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                  class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                <div class="pd-detail__rating gl-rating-style"><i class="fas fa-star" *ngFor="let i of countArray(product.rating);"></i><i *ngIf="getFloor(product.rating)<product.rating" class="fas fa-star-half-alt"></i><i *ngFor="let i of countArray(5-product.rating).keys()" class="far fa-star" ></i>
+
 
                   <span class="pd-detail__review u-s-m-l-4">
 
@@ -107,20 +107,22 @@
               <div class="table-p__input-counter-wrap">
 
                 <!--====== Input Counter ======-->
-                <div class="input-counter">
+                <div class="input-counter" style="margin-right: 1000px;">
                   <span  class="input-counter__minus fas fa-minus" (click)="updateQuantityNumber(-1)"></span>
 
                   <input class="input-counter__text input-counter--text-primary-style" type="text" value="{{quantityNumber}}" data-min="1" data-max="1000">
 
                   <span  class="input-counter__plus fas fa-plus"(click)="updateQuantityNumber(1)" ></span></div>
+
                 <!--====== End - Input Counter ======-->
               </div>
+              <br>
               <div class="u-s-m-b-15">
                 <form class="pd-detail__form">
                   <div class="pd-detail-inline-2">
                     <div class="u-s-m-b-15">
 
-                      <button class="btn btn--e-brand-b-2" (click)="addProductToCart()">Buy Now</button>
+                      <button class="btn btn--e-brand-b-2" (click)="addProductToCart()">Add To Cart</button>
                     </div>
                   </div>
                 </form>

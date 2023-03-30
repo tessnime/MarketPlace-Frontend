@@ -1106,7 +1106,7 @@
                     <a href="../../../../assets/front-template/wishlist.html">Wishlist</a></li>
                   <li>
 
-                    <a href="../../../../assets/front-template/checkout.html">Checkout</a></li>
+                    <a href="../../buyer/finalize-order/finalize-order.component.html">Checkout</a></li>
                   <li>
 
                     <a href="../../../../assets/front-template/faq.html">FAQ</a></li>
@@ -1244,11 +1244,11 @@
 
                                                             <span class="mini-product__category">
 
-                                                                <a href="../../buyer/shop-side/shop-side.component.html">{{k.product.productCategory.name}}</a></span>
+                                                                <a (click)="goToCart()">{{k.product.productCategory.name}}</a></span>
 
                           <span class="mini-product__name">
 
-                                                                <a href="../../../../assets/front-template/product-detail.html">{{k.product.name}}</a></span>
+                                                                <a (click)="goToCart()">{{k.product.name}}</a></span>
 
                           <span class="mini-product__quantity">{{k.quantity}} x</span>
 
@@ -1272,7 +1272,7 @@
                       <span class="subtotal-value">DT {{requestOrder.sum + requestOrder.deliveryPrice}}</span></div>
                     <div class="mini-action">
 
-                      <a class="mini-link btn--e-brand-b-2" href="../../../../assets/front-template/checkout.html">PROCEED TO CHECKOUT</a>
+                      <a class="mini-link btn--e-brand-b-2" (click)="gotoFinalize()">PROCEED TO CHECKOUT</a>
 
                       <a class="mini-link btn--e-transparent-secondary-b-2" (click)="goToCart()">VIEW CART</a></div>
                   </div>

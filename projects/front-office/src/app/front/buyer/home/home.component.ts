@@ -14,9 +14,33 @@ export class HomeComponent {
   constructor(private router : Router,private home:HomeService) {
   }
 
+  pageSize = 8;
+  currentPage = 1;
+
+  getPageNumbers() {
+    const pageCount = this.getPageCount();
+    const pageNumbers = [];
+    for (let i = 1; i <= pageCount; i++) {
+      pageNumbers.push(i);
+    }
+    return pageNumbers;
+  }
+
+  getPageCount() {
+    return Math.ceil(this.request.length / this.pageSize);
+  }
+
+
+  getCurrentPageItems() {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    return this.request.slice(startIndex, endIndex);
+  }
+
   getFloor(integer: number): number {
     return Math.floor(integer);
   }
+
   countArray(n: number): number[] {
     return Array.from({length: n}, (_, index) => index + 1);
   }

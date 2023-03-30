@@ -13,6 +13,7 @@ import {HomeComponent} from "./front/buyer/home/home.component";
 import {CartComponent} from "./front/buyer/cart/cart.component";
 import {ProductDetailsComponent} from "./front/buyer/product-details/product-details.component";
 import {ShopSideComponent} from "./front/buyer/shop-side/shop-side.component";
+import {FinalizeOrderComponent} from "./front/buyer/finalize-order/finalize-order.component";
 
 const routes: Routes = [
   {
@@ -39,7 +40,8 @@ const routes: Routes = [
   {path:'buyer',component:HomeComponent},
   {path: 'buyer/cart', component: CartComponent},
   {path: 'buyer/details/:id', component: ProductDetailsComponent},
-  {path: 'buyer/shop-side', component: ShopSideComponent}
+  {path: 'buyer/shop-side', component: ShopSideComponent},
+  {path: 'buyer/cart/finaliseOrder', component: FinalizeOrderComponent}
 
 
 

@@ -28,6 +28,82 @@ export class ShopSideComponent {
   markList:String[]=[];
 
   categories!:ProductCategory[];
+
+  pageSize = 8;
+  currentPage = 1;
+
+  sort:string='';
+
+  isChecked: boolean = false;
+
+  handleSubmit() {
+    if (this.isChecked) {
+      this.products = this.products.filter(product => product.deliveryPrice <= 0);
+    } else {
+      this.getAllProducts();
+    }
+  }
+
+
+
+  sortProducts(sortOrder: string) {
+
+      if (sortOrder === 'productPrice asc') {
+        this.products.sort((a, b) => a.productPrice - b.productPrice);
+      } else if (sortOrder === 'productPrice dsc')
+        this.products.sort((a, b) => b.productPrice - a.productPrice);
+
+
+      if (sortOrder === 'numberOfPurchase asc') {
+        this.products.sort((a, b) => a.numberOfPurchase - b.numberOfPurchase);
+      } else if (sortOrder === 'numberOfPurchase dsc')
+        this.products.sort((a, b) => b.numberOfPurchase - a.numberOfPurchase);
+
+        if (sortOrder === 'rating dsc') {
+          this.products = this.products.filter(product => product.rating).sort((a, b) => b.rating - a.rating);
+        }else if (sortOrder === 'rating asc')
+          this.products = this.products.filter(product => product.rating).sort((a, b) => a.rating - b.rating);
+
+        if (sortOrder === 'creationDate asc') {
+          this.products.sort((a, b) => new Date(a.creationDate).getTime() - new Date(b.creationDate).getTime());
+        } else if (sortOrder === 'creationDate dsc')
+          this.products.sort((a, b) => new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime());
+
+
+  }
+
+  onChange1(event1: any) {
+    this.sortProducts(event1.target.value);
+  }
+
+
+
+
+
+  onChange(event: any) {
+    this.pageSize=event.target.value;
+  }
+
+  getPageNumbers() {
+    const pageCount = this.getPageCount();
+    const pageNumbers = [];
+    for (let i = 1; i <= pageCount; i++) {
+      pageNumbers.push(i);
+    }
+    return pageNumbers;
+  }
+
+  getPageCount() {
+    return Math.ceil(this.products.length / this.pageSize);
+  }
+
+
+  getCurrentPageItems() {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    return this.products.slice(startIndex, endIndex);
+  }
+
   getAllCategories()
   {
     this.home.getAllProductCategories().subscribe(data=>{this.categories=data;
@@ -107,6 +183,9 @@ export class ShopSideComponent {
     this.getAllCategories()
     this.getAllProducts();
     this.getProducts();
+    this.getCurrentPageItems();
+    this.getPageCount();
+    this.getPageNumbers();
 
   }
 

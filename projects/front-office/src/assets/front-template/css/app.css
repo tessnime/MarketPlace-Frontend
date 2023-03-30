@@ -5463,7 +5463,7 @@ input::-ms-clear {
 20.1 Bootstrap
 --------------------------------------------------------------*/
 /* Modal styles */
-.modal {
+.modal1 {
   z-index: 999999; }
 
 .modal-content {

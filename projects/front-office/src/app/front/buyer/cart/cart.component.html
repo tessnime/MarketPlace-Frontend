@@ -37,10 +37,10 @@
                                 <ul class="breadcrumb__list">
                                     <li class="has-separator">
 
-                                        <a href="../../../../index.html">Home</a></li>
+                                        <a (click)="gotoHome()">Home</a></li>
                                     <li class="is-marked">
 
-                                        <a href="cart.component.html">Cart</a></li>
+                                        <a (click)="gotoCart()">Cart</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -135,7 +135,7 @@
                                 <div class="route-box">
                                     <div class="route-box__g1">
 
-                                        <a class="route-box__link" href="../shop-side/shop-side.component.html"><i class="fas fa-long-arrow-alt-left"></i>
+                                        <a class="route-box__link" (click)="gotoHome()"><i class="fas fa-long-arrow-alt-left"></i>
 
                                             <span>CONTINUE SHOPPING</span></a></div>
                                     <div class="route-box__g2">
@@ -167,43 +167,6 @@
                             <div  class="col-lg-12 col-md-12 col-sm-12 u-s-m-b-30">
                                 <form class="f-cart">
                                     <div class="row">
-                                        <form name="form" (submit)="addForm()" #f="ngForm"  class="col-lg-4 col-md-6 u-s-m-b-30">
-                                            <div class="f-cart__pad-box">
-                                                <h1 class="gl-h1">ESTIMATE SHIPPING AND TAXES</h1>
-
-                                                <div class="u-s-m-b-30">
-
-                                                    <!--====== Select Box ======-->
-
-                                                    <label class="gl-label" for="shipping-state">STATE/PROVINCE *</label><select [(ngModel)]="form.city" name="city" id="city" class="select-box select-box--primary-style" id="shipping-state">
-                                                  <optgroup *ngFor="let g of city"  label="{{g.name}}">
-                                                    <option *ngFor="let i of g.cities" [value]="i">{{ i }}</option>
-                                                  </optgroup>
-                                                    </select>
-                                                    <!--====== End - Select Box ======-->
-                                                </div>
-                                                <div class="u-s-m-b-30">
-
-                                                    <label class="gl-label" for="gpsPoint">EXACTE ADRESS *</label>
-
-                                                    <input class="input-text input-text--primary-style" type="text" [(ngModel)]="form.gpsPoint" id="gpsPoint" name="gpsPoint" placeholder="EXACTE ADRESS..."></div>
-                                                <div class="u-s-m-b-30">
-
-                                                    <button class="f-cart__ship-link btn--e-transparent-brand-b-2"  type="submit">ADD SHIPPING GEOLOCATION</button></div>
-
-                                                <span class="gl-text">Note: There are some countries where free shipping is available otherwise our flat rate charges or country delivery charges will be apply.</span>
-                                            </div>
-                                        </form>
-                                        <div class="col-lg-4 col-md-6 u-s-m-b-30">
-                                            <div class="f-cart__pad-box">
-                                                <h1 class="gl-h1">NOTE</h1>
-
-                                                <span class="gl-text u-s-m-b-30">Add Special Note About Your Product</span>
-                                                <div>
-
-                                                    <label for="f-cart-note"></label><textarea class="text-area text-area--primary-style" id="f-cart-note"></textarea></div>
-                                            </div>
-                                        </div>
                                         <div class="col-lg-4 col-md-6 u-s-m-b-30">
                                             <div class="f-cart__pad-box">
                                                 <div class="u-s-m-b-30">
@@ -230,7 +193,7 @@
                                                 </div>
                                                 <div>
 
-                                                    <button  class="btn btn--e-brand-b-2"   > PROCEED TO CHECKOUT</button></div>
+                                                    <button  class="btn btn--e-brand-b-2" (click)="gotoFinalize()"  > PROCEED TO CHECKOUT</button></div>
                                             </div>
                                         </div>
                                     </div>

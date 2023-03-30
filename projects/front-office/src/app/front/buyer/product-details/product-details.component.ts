@@ -17,6 +17,8 @@ export class ProductDetailsComponent implements OnInit {
   constructor(private router: Router, private home: HomeService, private snackBar: MatSnackBar, private ar: ActivatedRoute, private sanitizer: DomSanitizer) {
   }
 
+
+
   product!: Product;
   idp!: number;
   da: any = {};
@@ -51,17 +53,18 @@ export class ProductDetailsComponent implements OnInit {
     // @ts-ignore
     window.history.replaceState(null, null, currentUrl);
     window.location.reload();
+    window.scroll(0,0);
   }
 
 
   gotoDetails(id: number) {
-    this.router.navigate(["/buyer/details", id]);
-    this.ngOnInit();
+    this.router.navigate(["/buyer/details", id]).then(r =>this.refresh() );
+
   }
 
   updateQuantityNumber(nb: number) {
     if (this.product.quantity != 0)
-      if ((nb == 1 && this.quantityNumber + nb <= this.product.quantity) || (nb == -1 && this.quantityNumber + nb > 1))
+      if ((nb == 1 && this.quantityNumber + nb <= this.product.quantity) || (nb == -1 && this.quantityNumber + nb >= 1))
         this.quantityNumber = this.quantityNumber + nb;
   }
 
@@ -82,6 +85,7 @@ export class ProductDetailsComponent implements OnInit {
       this.productQuantity.product=this.product;
       this.home.addProductToOrder(this.productQuantity).subscribe(() => {
         this.ngOnInit();
+        this.refresh();
       });
     }
   }
