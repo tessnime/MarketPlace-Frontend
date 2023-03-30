@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GenderType } from 'Models/Enum/GenderType';
-import { RoleType } from 'Models/Enum/RoleType';
-import { Role } from 'Models/Role';
 import { Shipping } from 'Models/Shipping';
 import { User } from 'Models/User';
-import { first } from 'rxjs';
 import { LoginUserService } from '../Services/login-user.service';
-import { TokenStorageService } from '../token/token-storage.service';
+
 
 
 @Component({
@@ -22,9 +18,17 @@ export class RegisterComponent  implements OnInit{
   
   error:string = '';
  
+  shipping: Shipping = {
+    id: 0,
+    governorate: "",
+    city: "",
+    gpsPoint: ""
+  };
   user:  User  = new User();
 
-  constructor( private LoginUserService:LoginUserService ,private tokenStorage: TokenStorageService,private router:Router ,private route: ActivatedRoute){
+ 
+
+  constructor( private LoginUserService:LoginUserService ,private router:Router ,private route: ActivatedRoute){
    
   }
 
@@ -38,9 +42,20 @@ export class RegisterComponent  implements OnInit{
 
   Create(){
     console.log(this.user);
+    if (this.ROLE == 'buyer') {
+     
+      this.user.enabled==true;
+    }
+    else{
+      this.user.enabled==false;
+    }
     this.LoginUserService.register(this.user).subscribe(()=>{
-     alert("Successfully User is register?")
-    },()=>alert("Sorry User not register"));
+
+     alert("Successfully User is register")
+    },
+    ()=>alert("Sorry User not register"));
+
+
   }
  
 
@@ -49,7 +64,7 @@ export class RegisterComponent  implements OnInit{
 
 
 
-governorate = [
+  governorates = [
     { name: 'Ariana', cities: ['Ariana', 'Raoued', 'Sidi Thabet'] },
     { name: 'Béja', cities: ['Béja', 'Medjez el-Bab', 'Téboursouk', 'Testour'] },
     { name: 'Ben Arous', cities: ['Ben Arous', 'Bou Mhel el-Bassatine', 'El Mourouj', 'Ezzahra', 'Hammam Chott', 'Mornag', 'Rades'] },
@@ -65,20 +80,19 @@ governorate = [
     { name: 'Manouba', cities: ['Manouba', 'Borj El Amri', 'Douar Hicher', 'Mornaguia', 'Oued Ellil', 'Tébourba'] },
     { name: 'Sousse', cities: ['Sousse', 'Akouda', 'Bouficha', 'Mornaguia', 'Enfidha', 'Hammam Sousse', 'Hergla', 'Kalâa Kebira', 'Kalâa Seghira ', 'Kondar', 'Messaadine', 'Msaken', 'Sidi Bou Ali', 'Sidi El Heni', 'Sousse Jaouhara', 'Sousse Medina', 'Sousse Riadh', 'Sousse Sidi Abdelhamid'] },
     { name: 'Tunis', cities: ['Tunis', 'Carthage', 'La Goulette', 'Mornaguia', ' La Marsa', 'Sidi Bou Said'] },
-    { name: 'Zaghouan', cities: ['Zaghouan', 'Bir Mcherga', ' Djebel Oust', 'El Fahs', 'Nadhour', 'Saouaf'] }
-    ]
-
-    shipping1!:Shipping;
-    selectedGovernorate: string = '';
-    cities: string[] = [];
-    updateCities() {
-      const selectedGov = this.governorate.find(gov => gov.name === this.shipping1.governorate);
-      if (selectedGov) {
-        this.cities = selectedGov.cities;
-      } else {
-        this.cities = [];
-      }
+    { name: 'Zaghouan', cities: ['Zaghouan', 'Bir Mcherga', ' Djebel Oust', 'El Fahs', 'Nadhour', 'Saouaf'] },
+  ];
+  shipping1!:Shipping;
+  selectedGovernorate: string = '';
+  cities: string[] = [];
+  updateCities() {
+    const selectedGov = this.governorates.find(gov => gov.name === this.shipping.governorate);
+    if (selectedGov) {
+      this.cities = selectedGov.cities;
+    } else {
+      this.cities = [];
     }
+  }
 
  
 

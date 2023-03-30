@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute  } from '@angular/router';
 import { first } from 'rxjs';
 import { LoginUserService } from '../Services/login-user.service';
-import { TokenStorageService } from '../token/token-storage.service';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -17,7 +17,7 @@ export class SignInComponent implements OnInit {
   //returnUrl!: string;
   error = '';
 
-  constructor( private LoginUserService:LoginUserService ,private tokenStorage: TokenStorageService,private router:Router ,private route: ActivatedRoute){}
+  constructor( private LoginUserService:LoginUserService ,private router:Router ,private route: ActivatedRoute){}
   ngOnInit() {
    
   }

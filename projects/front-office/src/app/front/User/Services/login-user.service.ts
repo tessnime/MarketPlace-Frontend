@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from 'Models/User';
 import { BehaviorSubject, map, Observable } from 'rxjs';
-import { TokenStorageService } from '../token/token-storage.service';
+
 
 const httpOptions ={
   headers :new HttpHeaders({'Content-Type':'application/json'})
@@ -17,7 +17,7 @@ export class LoginUserService {
   
 
 
-  constructor( private http: HttpClient,private tokenStorage:TokenStorageService) { 
+  constructor( private http: HttpClient) { 
     this.currentUserSubject = new BehaviorSubject<any>(sessionStorage.getItem(TOKEN_KEY));
     this.currentUser=this.currentUserSubject.asObservable();
   }

@@ -1,8 +1,11 @@
+
+
 <!--====== Google Font ======-->
 <link
   href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800"
   rel="stylesheet"
 />
+
 
 <!--====== Vendor Css ======-->
 <link
@@ -105,7 +108,7 @@
                         <label class="gl-label" for="photo"
                           >PROFILE PICTURE *</label
                         >
-                        <input type="file" id="photo" name="photo" [(ngModel)]="user.image"  />
+                        <input type="file"  accept=".png" id="photo" name="photo" [(ngModel)]="user.image"  />
                       </div>
 
                       <div class="u-s-m-b-30">
@@ -152,10 +155,10 @@
                             class="select-box select-box--primary-style u-w-100"
                             id="gender" name="gender"  [(ngModel)]="user.genderType" 
                           >
-                            <option selected>Select</option>
-                            <option value="male">Male</option>
-                            <option value="male">Female</option>
-                            <option value="male">Other</option>
+                           
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
                           </select>
                         </div>
                       </div>
@@ -189,7 +192,7 @@
                         </div>
 
                         <div class="u-s-m-b-30">
-                          <label class="gl-label" id="espace" for="reg-bname" *ngIf="ROLE == 'Seller'"
+                          <label class="gl-label" id="espace" for="reg-bname" *ngIf="ROLE == 'Seller' || ROLE==='Delivery Agency' || ROLE==='Supplier'" 
                             >BRAND NAME *</label 
                           >
 
@@ -197,48 +200,58 @@
                             class="input-text input-text--primary-style"
                             type="text"
                             id="reg-bname"
-                            placeholder="BrandName" *ngIf="ROLE == 'Seller'" name="brandName"  [(ngModel)]="user.BrandName" 
+                            placeholder="BrandName" *ngIf="ROLE == 'Seller'|| ROLE==='Delivery Agency' || ROLE==='Supplier'"  name="brandName"  [(ngModel)]="user.BrandName" 
                           />
                         </div>
 
                         <div class="u-s-m-b-30">
-                          <label class="gl-label" id="espace" for="reg-bLname" *ngIf="ROLE == 'Seller'"
+                          <label class="gl-label" id="espace" for="reg-bLname" *ngIf="ROLE == 'Seller'|| ROLE==='Delivery Agency' || ROLE==='Supplier'" 
                             >BRAND LOGO *</label
                           >
 
                           <input
-                            class="input-text input-text--primary-style"
-                            type="text"
+                           
+                            type="file"
+                            accept=".png"
                             id="reg-bLname"
-                            placeholder="BrandLogo" *ngIf="ROLE == 'Seller'" name="brandlogo"  [(ngModel)]="user.BrandLogo" 
+                            placeholder="BrandLogo" *ngIf="ROLE == 'Seller'|| ROLE==='Delivery Agency' || ROLE==='Supplier'"  name="brandlogo"  [(ngModel)]="user.BrandLogo" 
                           />
                         </div>
 
                         <div class="u-s-m-b-30">
-                          <label class="gl-label" id="espace" for="reg-Jname" *ngIf="ROLE == 'Seller'"
-                            >JUSTIFICATION *</label
+
+                          <label class="gl-label" id="espace" for="reg-Jname" *ngIf="ROLE === 'Seller' || ROLE === 'Delivery' || ROLE==='Delivery Agency' || ROLE==='Supplier'" 
+                            >JUSTIFICATION *(Place Your Document)</label
                           >
 
                           <input
-                            class="input-text input-text--primary-style"
-                            type="text"
+                           
+                            type="file"
+                            accept=".pdf"
                             id="reg-Jname"
-                            placeholder="Justification" *ngIf="ROLE == 'Seller'" name="Justification"  [(ngModel)]="user.justification" 
+                            placeholder="Justification"  name="Justification"  [(ngModel)]="user.justification"  *ngIf="ROLE === 'Seller' || ROLE === 'Delivery' || ROLE==='Delivery Agency' || ROLE==='Supplier'"  
                           />
                         </div>
 
                         <div class="u-s-m-b-30">
-                          <label class="gl-label" id="espace" for="reg-Gname" *ngIf="ROLE == 'Delivery'"
-                            >GEAR *</label
-                          >
+                          <label  class="gl-label" for="gear"*ngIf="ROLE == 'Delivery'">GEAR *</label>
+                          <select
+                          class="select-box select-box--primary-style u-w-100"
+                         
+                          id="reg-Gname"
+                           *ngIf="ROLE == 'Delivery'" name="gear"  [(ngModel)]="user.gear" 
+                        >
+                          
+                          <option value="CAR">CAR</option>
+                          <option value="MOTO">MOTO</option>
+                          <option value="TRUCK">TRUCK</option>
+                          <option value="BIKE">BIKE</option>
+                        </select>
+                          </div>
+                       
 
-                          <input
-                            class="input-text input-text--primary-style"
-                            type="text"
-                            id="reg-Gname"
-                            placeholder="Gear" *ngIf="ROLE == 'Delivery'" name="gear"  [(ngModel)]="user.gear" 
-                          />
-                        </div>
+
+
 
                         <div class="u-s-m-b-30">
                           <label class="gl-label" id="espace" for="reg-Dname" *ngIf="ROLE == 'Delivery'"
@@ -263,33 +276,24 @@
                             placeholder="GearAge" *ngIf="ROLE == 'Delivery'" name="GearAge"  [(ngModel)]="user.GearAge" 
                           />
                         </div>
+
                         <div class="u-s-m-b-30">
-                          <!--====== Select Box ======-->
-
-                          <label
-                            class="gl-label"
-                            id="espacee"
-                            for="shipping-state"
-                            >CITY/GOVERNORATE*</label
-                          ><select
-                            [(ngModel)]="user.governorate"
-                            name="city"
-                            id="city"
-                            class="select-box select-box--primary-style u-w-100"
-                            id="shipping-state"
-                          >
-                            <optgroup
-                              *ngFor="let g of governorate"
-                              label="{{ g.name }}"
-                            >
-                              <option *ngFor="let i of g.cities" [value]="i">
-                                {{ i }}
-                              </option>
-                            </optgroup>
+                        <label class="gl-label">GOVERNORATE *</label>
+                       
+                          <select class="select-box select-box--primary-style u-w-100" id="governorate" name="governorate" [(ngModel)]="selectedGovernorate"  [(ngModel)]="shipping.governorate"(ngModelChange)="updateCities()">
+                            <option *ngFor="let gov of governorates" [value]="gov.name">{{ gov.name }}</option>
                           </select>
-                          <!--====== End - Select Box ======-->
                         </div>
-
+                     
+                        <div class="u-s-m-b-30">
+                            <label class="gl-label">CITY *</label>
+                        
+                            <select  class="select-box select-box--primary-style u-w-100" id="city" name="city" [(ngModel)]="shipping.city">
+                            <option>{{ shipping.city }}</option>
+                            <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                            </select>
+                          
+                        </div>
                         <label class="gl-label" for="reg-email">E-MAIL *</label>
 
                         <input
@@ -306,11 +310,25 @@
 
                         <input
                           class="input-text input-text--primary-style"
-                          type="text"
-                          id="reg-password"
-                          placeholder="Enter Password" name="password"  [(ngModel)]="user.password" 
+                          type="password"
+                          id="psw" name="psw"
+                          placeholder="Enter Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required  [(ngModel)]="user.password" 
                         />
                       </div>
+
+
+                      
+                      <div id="message">
+                        <h3>Password must contain the following:</h3>
+                        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                        <p id="number" class="invalid">A <b>number</b></p>
+                        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+                      </div>
+                              
+             
+    
+
                       <div class="u-s-m-b-15">
                         <button
                           class="btn btn--e-transparent-brand-b-2"
@@ -404,23 +422,21 @@
                   <div class="outer-footer__content u-s-m-b-40">
                     <div class="outer-footer__list-wrap">
     
-                      <span class="outer-footer__content-title">Our Company</span>
+                      <span class="outer-footer__content-title">Registration</span>
                       <ul>
+    
                         <li>
     
-                          <a href="../../../../assets/front-template/about.html">About us</a></li>
+                          <button (click)="setRoleTo('Supplier')" >Supplier</button></li>
                         <li>
     
-                          <a href="../../../../assets/front-template/contact.html">Contact Us</a></li>
+                          <button (click)="setRoleTo('Delivery Agency')" >Delivery Agency</button></li>
                         <li>
     
-                          <a href="../../../../index.html">Sitemap</a></li>
+                          <button (click)="setRoleTo('Delivery')">DeliveryFreelancer</button></li>
                         <li>
     
-                          <button (click)="setRoleTo('Delivery')" >Delivery</button></li>
-                        <li>
-    
-                          <button (click)="setRoleTo('Seller')" >Store</button></li>
+                          <button (click)="setRoleTo('Seller')" >Seller</button></li>
                       </ul>
                     </div>
                   </div>
@@ -542,4 +558,7 @@
       </div>
     </div>
   </noscript>
+
+  
+<script src="Script.js"></script>
 </body>
