@@ -54,7 +54,7 @@ const routes: Routes = [
     {path:'Requests',component:RequestAgencyComponent},
     {path:'addBranch',component:AddBranchComponent},
     {path:'MyBranch',component:BranchListAgencyComponent},
-    {path:'addDeliveryMen',component:AddDeliveryMenAgencyComponent}
+    {path:'MyBranch/:idBranch',component:AddDeliveryMenAgencyComponent}
    ]
 },
 {

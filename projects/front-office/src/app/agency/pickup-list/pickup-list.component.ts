@@ -153,6 +153,7 @@ shipping: Shipping = {
     gearv: "",
     governorate: "",
     city: "",
+    gearmatricuel:"",
     typeOfGear: TypeOfGear.BIKE,
     agencyBranch: this.agencyBranch,
     requests:[]

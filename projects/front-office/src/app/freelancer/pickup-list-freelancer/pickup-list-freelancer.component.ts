@@ -154,6 +154,7 @@ agencyDeliveryMan: AgencyDeliveryMan  ={
   gearv: "",
   governorate: "",
   city: "",
+  gearmatricuel:"",
   typeOfGear: TypeOfGear.BIKE,
   agencyBranch: this.agencyBranch,
   requests:[]

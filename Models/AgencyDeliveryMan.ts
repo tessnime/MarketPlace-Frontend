@@ -9,6 +9,7 @@ export class AgencyDeliveryMan {
   gearv!: string;
   governorate!: string;
   city!: string;
+  gearmatricuel!:string;
   typeOfGear!: TypeOfGear;
   agencyBranch!: AgencyBranch;
   requests: Request[] = [];
