@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Order } from 'Models/Order';
 import { Product } from 'Models/Product';
 import { ProductQuantity } from 'Models/ProductQuantity';
+import { forkJoin } from 'rxjs';
 import { PickupService } from '../servicesM/pickup.service';
 
 @Component({
@@ -35,11 +36,11 @@ export class OrderListMComponent {
   }
   getOrdersByStore(ido: number): void {
     this.pickupService.getOrderByStore(ido)
-      .subscribe(data => { this.order= data;for(let o of this.order)
-      {
-           this.getListProductOfOrder(o.id,this.id);
-           this.getSumPriceProductOfOrder(o.id,this.id);
-      }
+      .subscribe(data => { this.order= data;
+        const requests=data.map(a=>this.pickupService.getSumPriceProductOfOrder(a.id,this.idStore));
+        forkJoin(requests).subscribe((results: number[]) => {
+          this.SumProduct = results;
+        });
       } );
           }
 

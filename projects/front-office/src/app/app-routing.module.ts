@@ -24,6 +24,7 @@ import { PickupListFreelancerComponent } from './freelancer/pickup-list-freelanc
 import { AddBranchComponent } from './agency/add-branch/add-branch.component';
 import { BranchListAgencyComponent } from './agency/branch-list-agency/branch-list-agency.component';
 import { AddDeliveryMenAgencyComponent } from './agency/add-delivery-men-agency/add-delivery-men-agency.component';
+import { BranchManagementComponent } from './agency/branch-management/branch-management.component';
 
 
 const routes: Routes = [
@@ -54,7 +55,8 @@ const routes: Routes = [
     {path:'Requests',component:RequestAgencyComponent},
     {path:'addBranch',component:AddBranchComponent},
     {path:'MyBranch',component:BranchListAgencyComponent},
-    {path:'MyBranch/:idBranch',component:AddDeliveryMenAgencyComponent}
+    {path:'MyBranch/:idBranch',component:AddDeliveryMenAgencyComponent},
+    {path:'BranchM',component:BranchManagementComponent}
    ]
 },
 {

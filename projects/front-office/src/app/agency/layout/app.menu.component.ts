@@ -41,7 +41,7 @@ export class AppMenuComponent implements OnInit {
             items: [
                 { label: 'Add Branch', icon: 'pi pi-fw pi-id-card', routerLink: ['/agency/addBranch'] },
                 { label: 'Add Delivery Men', icon: 'pi pi-fw pi-check-square', routerLink: ['/agency/MyBranch'] },
-                { label: 'Float Label', icon: 'pi pi-fw pi-bookmark', routerLink: ['/uikit/floatlabel'] }
+                { label: 'My Branch', icon: 'pi pi-fw pi-bookmark', routerLink: ['/agency/BranchM'] }
             ]
         },
             {

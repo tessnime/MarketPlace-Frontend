@@ -32,6 +32,7 @@ import { DashboardFreelancerComponent } from './freelancer/dashboard-freelancer/
 import { AddBranchComponent } from './agency/add-branch/add-branch.component';
 import { BranchListAgencyComponent } from './agency/branch-list-agency/branch-list-agency.component';
 import { AddDeliveryMenAgencyComponent } from './agency/add-delivery-men-agency/add-delivery-men-agency.component';
+import { BranchManagementComponent } from './agency/branch-management/branch-management.component';
 
 
 
@@ -54,7 +55,8 @@ import { AddDeliveryMenAgencyComponent } from './agency/add-delivery-men-agency/
     DashboardFreelancerComponent,
     AddBranchComponent,
     BranchListAgencyComponent,
-    AddDeliveryMenAgencyComponent
+    AddDeliveryMenAgencyComponent,
+    BranchManagementComponent
   ],
   imports: [
     BrowserModule,
