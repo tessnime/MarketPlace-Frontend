@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppLayoutComponent as sellerlayoutC} from './seller/layout/app.layout.component';
 import { AppLayoutComponent as freelancerlayoutC} from './freelancer/layout/app.layout.component';
 import { AppLayoutComponent as agencylayoutC} from './agency/layout/app.layout.component';
-import { AppLayoutComponent as sellerlayoutCMohsen} from './agency/layout/app.layout.component';
+import { AppLayoutComponent as sellerlayoutCMohsen} from './seller/layout/app.layout.component';
 
 import { NewProductComponent } from './seller/new-product/new-product.component';
 import { SellerDashComponent } from './seller/seller-dash/seller-dash.component';
@@ -19,13 +19,21 @@ import { PickupListComponent as PickupListSeller } from './sellerMohsen/pickup-l
 import { PickupUpdateComponent } from './sellerMohsen/pickup-update/pickup-update.component';
 import { DashboardAgencyComponent } from './agency/dashboard-agency/dashboard-agency.component';
 import { RequestAgencyComponent } from './agency/request-agency/request-agency.component';
+import { DashboardFreelancerComponent } from './freelancer/dashboard-freelancer/dashboard-freelancer.component';
+import { PickupListFreelancerComponent } from './freelancer/pickup-list-freelancer/pickup-list-freelancer.component';
+import { AddBranchComponent } from './agency/add-branch/add-branch.component';
+import { BranchListAgencyComponent } from './agency/branch-list-agency/branch-list-agency.component';
+import { AddDeliveryMenAgencyComponent } from './agency/add-delivery-men-agency/add-delivery-men-agency.component';
 
 
 const routes: Routes = [
   {
     path:'freelancer',component:freelancerlayoutC,
     children:[
-      {path:'',component:RequestListComponent},
+      {path:'',component:DashboardFreelancerComponent},
+      {path:'pickups',component:PickupListFreelancerComponent},
+      {path:'requests',component:RequestListComponent},
+
 
     ]
   },
@@ -43,7 +51,10 @@ const routes: Routes = [
   children:[
     {path:'',component:DashboardAgencyComponent},
     {path:'Pickups',component:PickupListComponent},
-    {path:'Requests',component:RequestAgencyComponent}
+    {path:'Requests',component:RequestAgencyComponent},
+    {path:'addBranch',component:AddBranchComponent},
+    {path:'MyBranch',component:BranchListAgencyComponent},
+    {path:'addDeliveryMen',component:AddDeliveryMenAgencyComponent}
    ]
 },
 {

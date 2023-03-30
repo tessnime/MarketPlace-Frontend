@@ -6,6 +6,7 @@ export class AgencyBranch{
   governorate!:string;
   city!:string;
   gpsPoint!:string;
+  brandName!:String;
   deliveryAgency!:User;
   agencyDeliveryMEN:AgencyDeliveryMan[]=[];
 }

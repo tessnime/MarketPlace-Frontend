@@ -193,7 +193,44 @@ export class PickupService {
     const options = { withCredentials: true };
     return this.http.get<number>('http://localhost:8081/Pickup/countPickupReturnedForAgency',options);
    }
-   
+
+
+ //Freelancer Stat
+ countRequestRejectedFreelancer(){
+  const options = { withCredentials: true };
+  return this.http.get<number>('http://localhost:8081/Pickup/countRequestRejectedDeliveryManFreelancerToday',options);
+ }
+ countRequestApprovedFreelancer(){
+  const options = { withCredentials: true };
+  return this.http.get<number>('http://localhost:8081/Pickup/countRequestApprovedDeliveryManFreelancerToday',options);
+ }
+ SumPricePickupDeliveredByFreelancerToday(){
+  const options={withCredentials:true};
+  return this.http.get<number>('http://localhost:8081/Pickup/SumPricePickupDeliveredByFreelancerToday',options);
+ }
+ countPickupDeliveredForfreelancer(){
+  const options={withCredentials:true};
+  return this.http.get<number>('http://localhost:8081/Pickup/countPickupDeliveredForfreelancer',options);
+ }
+ countPickupOnTheWayForfreelancer(){
+  const options={withCredentials:true};
+  return this.http.get<number>('http://localhost:8081/Pickup/countPickupOnTheWayForfreelancer',options);
+ }
+ countPickupRefundedForfreelancer(){
+  const options={withCredentials:true};
+  return this.http.get<number>('http://localhost:8081/Pickup/countPickupRefundedForfreelancer',options);
+ }
+ countPickupReturnedForfreelancer(){
+  const options={withCredentials:true};
+  return this.http.get<number>('http://localhost:8081/Pickup/countPickupReturnedForfreelancer',options);
+ }
+ RetrievePickupsByGovernoratBetweenStoreAndDeliveryMenFreelancer(){
+  const options={withCredentials:true};
+  return this.http.get<Pickup[]>('http://localhost:8081/Pickup/RetrievePickupsByGovernoratBetweenStoreAndDeliveryMenFreelancer',options);
+ }
+
+
+
 
 
 }

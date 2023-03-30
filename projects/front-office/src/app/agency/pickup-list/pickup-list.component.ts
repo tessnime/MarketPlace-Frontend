@@ -40,7 +40,7 @@ export class PickupListComponent {
     privileges:[]
   };
 user :User={
-id : 0,
+id : 1,
 firstName : "",
 lastName : "",
 email : "",
@@ -53,8 +53,8 @@ BirthDate : new Date(),
 image : "",
 genderType : GenderType.MAN, // or any other value of GenderType enum
 identity : "",
-BrandName : "",
-BrandLogo : "",
+brandName : "",
+brandLogo : "",
 justification : "",
 governorate : "",
 city : "",
@@ -141,11 +141,12 @@ shipping: Shipping = {
     governorate:"",
     city:"",
     gpsPoint:"",
+    brandName:"",
     deliveryAgency:this.user,
     agencyDeliveryMEN:[]
   };
   agencyDeliveryMan: AgencyDeliveryMan={
-    id: 0,
+    id: 1,
     firstName: "",
     lastName: "",
     cin: "",
@@ -162,7 +163,7 @@ shipping: Shipping = {
     requestStatus:RequestStatus.PENDING,
     deliveryman:this.user,
     seller:this.user,
-    Agency:this.user,
+    agency:this.user,
     pickup:this.pickup1,
     agencyDeliveryMan:this.agencyDeliveryMan
   };
@@ -171,7 +172,7 @@ shipping: Shipping = {
     const selectedDeliveryManId = this.DeliveryManId;
     this.request1.requestStatus=RequestStatus.PENDING;
     this.requestService.AssignRequestDeliveryManToPickup(this.request1,selectedDeliveryManId,this.idPickup).subscribe(res =>{console.log('Request created');});
-    window.location.href = 'http://localhost:4200/agency';
+    window.location.href = 'http://localhost:4200/agency/Requests';
   };
  pickup!:Pickup[];
  RetrievePickupBetweenAgencyAndstore(){
@@ -183,4 +184,7 @@ getDeliveryManByPickup(idPickup:number){
   this.agencyService.retrieveDeliveryMenTOPickup(idPickup).subscribe(data=>{this.deliveryMen=data})
   this.idPickup=idPickup;
 };
+assignRequestDeliveryMenFreelancerandPickup(r:Request,idPickup:number){
+ this.requestService.assignRequestDeliveryMenFreelancerandPickup(this.request1,this.idPickup).subscribe();
+}
 }

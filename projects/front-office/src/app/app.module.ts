@@ -27,6 +27,11 @@ import { OrderListMComponent } from './sellerMohsen/order-list-m/order-list-m.co
 import { PickupUpdateComponent } from './sellerMohsen/pickup-update/pickup-update.component';
 import { DashboardAgencyComponent } from './agency/dashboard-agency/dashboard-agency.component';
 import { RequestAgencyComponent } from './agency/request-agency/request-agency.component';
+import { PickupListFreelancerComponent } from './freelancer/pickup-list-freelancer/pickup-list-freelancer.component';
+import { DashboardFreelancerComponent } from './freelancer/dashboard-freelancer/dashboard-freelancer.component';
+import { AddBranchComponent } from './agency/add-branch/add-branch.component';
+import { BranchListAgencyComponent } from './agency/branch-list-agency/branch-list-agency.component';
+import { AddDeliveryMenAgencyComponent } from './agency/add-delivery-men-agency/add-delivery-men-agency.component';
 
 
 
@@ -44,7 +49,12 @@ import { RequestAgencyComponent } from './agency/request-agency/request-agency.c
     PickupListSeller,
     PickupUpdateComponent,
     DashboardAgencyComponent,
-    RequestAgencyComponent
+    RequestAgencyComponent,
+    PickupListFreelancerComponent,
+    DashboardFreelancerComponent,
+    AddBranchComponent,
+    BranchListAgencyComponent,
+    AddDeliveryMenAgencyComponent
   ],
   imports: [
     BrowserModule,

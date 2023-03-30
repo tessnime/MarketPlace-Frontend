@@ -9,7 +9,7 @@ export class Request{
   requestStatus!:RequestStatus;
   deliveryman!:User;
   seller!:User;
-  Agency!:User;
+  agency!:User;
   pickup!:Pickup;
   agencyDeliveryMan!:AgencyDeliveryMan;
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AgencyBranch } from 'Models/AgencyBranch';
 import { AgencyDeliveryMan } from 'Models/AgencyDeliveryMan';
 
 @Injectable({
@@ -16,4 +17,17 @@ urlretrieveDeliveryMenTOPickup="http://localhost:8081/AgencyDeliveryMan/Retrieve
     const options = { withCredentials: true };
      return this.http.get<AgencyDeliveryMan[]>(this.urlretrieveDeliveryMenTOPickup+`${idPickup}`,options);
   }
+   assignBranchToAgency(agencyBranch:AgencyBranch){
+    const options = { withCredentials: true };
+   return this.http.post<AgencyBranch>('http://localhost:8081/AgencyBranch/AssignBranchManByDeliveryAgency',agencyBranch,options);
+   }
+   retrieveAgencyBranchOfUser(){
+    const options = { withCredentials: true };
+    return this.http.get<AgencyBranch[]>("http://localhost:8081/AgencyBranch/retrieveAgencyBranchOfUser",options);
+   }
+   urlAssignAgencyDeliveryManByBranch="http://localhost:8081/AgencyDeliveryMan/AssignAgencyDeliveryManByBranch?Id=";
+   AssignAgencyDeliveryManByBranch(adm:AgencyDeliveryMan,idBranch:number){
+    const options = { withCredentials: true };
+    return this.http.post<AgencyDeliveryMan>(this.urlAssignAgencyDeliveryManByBranch+`${idBranch}`,adm,options);
+   }
 }

@@ -21,7 +21,7 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
-                label: 'Pickups',
+                label: 'Pickups Management',
                 items: [
                     { label: 'New Pickups', icon: 'pi pi-fw pi-id-card', routerLink: ['/agency/Pickups'] },
                     { label: 'My Pickup', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input'] },
@@ -29,13 +29,21 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
-              label: 'Pickups',
+              label: 'Requests Management',
               items: [
                   { label: 'My Requests', icon: 'pi pi-fw pi-id-card', routerLink: ['/agency/Requests'] },
                   { label: 'My Pickup', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input'] },
                   { label: 'Float Label', icon: 'pi pi-fw pi-bookmark', routerLink: ['/uikit/floatlabel'] }
               ]
           },
+          {
+            label: 'Branch Management',
+            items: [
+                { label: 'Add Branch', icon: 'pi pi-fw pi-id-card', routerLink: ['/agency/addBranch'] },
+                { label: 'My Branch', icon: 'pi pi-fw pi-check-square', routerLink: ['/agency/MyBranch'] },
+                { label: 'Float Label', icon: 'pi pi-fw pi-bookmark', routerLink: ['/uikit/floatlabel'] }
+            ]
+        },
             {
                 label: 'Utilities',
                 items: [
