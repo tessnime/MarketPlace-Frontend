@@ -43,6 +43,10 @@ import { ColorPickerModule } from 'primeng/colorpicker';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { SliderModule } from 'primeng/slider';
 import{	FileUploadModule } from 'primeng/fileupload';
+import { RippleModule } from 'primeng/ripple';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import {ToastModule} from 'primeng/toast';
+
 
 
 
@@ -98,6 +102,9 @@ import{	FileUploadModule } from 'primeng/fileupload';
 		CheckboxModule,
 		ButtonModule,
     FileUploadModule,
+    RippleModule,
+    SplitButtonModule,
+    ToastModule
     
   ],
   providers: [],

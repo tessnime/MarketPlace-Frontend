@@ -1,22 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Store } from 'Models/Store';
+import { User } from 'Models/User';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StoreServiceService {
+export class UserService {
 
-
+ 
   constructor(private http:HttpClient) { }
 
-  url="http://localhost:8081/store/";
+  url="http://localhost:8081/User/";
 
-  getStoresByUser(id:number):Observable<Store[]>{
+  getUserLoggidIn():Observable<User> {
     const options = { withCredentials: true };
 
-    return this.http.get<Store[]>(this.url+"getStoresByUser?id="+id,options)
+   return this.http.get<User>(this.url+"getUserBySession",options)
   }
-
 }

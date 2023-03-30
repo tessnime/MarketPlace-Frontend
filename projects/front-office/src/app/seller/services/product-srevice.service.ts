@@ -10,11 +10,11 @@ export class ProductSreviceService {
 
   constructor(private http:HttpClient) { }
 
-  url="http://localhost:8081/";
+  url="http://localhost:8081/product/";
 
   getAllProductsBySeller(){
     const options = { withCredentials: true };
-    return this.http.get(this.url+'product/retriveProductsByStore',options)
+    return this.http.get(this.url+'retriveProductsByStore',options)
   }
   getProductById(id:number):Observable<Product>{
     return this.http.get<Product>(this.url+'GetProductById?id='+id)
@@ -28,7 +28,9 @@ export class ProductSreviceService {
   // }
 
   createAndAssignCategoryAndSubCategory(product: Product, categoryName: string, subCatName: string, storeName: string): Observable<Product> {
-    return this.http.post<Product>(this.url+'CreateProductAndAssignCatAndSub?categoryName='+categoryName+'&subCatName='+subCatName+'&storeName='+storeName,product)
+    const options = { withCredentials: true };
+
+    return this.http.post<Product>(this.url+'CreateProductAndAssignCatAndSub?categoryName='+categoryName+'&subCatName='+subCatName+'&storeName='+storeName,product,options)
 
 }
 }
