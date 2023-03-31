@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppLayoutComponent as sellerlayoutC} from './seller/layout/app.layout.component';
 import { AppLayoutComponent as freelancerlayoutC} from './freelancer/layout/app.layout.component';
 import { AppLayoutComponent as agencylayoutC} from './agency/layout/app.layout.component';
-import { AppLayoutComponent as sellerlayoutCMohsen} from './seller/layout/app.layout.component';
+import { AppLayoutComponent as sellerlayoutCMohsen} from './sellerMohsen/layout/app.layout.component';
 
 import { NewProductComponent } from './seller/new-product/new-product.component';
 import { SellerDashComponent } from './seller/seller-dash/seller-dash.component';
@@ -25,6 +25,7 @@ import { AddBranchComponent } from './agency/add-branch/add-branch.component';
 import { BranchListAgencyComponent } from './agency/branch-list-agency/branch-list-agency.component';
 import { AddDeliveryMenAgencyComponent } from './agency/add-delivery-men-agency/add-delivery-men-agency.component';
 import { BranchManagementComponent } from './agency/branch-management/branch-management.component';
+import { DeliveryMListAgencyComponent } from './agency/delivery-mlist-agency/delivery-mlist-agency.component';
 
 
 const routes: Routes = [
@@ -56,7 +57,8 @@ const routes: Routes = [
     {path:'addBranch',component:AddBranchComponent},
     {path:'MyBranch',component:BranchListAgencyComponent},
     {path:'MyBranch/:idBranch',component:AddDeliveryMenAgencyComponent},
-    {path:'BranchM',component:BranchManagementComponent}
+    {path:'BranchM',component:BranchManagementComponent},
+    {path:'BranchM/:idBranch',component:DeliveryMListAgencyComponent}
    ]
 },
 {

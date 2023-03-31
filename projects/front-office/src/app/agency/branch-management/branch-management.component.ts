@@ -33,4 +33,8 @@ countDeliveryMenInAgency(idBranch: number, branch: AgencyBranch) {
     this.cdma.push(data);
   });
 }
+
+deleteAgencyBranch(idBranch:number){
+  this.agencyService.deleteAgencyBranch(idBranch).subscribe(()=>{this.retrieveAgencyBranchOfUser()});
+}
 }

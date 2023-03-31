@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { AppLayoutModule as sellerlayout } from './seller/layout/app.layout.module';
 import { AppLayoutModule as freelancerlayout } from './freelancer/layout/app.layout.module';
 import { AppLayoutModule as agencylayout } from './agency/layout/app.layout.module';
-import { AppLayoutModule as sellerlayoutm } from './seller/layout/app.layout.module';
+import { AppLayoutModule as sellerlayoutm } from './sellerMohsen/layout/app.layout.module';
 
 import { SellerDashComponent } from './seller/seller-dash/seller-dash.component';
 import { NewProductComponent } from './seller/new-product/new-product.component';
@@ -33,6 +33,7 @@ import { AddBranchComponent } from './agency/add-branch/add-branch.component';
 import { BranchListAgencyComponent } from './agency/branch-list-agency/branch-list-agency.component';
 import { AddDeliveryMenAgencyComponent } from './agency/add-delivery-men-agency/add-delivery-men-agency.component';
 import { BranchManagementComponent } from './agency/branch-management/branch-management.component';
+import { DeliveryMListAgencyComponent } from './agency/delivery-mlist-agency/delivery-mlist-agency.component';
 
 
 
@@ -56,7 +57,8 @@ import { BranchManagementComponent } from './agency/branch-management/branch-man
     AddBranchComponent,
     BranchListAgencyComponent,
     AddDeliveryMenAgencyComponent,
-    BranchManagementComponent
+    BranchManagementComponent,
+    DeliveryMListAgencyComponent
   ],
   imports: [
     BrowserModule,

@@ -35,4 +35,19 @@ urlretrieveDeliveryMenTOPickup="http://localhost:8081/AgencyDeliveryMan/Retrieve
     const options = { withCredentials: true };
     return this.http.get<number>(this.urlcountDeliveryMenInAgency+`${idBranch}`,options)
    }
+   urldeleteAgencyBranch="http://localhost:8081/AgencyBranch/DeleteAgencyBranch?id=";
+   deleteAgencyBranch(idBranch:number){
+    const options = { withCredentials: true };
+    return this.http.delete<AgencyBranch>(this.urldeleteAgencyBranch+`${idBranch}`,options)
+   }
+   urlRetrieveDeliveryMenByBranch="http://localhost:8081/AgencyDeliveryMan/RetrieveDeliveryMenByBranch?idBranch=";
+   RetrieveDeliveryMenByBranch(idBranch:number){
+    const options = { withCredentials: true };
+    return this.http.get<AgencyDeliveryMan[]>(this.urlRetrieveDeliveryMenByBranch+`${idBranch}`,options);
+   }
+   urlcountDeliveryMenInBranch="http://localhost:8081/AgencyDeliveryMan/countDeliveryMenInBranch?idBranch=";
+   countDeliveryMenInBranch(idBranch:number){
+    const options = { withCredentials: true };
+    return this.http.get<number>(this.urlcountDeliveryMenInBranch+`${idBranch}`,options)
+   }
 }

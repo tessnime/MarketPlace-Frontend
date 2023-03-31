@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AgencyBranch } from 'Models/AgencyBranch';
 import { AgencyDeliveryMan } from 'Models/AgencyDeliveryMan';
-import { GenderType } from 'Models/Enum/GenderType';
-import { RoleType } from 'Models/Enum/RoleType';
-import { TypeOfGear } from 'Models/Enum/TypeOfGear';
-import { Role } from 'Models/Role';
-import { User } from 'Models/User';
 import { AgencyService } from '../../sellerMohsen/servicesM/agency.service';
 
 @Component({
@@ -20,95 +14,27 @@ export class AddDeliveryMenAgencyComponent {
 
   idBranch!:number;
 ngOnInit(){
-  /*this.route.params.subscribe(params => {
-    this.idBranch = params['idBranch'];
-  });*/
   this.idBranch=this.route.snapshot.params['idBranch'];
 }
 
 
-  role :Role={
-    id: 0,
-    RoleType:RoleType.ADMIN,
-    users:[],
-    privileges:[]
-  };
-  user :User={
-  id : 0,
-  firstName : "",
-  lastName : "",
-  email : "",
-  password : "",
-  enabled : true,
-  tokenExpired : false,
-  banned : false,
-  phoneNumber : "",
-  BirthDate : new Date(),
-  image : "",
-  genderType : GenderType.MAN, // or any other value of GenderType enum
-  identity : "",
-  brandName : "",
-  brandLogo : "",
-  justification : "",
-  governorate : "",
-  city : "",
-  gear : "",
-  driveLicense : "",
-  dearAge : 0,
-  co2 : 0,
-  resetToken : 0,
-  rating : 0,
-  numberOfRatings : 0,
-  levelDelivery : "",
-  orders : [],
-  stores : [],
-  role : this.role, // or any other value of Role enum
-  claimSavList : [],
-  reviewsSent : [],
-  reviewsOnDA : [],
-  reviewsOnDF : [],
-  requestsdeliverymen : [],
-  requestsellers : [],
-  requestsAgencys : [],
-  agencyBranches : [],
-  supplierRequests: []
-  };
-  agencyBranch:AgencyBranch={
-    id:1,
-    governorate:"",
-   city:"",
-   gpsPoint:"",
-   brandName:"",
-   deliveryAgency:this.user,
-   agencyDeliveryMEN:[],
-   }
-
-
-  agencydm:AgencyDeliveryMan={
-    id: 0,
-    firstName: "",
-    lastName: "",
-    cin: "",
-    gearv: "",
-    governorate: "",
-    city: "",
-    gearmatricuel:"",
-    typeOfGear: TypeOfGear.CAR,
-    agencyBranch: this.agencyBranch,
-    requests:[]
-  }
+  agencydm!:AgencyDeliveryMan;
   typeOfGear= [
     'CAR','BIKE','TRUCK'
   ];
   typeOfGearr: string = '';
 addForm(t7:NgForm){
+  this.agencydm=new AgencyDeliveryMan;
  this.agencydm.firstName=t7.controls["firstName"].value;
  this.agencydm.lastName=t7.controls["lastName"].value;
  this.agencydm.cin=t7.controls["cin"].value;
  this.agencydm.governorate=t7.controls["governorate"].value;
  this.agencydm.city=t7.controls["city"].value;
- this.agencydm.gearmatricuel=t7.controls["gearMatricule"].value;
  this.agencydm.typeOfGear=t7.controls["typeOfGearr"].value;
+ if(this.agencydm.typeOfGear=='CAR'){
+  this.agencydm.gearmatricuel=t7.controls["gearMatricule"].value;
+ }
+
  this.agencyService.AssignAgencyDeliveryManByBranch(this.agencydm,this.idBranch).subscribe(()=>{this.r.navigateByUrl("/agency/MyBranch")});
 }
 

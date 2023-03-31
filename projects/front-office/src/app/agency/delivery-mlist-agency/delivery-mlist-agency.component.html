@@ -8,8 +8,11 @@
           </div>
           <nav aria-label="breadcrumb" role="navigation">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item active" aria-current="page">
+              <li class="breadcrumb-item " aria-current="page">
                 The Branch
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                DM
               </li>
             </ol>
           </nav>
@@ -25,17 +28,23 @@
           <table class="data-table table stripe hover nowrap">
             <thead>
               <tr>
-                <th >Branch Name</th>
+                <th >first Name</th>
+                <th >last Name</th>
+                <th >CIN</th>
+                <th >Gear Type</th>
+                <th >Gear Matricule</th>
                 <th>Governorate - City</th>
-                <th>Delivery Men</th>
                 <th class="datatable-nosort">Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let b of agencyBranch; let i = index">
-                <td>{{b.brandName}}</td>
+              <tr *ngFor="let b of dm; let i = index">
+                <td>{{b.firstName}}</td>
+                <td>{{b.lastName}}</td>
+                <td>{{b.cin}}</td>
+                <td>{{b.typeOfGear}}</td>
+                <td>{{b.gearmatricuel}}</td>
                 <td>{{b.governorate}}-{{b.city}}</td>
-                <td>{{cdma[i] }}</td>
                 <td>
                   <div class="dropdown">
                     <a
@@ -52,7 +61,7 @@
                       <a class="dropdown-item" [routerLink]="['/agency/BranchM/',b.id]"
                         ><i class="dw dw-eye"></i> View Delivery Men</a
                       >
-                      <a class="dropdown-item"(click)="deleteAgencyBranch(b.id)"
+                      <a class="dropdown-item"
                         ><i class="dw dw-delete-3"  ></i> Delete</a
                       >
                     </div>
@@ -63,3 +72,4 @@
           </table>
         </div>
       </div>
+
