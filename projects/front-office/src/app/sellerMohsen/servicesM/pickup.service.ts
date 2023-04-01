@@ -240,5 +240,20 @@ TrakingPickupBySeller(codePickup:number){
   const options={withCredentials:true};
   return this.http.get<Pickup>(this.urlTrakingPickupBySeller+`${codePickup}`,options);
 }
-
+//freelancer
+urlretrievePickupByDeliveryMenFreelancer="http://localhost:8081/Pickup/retrievePickupByDeliveryMenFreelancer";
+retrievePickupByDeliveryMenFreelancer(){
+const options={withCredentials:true};
+return this.http.get<Pickup[]>(this.urlretrievePickupByDeliveryMenFreelancer,options)
+}
+urlModifyStatusOfPickupByDelivery="http://localhost:8081/Pickup/ModifyStatusOfPickupByDelivery?Status=";
+ModifyStatusOfPickupByDelivery(status:String,idPickup:number){
+const options={withCredentials:true};
+return this.http.put<Pickup>(this.urlModifyStatusOfPickupByDelivery+`${status}`+"&idPickup="+`${idPickup}`,status,options);
+}
+url="http://localhost:8081/Pickup/RetrievePickup?id=";
+RetrievePickupById(idPickup:number){
+  const options = { withCredentials: true };
+  return this.http.get<Pickup>(this.url+`${idPickup}`,options);
+}
 }

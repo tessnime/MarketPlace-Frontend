@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Pickup } from 'Models/Pickup';
 import { Request } from 'Models/Request';
 
 @Injectable({
@@ -47,5 +48,11 @@ export class RequestService {
     const options = { withCredentials: true };
     return this.http.post<Request>(this.urlassignRequesttoseller+`${idRequest}`+"&status=APPROVED"+"&idPickup="+`${idPickup}`,statusRequest,options);
   }
+  urlretrieveRequestApprovedOfPickupFreelancer="http://localhost:8081/RequestController/retrieveRequestApprovedOfPickupFreelancer";
+  retrieveRequestApprovedOfPickupFreelancer(){
+    const options = { withCredentials: true };
+    return this.http.get<Request[]>(this.urlretrieveRequestApprovedOfPickupFreelancer,options);
+  }
+ 
 
 }
