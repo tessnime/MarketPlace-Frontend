@@ -4,12 +4,12 @@ import {Pickup} from "./Pickup";
 
 export class Store{
 id!:number;
-name!:String;
-governorate!:String;
-city!:String;
-x!:String;
-y!:String;
-IBAN!:String;
+name!:string;
+governorate!:string;
+city!:string;
+x!:string;
+y!:string;
+IBAN!:string;
 products:Product[]=[];
 seller:User[]=[];
 requestsellers:Request[]=[];

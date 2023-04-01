@@ -33,5 +33,9 @@ export class Product{
   store!: Store;
   reviews: Review[] = [];
   supplierRequests: SupplierRequest[] = [];
+  image1!: string;
+  image2!: string;
+  image3!: string;
+
 }
 

@@ -104,7 +104,8 @@ import {ToastModule} from 'primeng/toast';
     FileUploadModule,
     RippleModule,
     SplitButtonModule,
-    ToastModule
+    ToastModule,
+    
     
   ],
   providers: [],

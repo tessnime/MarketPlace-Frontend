@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from 'Models/Product';
 import { Observable } from 'rxjs';
+import {  ProductFormDTO} from 'Models/ProductFormDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -27,10 +28,10 @@ export class ProductSreviceService {
   //   return this.http.delete<Product>(this.url+'DeleteProduct',p.id)
   // }
 
-  createAndAssignCategoryAndSubCategory(product: Product, categoryName: string, subCatName: string, storeName: string): Observable<Product> {
+  createAndAssignCategoryAndSubCategory(product: ProductFormDTO): Observable<Product> {
     const options = { withCredentials: true };
 
-    return this.http.post<Product>(this.url+'CreateProductAndAssignCatAndSub?categoryName='+categoryName+'&subCatName='+subCatName+'&storeName='+storeName,product,options)
+    return this.http.post<Product>(this.url+'CreateProductAndAssignCatAndSub',product,options)
 
 }
 }

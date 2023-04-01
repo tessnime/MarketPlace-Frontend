@@ -21,8 +21,8 @@ export class User {
   image!: String;
   genderType!: GenderType;
   identity!: string;
-  BrandName!: string;
-  BrandLogo!: string;
+  brandName!: string;
+  brandLogo!: string;
   justification!: string;
   governorate!: string;
   city!: string;
