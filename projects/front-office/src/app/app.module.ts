@@ -34,6 +34,9 @@ import { BranchListAgencyComponent } from './agency/branch-list-agency/branch-li
 import { AddDeliveryMenAgencyComponent } from './agency/add-delivery-men-agency/add-delivery-men-agency.component';
 import { BranchManagementComponent } from './agency/branch-management/branch-management.component';
 import { DeliveryMListAgencyComponent } from './agency/delivery-mlist-agency/delivery-mlist-agency.component';
+import { RequestListSellerComponent } from './sellerMohsen/request-list-seller/request-list-seller.component';
+import { PikupInProgressSellerComponent } from './sellerMohsen/pikup-in-progress-seller/pikup-in-progress-seller.component';
+import { TrakingPickupSellerComponent } from './sellerMohsen/traking-pickup-seller/traking-pickup-seller.component';
 
 
 
@@ -58,7 +61,10 @@ import { DeliveryMListAgencyComponent } from './agency/delivery-mlist-agency/del
     BranchListAgencyComponent,
     AddDeliveryMenAgencyComponent,
     BranchManagementComponent,
-    DeliveryMListAgencyComponent
+    DeliveryMListAgencyComponent,
+    RequestListSellerComponent,
+    PikupInProgressSellerComponent,
+    TrakingPickupSellerComponent
   ],
   imports: [
     BrowserModule,

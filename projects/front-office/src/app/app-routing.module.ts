@@ -26,6 +26,9 @@ import { BranchListAgencyComponent } from './agency/branch-list-agency/branch-li
 import { AddDeliveryMenAgencyComponent } from './agency/add-delivery-men-agency/add-delivery-men-agency.component';
 import { BranchManagementComponent } from './agency/branch-management/branch-management.component';
 import { DeliveryMListAgencyComponent } from './agency/delivery-mlist-agency/delivery-mlist-agency.component';
+import { RequestListSellerComponent } from './sellerMohsen/request-list-seller/request-list-seller.component';
+import { PikupInProgressSellerComponent } from './sellerMohsen/pikup-in-progress-seller/pikup-in-progress-seller.component';
+import { TrakingPickupSellerComponent } from './sellerMohsen/traking-pickup-seller/traking-pickup-seller.component';
 
 
 const routes: Routes = [
@@ -75,7 +78,11 @@ const routes: Routes = [
     {path:'stores/orders/:idStore',component:OrderListMComponent},
     {path:'stores/orders/:idStore/:idOrder',component:addpickupseller},
     {path:'pickups',component:PickupListSeller},
-    {path:'pickups/update/:idPickup',component:PickupUpdateComponent}
+    {path:'pickups/requests/:idP',component:RequestListSellerComponent},
+    {path:'pickups/update/:idPickup',component:PickupUpdateComponent},
+    {path:'pickupsInProgress',component:PikupInProgressSellerComponent},
+    {path:'pickupsInProgress/:CodePickup',component:TrakingPickupSellerComponent}
+
   ]
 }
 ];

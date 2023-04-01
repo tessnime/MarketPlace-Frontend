@@ -36,6 +36,16 @@ export class RequestService {
     const options = { withCredentials: true };
     return this.http.get<Request[]>("http://localhost:8081/RequestController/RetrieveRequestByFreelancer",options);
    }
-
+  //seller
+ urlretrieveRequestByPickup="http://localhost:8081/RequestController/retrieveRequestByPickup?idPickup=";
+  retrieveRequestByPickup(idPickup:number){
+    const options = { withCredentials: true };
+    return this.http.get<Request[]>(this.urlretrieveRequestByPickup+`${idPickup}`,options);
+  }
+  urlassignRequesttoseller="http://localhost:8081/RequestController/assignRequesttoseller?idRequest=";
+  assignRequesttoseller(idRequest:number,statusRequest:String,idPickup:number){
+    const options = { withCredentials: true };
+    return this.http.post<Request>(this.urlassignRequesttoseller+`${idRequest}`+"&status=APPROVED"+"&idPickup="+`${idPickup}`,statusRequest,options);
+  }
 
 }

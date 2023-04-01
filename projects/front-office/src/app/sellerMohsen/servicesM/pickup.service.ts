@@ -229,8 +229,16 @@ export class PickupService {
   return this.http.get<Pickup[]>('http://localhost:8081/Pickup/RetrievePickupsByGovernoratBetweenStoreAndDeliveryMenFreelancer',options);
  }
 
-
-
-
+//seller
+urlRetrievePickupInProgress="http://localhost:8081/Pickup/RetrievePickupInProgress";
+RetrievePickupInProgress(){
+  const options={withCredentials:true};
+ return this.http.get<Pickup[]>(this.urlRetrievePickupInProgress,options);
+}
+urlTrakingPickupBySeller="http://localhost:8081/Pickup/trakingbyseller?codePickup=";
+TrakingPickupBySeller(codePickup:number){
+  const options={withCredentials:true};
+  return this.http.get<Pickup>(this.urlTrakingPickupBySeller+`${codePickup}`,options);
+}
 
 }

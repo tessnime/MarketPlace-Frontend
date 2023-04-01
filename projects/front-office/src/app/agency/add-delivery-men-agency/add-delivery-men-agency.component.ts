@@ -16,9 +16,7 @@ export class AddDeliveryMenAgencyComponent {
 ngOnInit(){
   this.idBranch=this.route.snapshot.params['idBranch'];
 }
-
-
-  agencydm!:AgencyDeliveryMan;
+agencydm!:AgencyDeliveryMan;
   typeOfGear= [
     'CAR','BIKE','TRUCK'
   ];

@@ -25,7 +25,8 @@ export class AppMenuComponent implements OnInit {
               items: [
                   { label: 'Dashboard', icon: 'pi pi-fw pi-id-card', routerLink: ['/Seller/DashboardDelivery'] },
                   { label: 'add Pickup', icon: 'pi pi-fw pi-check-square', routerLink: ['/Seller/stores'] },
-                  { label: 'List Pickups', icon: 'pi pi-fw pi-bookmark', routerLink: ['/Seller/pickups'] }
+                  { label: 'Pickups Waiting', icon: 'pi pi-fw pi-bookmark', routerLink: ['/Seller/pickups'] },
+                  { label: 'Pickups In Progress', icon: 'pi pi-fw pi-check-square', routerLink: ['/Seller/pickupsInProgress'] },
               ]
           },
         ];

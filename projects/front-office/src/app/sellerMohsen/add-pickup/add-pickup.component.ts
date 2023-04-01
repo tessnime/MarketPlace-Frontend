@@ -7,6 +7,8 @@ import { Pickup } from 'Models/Pickup';
 import { Shipping } from 'Models/Shipping';
 import { User } from 'Models/User';
 import { PickupService } from '../servicesM/pickup.service';
+import { StatusPickupSeller } from 'Models/Enum/StatusPickupSeller';
+import { StatusPickupBuyer } from 'Models/Enum/StatusPickupBuyer';
 
 
 @Component({
@@ -34,6 +36,9 @@ export class AddPickupComponent {
   ///Add Pickup and assign to Order And Store
   addForm(_t7: NgForm) {
     this.pickup=new Pickup();
+    this.pickup.statusPickupSeller=StatusPickupSeller.PICKED;
+    this.pickup.statusPickupBuyer=StatusPickupBuyer.PLACED;
+    this.pickup.dateCreationPickup=new Date(),
     this.pickup.governorate=_t7.controls['governorate'].value;
     this.pickup.city=_t7.controls['city'].value;
     this.pickup.comment=_t7.controls['comment'].value;
