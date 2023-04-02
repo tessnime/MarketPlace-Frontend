@@ -14,6 +14,8 @@ import {CartComponent} from "./front/buyer/cart/cart.component";
 import {ProductDetailsComponent} from "./front/buyer/product-details/product-details.component";
 import {ShopSideComponent} from "./front/buyer/shop-side/shop-side.component";
 import {FinalizeOrderComponent} from "./front/buyer/finalize-order/finalize-order.component";
+import {AddressBookComponent} from "./front/buyer/orders-setting/address-book/address-book.component";
+import {OrdersSettingComponent} from "./front/buyer/orders-setting/orders-setting.component";
 
 const routes: Routes = [
   {
@@ -41,8 +43,8 @@ const routes: Routes = [
   {path: 'buyer/cart', component: CartComponent},
   {path: 'buyer/details/:id', component: ProductDetailsComponent},
   {path: 'buyer/shop-side', component: ShopSideComponent},
-  {path: 'buyer/cart/finaliseOrder', component: FinalizeOrderComponent}
-
+  {path: 'buyer/cart/finaliseOrder', component: FinalizeOrderComponent},
+  {path: 'buyer/Orders', component: OrdersSettingComponent}
 
 
 ];

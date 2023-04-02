@@ -14,6 +14,11 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {AutocompleteLibModule} from "angular-ng-autocomplete";
 import {FinalizeOrderComponent} from "./buyer/finalize-order/finalize-order.component";
+import { NotFoundComponent } from './Utils/not-found/not-found.component';
+import { AllOrdrsComponent } from './buyer/orders-setting/all-ordrs/all-ordrs.component';
+import { AddressBookComponent } from './buyer/orders-setting/address-book/address-book.component';
+import { OrdersSettingComponent } from './buyer/orders-setting/orders-setting.component';
+import { TrackOrderComponent } from './buyer/orders-setting/track-order/track-order.component';
 
 
 @NgModule({
@@ -24,7 +29,12 @@ import {FinalizeOrderComponent} from "./buyer/finalize-order/finalize-order.comp
     FooterComponent,
     ProductDetailsComponent,
     ShopSideComponent,
-    FinalizeOrderComponent
+    FinalizeOrderComponent,
+    NotFoundComponent,
+    AllOrdrsComponent,
+    AddressBookComponent,
+    OrdersSettingComponent,
+    TrackOrderComponent
 ],
   imports: [
     CommonModule,

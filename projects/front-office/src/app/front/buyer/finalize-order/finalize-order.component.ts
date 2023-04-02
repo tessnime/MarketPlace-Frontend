@@ -18,6 +18,12 @@ export class FinalizeOrderComponent {
   constructor(private router: Router, private home: HomeService, private snackBar: MatSnackBar,private renderer: Renderer2, private el: ElementRef) {
   }
 
+  ch:boolean=false;
+  checkedFn()
+  {
+    this.ch = !this.ch;
+  }
+
   msg:string='Confirmation Email is Sent';
 
   requestOrder!: Order;

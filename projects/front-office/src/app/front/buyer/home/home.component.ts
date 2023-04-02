@@ -28,6 +28,7 @@ export class HomeComponent {
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
       this.countdowns[i] = { days, hours, minutes, seconds };
+      console.log(this.countdowns[i]);
     }
   }
 

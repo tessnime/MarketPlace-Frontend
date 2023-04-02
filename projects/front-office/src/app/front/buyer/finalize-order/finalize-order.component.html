@@ -8,10 +8,12 @@
     <app-header></app-header>
     <!--====== End - Main Header ======-->
 
-
+    <div *ngIf="request.length==0" class="app-content">
+      <app-not-found></app-not-found>
+    </div>
 
     <!--====== App Content ======-->
-    <div class="app-content">
+    <div *ngIf="request.length!=0" class="app-content">
 
 
       <!--====== Section 1 ======-->
@@ -233,7 +235,7 @@
                             <!--====== Check Box ======-->
                             <div class="check-box">
 
-                              <input type="checkbox" id="term-and-condition">
+                              <input type="checkbox" id="term-and-condition" (click)="checkedFn()">
                               <div class="check-box__state check-box__state--primary">
 
                                 <label class="check-box__label" for="term-and-condition">I consent to the</label></div>
@@ -243,8 +245,8 @@
                             <a class="gl-link">Terms of Service.</a>
                           </div>
                           <div>
-                            <button class="btn btn--e-brand-b-2" data-toggle="modal" data-target="#ShowConfirmation"  *ngIf="pay=='cash'" (click)="endPaimentProcess()">PLACE ORDER</button>
-                            <button class="btn btn--e-brand-b-2"  *ngIf="pay=='card'" (click)="makePayment(requestOrder.sum+requestOrder.deliveryPrice)" >Pay DT{{requestOrder.sum+requestOrder.deliveryPrice}}</button>
+                            <button class="btn btn--e-brand-b-2" data-toggle="modal" data-target="#ShowConfirmation"  *ngIf="pay=='cash' && ch" (click)="endPaimentProcess()">PLACE ORDER</button>
+                            <button class="btn btn--e-brand-b-2"  *ngIf="pay=='card' && ch" (click)="makePayment(requestOrder.sum+requestOrder.deliveryPrice)" >Pay DT{{requestOrder.sum+requestOrder.deliveryPrice}}</button>
                           </div>
                         </form>
                       </div>
@@ -262,8 +264,7 @@
     </div>
     <!--====== End - App Content ======-->
 
-
-
+    </div>
       <!--====== Main Footer ======-->
     <app-footer></app-footer>
     <!--====== Modal Section ======-->
@@ -363,7 +364,7 @@
                     <label class="gl-label" for="gpsPoint">EXACTE ADRESS *</label>
 
                     <input class="input-text input-text--primary-style" type="text" [(ngModel)]="form.gpsPoint" id="gpsPoint" name="gpsPoint" placeholder="EXACTE ADRESS..."></div>
-                  <div class="u-s-m-b-9">
+                  <div class="gl-modal-btn-group">
                     <button class="f-cart__ship-link btn--e-transparent-brand-b-2"  type="submit">ADD SHIPPING GEOLOCATION</button> <button class="btn btn--e-grey-b-2" type="button" data-dismiss="modal">CANCEL</button></div>
                 </div>
 
@@ -402,10 +403,7 @@
         </div>
       </div>
       <!--====== End - Modal Section ======-->
-  </div>
 
-
-    <button (click)="showSuccessAlert()">Show Alert</button>
     <!--====== End - Main App ======-->
 </div>
 </div>

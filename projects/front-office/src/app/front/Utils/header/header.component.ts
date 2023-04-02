@@ -44,6 +44,10 @@ export class HeaderComponent {
   {
     this.router.navigate(["buyer/cart/finaliseOrder"]);
   }
+  gotoOrderSettings()
+  {
+    this.router.navigate(["buyer/Orders"]);
+  }
   requestOrder!: Order;
 
   getBaskerOrder() {

@@ -39,6 +39,7 @@ export class HomeService {
   DeleteShippingAdresse='http://localhost:8081/buyerShipping/DeleteShippingAdresse?id='
   Payements='http://localhost:8081/order/payements'
   EndPaimentProcess='http://localhost:8081/order/EndPaimentProcess?paymentType=CASH_ON_DELIVERY&cardPaiment=false'
+  GetAllOrdersByUserId='http://localhost:8081/order/getAllOrdersByUserId'
 
 
 
@@ -149,5 +150,9 @@ export class HomeService {
     return this.http.put(this.EndPaimentProcess,null,this.options);
   }
 
+  getAllOrdersByUserId()
+  {
+    return this.http.get<Order[]>(this.GetAllOrdersByUserId,this.options)
+  }
 
 }

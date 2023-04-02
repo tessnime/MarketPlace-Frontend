@@ -6,9 +6,12 @@
   <!--====== Main Header ======-->
   <app-header></app-header>
 
+  <div *ngIf="product.id!=idp" class="app-content">
+    <app-not-found></app-not-found>
+  </div>
   <!--====== End - Main Header ======-->
   <!--====== App Content ======-->
-  <div class="app-content">
+  <div *ngIf="product.id==idp" class="app-content">
 
     <!--====== Section 1 ======-->
     <div class="u-s-p-t-90">

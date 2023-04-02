@@ -157,7 +157,7 @@ export class ShopSideComponent {
     for (let i=0;i<this.products.length;i++)
     {
       if(this.products[i].rating<this.rate) {
-        this.products.splice(1, i);
+        this.products.splice(i, 1);
       }
     }
   }
