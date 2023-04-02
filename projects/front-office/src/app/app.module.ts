@@ -41,6 +41,7 @@ import { MyPickupListFreelancerComponent } from './freelancer/my-pickup-list-fre
 import { TrakOrderByFreelancerComponent } from './freelancer/trak-order-by-freelancer/trak-order-by-freelancer.component';
 import { MyPickupListAgencyComponent } from './agency/my-pickup-list-agency/my-pickup-list-agency.component';
 import { TrackOrderByAgencyComponent } from './agency/track-order-by-agency/track-order-by-agency.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -86,7 +87,8 @@ import { TrackOrderByAgencyComponent } from './agency/track-order-by-agency/trac
     sellerlayoutm,
     MatMenuModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

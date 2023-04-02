@@ -7,6 +7,7 @@ import 'jspdf-autotable';
 
 import * as jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import { map } from 'rxjs';
 
 
 @Component({
@@ -16,19 +17,32 @@ import 'jspdf-autotable';
 })
 export class PickupListComponent {
   constructor(private pickupService:PickupService,private http:HttpClient,private route:Router){}
-  ngOnInit(){
-    this.GetPickuSellerWait();
+  ngOnInit() {
+    this.getPickupData();
+  }
+
+  getPickupData() {
+    this.pickupService.GetPickupBySellerWaiting()
+      .subscribe((data: Pickup[]) => {
+        this.pickup = data;
+        this.totalItems = data.length;this.getPickupData();
+      });
+  }
+
+  onPageChange(event: any): void {
+    this.p = event;
   }
   pickup!:Pickup[];
-  GetPickuSellerWait(){
-    this.pickupService.GetPickupBySellerWaiting().subscribe(data=>{this.pickup=data});
-  }
+  totalItems = 0;
+  p = 1; // current page number
+  itemsPerPage = 10; // number of items to display per page
+
   DeletePickup(idPickup: number) {
     // Call the pickup service to delete the pickup
     this.pickupService.DeletePickup(idPickup)
       .subscribe(() => {
         // Call the method to refresh the table data
-        this.GetPickuSellerWait();
+        this.getPickupData();
         // Show a notification to indicate the pickup was deleted successfully
       }
 
@@ -140,7 +154,44 @@ export class PickupListComponent {
     // Save the PDF
     doc.save('mypdf.pdf');
   }
+  generatePDF3() {
+    this.pickup.forEach((p) => {
+      const doc = new jsPDF.default();
+      const tableRows = [];
 
+      // Define the pickup PDF layout
+      const width = doc.internal.pageSize.getWidth();
+      const height = doc.internal.pageSize.getHeight();
+      const margin = 10;
+      const lineHeight = 7;
+
+      // Draw the pickup information
+      doc.setFontSize(12);
+
+      doc.text('PICKUP SLIP', margin, margin + lineHeight);
+
+      doc.setFontSize(10);
+
+      const pickup = [
+        doc.text(`Code: ${p.codePickup}`, margin, margin + lineHeight * 2),
+        doc.text(`Date: ${p.dateCreationPickup}`, margin, margin + lineHeight * 3),
+        doc.text(`Recipient: ${p.order.buyer.firstName}`, margin, margin + lineHeight * 4),
+        doc.text(`Address: ${p.governorate}`, margin, margin + lineHeight * 5),
+        doc.text(`City/State/Zip: ${p.city}, ${p.availableDeliver}`, margin, margin + lineHeight * 6)
+      ];
+
+      // Draw the pickup label
+      doc.setFillColor(204, 204, 204);
+      doc.rect(width - margin - 70, margin, 70, 70, 'F');
+      doc.setFontSize(16);
+
+      doc.text('PICKUP', width - margin - 60, margin + 25);
+      doc.text('SLIP', width - margin - 60, margin + 40);
+
+      // Save the PDF
+      doc.save(`mypdf_${p.codePickup}.pdf`);
+    });
+  }
 }
 
 
