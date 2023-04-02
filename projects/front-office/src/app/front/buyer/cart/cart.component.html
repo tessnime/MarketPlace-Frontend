@@ -66,93 +66,6 @@
                     </div>
                 </div>
                 <!--====== End - Section Intro ======-->
-
-
-                <!--====== Section Content ======-->
-                <div class="section__content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 u-s-m-b-30">
-                                <div class="table-responsive">
-                                    <table class="table-p">
-                                        <tbody>
-
-                                            <!--====== Row ======-->
-                                            <tr *ngFor="let pq of request" >
-                                                <td>
-                                                    <div class="table-p__box">
-                                                        <div class="table-p__img-wrap">
-
-                                                            <img class="u-img-fluid" src="../../../../assets/front-template/images/product/{{pq.product.image}}" alt=""></div>
-                                                        <div class="table-p__info">
-
-                                                            <span class="table-p__name">
-
-                                                                <a href="../../../../assets/front-template/product-detail.html">{{pq.product.name}}</a></span>
-
-                                                            <span class="table-p__category">
-
-                                                                <a href="../shop-side/shop-side.component.html">Price Before Discount: {{pq.product.productPriceBeforeDiscount}}</a></span>
-                                                            <ul class="table-p__variant-list">
-                                                                <li>
-
-                                                                    <span>Weight: {{pq.product.productWeight}}</span></li>
-                                                                <li>
-
-                                                                    <span>Ref: {{pq.product.reference}}</span></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-
-                                                    <span class="table-p__price">DT {{pq.product.productPrice}}</span></td>
-                                                <td>
-                                                    <div class="table-p__input-counter-wrap">
-
-                                                        <!--====== Input Counter ======-->
-                                                        <div class="input-counter">
-
-                                                            <span (click)="updateQuantity(pq.product.reference,pq.quantity-1)" class="input-counter__minus fas fa-minus"></span>
-
-                                                            <input class="input-counter__text input-counter--text-primary-style" type="text" value="{{pq.quantity}}" data-min="1" data-max="1000">
-
-                                                            <span (click)="updateQuantity(pq.product.reference,pq.quantity+1)" class="input-counter__plus fas fa-plus"></span></div>
-                                                        <!--====== End - Input Counter ======-->
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="table-p__del-wrap">
-
-                                                        <a (click)="deleteProductFromOrder(pq.product.reference)" class="far fa-trash-alt table-p__delete-link" ></a></div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="route-box">
-                                    <div class="route-box__g1">
-
-                                        <a class="route-box__link" (click)="gotoHome()"><i class="fas fa-long-arrow-alt-left"></i>
-
-                                            <span>CONTINUE SHOPPING</span></a></div>
-                                    <div class="route-box__g2">
-
-                                        <a (click)="deleteCarte()"  class="route-box__link"  ><i class="fas fa-trash"></i>
-
-                                            <span>CLEAR CART</span></a>
-
-                                        <a class="route-box__link" (click)="refresh()" ><i class="fas fa-sync"></i>
-
-                                            <span>UPDATE CART</span></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--====== End - Section Content ======-->
             </div>
             <!--====== End - Section 2 ======-->
 
@@ -162,50 +75,125 @@
 
                 <!--====== Section Content ======-->
                 <div class="section__content">
+                  <div class="dash">
                     <div class="container">
-                        <div class="row">
-                            <div  class="col-lg-12 col-md-12 col-sm-12 u-s-m-b-30">
-                                <form class="f-cart">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-6 u-s-m-b-30">
-                                            <div class="f-cart__pad-box">
-                                                <div class="u-s-m-b-30">
-                                                    <table class="f-cart__table">
-                                                        <tbody >
-                                                            <tr>
-                                                                <td>SHIPPING</td>
-                                                                <td>DT {{requestOrder.deliveryPrice}}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>TAX</td>
-                                                                <td>DT 0.00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>SUBTOTAL</td>
-                                                                <td>DT {{requestOrder.sum}}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>GRAND TOTAL</td>
-                                                                <td>DT {{requestOrder.sum + requestOrder.deliveryPrice}}</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <div>
+                      <div class="row">
 
-                                                    <button  class="btn btn--e-brand-b-2" (click)="gotoFinalize()"  > PROCEED TO CHECKOUT</button></div>
-                                            </div>
-                                        </div>
+                        <div class="col-lg-9 col-md-12">
+                          <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
+                            <div class="table-responsive">
+                              <table class="table-p">
+                                <tbody>
+
+                                <!--====== Row ======-->
+                                <tr *ngFor="let pq of request" >
+                                  <td>
+                                    <div class="table-p__box">
+                                      <div class="table-p__img-wrap">
+                                        <img class="u-img-fluid" src="../../../../assets/front-template/images/product/{{pq.product.image}}" alt=""></div>
+                                      <div class="table-p__info">
+                                                            <span class="table-p__name">
+                                                                <a href="../../../../assets/front-template/product-detail.html">{{pq.product.name}}</a></span>
+
+                                        <span class="table-p__category">
+
+                                                                <a href="../shop-side/shop-side.component.html">Price Before Discount: {{pq.product.productPriceBeforeDiscount}}</a></span>
+                                        <ul class="table-p__variant-list">
+                                          <li>
+
+                                            <span>Weight: {{pq.product.productWeight}}</span></li>
+                                          <li>
+
+                                            <span>Ref: {{pq.product.reference}}</span></li>
+                                        </ul>
+                                      </div>
                                     </div>
-                                </form>
+                                  </td>
+                                  <td>
+
+                                    <span class="table-p__price">DT {{pq.product.productPrice}}</span></td>
+                                  <td>
+                                    <div class="table-p__input-counter-wrap">
+
+                                      <!--====== Input Counter ======-->
+                                      <div class="input-counter">
+
+                                        <span (click)="updateQuantity(pq.product.reference,pq.quantity-1)" class="input-counter__minus fas fa-minus"></span>
+
+                                        <input class="input-counter__text input-counter--text-primary-style" type="text" value="{{pq.quantity}}" data-min="1" data-max="1000">
+
+                                        <span (click)="updateQuantity(pq.product.reference,pq.quantity+1)" class="input-counter__plus fas fa-plus"></span></div>
+                                      <!--====== End - Input Counter ======-->
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="table-p__del-wrap">
+
+                                      <a (click)="deleteProductFromOrder(pq.product.reference)" class="far fa-trash-alt table-p__delete-link" ></a></div>
+                                  </td>
+                                </tr>
+                                </tbody>
+                              </table>
                             </div>
+                          </div>
+                          <div class="col-lg-13">
+                            <div class="route-box">
+                              <div class="route-box__g1">
+
+                                <a class="route-box__link" (click)="gotoHome()"><i class="fas fa-long-arrow-alt-left"></i>
+
+                                  <span>CONTINUE SHOPPING</span></a></div>
+                              <div class="route-box__g2">
+
+                                <a (click)="deleteCarte()"  class="route-box__link"  ><i class="fas fa-trash"></i>
+
+                                  <span>CLEAR CART</span></a>
+
+                                <a class="route-box__link" (click)="refresh()" ><i class="fas fa-sync"></i>
+
+                                  <span>UPDATE CART</span></a></div>
+                            </div>
+                          </div>
                         </div>
+                        <div class="col-lg-3 col-md-12">
+                          <!--====== Dashboard Features ======-->
+                          <div class="dash__box dash__box--bg-white dash__box--shadow u-s-m-b-30">
+                            <div class="f-cart__pad-box">
+                              <div class="u-s-m-b-30">
+                                <table class="f-cart__table">
+                                  <tbody >
+                                  <tr>
+                                    <td>SHIPPING</td>
+                                    <td>DT {{requestOrder.deliveryPrice}}</td>
+                                  </tr>
+                                  <tr>
+                                    <td>TAX</td>
+                                    <td>DT 0.00</td>
+                                  </tr>
+                                  <tr>
+                                    <td>SUBTOTAL</td>
+                                    <td>DT {{requestOrder.sum}}</td>
+                                  </tr>
+                                  <tr>
+                                    <td>GRAND TOTAL</td>
+                                    <td>DT {{requestOrder.sum + requestOrder.deliveryPrice}}</td>
+                                  </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div>
+
+                                <button  class="btn btn--e-brand-b-2" (click)="gotoFinalize()"  > PROCEED TO CHECKOUT</button></div>
+                            </div>
+                          </div>
+                          <!--====== End - Dashboard Features ======-->
+                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
                 <!--====== End - Section Content ======-->
             </div>
-            <!--====== End - Section 3 ======-->
-        </div>
         <!--====== End - App Content ======-->
 
 
@@ -213,43 +201,6 @@
       <app-footer></app-footer>
     </div>
     <!--====== End - Main App ======-->
+    </div>
 
-
-    <!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->
-    <script>
-        window.ga = function() {
-            ga.q.push(arguments)
-        };
-        ga.q = [];
-        ga.l = +new Date;
-        ga('create', 'UA-XXXXX-Y', 'auto');
-        ga('send', 'pageview')
-    </script>
-    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
-
-    <!--====== Vendor Js ======-->
-    <script src="../../../../assets/front-template/js/vendor.js"></script>
-
-    <!--====== jQuery Shopnav plugin ======-->
-    <script src="../../../../assets/front-template/js/jquery.shopnav.js"></script>
-
-    <!--====== App ======-->
-    <script src="../../../../assets/front-template/js/app.js"></script>
-
-    <!--====== Noscript ======-->
-    <noscript>
-        <div class="app-setting">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="app-setting__wrap">
-                            <h1 class="app-setting__h1">JavaScript is disabled in your browser.</h1>
-
-                            <span class="app-setting__text">Please enable JavaScript in your browser or upgrade to a JavaScript-capable browser.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </noscript>
 </body>

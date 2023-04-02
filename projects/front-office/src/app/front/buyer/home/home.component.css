@@ -81,3 +81,21 @@
 .btn-light:active {
   background-color: #ccc;
 }
+
+ .carousel-inner img {
+   width: 2000px;
+   height: 600px;
+ }
+
+.carousel-caption {
+  left: auto;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40%;
+}
+
+.carousel-caption h3,
+.carousel-caption p {
+  text-align: left;
+}

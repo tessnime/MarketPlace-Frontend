@@ -14,6 +14,25 @@ export class HomeComponent {
   constructor(private router : Router,private home:HomeService) {
   }
 
+  countdowns: { [id: number]: { days: number, hours: number, minutes: number, seconds: number } } = {};
+  updateCountdown(): void {
+    for (let i = 0; i < this.ev.length; i++) {
+      const now = new Date().getTime();
+      const eventDate = this.ev[i].lastDate.getTime();
+      let distance = eventDate - now;
+      if (distance < 0) {
+        distance = 0;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      this.countdowns[i] = { days, hours, minutes, seconds };
+    }
+  }
+
+
+
   pageSize = 8;
   currentPage = 1;
 
@@ -50,11 +69,15 @@ export class HomeComponent {
     this.router.navigate(["/buyer/details",id]);
   }
 
-  ngOnInit()
+  ngOnInit():void
   {
     this.searchProduct(0,0,'','','','MOST_REQUESTED');
     this.lastVued();
     this.eventDisplay();
+    this.updateCountdown();
+    setInterval(() => {
+      this.updateCountdown();
+    }, 1000);
   }
 
   isLoading = false;
