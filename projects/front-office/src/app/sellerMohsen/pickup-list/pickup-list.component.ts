@@ -25,17 +25,18 @@ export class PickupListComponent {
     this.pickupService.GetPickupBySellerWaiting()
       .subscribe((data: Pickup[]) => {
         this.pickup = data;
-        this.totalItems = data.length;this.getPickupData();
+        this.totalItems = data.length;
       });
   }
 
   onPageChange(event: any): void {
     this.p = event;
+    this.getPickupData();
   }
   pickup!:Pickup[];
   totalItems = 0;
   p = 1; // current page number
-  itemsPerPage = 10; // number of items to display per page
+  itemsPerPage = 2; // number of items to display per page
 
   DeletePickup(idPickup: number) {
     // Call the pickup service to delete the pickup
@@ -193,6 +194,5 @@ export class PickupListComponent {
     });
   }
 }
-
 
 
