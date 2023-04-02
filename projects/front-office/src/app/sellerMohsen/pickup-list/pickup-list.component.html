@@ -56,8 +56,8 @@
                     <div
                       class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
                     >
-                      <a class="dropdown-item" href="#"
-                        ><i class="dw dw-eye"></i> View</a
+                      <a class="dropdown-item" (click)="generatePDF()"
+                        ><i class="dw dw-eye"></i> Imprimer</a
                       >
                       <a class="dropdown-item" [routerLink]="['/Seller/pickups/update',p.id]"
                         ><i class="dw dw-edit2"></i> Edit</a
