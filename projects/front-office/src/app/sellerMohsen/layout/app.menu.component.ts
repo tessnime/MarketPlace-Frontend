@@ -29,6 +29,14 @@ export class AppMenuComponent implements OnInit {
                   { label: 'Pickups In Progress', icon: 'pi pi-fw pi-check-square', routerLink: ['/Seller/pickupsInProgress'] },
               ]
           },
+          {
+            label: 'History delivery Management',
+            items: [
+                { label: 'All Pickups', icon: 'pi pi-fw pi-id-card', routerLink: ['/c/DashboardDelivery'] },
+                { label: 'Statistical', icon: 'pi pi-fw pi-id-card', routerLink: ['/c/DashboardDelivery'] }
+
+            ]
+        },
         ];
     }
 }

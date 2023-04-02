@@ -31,6 +31,8 @@ import { PikupInProgressSellerComponent } from './sellerMohsen/pikup-in-progress
 import { TrakingPickupSellerComponent } from './sellerMohsen/traking-pickup-seller/traking-pickup-seller.component';
 import { MyPickupListFreelancerComponent } from './freelancer/my-pickup-list-freelancer/my-pickup-list-freelancer.component';
 import { TrakOrderByFreelancerComponent } from './freelancer/trak-order-by-freelancer/trak-order-by-freelancer.component';
+import { MyPickupListAgencyComponent } from './agency/my-pickup-list-agency/my-pickup-list-agency.component';
+import { TrackOrderByAgencyComponent } from './agency/track-order-by-agency/track-order-by-agency.component';
 
 
 const routes: Routes = [
@@ -64,7 +66,9 @@ const routes: Routes = [
     {path:'MyBranch',component:BranchListAgencyComponent},
     {path:'MyBranch/:idBranch',component:AddDeliveryMenAgencyComponent},
     {path:'BranchM',component:BranchManagementComponent},
-    {path:'BranchM/:idBranch',component:DeliveryMListAgencyComponent}
+    {path:'BranchM/:idBranch',component:DeliveryMListAgencyComponent},
+    {path:'MyPickups',component:MyPickupListAgencyComponent},
+    {path:'MyPickups/track/:idPickup',component:TrackOrderByAgencyComponent}
    ]
 },
 {

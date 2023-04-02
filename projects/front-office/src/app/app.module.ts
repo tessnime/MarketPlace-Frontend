@@ -39,6 +39,8 @@ import { PikupInProgressSellerComponent } from './sellerMohsen/pikup-in-progress
 import { TrakingPickupSellerComponent } from './sellerMohsen/traking-pickup-seller/traking-pickup-seller.component';
 import { MyPickupListFreelancerComponent } from './freelancer/my-pickup-list-freelancer/my-pickup-list-freelancer.component';
 import { TrakOrderByFreelancerComponent } from './freelancer/trak-order-by-freelancer/trak-order-by-freelancer.component';
+import { MyPickupListAgencyComponent } from './agency/my-pickup-list-agency/my-pickup-list-agency.component';
+import { TrackOrderByAgencyComponent } from './agency/track-order-by-agency/track-order-by-agency.component';
 
 
 
@@ -68,7 +70,9 @@ import { TrakOrderByFreelancerComponent } from './freelancer/trak-order-by-freel
     PikupInProgressSellerComponent,
     TrakingPickupSellerComponent,
     MyPickupListFreelancerComponent,
-    TrakOrderByFreelancerComponent
+    TrakOrderByFreelancerComponent,
+    MyPickupListAgencyComponent,
+    TrackOrderByAgencyComponent
   ],
   imports: [
     BrowserModule,

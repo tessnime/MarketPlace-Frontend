@@ -53,6 +53,11 @@ export class RequestService {
     const options = { withCredentials: true };
     return this.http.get<Request[]>(this.urlretrieveRequestApprovedOfPickupFreelancer,options);
   }
- 
-
+ //agency
+ urlretrieveRequestApprovedOfPickupAgency="http://localhost:8081/RequestController/retrieveRequestApprovedOfPickupAgency";
+ retrieveRequestApprovedOfPickupAgency(){
+  const options = { withCredentials: true };
+  return this.http.get<Request[]>(this.urlretrieveRequestApprovedOfPickupAgency,options);
+  
+ }
 }
