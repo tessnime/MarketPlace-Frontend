@@ -11,6 +11,9 @@ import { PickupListComponent } from './agency/pickup-list/pickup-list.component'
 import { AddPickupComponent } from './agency/add-pickup/add-pickup.component';
 import {HomeComponent} from "./front/buyer/home/home.component";
 import {CartComponent} from "./front/buyer/cart/cart.component";
+import { SignInComponent } from './front/User/sign-in/sign-in.component';
+import { RegisterComponent } from './front/User/register/register.component';
+
 
 const routes: Routes = [
   {
@@ -37,9 +40,26 @@ const routes: Routes = [
 {
   path:'buyer',component:HomeComponent,
   children:[
-    { path: 'cart', component: CartComponent }
+    {path: 'buyer/cart', component: CartComponent},
   ]
-}
+},
+
+{ path: '', component: HomeComponent },
+{ path: 'user/signin', component: SignInComponent },
+{ path: 'user/register', component: RegisterComponent }
+
+/*{
+  path:'user',component:HomeComponent,
+  children:[
+    { path: '', component: SignInComponent },
+    { path: 'user/signin', component: SignInComponent },
+    { path: 'user/register', component: RegisterComponent }
+  ]
+},
+*/
+
+
+
 
 
 ];

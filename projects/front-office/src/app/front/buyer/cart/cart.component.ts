@@ -3,7 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {HomeService} from "../services/home.service";
 import {Product} from "../../../../../../../Models/Product";
 import {ProductQuantity} from "../../../../../../../Models/ProductQuantity";
-import {Order} from "../../../model/order";
+import { Order } from 'Models/Order';
+
 
 @Component({
   selector: 'app-cart',

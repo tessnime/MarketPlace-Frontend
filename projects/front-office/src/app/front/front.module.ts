@@ -4,6 +4,11 @@ import { HeaderComponent } from './Utils/header/header.component';
 import { HomeComponent } from './buyer/home/home.component';
 import { CartComponent } from './buyer/cart/cart.component';
 import { FooterComponent } from './Utils/footer/footer.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignInComponent } from './User/sign-in/sign-in.component';
+import { RegisterComponent } from './User/register/register.component';
+
+
 
 
 
@@ -12,10 +17,17 @@ import { FooterComponent } from './Utils/footer/footer.component';
     HeaderComponent,
     HomeComponent,
     CartComponent,
-    FooterComponent
+    FooterComponent,
+    SignInComponent,
+    RegisterComponent
+   
+  
+
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class FrontModule { }
