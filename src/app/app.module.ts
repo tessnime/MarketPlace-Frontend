@@ -7,11 +7,13 @@ import { AppLayoutModule } from './layoutB/app.layout.module';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserListComponent } from './user-list/user-list.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     UserDashboardComponent,
     UserListComponent,
+    
 
   ],
   imports: [

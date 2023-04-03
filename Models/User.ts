@@ -28,7 +28,7 @@ export class User {
   city!: string;
   gear!: string;
   driveLicense!: string;
-  dearAge!: number;
+  GearAge!: number;
   co2!: number;
   resetToken!: number;
   rating!: number;
