@@ -49,7 +49,7 @@ export class DashboardFreelancerComponent {
    }
    user!:User;
    GetUser(){
-    this.pickupService.getUser().subscribe(data=>{this.user=data});
+    this.pickupService.getUser().subscribe(data=>{console.log(this.user); this.user=data});
   }
 
 }

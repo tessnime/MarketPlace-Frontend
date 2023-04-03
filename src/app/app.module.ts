@@ -15,7 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     UserDashboardComponent,
     UserListComponent,
-    
+
 
   ],
   imports: [
@@ -23,7 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     AppLayoutModule,
     FormsModule,
-    RouterModule
+    RouterModule,
     BrowserAnimationsModule
   ],
   providers: [],
