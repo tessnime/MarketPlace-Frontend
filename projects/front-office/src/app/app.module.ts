@@ -23,7 +23,6 @@ import { ButtonModule } from 'primeng/button';
 import { RatingModule } from 'primeng/rating';
 import { PickListModule } from 'primeng/picklist';
 import { OrderListModule } from 'primeng/orderlist';
-import { FormsModule } from '@angular/forms';
 import { AutoCompleteModule } from "primeng/autocomplete";
 import { CalendarModule } from "primeng/calendar";
 import { ChipsModule } from "primeng/chips";
@@ -46,9 +45,17 @@ import{	FileUploadModule } from 'primeng/fileupload';
 import { RippleModule } from 'primeng/ripple';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import {ToastModule} from 'primeng/toast';
-
-
-
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MAT_CHIPS_DEFAULT_OPTIONS, MatChipsModule} from '@angular/material/chips';
+import {COMMA, SPACE} from "@angular/cdk/keycodes";
+import {MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+import {NgImageSliderModule} from "ng-image-slider";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 
 
@@ -78,7 +85,6 @@ import {ToastModule} from 'primeng/toast';
     RatingModule,
     OrderListModule,
     PickListModule,
-    FormsModule,
     AutoCompleteModule,
     CalendarModule,
 		ChipsModule,
@@ -105,10 +111,31 @@ import {ToastModule} from 'primeng/toast';
     RippleModule,
     SplitButtonModule,
     ToastModule,
-    
-    
+    FormsModule,
+    MatSnackBarModule,
+    ReactiveFormsModule,
+    MatChipsModule,
+    MatIconModule,
+    MatSnackBarModule,
+    MatButtonModule,
+    BrowserModule,
+    NgImageSliderModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule
+
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_CHIPS_DEFAULT_OPTIONS,
+      useValue: {
+        separatorKeyCodes: [COMMA, SPACE]
+      }
+    },
+    MatSnackBar
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

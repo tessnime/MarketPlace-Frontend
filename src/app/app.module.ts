@@ -8,11 +8,13 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { UserListComponent } from './user-list/user-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     UserDashboardComponent,
     UserListComponent,
+    
 
   ],
   imports: [

@@ -1,4 +1,9 @@
 // Recursive
+$g-text-font-stack: Arial, sans-serif;
+
+body {
+  font-family: $g-text-font-stack;
+}
 .ah-list {
   margin: 0;
   padding: 0;

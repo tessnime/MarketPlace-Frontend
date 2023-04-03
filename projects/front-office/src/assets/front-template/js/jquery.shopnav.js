@@ -87,6 +87,7 @@
                     $megaMenuSpan.on('click',clickMegaSpan);
                     $megaMenuItem.off('mouseenter').off('mouseleave')
                 }
+
             }
         };
         /**

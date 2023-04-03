@@ -24,9 +24,6 @@
 
 /* Tootip styles */
 .tooltip {
-  font-family: $g-text-font-stack;
-//  font-weight: 400; Regular
-  // Default font-size is 14px
   font-size: 12px;
   font-weight: 600;
 }
@@ -53,7 +50,6 @@
 }
 
 .tooltip-inner {
-  color: $g-brand-secondary-color;
   background-color: #f5f5f5;
   border-radius: 2px;
 }

@@ -292,10 +292,10 @@
         }
     };
     // Remove Class from body element
-    RESHOP.appConfiguration = function() {
+    RESHOP.appConfiguration = setTimeout(function() {
         $('body').removeAttr('class');
         $('.preloader').removeClass('is-active');
-    };
+    },500);
 
     // Bind isotope filter plugin
     RESHOP.isotopeFilter = function() {

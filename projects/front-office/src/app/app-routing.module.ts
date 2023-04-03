@@ -13,6 +13,17 @@ import {HomeComponent} from "./front/buyer/home/home.component";
 import {CartComponent} from "./front/buyer/cart/cart.component";
 import { ProductListComponent } from './seller/product-list/product-list.component';
 
+import {ProductDetailsComponent} from "./front/buyer/product-details/product-details.component";
+import {ShopSideComponent} from "./front/buyer/shop-side/shop-side.component";
+import {FinalizeOrderComponent} from "./front/buyer/finalize-order/finalize-order.component";
+import {AddressBookComponent} from "./front/buyer/orders-setting/address-book/address-book.component";
+import {OrdersSettingComponent} from "./front/buyer/orders-setting/orders-setting.component";
+
+import { SignInComponent } from './front/User/sign-in/sign-in.component';
+import { RegisterComponent } from './front/User/register/register.component';
+
+
+
 const routes: Routes = [
   {
     path:'freelancer',component:freelancerlayoutC,
@@ -37,12 +48,32 @@ const routes: Routes = [
     {path:'prods',component:AddPickupComponent}
   ]
 },
-{
-  path:'buyer',component:HomeComponent,
+
+  {path:'buyer',component:HomeComponent},
+  {path: 'buyer/cart', component: CartComponent},
+  {path: 'buyer/details/:id', component: ProductDetailsComponent},
+  {path: 'buyer/shop-side', component: ShopSideComponent},
+  {path: 'buyer/cart/finaliseOrder', component: FinalizeOrderComponent},
+  {path: 'buyer/Orders', component: OrdersSettingComponent}
+
+
+{ path: '', component: HomeComponent },
+{ path: 'user/signin', component: SignInComponent },
+{ path: 'user/register', component: RegisterComponent }
+
+/*{
+  path:'user',component:HomeComponent,
   children:[
-    { path: 'cart', component: CartComponent }
+    { path: '', component: SignInComponent },
+    { path: 'user/signin', component: SignInComponent },
+    { path: 'user/register', component: RegisterComponent }
   ]
-}
+},
+*/
+
+
+
+
 
 
 ];

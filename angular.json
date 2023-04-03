@@ -509,9 +509,16 @@
               "projects/front-office/src/assets"
             ],
             "styles": [
-              "projects/front-office/src/styles.scss"
+              "projects/front-office/src/styles.scss",
+              "projects/front-office/src/assets/front-template/scss/utility.scss",
+              "projects/front-office/src/assets/front-template/scss/app.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "projects/front-office/src/assets/front-template/js/jquery.shopnav.js",
+              "projects/front-office/src/assets/front-template/js/map-init.js",
+              "projects/front-office/src/assets/front-template/js/vendor.js",
+              "projects/front-office/src/assets/front-template/js/app.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -572,10 +579,17 @@
               "projects/front-office/src/assets"
             ],
             "styles": [
-              "projects/front-office/src/styles.scss"
+              "projects/front-office/src/styles.scss",
+              "projects/front-office/src/assets/front-template/scss/utility.scss",
+              "projects/front-office/src/assets/front-template/scss/app.scss"
             ],
-            "scripts": []
-          }
+            "scripts": [
+              "projects/front-office/src/assets/front-template/js/jquery.shopnav.js",
+              "projects/front-office/src/assets/front-template/js/map-init.js",
+              "projects/front-office/src/assets/front-template/js/vendor.js",
+              "projects/front-office/src/assets/front-template/js/app.js"
+            ]
+        }
         }
       }
     },

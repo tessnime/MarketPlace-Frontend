@@ -3,8 +3,8 @@ import * as CircularJSON from 'circular-json';
 
 export class ProductCategory{
   id!:number;
-  name!:String;
-  description!:String;
+  name!:string;
+  description!:string;
   products:Product[]=[];
   category!: ProductCategory;
   subCategory: ProductCategory[] = [];

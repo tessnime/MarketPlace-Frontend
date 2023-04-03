@@ -4,6 +4,7 @@ import {PromotionCode} from "./PromotionCode";
 import {User} from "./User";
 import {ProductQuantity} from "./ProductQuantity";
 import {Pickup} from "./Pickup";
+import {PaymentType} from "./Enum/PaymentType";
 
 export class Order{
   id!: number;
@@ -12,7 +13,7 @@ export class Order{
   deliveryPrice!: number;
   productsWeightKg!: number;
   orderCode!: number;
-  payment!: number;
+  payment!: PaymentType;
   status!: StatusOrderType;
   creationDate!: number;
   pickups:Pickup[]=[];
