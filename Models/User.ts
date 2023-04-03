@@ -22,7 +22,7 @@ export class User {
   genderType!: GenderType;
   identity!: string;
   brandName!: string;
-  BrandLogo!: string;
+  brandLogo!: string;
   justification!: string;
   governorate!: string;
   city!: string;
