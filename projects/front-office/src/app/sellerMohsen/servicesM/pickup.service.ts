@@ -14,7 +14,7 @@ import { User } from 'Models/User';
 export class PickupService {
 
   constructor(private http:HttpClient) { }
-  //Url Seller
+  //Url Sellerer
   urlstore="http://localhost:8081/Pickup/RetrieveStoreOfUser";
   urlUser="http://localhost:8081/Pickup/getUserNOw";
   urlorder="http://localhost:8081/Pickup/retrieveOrderByseller?idStore=";
