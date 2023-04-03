@@ -89,7 +89,7 @@ const routes: Routes = [
   {path: 'buyer/details/:id', component: ProductDetailsComponent},
   {path: 'buyer/shop-side', component: ShopSideComponent},
   {path: 'buyer/cart/finaliseOrder', component: FinalizeOrderComponent},
-  {path: 'buyer/Orders', component: OrdersSettingComponent}
+  {path: 'buyer/Orders', component: OrdersSettingComponent},
 
 
 { path: '', component: HomeComponent },

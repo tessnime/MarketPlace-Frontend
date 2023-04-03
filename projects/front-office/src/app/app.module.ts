@@ -12,11 +12,10 @@ import { SellerDashComponent } from './seller/seller-dash/seller-dash.component'
 import { NewProductComponent } from './seller/new-product/new-product.component';
 import { RequestListComponent } from './freelancer/request-list/request-list.component';
 import { PickupListComponent } from './agency/pickup-list/pickup-list.component';
-import { AddPickupComponent as addpickupseller} from './sellerMohsen/add-pickup/add-pickup.component';
+import { AddPickupComponent, AddPickupComponent as addpickupseller} from './sellerMohsen/add-pickup/add-pickup.component';
 import { PickupListComponent as PickupListSeller } from './sellerMohsen/pickup-list/pickup-list.component';
 
 import {FormsModule, NgForm} from '@angular/forms';
-import {FrontModule} from "./front/front.module";
 import { StoreListComponent } from './sellerMohsen/store-list/store-list.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { ListOfStoreComponent } from './sellerMohsen/list-of-store/list-of-store.component';
@@ -70,18 +69,18 @@ import{	FileUploadModule } from 'primeng/fileupload';
 import { RippleModule } from 'primeng/ripple';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import {ToastModule} from 'primeng/toast';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ReactiveFormsModule} from "@angular/forms";
 import {MAT_CHIPS_DEFAULT_OPTIONS, MatChipsModule} from '@angular/material/chips';
 import {COMMA, SPACE} from "@angular/cdk/keycodes";
 import {MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
-import {NgImageSliderModule} from "ng-image-slider";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-
+import { FrontModule  } from './front/front.module';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 
 
@@ -113,7 +112,7 @@ import {MatInputModule} from "@angular/material/input";
     MyPickupListFreelancerComponent,
     TrakOrderByFreelancerComponent,
     MyPickupListAgencyComponent,
-    TrackOrderByAgencyComponent
+    TrackOrderByAgencyComponent,
     AddPickupComponent,
     ProductListComponent,
   ],
@@ -128,7 +127,7 @@ import {MatInputModule} from "@angular/material/input";
     HttpClientModule,
     sellerlayoutm,
     MatMenuModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   	DataViewModule,
 		InputTextModule,
 		DropdownModule,
@@ -162,9 +161,7 @@ import {MatInputModule} from "@angular/material/input";
     RippleModule,
     SplitButtonModule,
     ToastModule,
-    FormsModule,
     MatSnackBarModule,
-    ReactiveFormsModule,
     MatChipsModule,
     MatIconModule,
     MatSnackBarModule,

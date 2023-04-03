@@ -120,7 +120,7 @@
                           class="input-text input-text--primary-style"
                           type="text"
                           id="reg-fname"
-                          placeholder="First Name"   name="firstName"  [(ngModel)]="user.firstName" 
+                          placeholder="First Name"   name="firstName"  [(ngModel)]="user.firstName"
                         />
                       </div>
                       <div class="u-s-m-b-30">
@@ -132,30 +132,30 @@
                           class="input-text input-text--primary-style"
                           type="text"
                           id="reg-lname"
-                          placeholder="Last Name" name="lastName"  [(ngModel)]="user.lastName" 
+                          placeholder="Last Name" name="lastName"  [(ngModel)]="user.lastName"
                         />
                       </div>
-                     
+
                         <div class="u-s-m-b-30">
                           <!--====== Date of Birth Select-Box ======-->
 
                           <span class="gl-label">BIRTHDAY *</span>
-                         
+
 
                           <input type="date" id="start" name="trip-start"
-                                
+
                                  min="1991-01-01" max="2005-12-31"  [(ngModel)]="user.BirthDate" >
-                       
+
                           <!--====== End - Date of Birth Select-Box ======-->
-                      
+
 
                         <div class="u-s-m-b-30">
                           <label class="gl-label" for="gender">GENDER</label
                           ><select
                             class="select-box select-box--primary-style u-w-100"
-                            id="gender" name="gender"  [(ngModel)]="user.genderType" 
+                            id="gender" name="gender"  [(ngModel)]="user.genderType"
                           >
-                           
+
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                             <option value="Other">Other</option>
@@ -174,7 +174,7 @@
                           id="phone"
                           name="phone"
                           pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}"
-                          placeholder="Enter phone-Number"  [(ngModel)]="user.phoneNumber" 
+                          placeholder="Enter phone-Number"  [(ngModel)]="user.phoneNumber"
                           required
                         />
 
@@ -187,49 +187,49 @@
                             class="input-text input-text--primary-style"
                             type="text"
                             id="reg-Iname"
-                            placeholder="identity" name="identity"  [(ngModel)]="user.identity" 
+                            placeholder="identity" name="identity"  [(ngModel)]="user.identity"
                           />
                         </div>
 
                         <div class="u-s-m-b-30">
-                          <label class="gl-label" id="espace" for="reg-bname" *ngIf="ROLE == 'Seller' || ROLE==='Delivery Agency' || ROLE==='Supplier'" 
-                            >BRAND NAME *</label 
+                          <label class="gl-label" id="espace" for="reg-bname" *ngIf="ROLE == 'Seller' || ROLE==='Delivery Agency' || ROLE==='Supplier'"
+                            >BRAND NAME *</label
                           >
 
                           <input
                             class="input-text input-text--primary-style"
                             type="text"
                             id="reg-bname"
-                            placeholder="BrandName" *ngIf="ROLE == 'Seller'|| ROLE==='Delivery Agency' || ROLE==='Supplier'"  name="brandName"  [(ngModel)]="user.BrandName" 
+                            placeholder="BrandName" *ngIf="ROLE == 'Seller'|| ROLE==='Delivery Agency' || ROLE==='Supplier'"  name="brandName"  [(ngModel)]="user.brandName"
                           />
                         </div>
 
                         <div class="u-s-m-b-30">
-                          <label class="gl-label" id="espace" for="reg-bLname" *ngIf="ROLE == 'Seller'|| ROLE==='Delivery Agency' || ROLE==='Supplier'" 
+                          <label class="gl-label" id="espace" for="reg-bLname" *ngIf="ROLE == 'Seller'|| ROLE==='Delivery Agency' || ROLE==='Supplier'"
                             >BRAND LOGO *</label
                           >
 
                           <input
-                           
+
                             type="file"
                             accept=".png"
                             id="reg-bLname"
-                            placeholder="BrandLogo" *ngIf="ROLE == 'Seller'|| ROLE==='Delivery Agency' || ROLE==='Supplier'"  name="brandlogo"  [(ngModel)]="user.BrandLogo" 
+                            placeholder="BrandLogo" *ngIf="ROLE == 'Seller'|| ROLE==='Delivery Agency' || ROLE==='Supplier'"  name="brandlogo"  [(ngModel)]="user.brandLogo"
                           />
                         </div>
 
                         <div class="u-s-m-b-30">
 
-                          <label class="gl-label" id="espace" for="reg-Jname" *ngIf="ROLE === 'Seller' || ROLE === 'Delivery' || ROLE==='Delivery Agency' || ROLE==='Supplier'" 
+                          <label class="gl-label" id="espace" for="reg-Jname" *ngIf="ROLE === 'Seller' || ROLE === 'Delivery' || ROLE==='Delivery Agency' || ROLE==='Supplier'"
                             >JUSTIFICATION *(Place Your Document)</label
                           >
 
                           <input
-                           
+
                             type="file"
                             accept=".pdf"
                             id="reg-Jname"
-                            placeholder="Justification"  name="Justification"  [(ngModel)]="user.justification"  *ngIf="ROLE === 'Seller' || ROLE === 'Delivery' || ROLE==='Delivery Agency' || ROLE==='Supplier'"  
+                            placeholder="Justification"  name="Justification"  [(ngModel)]="user.justification"  *ngIf="ROLE === 'Seller' || ROLE === 'Delivery' || ROLE==='Delivery Agency' || ROLE==='Supplier'"
                           />
                         </div>
 
@@ -237,18 +237,18 @@
                           <label  class="gl-label" for="gear"*ngIf="ROLE == 'Delivery'">GEAR *</label>
                           <select
                           class="select-box select-box--primary-style u-w-100"
-                         
+
                           id="reg-Gname"
-                           *ngIf="ROLE == 'Delivery'" name="gear"  [(ngModel)]="user.gear" 
+                           *ngIf="ROLE == 'Delivery'" name="gear"  [(ngModel)]="user.gear"
                         >
-                          
+
                           <option value="CAR">CAR</option>
                           <option value="MOTO">MOTO</option>
                           <option value="TRUCK">TRUCK</option>
                           <option value="BIKE">BIKE</option>
                         </select>
                           </div>
-                       
+
 
 
 
@@ -261,7 +261,7 @@
                             class="input-text input-text--primary-style"
                             type="text"
                             id="reg-Dname"
-                            placeholder="DriverLicense" *ngIf="ROLE == 'Delivery'" name="DriverLicense"  [(ngModel)]="user.driveLicense" 
+                            placeholder="DriverLicense" *ngIf="ROLE == 'Delivery'" name="DriverLicense"  [(ngModel)]="user.driveLicense"
                           />
                         </div>
                         <div class="u-s-m-b-30">
@@ -273,26 +273,26 @@
                             class="input-text input-text--primary-style"
                             type="text"
                             id="reg-Gname"
-                            placeholder="GearAge" *ngIf="ROLE == 'Delivery'" name="GearAge"  [(ngModel)]="user.GearAge" 
+                            placeholder="GearAge" *ngIf="ROLE == 'Delivery'" name="GearAge"  [(ngModel)]="user.GearAge"
                           />
                         </div>
 
                         <div class="u-s-m-b-30">
                         <label class="gl-label">GOVERNORATE *</label>
-                       
+
                           <select class="select-box select-box--primary-style u-w-100" id="governorate" name="governorate" [(ngModel)]="selectedGovernorate"  [(ngModel)]="shipping.governorate"(ngModelChange)="updateCities()">
                             <option *ngFor="let gov of governorates" [value]="gov.name">{{ gov.name }}</option>
                           </select>
                         </div>
-                     
+
                         <div class="u-s-m-b-30">
                             <label class="gl-label">CITY *</label>
-                        
+
                             <select  class="select-box select-box--primary-style u-w-100" id="city" name="city" [(ngModel)]="shipping.city">
                             <option>{{ shipping.city }}</option>
                             <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
                             </select>
-                          
+
                         </div>
                         <label class="gl-label" for="reg-email">E-MAIL *</label>
 
@@ -300,7 +300,7 @@
                           class="input-text input-text--primary-style"
                           type="text"
                           id="reg-email"
-                          placeholder="Enter E-mail" name="email"  [(ngModel)]="user.email" 
+                          placeholder="Enter E-mail" name="email"  [(ngModel)]="user.email"
                         />
                       </div>
                       <div class="u-s-m-b-30">
@@ -312,12 +312,12 @@
                           class="input-text input-text--primary-style"
                           type="password"
                           id="psw" name="psw"
-                          placeholder="Enter Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required  [(ngModel)]="user.password" 
+                          placeholder="Enter Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required  [(ngModel)]="user.password"
                         />
                       </div>
 
 
-                      
+
                       <div id="message">
                         <h3>Password must contain the following:</h3>
                         <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
@@ -325,15 +325,15 @@
                         <p id="number" class="invalid">A <b>number</b></p>
                         <p id="length" class="invalid">Minimum <b>8 characters</b></p>
                       </div>
-                              
-             
-    
+
+
+
 
                       <div class="u-s-m-b-15">
                         <button
                           class="btn btn--e-transparent-brand-b-2"
                           type="submit">
-                      
+
                           CREATE
                         </button>
                       </div>
@@ -359,33 +359,33 @@
           <div class="row">
             <div class="col-lg-4 col-md-6">
               <div class="outer-footer__content u-s-m-b-40">
-    
+
                 <span class="outer-footer__content-title">Contact Us</span>
                 <div class="outer-footer__text-wrap"><i class="fas fa-home"></i>
-    
+
                   <span>4247 Ashford Drive Virginia VA-20006 USA</span></div>
                 <div class="outer-footer__text-wrap"><i class="fas fa-phone-volume"></i>
-    
+
                   <span>(+0) 900 901 904</span></div>
                 <div class="outer-footer__text-wrap"><i class="far fa-envelope"></i>
-    
+
                   <span>contact@domain.com</span></div>
                 <div class="outer-footer__social">
                   <ul>
                     <li>
-    
+
                       <a class="s-fb--color-hover" href="#"><i class="fab fa-facebook-f"></i></a></li>
                     <li>
-    
+
                       <a class="s-tw--color-hover" href="#"><i class="fab fa-twitter"></i></a></li>
                     <li>
-    
+
                       <a class="s-youtube--color-hover" href="#"><i class="fab fa-youtube"></i></a></li>
                     <li>
-    
+
                       <a class="s-insta--color-hover" href="#"><i class="fab fa-instagram"></i></a></li>
                     <li>
-    
+
                       <a class="s-gplus--color-hover" href="#"><i class="fab fa-google-plus-g"></i></a></li>
                   </ul>
                 </div>
@@ -395,24 +395,24 @@
               <div class="row">
                 <div class="col-lg-6 col-md-6">
                   <div class="outer-footer__content u-s-m-b-40">
-    
+
                     <span class="outer-footer__content-title">Information</span>
                     <div class="outer-footer__list-wrap">
                       <ul>
                         <li>
-    
+
                           <a href="cart.component.html">Cart</a></li>
                         <li>
-    
+
                           <a href="../../../../assets/front-template/dashboard.html">Account</a></li>
                         <li>
-    
+
                           <a href="../../../../assets/front-template/shop-side-version-2.html">Manufacturer</a></li>
                         <li>
-    
+
                           <a href="../../../../assets/front-template/dash-payment-option.html">Finance</a></li>
                         <li>
-    
+
                           <a href="../../../../assets/front-template/shop-side-version-2.html">Shop</a></li>
                       </ul>
                     </div>
@@ -421,21 +421,21 @@
                 <div class="col-lg-6 col-md-6">
                   <div class="outer-footer__content u-s-m-b-40">
                     <div class="outer-footer__list-wrap">
-    
+
                       <span class="outer-footer__content-title">Registration</span>
                       <ul>
-    
+
                         <li>
-    
+
                           <button (click)="setRoleTo('Supplier')" >Supplier</button></li>
                         <li>
-    
+
                           <button (click)="setRoleTo('Delivery Agency')" >Delivery Agency</button></li>
                         <li>
-    
+
                           <button (click)="setRoleTo('Delivery')">DeliveryFreelancer</button></li>
                         <li>
-    
+
                           <button (click)="setRoleTo('Seller')" >Seller</button></li>
                       </ul>
                     </div>
@@ -445,33 +445,33 @@
             </div>
             <div class="col-lg-4 col-md-12">
               <div class="outer-footer__content">
-    
+
                 <span class="outer-footer__content-title">Join our Newsletter</span>
                 <form class="newsletter">
                   <div class="u-s-m-b-15">
                     <div class="radio-box newsletter__radio">
-    
+
                       <input type="radio" id="male" name="gender">
                       <div class="radio-box__state radio-box__state--primary">
-    
+
                         <label class="radio-box__label" for="male">Male</label></div>
                     </div>
                     <div class="radio-box newsletter__radio">
-    
+
                       <input type="radio" id="female" name="gender">
                       <div class="radio-box__state radio-box__state--primary">
-    
+
                         <label class="radio-box__label" for="female">Female</label></div>
                     </div>
                   </div>
                   <div class="newsletter__group">
-    
+
                     <label for="newsletter"></label>
-    
+
                     <input class="input-text input-text--only-white" type="text" id="newsletter" placeholder="Enter your Email">
-    
+
                     <button class="btn btn--e-brand newsletter__btn" type="submit">SUBSCRIBE</button></div>
-    
+
                   <span class="newsletter__text">Subscribe to the mailing list to receive updates on promotions, new arrivals, discount and coupons.</span>
                 </form>
               </div>
@@ -485,11 +485,11 @@
             <div class="col-lg-12">
               <div class="lower-footer__content">
                 <div class="lower-footer__copyright">
-    
+
                   <span>Copyright © 2018</span>
-    
+
                   <a href="../../../../index.html">Reshop</a>
-    
+
                   <span>All Right Reserved</span></div>
                 <div class="lower-footer__payment">
                   <ul>
@@ -507,7 +507,7 @@
         </div>
       </div>
     </footer>
-    
+
   </div>
 
   <!--====== End - Main App ======-->
@@ -559,6 +559,6 @@
     </div>
   </noscript>
 
-  
+
 
 </body>

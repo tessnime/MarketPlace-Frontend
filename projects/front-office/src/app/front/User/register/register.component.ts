@@ -15,26 +15,25 @@ export class RegisterComponent  implements OnInit{
 
   form:any ={}
   ROLE="buyer";
-  
   error:string = '';
- 
   shipping: Shipping = {
     id: 0,
     governorate: "",
     city: "",
-    gpsPoint: ""
+    gpsPoint: "",
+    buyer: new User()
   };
   user:  User  = new User();
 
- 
+
 
   constructor( private LoginUserService:LoginUserService ,private router:Router ,private route: ActivatedRoute){
-   
+
   }
 
-  
+
   ngOnInit(): void {
-    
+
   }
   setRoleTo(role :string ) {
     this.ROLE = role;
@@ -43,7 +42,7 @@ export class RegisterComponent  implements OnInit{
   Create(){
     console.log(this.user);
     if (this.ROLE == 'buyer') {
-     
+
       this.user.enabled==true;
       console.log(this.user);
     }
@@ -58,7 +57,7 @@ export class RegisterComponent  implements OnInit{
 
 
   }
- 
+
 
 
 
@@ -95,7 +94,7 @@ export class RegisterComponent  implements OnInit{
     }
   }
 
- 
+
 
 
   }

@@ -1,5 +1,5 @@
 import {Product} from "./Product";
-import * as CircularJSON from 'circular-json';
+//import * as CircularJSON from 'circular-json';
 
 export class ProductCategory{
   id!:number;

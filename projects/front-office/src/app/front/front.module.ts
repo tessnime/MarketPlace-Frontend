@@ -19,6 +19,8 @@ import { AllOrdrsComponent } from './buyer/orders-setting/all-ordrs/all-ordrs.co
 import { AddressBookComponent } from './buyer/orders-setting/address-book/address-book.component';
 import { OrdersSettingComponent } from './buyer/orders-setting/orders-setting.component';
 import { TrackOrderComponent } from './buyer/orders-setting/track-order/track-order.component';
+import { RegisterComponent } from './User/register/register.component';
+import { SignInComponent } from './User/sign-in/sign-in.component';
 
 
 
@@ -39,19 +41,20 @@ import { TrackOrderComponent } from './buyer/orders-setting/track-order/track-or
     AllOrdrsComponent,
     AddressBookComponent,
     OrdersSettingComponent,
-    TrackOrderComponent
+    TrackOrderComponent,
+    RegisterComponent,
+    SignInComponent
 ],
   imports: [
     CommonModule,
     FormsModule,
     BrowserAnimationsModule,
     BrowserModule,
-    FormsModule,
     HttpClientModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatSelectModule,
-    AutocompleteLibModule
+    MatSelectModule
+   // AutocompleteLibModule
   ]
 })
 export class FrontModule { }
