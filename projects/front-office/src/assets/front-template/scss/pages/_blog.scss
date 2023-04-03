@@ -116,7 +116,7 @@
 .post-video-block {
   .post-video-link:before {
     content: '';
-    background: url(../video/video-play.png) no-repeat 0 0;
+    background: url(../../video/video-play.png) no-repeat 0 0;
     background-size: contain;
   }
 }
@@ -130,7 +130,7 @@
 .post-video-block.process.pause {
   .post-video-link:before {
     content: '';
-    background: url(../video/video-pause.png) no-repeat;
+    background: url(../../video/video-pause.png) no-repeat;
   }
 }
 

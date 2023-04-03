@@ -17,11 +17,8 @@ import { PickupListComponent as PickupListSeller } from './sellerMohsen/pickup-l
 
 import {FormsModule, NgForm} from '@angular/forms';
 import {FrontModule} from "./front/front.module";
-import {HttpClientModule} from '@angular/common/http';
 import { StoreListComponent } from './sellerMohsen/store-list/store-list.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { ListOfStoreComponent } from './sellerMohsen/list-of-store/list-of-store.component';
 import { OrderListMComponent } from './sellerMohsen/order-list-m/order-list-m.component';
 import { PickupUpdateComponent } from './sellerMohsen/pickup-update/pickup-update.component';
@@ -42,6 +39,49 @@ import { TrakOrderByFreelancerComponent } from './freelancer/trak-order-by-freel
 import { MyPickupListAgencyComponent } from './agency/my-pickup-list-agency/my-pickup-list-agency.component';
 import { TrackOrderByAgencyComponent } from './agency/track-order-by-agency/track-order-by-agency.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import {HttpClientModule} from "@angular/common/http";
+import { ProductListComponent } from './seller/product-list/product-list.component';
+import { DataViewModule } from 'primeng/dataview';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { RatingModule } from 'primeng/rating';
+import { PickListModule } from 'primeng/picklist';
+import { OrderListModule } from 'primeng/orderlist';
+import { AutoCompleteModule } from "primeng/autocomplete";
+import { CalendarModule } from "primeng/calendar";
+import { ChipsModule } from "primeng/chips";
+import { ChipModule } from "primeng/chip";
+import { InputMaskModule } from "primeng/inputmask";
+import { InputNumberModule } from "primeng/inputnumber";
+import { CascadeSelectModule } from "primeng/cascadeselect";
+import { MultiSelectModule } from "primeng/multiselect";
+import { InputTextareaModule } from "primeng/inputtextarea";
+import { KnobModule } from 'primeng/knob';
+import { ListboxModule } from 'primeng/listbox';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { CheckboxModule } from 'primeng/checkbox';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { ColorPickerModule } from 'primeng/colorpicker';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { SliderModule } from 'primeng/slider';
+import{	FileUploadModule } from 'primeng/fileupload';
+import { RippleModule } from 'primeng/ripple';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import {ToastModule} from 'primeng/toast';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MAT_CHIPS_DEFAULT_OPTIONS, MatChipsModule} from '@angular/material/chips';
+import {COMMA, SPACE} from "@angular/cdk/keycodes";
+import {MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+import {NgImageSliderModule} from "ng-image-slider";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+
 
 
 
@@ -74,6 +114,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     TrakOrderByFreelancerComponent,
     MyPickupListAgencyComponent,
     TrackOrderByAgencyComponent
+    AddPickupComponent,
+    ProductListComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,11 +128,65 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HttpClientModule,
     sellerlayoutm,
     MatMenuModule,
-    MatButtonModule,
-    MatIconModule,
     NgxPaginationModule
+  	DataViewModule,
+		InputTextModule,
+		DropdownModule,
+		ButtonModule,
+    RatingModule,
+    OrderListModule,
+    PickListModule,
+    AutoCompleteModule,
+    CalendarModule,
+		ChipsModule,
+		DropdownModule,
+		InputMaskModule,
+		InputNumberModule,
+		ColorPickerModule,
+		CascadeSelectModule,
+		MultiSelectModule,
+		ToggleButtonModule,
+		SliderModule,
+		InputTextareaModule,
+		RadioButtonModule,
+		InputTextModule,
+		RatingModule,
+		ChipModule,
+		KnobModule,
+		InputSwitchModule,
+		ListboxModule,
+		SelectButtonModule,
+		CheckboxModule,
+		ButtonModule,
+    FileUploadModule,
+    RippleModule,
+    SplitButtonModule,
+    ToastModule,
+    FormsModule,
+    MatSnackBarModule,
+    ReactiveFormsModule,
+    MatChipsModule,
+    MatIconModule,
+    MatSnackBarModule,
+    MatButtonModule,
+    BrowserModule,
+    NgImageSliderModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule
+
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_CHIPS_DEFAULT_OPTIONS,
+      useValue: {
+        separatorKeyCodes: [COMMA, SPACE]
+      }
+    },
+    MatSnackBar
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

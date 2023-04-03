@@ -2461,6 +2461,20 @@ input::-ms-clear {
     border-radius: 5px;
     font-size: 13px; }
 
+
+
+
+.banner-bg1 {
+  padding: 7em 0;
+  background-size: cover; }
+
+.banner-bg2 {
+  padding: 7em 0;
+  position: relative;
+  background: #f5f5f5 url(../images/slider/img.jpg.jpg) repeat fixed center center;
+  background-size: cover; }
+
+
 .banner-bg {
   padding: 7em 0;
   position: relative;
@@ -5449,7 +5463,7 @@ input::-ms-clear {
 20.1 Bootstrap
 --------------------------------------------------------------*/
 /* Modal styles */
-.modal {
+.modal1 {
   z-index: 999999; }
 
 .modal-content {
@@ -6037,11 +6051,11 @@ input::-ms-clear {
 .hero-slide {
   background: center center/cover no-repeat; }
   .hero-slide--1 {
-    background-image: url(../images/slider/slide-1.jpg); }
+    background-image: url(../images/slider/shoping1.png); }
   .hero-slide--2 {
-    background-image: url(../images/slider/slide-2.jpg); }
+    background-image: url(../images/slider/banner-bg.jpg); }
   .hero-slide--3 {
-    background-image: url(../images/slider/slide-3.jpg); }
+    background-image: url(../images/slider/blackFriday.gif); }
   .hero-slide--4 {
     background-image: url(../images/slider/slide-4.jpg); }
   .hero-slide--5 {

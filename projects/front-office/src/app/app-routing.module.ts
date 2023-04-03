@@ -12,6 +12,7 @@ import { PickupListComponent } from './agency/pickup-list/pickup-list.component'
 import { AddPickupComponent as addpickupseller } from './sellerMohsen/add-pickup/add-pickup.component';
 import {HomeComponent} from "./front/buyer/home/home.component";
 import {CartComponent} from "./front/buyer/cart/cart.component";
+
 import { StoreListComponent } from './sellerMohsen/store-list/store-list.component';
 import { ListOfStoreComponent } from './sellerMohsen/list-of-store/list-of-store.component';
 import { OrderListMComponent } from './sellerMohsen/order-list-m/order-list-m.component';
@@ -33,6 +34,17 @@ import { MyPickupListFreelancerComponent } from './freelancer/my-pickup-list-fre
 import { TrakOrderByFreelancerComponent } from './freelancer/trak-order-by-freelancer/trak-order-by-freelancer.component';
 import { MyPickupListAgencyComponent } from './agency/my-pickup-list-agency/my-pickup-list-agency.component';
 import { TrackOrderByAgencyComponent } from './agency/track-order-by-agency/track-order-by-agency.component';
+import { ProductListComponent } from './seller/product-list/product-list.component';
+
+import {ProductDetailsComponent} from "./front/buyer/product-details/product-details.component";
+import {ShopSideComponent} from "./front/buyer/shop-side/shop-side.component";
+import {FinalizeOrderComponent} from "./front/buyer/finalize-order/finalize-order.component";
+import {AddressBookComponent} from "./front/buyer/orders-setting/address-book/address-book.component";
+import {OrdersSettingComponent} from "./front/buyer/orders-setting/orders-setting.component";
+
+import { SignInComponent } from './front/User/sign-in/sign-in.component';
+import { RegisterComponent } from './front/User/register/register.component';
+
 
 
 const routes: Routes = [
@@ -52,8 +64,8 @@ const routes: Routes = [
     children:[
       {path:'',component:SellerDashComponent},
       {path:'prods',component:NewProductComponent},
-      {path:'MyStore',component:StoreListComponent}
-
+      {path:'MyStore',component:StoreListComponent},
+      {path:'list',component:ProductListComponent}
     ]
 },
 {
@@ -71,12 +83,29 @@ const routes: Routes = [
     {path:'MyPickups/track/:idPickup',component:TrackOrderByAgencyComponent}
    ]
 },
-{
-  path:'buyer',component:HomeComponent,
+
+  {path:'buyer',component:HomeComponent},
+  {path: 'buyer/cart', component: CartComponent},
+  {path: 'buyer/details/:id', component: ProductDetailsComponent},
+  {path: 'buyer/shop-side', component: ShopSideComponent},
+  {path: 'buyer/cart/finaliseOrder', component: FinalizeOrderComponent},
+  {path: 'buyer/Orders', component: OrdersSettingComponent}
+
+
+{ path: '', component: HomeComponent },
+{ path: 'user/signin', component: SignInComponent },
+{ path: 'user/register', component: RegisterComponent },
+
+/*{
+  path:'user',component:HomeComponent,
   children:[
-    { path: 'cart', component: CartComponent }
+    { path: '', component: SignInComponent },
+    { path: 'user/signin', component: SignInComponent },
+    { path: 'user/register', component: RegisterComponent }
   ]
 },
+*/
+
 {
   path:'Seller',component:sellerlayoutCMohsen,
   children:[
@@ -89,7 +118,6 @@ const routes: Routes = [
     {path:'pickups/update/:idPickup',component:PickupUpdateComponent},
     {path:'pickupsInProgress',component:PikupInProgressSellerComponent},
     {path:'pickupsInProgress/:CodePickup',component:TrakingPickupSellerComponent}
-
   ]
 }
 ];

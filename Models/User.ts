@@ -18,7 +18,7 @@ export class User {
   banned!: boolean;
   phoneNumber!: string;
   BirthDate!: Date;
-  image!: String;
+  image!: string;
   genderType!: GenderType;
   identity!: string;
   brandName!: string;
@@ -28,7 +28,7 @@ export class User {
   city!: string;
   gear!: string;
   driveLicense!: string;
-  dearAge!: number;
+  GearAge!: number;
   co2!: number;
   resetToken!: number;
   rating!: number;
