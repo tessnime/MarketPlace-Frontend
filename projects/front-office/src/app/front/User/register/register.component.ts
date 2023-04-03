@@ -45,6 +45,7 @@ export class RegisterComponent  implements OnInit{
     if (this.ROLE == 'buyer') {
      
       this.user.enabled==true;
+      console.log(this.user);
     }
     else{
       this.user.enabled==false;
