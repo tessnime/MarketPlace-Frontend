@@ -3,5 +3,7 @@ export enum StatusPickupBuyer{
   SHIPPED = 'SHIPPED',
   DELIVERED = 'DELIVERED',
   RETURN = 'RETURN',
-  REFUNDED = 'REFUNDED'
+  REFUNDED = 'REFUNDED',
+  ASSIGNED = 'ASSIGNED',
+  TAKED = 'TAKED'
 }
