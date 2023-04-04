@@ -12,6 +12,10 @@ import {Order} from "../../../../../../../Models/Order";
 export class HeaderComponent {
   constructor(private router: Router, private home: HomeService) {}
 
+  points!: number
+  link!:any;
+  request!: ProductQuantity[];
+
   refresh() {
     const currentUrl = window.location.href;
     // @ts-ignore
@@ -25,7 +29,6 @@ export class HeaderComponent {
     this.loyalityPoints()
   }
 
-  request!: ProductQuantity[];
 
   getListProduct() {
     this.home.loadPosts().subscribe(data => {
@@ -59,8 +62,6 @@ export class HeaderComponent {
     this.home.deleteProductFromOrder(ref).subscribe(()=>{this.getListProduct();this.refresh();});
   }
 
-  points!: number
-  link!:any;
   loyalityPoints() {
     this.home.lyaltypoints().subscribe(data => {
       this.points = data
