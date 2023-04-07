@@ -256,4 +256,10 @@ RetrievePickupById(idPickup:number){
   const options = { withCredentials: true };
   return this.http.get<Pickup>(this.url+`${idPickup}`,options);
 }
+//seller
+urlcountProductQuantityInOrderProduct="http://localhost:8081/Pickup/countProductQuantityInOrderProduct?idOrder=1&idProduct=1";
+countProductQuantityInOrderProduct(idOrder:number,idProduct:number){
+  const options = { withCredentials: true };
+  return this.http.get<number>(this.urlcountProductQuantityInOrderProduct+`${idOrder}`+'&idProduct='+`${idProduct}`,options);
+}
 }
