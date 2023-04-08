@@ -65,5 +65,5 @@ addForm(t7:NgForm){
       this.cities = [];
     }
   }
-
+  cinPattern = '^[0-9]{8}$';
 }

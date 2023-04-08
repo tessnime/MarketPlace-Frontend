@@ -92,4 +92,7 @@ export class AddPickupComponent {
  GetBuyerByOrder(idOrder:number){
    this.pickupService.GetBuyerByOrder(idOrder).subscribe(data=>{this.user=data});
  }
+ //controle saisir
+ phoneNumberPattern = '^[0-9]{8}$';
+
 }
