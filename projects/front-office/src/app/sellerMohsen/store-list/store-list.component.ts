@@ -21,6 +21,8 @@ ngOnInit(){
   this.CountPickupPending();
   this.CountPickupRefunbded();
   this.CountPickupReturned();
+  this.CountPickupAssigned();
+  this.CountPickupTakedSeller();
 
 }
 
@@ -48,6 +50,14 @@ ngOnInit(){
   }
   CountPickupReturned(){
     this.pickupService.CountPickupReturned().subscribe(data=>{this.nbCountPickupReturned=data});
+  }
+  cps!:number;
+  CountPickupAssigned(){
+    this.pickupService.CountPickupAssigned().subscribe(data=>{this.cps=data});
+  }
+  cpt!:number;
+  CountPickupTakedSeller(){
+  this.pickupService.CountPickupTakedSeller().subscribe(data=>{this.cpt=data});
   }
 
 }

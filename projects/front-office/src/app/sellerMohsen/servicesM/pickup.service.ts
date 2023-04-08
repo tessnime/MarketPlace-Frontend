@@ -139,7 +139,16 @@ export class PickupService {
       const options = { withCredentials: true };
       return this.http.get<number>(this.urlCountPickupReturned,options)
     }
-
+    urlCountPickupAssigned="http://localhost:8081/Pickup/countPickupAssignedSeller";
+    CountPickupAssigned(){
+      const options = { withCredentials: true };
+      return this.http.get<number>(this.urlCountPickupAssigned,options);
+    }
+    urlcountPickupTakedSeller="http://localhost:8081/Pickup/countPickupTakedSeller";
+    CountPickupTakedSeller(){
+      const options = { withCredentials: true };
+      return this.http.get<number>(this.urlcountPickupTakedSeller,options);
+    }
      //Agency
 
    //Url
@@ -193,7 +202,14 @@ export class PickupService {
     const options = { withCredentials: true };
     return this.http.get<number>('http://localhost:8081/Pickup/countPickupReturnedForAgency',options);
    }
-
+   countPickupAssignedForAgency(){
+    const options={withCredentials:true};
+    return this.http.get<number>('http://localhost:8081/Pickup/countPickupAssignedForAgency',options);
+   }
+   countPickupTakedForAgency(){
+    const options={withCredentials:true};
+    return this.http.get<number>('http://localhost:8081/Pickup/countPickupTakedForAgency',options);
+   }
 
  //Freelancer Stat
  countRequestRejectedFreelancer(){
@@ -223,6 +239,14 @@ export class PickupService {
  countPickupReturnedForfreelancer(){
   const options={withCredentials:true};
   return this.http.get<number>('http://localhost:8081/Pickup/countPickupReturnedForfreelancer',options);
+ }
+ countPickupAssignedForFreelancer(){
+  const options={withCredentials:true};
+  return this.http.get<number>('http://localhost:8081/Pickup/countPickupAssignedForFreelancer',options);
+ }
+ countPickupTakedForFreelancer(){
+  const options={withCredentials:true};
+  return this.http.get<number>('http://localhost:8081/Pickup/countPickupTakedForFreelancer',options);
  }
  RetrievePickupsByGovernoratBetweenStoreAndDeliveryMenFreelancer(){
   const options={withCredentials:true};
@@ -262,4 +286,5 @@ countProductQuantityInOrderProduct(idOrder:number,idProduct:number){
   const options = { withCredentials: true };
   return this.http.get<number>(this.urlcountProductQuantityInOrderProduct+`${idOrder}`+'&idProduct='+`${idProduct}`,options);
 }
+
 }

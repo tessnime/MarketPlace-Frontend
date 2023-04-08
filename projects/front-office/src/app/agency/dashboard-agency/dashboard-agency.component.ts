@@ -23,6 +23,8 @@ ngOnInit(){
   this.countPickupOnTheWayForAgency();
   this.countPickupRefundedForAgency();
   this.countPickupReturnedForAgency();
+  this.countPickupTakedForAgency();
+  this.countPickupAssignedForAgency();
 }
 
   GetUser(){
@@ -90,5 +92,13 @@ ngOnInit(){
    countPickupReturnedForAgency(){
     this.pickupService.countPickupReturnedForAgency().subscribe(data=>{this.nbrrdta=data});
 
+   }
+   cpafa!:number;
+   countPickupAssignedForAgency(){
+    this.pickupService.countPickupAssignedForAgency().subscribe(data=>{this.cpafa=data});
+   }
+   cpta!:number;
+   countPickupTakedForAgency(){
+    this.pickupService.countPickupTakedForAgency().subscribe(data=>{this.cpta=data});
    }
 }

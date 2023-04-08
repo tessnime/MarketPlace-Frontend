@@ -18,6 +18,8 @@ export class DashboardFreelancerComponent {
     this.countPickupReturnedForfreelancer();
     this.countRequestApprovedFreelancer();
     this.countRequestRejectedFreelancer();
+    this.countPickupAssignedForFreelancer();
+    this.countPickupTakedForFreelancer();
   }
   crrf!:number;
   countRequestRejectedFreelancer(){
@@ -51,5 +53,13 @@ export class DashboardFreelancerComponent {
    GetUser(){
     this.pickupService.getUser().subscribe(data=>{console.log(this.user); this.user=data});
   }
+  cpaff!:number;
+  countPickupAssignedForFreelancer(){
+    this.pickupService.countPickupAssignedForFreelancer().subscribe(data=>{this.cpaff=data});
+   }
+   cptff!:number;
+   countPickupTakedForFreelancer(){
+    this.pickupService.countPickupTakedForFreelancer().subscribe(data=>{this.cptff=data});
+   }
 
 }
