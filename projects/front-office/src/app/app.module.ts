@@ -81,7 +81,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { FrontModule  } from './front/front.module';
 import { NgImageSliderModule } from 'ng-image-slider';
-
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -164,7 +164,6 @@ import { NgImageSliderModule } from 'ng-image-slider';
     MatSnackBarModule,
     MatChipsModule,
     MatIconModule,
-    MatSnackBarModule,
     MatButtonModule,
     BrowserModule,
     NgImageSliderModule,
@@ -172,7 +171,8 @@ import { NgImageSliderModule } from 'ng-image-slider';
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    ToastrModule
 
   ],
   providers: [

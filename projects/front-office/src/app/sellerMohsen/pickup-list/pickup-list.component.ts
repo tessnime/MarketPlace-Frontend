@@ -8,6 +8,7 @@ import 'jspdf-autotable';
 import * as jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { map } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { map } from 'rxjs';
   styleUrls: ['./pickup-list.component.scss']
 })
 export class PickupListComponent {
-  constructor(private pickupService:PickupService,private http:HttpClient,private route:Router){}
+  constructor(private pickupService:PickupService,private http:HttpClient,private route:Router,private snackBar: MatSnackBar){}
   ngOnInit() {
     this.getPickupData();
   }
@@ -45,9 +46,13 @@ export class PickupListComponent {
         // Call the method to refresh the table data
         this.getPickupData();
         // Show a notification to indicate the pickup was deleted successfully
-      }
-
-      );
+        this.snackBar.open('The pickup Delated with success!', 'Close', {
+          duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition: 'end',
+          panelClass : ['green-snackbar'],
+        });
+      })
   }
   generatePDF1() {
     const doc = new jsPDF.default();

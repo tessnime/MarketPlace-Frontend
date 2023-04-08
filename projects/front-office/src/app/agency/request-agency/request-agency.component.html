@@ -43,14 +43,19 @@
               </div>
               <div class="contact-skill">
                 <span class="badge badge-pill">{{r.agencyDeliveryMan.governorate}}</span>
-                <span class="badge badge-pill">{{r.localDateTime}}</span>
+                <span class="badge badge-pill">{{r.pickup.city}}</span>
                 <div *ngIf="r.requestStatus==='APPROVED'; else notApproved">
                 <span class="badge badge-pill badge-success" >{{r.requestStatus}}</span>
                 </div>
                 <ng-template #notApproved>
-                  <div>
+                  <div *ngIf="r.requestStatus==='PENDING'; else notPENDING">
                       <span class="badge badge-pill badge-warning">{{r.requestStatus}}</span>
                   </div>
+              </ng-template>
+              <ng-template #notPENDING>
+                <div>
+                  <span class="badge badge-pill badge-danger">{{r.requestStatus}}</span>
+              </div>
               </ng-template>
               </div>
               <div class="profile-sort-desc">

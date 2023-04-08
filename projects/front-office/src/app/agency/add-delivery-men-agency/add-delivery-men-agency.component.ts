@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AgencyDeliveryMan } from 'Models/AgencyDeliveryMan';
 import { AgencyService } from '../../sellerMohsen/servicesM/agency.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-delivery-men-agency',
@@ -10,7 +11,7 @@ import { AgencyService } from '../../sellerMohsen/servicesM/agency.service';
   styleUrls: ['./add-delivery-men-agency.component.scss']
 })
 export class AddDeliveryMenAgencyComponent {
-  constructor(private agencyService:AgencyService,private route:ActivatedRoute,private r:Router){}
+  constructor(private agencyService:AgencyService,private route:ActivatedRoute,private r:Router,private snackBar: MatSnackBar){}
 
   idBranch!:number;
 ngOnInit(){
@@ -33,7 +34,14 @@ addForm(t7:NgForm){
   this.agencydm.gearmatricuel=t7.controls["gearMatricule"].value;
  }
 
- this.agencyService.AssignAgencyDeliveryManByBranch(this.agencydm,this.idBranch).subscribe(()=>{this.r.navigateByUrl("/agency/MyBranch")});
+ this.agencyService.AssignAgencyDeliveryManByBranch(this.agencydm,this.idBranch).subscribe(()=>{this.r.navigateByUrl("/agency/MyBranch"),
+ this.snackBar.open('The Delievry men added with success!', 'Close', {
+  duration: 3000,
+  verticalPosition: 'top',
+  horizontalPosition: 'end',
+  panelClass : ['green-snackbar'],
+});
+});
 }
 
 

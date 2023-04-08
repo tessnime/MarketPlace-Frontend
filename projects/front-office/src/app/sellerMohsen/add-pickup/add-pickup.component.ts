@@ -9,6 +9,7 @@ import { User } from 'Models/User';
 import { PickupService } from '../servicesM/pickup.service';
 import { StatusPickupSeller } from 'Models/Enum/StatusPickupSeller';
 import { StatusPickupBuyer } from 'Models/Enum/StatusPickupBuyer';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -18,7 +19,7 @@ import { StatusPickupBuyer } from 'Models/Enum/StatusPickupBuyer';
 })
 export class AddPickupComponent {
 
-  constructor(private pickupService:PickupService,private http:HttpClient,private r:ActivatedRoute,private route:Router){}
+  constructor(private pickupService:PickupService,private http:HttpClient,private r:ActivatedRoute,private route:Router,private snackBar: MatSnackBar){}
 
   idOrder!:number;
   idStore!:number;
@@ -45,7 +46,15 @@ export class AddPickupComponent {
     this.pickup.secondPhoneNumber=_t7.controls['secondphoneNumber'].value;
     this.pickup.availableDeliver=_t7.controls['availability'].value;
     this.pickupService.addPickup(this.pickup,this.idOrder,this.idStore).subscribe
-    (res =>{console.log('Pickup created');this.route.navigateByUrl('/Seller/pickups');})
+    (res =>{console.log('Pickup created');
+    this.route.navigateByUrl('/Seller/pickups');
+    this.snackBar.open('The pickup added with success!', 'Close', {
+      duration: 3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'end',
+      panelClass : ['green-snackbar'],
+    });
+  })
   };
 
   governorates = [

@@ -9,6 +9,7 @@ import { Request, Request as re } from 'Models/Request';
 import { AgencyService } from '../../sellerMohsen/servicesM/agency.service';
 import { PickupService } from '../../sellerMohsen/servicesM/pickup.service';
 import { RequestService } from '../../sellerMohsen/servicesM/request.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-pickup-list',
@@ -16,7 +17,7 @@ import { RequestService } from '../../sellerMohsen/servicesM/request.service';
   styleUrls: ['./pickup-list.component.scss']
 })
 export class PickupListComponent {
-  constructor(private pickupService:PickupService,private http: HttpClient,private requestService:RequestService,private agencyService:AgencyService,private route:ActivatedRoute,private r:Router){}
+  constructor(private pickupService:PickupService,private http: HttpClient,private requestService:RequestService,private agencyService:AgencyService,private route:ActivatedRoute,private r:Router,private snackBar: MatSnackBar){}
   idPickup!:number;
   ngOnInit(){
    this.RetrievePickupBetweenAgencyAndstore();
@@ -28,7 +29,14 @@ export class PickupListComponent {
     this.request1=new re;
     const selectedDeliveryManId = this.DeliveryManId;
     this.request1.requestStatus=RequestStatus.PENDING;
-    this.requestService.AssignRequestDeliveryManToPickup(this.request1,selectedDeliveryManId,this.idPickup).subscribe(res =>{console.log('Request created');});
+    this.requestService.AssignRequestDeliveryManToPickup(this.request1,selectedDeliveryManId,this.idPickup).subscribe(res =>{console.log('Request created');
+    this.snackBar.open('The Request added with success!', 'Close', {
+      duration: 3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'end',
+      panelClass : ['green-snackbar'],
+    });
+  });
     window.location.href = 'http://localhost:4200/agency/Requests';
   };
  pickup!:Pickup[];
