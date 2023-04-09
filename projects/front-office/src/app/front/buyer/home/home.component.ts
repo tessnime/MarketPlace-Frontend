@@ -3,7 +3,7 @@ import {Product} from "../../../../../../../Models/Product";
 import {Router} from "@angular/router";
 import {HomeService} from "../services/home.service";
 import { EventModel} from "../../../../../../../Models/EventModel";
-
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,7 @@ import { EventModel} from "../../../../../../../Models/EventModel";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  constructor(private router : Router,private home:HomeService) {
+  constructor(private router : Router,private home:HomeService,private cookieService: CookieService) {
   }
 
   countdowns: { [id: number]: { days: number, hours: number, minutes: number, seconds: number } } = {};
@@ -70,15 +70,16 @@ export class HomeComponent {
     this.router.navigate(["/buyer/details",id]);
   }
 
+  sess:boolean=false;
   ngOnInit():void
   {
+    this.eventDisplay();
     this.searchProduct(0,0,'','','','MOST_REQUESTED');
     this.lastVued();
-    this.eventDisplay();
-    this.updateCountdown();
-    setInterval(() => {
-      this.updateCountdown();
-    }, 1000);
+    this.home.sessionReteurn().subscribe(data=>{this.sess=data;if(this.sess){
+      this.lastVued();
+    }})
+
   }
 
   isLoading = false;
@@ -100,7 +101,7 @@ export class HomeComponent {
   request!:Product[];
   ev!:EventModel[];
   private e: EventModel | undefined;
-  Vued!:Product[];
+  Vued:Product[]=[];
 
   lastVued()
   {
@@ -109,7 +110,7 @@ export class HomeComponent {
 
   searchProduct(maxprix:number,minprix:number,nameProd:string,mark:string,categorie:string,filtre:String)
   {
-    this.home.searchProduct(maxprix,minprix,nameProd,mark,categorie,filtre).subscribe(data =>{this.request=data})
+    this.home.searchProduct(maxprix,minprix,nameProd,mark,categorie,filtre).subscribe(data =>{this.request=data;})
   }
 
 

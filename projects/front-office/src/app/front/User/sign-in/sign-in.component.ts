@@ -19,7 +19,7 @@ export class SignInComponent implements OnInit {
 
   constructor( private LoginUserService:LoginUserService ,private router:Router ,private route: ActivatedRoute){}
   ngOnInit() {
-   
+
   }
   userLogin(){
   this.loading =true;
@@ -28,7 +28,7 @@ export class SignInComponent implements OnInit {
    .subscribe
    (
     () => {
-      this.router.navigate(['/buyer/buyer/cart']);
+      this.router.navigate(['']);
     },
 
 error =>{

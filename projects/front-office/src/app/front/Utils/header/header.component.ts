@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {HomeService} from "../../buyer/services/home.service";
 import {ProductQuantity} from "../../../../../../../Models/ProductQuantity";
 import {Order} from "../../../../../../../Models/Order";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ import {Order} from "../../../../../../../Models/Order";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  constructor(private router: Router, private home: HomeService) {}
+  constructor(private router: Router, private home: HomeService,private cookieService: CookieService) {}
 
   points!: number
   link!:any;
@@ -22,11 +23,21 @@ export class HeaderComponent {
     window.history.replaceState(null, null, currentUrl);
     window.location.reload();
   }
+  sess:boolean=false;
 
   ngOnInit() {
-    this.getListProduct();
-    this.getBaskerOrder();
-    this.loyalityPoints()
+
+    this.home.sessionReteurn().subscribe(data=>{this.sess=data;if(this.sess){
+      this.getListProduct();
+      this.getBaskerOrder();
+      this.loyalityPoints();
+    }
+    else{
+      this.requestOrder=JSON.parse(this.cookieService.get('basket') || '{}');
+      this.request=this.requestOrder.productQuantities;
+    }
+    })
+
   }
 
 
@@ -45,21 +56,51 @@ export class HeaderComponent {
   }
   gotoFinalize()
   {
-    this.router.navigate(["buyer/cart/finaliseOrder"]);
+    this.home.sessionReteurn().subscribe(data=>{this.sess=data;if(this.sess) {
+      this.router.navigate(["buyer/cart/finaliseOrder"]);
+    }
+    else
+    {
+      this.router.navigate(["user/signin"]);
+    }});
   }
   gotoOrderSettings()
   {
     this.router.navigate(["buyer/Orders"]);
   }
-  requestOrder!: Order;
+  requestOrder: Order=new Order();
 
   getBaskerOrder() {
     this.home.loadOrder().subscribe(data => (this.requestOrder = data))
   }
 
+  basket:Order=new Order();
   deleteProductFromOrder(ref:string)
   {
-    this.home.deleteProductFromOrder(ref).subscribe(()=>{this.getListProduct();this.refresh();});
+    this.home.sessionReteurn().subscribe(data=>{this.sess=data;if(this.sess) {
+      this.home.deleteProductFromOrder(ref).subscribe(() => {
+        this.getListProduct();
+        this.refresh();
+      });
+    }
+    else
+    {
+      this.basket = JSON.parse(this.cookieService.get('basket') || '{}');
+      for (let i = 0; i < this.basket.productQuantities.length; i++) {
+        if (this.basket.productQuantities[i].product.reference === ref) {
+          this.basket.productQuantities.splice(i, 1); // remove productQuantity from array
+          i--; // decrement i to account for removed element
+        }
+      }
+      this.cookieService.set('basket', JSON.stringify(this.basket), {
+        sameSite: 'None',
+        secure: true,
+        domain: 'localhost',
+        path: '/'
+      });
+      this.refresh();
+    }
+    });
   }
 
   loyalityPoints() {

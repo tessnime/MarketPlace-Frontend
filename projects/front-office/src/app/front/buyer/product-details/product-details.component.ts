@@ -4,8 +4,10 @@ import {HomeService} from "../services/home.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Product} from "../../../../../../../Models/Product";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
-import set = Reflect.set;
 import {ProductQuantity} from "../../../../../../../Models/ProductQuantity";
+import {CookieService} from "ngx-cookie-service";
+import {Order} from "../../../../../../../Models/Order";
+
 
 @Component({
   selector: 'app-product-details',
@@ -14,7 +16,7 @@ import {ProductQuantity} from "../../../../../../../Models/ProductQuantity";
 })
 export class ProductDetailsComponent implements OnInit {
 
-  constructor(private router: Router, private home: HomeService, private snackBar: MatSnackBar, private ar: ActivatedRoute, private sanitizer: DomSanitizer) {
+  constructor(private router: Router, private home: HomeService, private snackBar: MatSnackBar, private ar: ActivatedRoute,private cookieService: CookieService, private sanitizer: DomSanitizer) {
   }
 
 
@@ -29,15 +31,23 @@ export class ProductDetailsComponent implements OnInit {
   quantityNumber: number = 1;
   productQuantity!: ProductQuantity;
 
-
+  // Save the basket or cart information in cookies
+  sess:boolean=false;
+ basket:Order=new Order();
   ngOnInit() {
-    this.idp = this.ar.snapshot.params['id'];
-    this.home.addNewLastVuedProduct(this.idp).subscribe();
-    this.home.getProductById(this.idp).subscribe(data => {
-      this.product = data;
-      this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.product.videoLink);
-      this.home.lastVude().subscribe(data => {
-        this.Vued = data
+
+    this.home.sessionReteurn().subscribe(data=>{this.sess=data;
+      this.idp = this.ar.snapshot.params['id'];
+      this.home.addNewLastVuedProduct(this.idp).subscribe();
+      this.home.getProductById(this.idp).subscribe(data => {
+        this.product = data;
+        this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.product.videoLink);
+        /*this.home.lastVude().subscribe(data => {
+           this.Vued = data;
+
+         });
+
+         */
       });
     });
   }
@@ -78,17 +88,72 @@ export class ProductDetailsComponent implements OnInit {
     container.scrollBy({ left: 300, behavior: 'smooth' });
   }
 
+  sum:number=0;
+  weight:number=0;
   addProductToCart() {
     if (this.quantityNumber != 0) {
       this.productQuantity = new ProductQuantity(); // initialize productQuantity here
-      this.productQuantity.quantity=this.quantityNumber;
-      this.productQuantity.product=this.product;
-      this.home.addProductToOrder(this.productQuantity).subscribe(() => {
-        this.ngOnInit();
+      this.productQuantity.quantity = this.quantityNumber;
+      this.productQuantity.product = this.product;
+
+      if (this.sess) {
+        this.home.addProductToOrder(this.productQuantity).subscribe(() => {
+          this.ngOnInit();
+          this.refresh();
+        });
+      } else {
+
+        if((this.cookieService.get('basket'))!='')
+          this.basket=JSON.parse(this.cookieService.get('basket') || '{}');
+        let verif=true;
+        let foundIndex = -1; // to store index of existing productQuantity in basket
+
+        for(let i=0;i<this.basket.productQuantities.length;i++)
+        {
+          if(this.basket.productQuantities[i].product.id==this.productQuantity.product.id)
+          {
+            verif=false;
+            foundIndex = i; // store index of existing productQuantity in basket
+            break;
+          }
+        }
+        if(verif)
+        {
+          this.basket.productQuantities = this.basket.productQuantities.concat(this.productQuantity);
+        } else {
+          // if existing productQuantity is found, update its quantity
+          this.basket.productQuantities[foundIndex].quantity += this.productQuantity.quantity;
+        }
+
+        // recalculate sum and weight based on updated basket
+        this.sum = 0;
+        this.weight = 0;
+
+        for (const pq of this.basket.productQuantities) {
+          this.sum += pq.quantity * pq.product.productPrice;
+          this.weight += pq.quantity * pq.product.productWeight;
+        }
+
+        // update delivery price based on the updated weight
+        if (this.weight <= 1) {
+          this.basket.deliveryPrice = 6;
+        } else if (this.weight <= 10) {
+          this.basket.deliveryPrice = 6 * this.weight;
+        } else {
+          this.basket.deliveryPrice = 60 + (this.weight - 10) * 2;
+        }
+        this.basket.sum = this.sum;
+        this.cookieService.set('basket', JSON.stringify(this.basket), {
+          sameSite: 'None',
+          secure: true,
+          domain: 'localhost',
+          path: '/'
+        });
         this.refresh();
-      });
+      }
     }
   }
+
 
 
   getFloor(integer: number): number {
