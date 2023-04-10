@@ -93,15 +93,13 @@ export class NewProductComponent implements OnInit {
     this.catgeoryService.getAllSubCategories().subscribe((sub: any[]) => { this.subcategries = sub });
 
     this.userService.getUserLoggidIn().subscribe((user: User) => {
-      this.user = user; this.stores = this.user.stores; console.log(user);
-      console.log(this.stores.length);
+      this.user = user; this.stores = this.user.stores;
 
       for (let i = 0; i < this.stores.length; i++) {
 
         this.storeNames.push({name:this.stores[i].name,code:i.toString()})
 
       }
-      console.log(this.storeNames);
     });
 
 
@@ -144,21 +142,19 @@ export class NewProductComponent implements OnInit {
   onUpload(event: { files: File[]; }) {
     let i = 0;
     for (let file of event.files) {
-      console.log(this.user);
-      let brandName = this.user.brandName;
-      const updatedFile = new File([file], brandName + file.name, { type: file.type });
-      this.uploadedFiles.push(updatedFile);
+      // let brandName = this.user.brandName;
+      // const updatedFile = new File([file], brandName + file.name, { type: file.type });
+      this.uploadedFiles.push(file);
       if (i == 0)
-        this.product.image = updatedFile.name;
+        this.product.image = file.name;
       if (i == 1)
-        this.product.image1 = updatedFile.name;
+        this.product.image1 = file.name;
       if (i == 2)
-        this.product.image2 = updatedFile.name;
+        this.product.image2 = file.name;
       if (i == 3)
-        this.product.image3 = updatedFile.name;
+        this.product.image3 = file.name;
       i++;
 
-      console.log(this.uploadedFiles);
     }
     //this will fire toast notification after image upload
     this.messageService.add({ severity: 'success', summary: 'File Uploaded', detail: '' });
@@ -166,7 +162,6 @@ export class NewProductComponent implements OnInit {
 
 
   add(F: NgForm) {
-    console.log(F);
     this.product.productPrice = this.value8;
     this.product.quantity = this.value3;
     this.product.productWeight = this.value4;
@@ -174,16 +169,17 @@ export class NewProductComponent implements OnInit {
     this.product.additionalDeliveryInstructions = this.value10;
     this.product.name = this.value2;
     this.product.productCategory.name = this.selectedSubAdvanced;
-    this.product.productCategory.setCategory(new ProductCategory);
-    this.product.productCategory.category.name = this.selectedCategoryAdvanced;
-    console.log('test' + this.value11)
+    console.log(this.product);
+    // for(let c of this.categries){
+    //   if(c.name==this.selectedCategoryAdvanced)
+    //   this.product.productCategory.setCategory(= c);
+
+    // }
     let i = 0;
     for (let s of this.value11) {
       this.product.storesNames[i] = s.name;
       i++;
     }
-    console.log(this.value11[0].name);
-    console.log(this.product);
     this.prodcutService.createAndAssignCategoryAndSubCategory(this.product).subscribe((res: any) => { console.log('Product created') })
   };
 

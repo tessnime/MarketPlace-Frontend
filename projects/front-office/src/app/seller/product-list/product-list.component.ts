@@ -30,26 +30,7 @@ export class ProductListComponent {
   ngOnInit() {
       this.productService.getAllProductsBySeller().subscribe(res=>{console.log(res);this.products=res});
 
-      this.sourceCities = [
-          { name: 'San Francisco', code: 'SF' },
-          { name: 'London', code: 'LDN' },
-          { name: 'Paris', code: 'PRS' },
-          { name: 'Istanbul', code: 'IST' },
-          { name: 'Berlin', code: 'BRL' },
-          { name: 'Barcelona', code: 'BRC' },
-          { name: 'Rome', code: 'RM' }];
-
-      this.targetCities = [];
-
-      this.orderCities = [
-          { name: 'San Francisco', code: 'SF' },
-          { name: 'London', code: 'LDN' },
-          { name: 'Paris', code: 'PRS' },
-          { name: 'Istanbul', code: 'IST' },
-          { name: 'Berlin', code: 'BRL' },
-          { name: 'Barcelona', code: 'BRC' },
-          { name: 'Rome', code: 'RM' }];
-
+  
       this.sortOptions = [
           { label: 'Price High to Low', value: '!productPrice' },
           { label: 'Price Low to High', value: 'productPrice' }
