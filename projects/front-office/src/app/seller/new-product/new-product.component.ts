@@ -86,13 +86,13 @@ export class NewProductComponent implements OnInit {
 
   ngOnInit() {
 
-    this.catgeoryService.getAllCategories().subscribe(cat => {
+    this.catgeoryService.getAllCategories().subscribe((cat: any[]) => {
       this.categries = cat;
 
     });
-    this.catgeoryService.getAllSubCategories().subscribe(sub => { this.subcategries = sub });
+    this.catgeoryService.getAllSubCategories().subscribe((sub: any[]) => { this.subcategries = sub });
 
-    this.userService.getUserLoggidIn().subscribe(user => {
+    this.userService.getUserLoggidIn().subscribe((user: User) => {
       this.user = user; this.stores = this.user.stores; console.log(user);
       console.log(this.stores.length);
 
@@ -184,7 +184,7 @@ export class NewProductComponent implements OnInit {
     }
     console.log(this.value11[0].name);
     console.log(this.product);
-    this.prodcutService.createAndAssignCategoryAndSubCategory(this.product).subscribe(res => { console.log('Product created') })
+    this.prodcutService.createAndAssignCategoryAndSubCategory(this.product).subscribe((res: any) => { console.log('Product created') })
   };
 
 

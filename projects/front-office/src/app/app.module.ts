@@ -83,7 +83,6 @@ import { FrontModule  } from './front/front.module';
 import { NgImageSliderModule } from 'ng-image-slider';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -164,7 +163,6 @@ import { NgImageSliderModule } from 'ng-image-slider';
     MatSnackBarModule,
     MatChipsModule,
     MatIconModule,
-    MatSnackBarModule,
     MatButtonModule,
     BrowserModule,
     NgImageSliderModule,
@@ -172,7 +170,8 @@ import { NgImageSliderModule } from 'ng-image-slider';
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    
 
   ],
   providers: [
