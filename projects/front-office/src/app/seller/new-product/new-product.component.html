@@ -18,7 +18,7 @@
             <div class="field col-12 md:col-4">
                 <span class="p-float-label">
                     <p-autoComplete inputId="autocomplete1" [(ngModel)]="selectedSubAdvanced"
-                        [suggestions]="filteredSubCategories" (completeMethod)="filterSubCategories($event)" name="selectedSubAdvanced"
+                        [suggestions]="filteredSubCategories" (completeMethod)="filterSubCategories($event)" field="name" name="selectedSubAdvanced"
                         ></p-autoComplete>
                     <label for="autocomplete1">SubCategory</label>
                 </span>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ProductStatus } from 'Models/Enum/ProductStatus';
 import { Product } from 'Models/Product';
@@ -13,8 +13,8 @@ import { UserService } from '../services/user.service';
 import { ProductFormDTO } from 'Models/ProductFormDTO';
 
 
-interface names{
-  name:string,code:string
+interface names {
+  name: string, code: string
 }
 @Component({
   selector: 'app-new-product',
@@ -23,7 +23,7 @@ interface names{
   providers: [MessageService]
 
 })
-export class NewProductComponent implements OnInit {
+export class NewProductComponent implements OnInit, DoCheck {
 
   product: ProductFormDTO = {
     name: '',
@@ -37,14 +37,14 @@ export class NewProductComponent implements OnInit {
     image2: '',
     image3: '',
     productCategory: new ProductCategory,
-    storesNames: []
+    storesNames: [],
   }
   user!: User;
   uploadedFiles: any[] = [];
 
   categries: any[] = [];
   subcategries: any[] = [];
-  storeNames: names[]=[] ;
+  storeNames: names[] = [];
 
   stores: Store[] = [];
 
@@ -52,9 +52,9 @@ export class NewProductComponent implements OnInit {
   filteredCategories: any[] = [];
   filteredSubCategories: any[] = [];
 
-  selectedCategoryAdvanced: string = '';
+  selectedCategoryAdvanced!: any;
 
-  selectedSubAdvanced: string = '';
+  selectedSubAdvanced!: any;
   value1: any;
 
   value2: any;
@@ -79,6 +79,19 @@ export class NewProductComponent implements OnInit {
   value12: any;
 
   constructor(private prodcutService: ProductSreviceService, private messageService: MessageService, private catgeoryService: CategoryService, private storeService: StoreServiceService, private userService: UserService) { }
+  ngDoCheck(): void {
+    for (let c of this.subcategries) {
+      if (this.selectedSubAdvanced != c)
+        this.selectedCategoryAdvanced = null;
+      else (this.selectedSubAdvanced == c)
+      this.selectedCategoryAdvanced = this.selectedSubAdvanced.category;
+    }
+  }
+
+
+  ngOnChanges(changes: SimpleChanges): void {
+
+  }
 
 
 
@@ -90,14 +103,16 @@ export class NewProductComponent implements OnInit {
       this.categries = cat;
 
     });
-    this.catgeoryService.getAllSubCategories().subscribe((sub: any[]) => { this.subcategries = sub });
+    this.catgeoryService.getAllSubCategories().subscribe((sub: any[]) => {
+      this.subcategries = sub
+    });
 
     this.userService.getUserLoggidIn().subscribe((user: User) => {
       this.user = user; this.stores = this.user.stores;
 
       for (let i = 0; i < this.stores.length; i++) {
 
-        this.storeNames.push({name:this.stores[i].name,code:i.toString()})
+        this.storeNames.push({ name: this.stores[i].name, code: i.toString() })
 
       }
     });
@@ -168,13 +183,16 @@ export class NewProductComponent implements OnInit {
     this.product.description = this.value12;
     this.product.additionalDeliveryInstructions = this.value10;
     this.product.name = this.value2;
-    this.product.productCategory.name = this.selectedSubAdvanced;
-    console.log(this.product);
-    // for(let c of this.categries){
-    //   if(c.name==this.selectedCategoryAdvanced)
-    //   this.product.productCategory.setCategory(= c);
+    //this.product.productCategory.name = this.selectedSubAdvanced;
 
-    // }
+    for (let c of this.subcategries) {
+      if (c.name == this.selectedSubAdvanced.name) {
+        this.product.productCategory.category = c;
+        //this.product.productCategory.category.category=c.category;
+      }
+    }
+    // this.product.productCategory.setCategory(new ProductCategory);
+    // this.product.productCategory.category.name = this.selectedCategoryAdvanced;
     let i = 0;
     for (let s of this.value11) {
       this.product.storesNames[i] = s.name;
