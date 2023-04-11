@@ -53,6 +53,7 @@ export class NewProductComponent implements OnInit, DoCheck {
   filteredSubCategories: any[] = [];
 
   selectedCategoryAdvanced!: any;
+  joker!: any;
 
   selectedSubAdvanced!: any;
   value1: any;
@@ -81,19 +82,15 @@ export class NewProductComponent implements OnInit, DoCheck {
   constructor(private prodcutService: ProductSreviceService, private messageService: MessageService, private catgeoryService: CategoryService, private storeService: StoreServiceService, private userService: UserService) { }
   ngDoCheck(): void {
     for (let c of this.subcategries) {
-      if (this.selectedSubAdvanced != c)
-        this.selectedCategoryAdvanced = null;
-      else (this.selectedSubAdvanced == c)
-      this.selectedCategoryAdvanced = this.selectedSubAdvanced.category;
+      if (this.selectedSubAdvanced == c) {
+        this.selectedCategoryAdvanced = this.selectedSubAdvanced.category; break;
+      }
+      else {
+        this.selectedCategoryAdvanced = this.joker;
+      }
+
     }
   }
-
-
-  ngOnChanges(changes: SimpleChanges): void {
-
-  }
-
-
 
 
 
