@@ -34,4 +34,13 @@ export class ProductSreviceService {
     return this.http.post<Product>(this.url+'CreateProductAndAssignCatAndSub',product,options)
 
 }
+
+uploadFile(file: File): Observable<any> {
+  const options = { withCredentials: true };
+
+  const formData: FormData = new FormData();
+  formData.append('file', file, file.name);
+
+  return this.http.post<any>(this.url+'upload', formData,options);
+}
 }

@@ -1,4 +1,11 @@
 <div class="card">
+    <h4>Add products via Excel File</h4>
+<input  type="file" (change)="onFileSelected($event)">
+<button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-outlined" (click)="onExcel()"></button>
+
+</div>
+<div class="card">
+    <h3><strong>Product Form</strong> </h3>
     <form #form="ngForm" (ngSubmit)="add(form)">
         <div class="grid p-fluid mt-3">
             <div class="field col-12 md:col-4">

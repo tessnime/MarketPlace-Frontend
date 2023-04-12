@@ -78,6 +78,7 @@ export class NewProductComponent implements OnInit, DoCheck {
 
   value11: any[] = [];
   value12: any;
+  selectedFile!: File;
 
   constructor(private prodcutService: ProductSreviceService, private messageService: MessageService, private catgeoryService: CategoryService, private storeService: StoreServiceService, private userService: UserService) { }
   ngDoCheck(): void {
@@ -198,6 +199,18 @@ export class NewProductComponent implements OnInit, DoCheck {
     this.prodcutService.createAndAssignCategoryAndSubCategory(this.product).subscribe((res: any) => { console.log('Product created') })
   };
 
-
+  onFileSelected(event:any) {
+    this.selectedFile = <File>event.target.files[0];
+  }
+  onExcel() {
+    this.prodcutService.uploadFile(this.selectedFile).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 
 }
