@@ -50,4 +50,14 @@ urlretrieveDeliveryMenTOPickup="http://localhost:8081/AgencyDeliveryMan/Retrieve
     const options = { withCredentials: true };
     return this.http.get<number>(this.urlcountDeliveryMenInBranch+`${idBranch}`,options)
    }
+   urlupdatebRANCHwithMAP="http://localhost:8081/AgencyBranch/updatebRANCHwithMAP?idBranch=";
+   updatebRANCHwithMAP(idBranch:number,agencyBranch:AgencyBranch){
+    const options = { withCredentials: true };
+     return this.http.put<AgencyBranch>(this.urlupdatebRANCHwithMAP+`${idBranch}`,agencyBranch,options);
+   }
+   urlRetrieveAgencyBranch="http://localhost:8081/AgencyBranch/RetrieveAgencyBranch?id=";
+   RetrieveAgencyBranch(idBranch:number){
+    const options = { withCredentials: true };
+    return this.http.get<AgencyBranch>(this.urlRetrieveAgencyBranch+`${idBranch}`,options);
+   }
 }

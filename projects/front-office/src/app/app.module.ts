@@ -82,7 +82,9 @@ import {MatInputModule} from "@angular/material/input";
 import { FrontModule  } from './front/front.module';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { ToastrModule } from 'ngx-toastr';
-
+import { CarDashboardComponent } from './freelancer/car-dashboard/car-dashboard.component';
+import { AgmCoreModule } from '@agm/core';
+import { AddBranchInMapComponent } from './agency/add-branch-in-map/add-branch-in-map.component';
 
 @NgModule({
   declarations: [
@@ -115,6 +117,8 @@ import { ToastrModule } from 'ngx-toastr';
     TrackOrderByAgencyComponent,
     AddPickupComponent,
     ProductListComponent,
+    CarDashboardComponent,
+    AddBranchInMapComponent,
   ],
   imports: [
     BrowserModule,
@@ -172,8 +176,10 @@ import { ToastrModule } from 'ngx-toastr';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
-    ToastrModule
-
+    ToastrModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDQCUA-GfJipPTO6s9N-cJr7SUHinNMFGY'
+    })
   ],
   providers: [
     {

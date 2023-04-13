@@ -286,5 +286,10 @@ countProductQuantityInOrderProduct(idOrder:number,idProduct:number){
   const options = { withCredentials: true };
   return this.http.get<number>(this.urlcountProductQuantityInOrderProduct+`${idOrder}`+'&idProduct='+`${idProduct}`,options);
 }
-
+//Freelancer
+urlkilometreTotalConsommerParFreelancerDelivery="http://localhost:8081/Pickup/kilometreTotalConsommerParFreelancerDelivery";
+kilometreTotalConsommerParFreelancerDelivery(){
+  const options = { withCredentials:true };
+return this.http.get<number>(this.urlkilometreTotalConsommerParFreelancerDelivery,options);
+}
 }

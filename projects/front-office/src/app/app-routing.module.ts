@@ -44,6 +44,7 @@ import {OrdersSettingComponent} from "./front/buyer/orders-setting/orders-settin
 
 import { SignInComponent } from './front/User/sign-in/sign-in.component';
 import { RegisterComponent } from './front/User/register/register.component';
+import { AddBranchInMapComponent } from './agency/add-branch-in-map/add-branch-in-map.component';
 
 
 
@@ -78,6 +79,7 @@ const routes: Routes = [
     {path:'MyBranch',component:BranchListAgencyComponent},
     {path:'MyBranch/:idBranch',component:AddDeliveryMenAgencyComponent},
     {path:'BranchM',component:BranchManagementComponent},
+    {path:'Branch/:idBranch',component:AddBranchInMapComponent},
     {path:'BranchM/:idBranch',component:DeliveryMListAgencyComponent},
     {path:'MyPickups',component:MyPickupListAgencyComponent},
     {path:'MyPickups/track/:idPickup',component:TrackOrderByAgencyComponent}

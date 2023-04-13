@@ -13,7 +13,7 @@
           </h4>
           <p class="font-18 max-width-600">
 
-            Delivery management is crucial for the success of any <a  a [routerLink]="['/Seller/stores']"><strong>Store</strong> </a> It ensures that products are delivered on time and in good condition,
+            Delivery management is crucial for the success of any <a [routerLink]="['/Seller/stores']"><strong>Store</strong> </a> It ensures that products are delivered on time and in good condition,
              which in turn leads to happy customers and increased sales.
           </p>
         </div>
@@ -148,5 +148,11 @@
       </div>
     </div>
 
+    <h1>{{ title }}</h1>
 
+    <!-- this creates a google map on the page with the given lat/lng from -->
+    <!-- the component as the initial center of the map: -->
+    <agm-map [latitude]="lat" [longitude]="lng">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
 

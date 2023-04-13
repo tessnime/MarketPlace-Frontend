@@ -37,9 +37,9 @@ export class AppMenuComponent implements OnInit {
             ]
         },
           {
-              label: 'Utilities',
+              label: 'My Car',
               items: [
-                  { label: 'PrimeIcons', icon: 'pi pi-fw pi-prime', routerLink: ['/utilities/icons'] },
+                  { label: 'Dashboard', icon: 'pi pi-fw pi-prime', routerLink: ['/utilities/icons'] },
                   { label: 'PrimeFlex', icon: 'pi pi-fw pi-desktop', url: ['https://www.primefaces.org/primeflex/'], target: '_blank' },
               ]
           },

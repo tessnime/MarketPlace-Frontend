@@ -101,4 +101,5 @@ ngOnInit(){
    countPickupTakedForAgency(){
     this.pickupService.countPickupTakedForAgency().subscribe(data=>{this.cpta=data});
    }
+   
 }
