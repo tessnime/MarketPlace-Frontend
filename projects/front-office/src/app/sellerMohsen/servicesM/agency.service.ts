@@ -60,4 +60,5 @@ urlretrieveDeliveryMenTOPickup="http://localhost:8081/AgencyDeliveryMan/Retrieve
     const options = { withCredentials: true };
     return this.http.get<AgencyBranch>(this.urlRetrieveAgencyBranch+`${idBranch}`,options);
    }
+  
 }

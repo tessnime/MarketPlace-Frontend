@@ -59,7 +59,5 @@ ngOnInit(){
   CountPickupTakedSeller(){
   this.pickupService.CountPickupTakedSeller().subscribe(data=>{this.cpt=data});
   }
-  title = 'My first AGM project';
-  lat = 51.678418;
-  lng = 7.809007;
+ 
 }

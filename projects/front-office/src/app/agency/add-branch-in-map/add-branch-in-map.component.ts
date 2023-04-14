@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { AgencyBranch } from 'Models/AgencyBranch';
 import { AgencyService } from '../../sellerMohsen/servicesM/agency.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-branch-in-map',
@@ -10,7 +11,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./add-branch-in-map.component.scss']
 })
 export class AddBranchInMapComponent {
-constructor(private agencyService:AgencyService,private router:ActivatedRoute){}
+constructor(private agencyService:AgencyService,private router:ActivatedRoute,private snackBar: MatSnackBar,private r:Router){}
 agencyBranch!:AgencyBranch;
 idBranch!:number;
 
@@ -30,13 +31,14 @@ addForm(t7: NgForm) {
 
     // Call the updatebRANCHwithMAP() method to update the agency branch on the server
     this.agencyService.updatebRANCHwithMAP(this.idBranch, agencyBranch).subscribe(() => {
-      console.log('Agency branch updated successfully');
-    }, (error) => {
-      console.error('Failed to update agency branch', error);
-    });
-  }, (error) => {
-    console.error('Failed to retrieve agency branch', error);
-  });
+      this.snackBar.open('The Position added with success!', 'Close', {
+       duration: 3000,
+       verticalPosition: 'top',
+       horizontalPosition: 'end',
+       panelClass : ['green-snackbar'],
+     }),this.r.navigateByUrl('/');
+    } );
+  },);
 }
 title = 'My first AGM project';
   lat !:number;
@@ -44,4 +46,5 @@ title = 'My first AGM project';
   RetrieveAgencyBranch(idBranch:number){
    this.agencyService.RetrieveAgencyBranch(idBranch).subscribe(data=>{this.agencyBranch=data})
   }
+
 }

@@ -46,11 +46,13 @@
           </form>
         </div>
         <div class="col-md-6 col-sm-12 text-center">
-
+          <div *ngIf="agencyBranch.x">
             <agm-map [latitude]="agencyBranch.x" [longitude]="agencyBranch.y">
-              <agm-marker [latitude]="agencyBranch.x" [longitude]="agencyBranch.y"></agm-marker>
-            </agm-map>
 
+              <agm-marker [latitude]="agencyBranch.x" [longitude]="agencyBranch.y"></agm-marker>
+
+            </agm-map>
+          </div>
         </div>
        </div>
       </div>

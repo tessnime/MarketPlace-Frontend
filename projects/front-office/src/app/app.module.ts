@@ -85,6 +85,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { CarDashboardComponent } from './freelancer/car-dashboard/car-dashboard.component';
 import { AgmCoreModule } from '@agm/core';
 import { AddBranchInMapComponent } from './agency/add-branch-in-map/add-branch-in-map.component';
+import { AgencyMapComponent } from './agency/agency-map/agency-map.component';
 
 @NgModule({
   declarations: [
@@ -119,6 +120,7 @@ import { AddBranchInMapComponent } from './agency/add-branch-in-map/add-branch-i
     ProductListComponent,
     CarDashboardComponent,
     AddBranchInMapComponent,
+    AgencyMapComponent,
   ],
   imports: [
     BrowserModule,
