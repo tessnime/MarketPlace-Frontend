@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Shipping } from 'Models/Shipping';
 import { User } from 'Models/User';
 import { LoginUserService } from '../Services/login-user.service';
+import { NgForm } from '@angular/forms';
+import { Role } from 'Models/Role';
 
 
 
@@ -21,7 +23,7 @@ export class RegisterComponent  implements OnInit{
     governorate: "",
     city: "",
     gpsPoint: "",
-    buyer: new User()
+    buyer:new User(),
   };
   user:  User  = new User();
 
@@ -31,7 +33,8 @@ export class RegisterComponent  implements OnInit{
 
   }
 
-
+idRole!:number;
+idUser!:number;
   ngOnInit(): void {
 
   }
@@ -39,22 +42,20 @@ export class RegisterComponent  implements OnInit{
     this.ROLE = role;
   }
 
-  Create(){
+  Create(t7:NgForm){
     console.log(this.user);
-    if (this.ROLE == 'buyer') {
-
-      this.user.enabled==true;
-      console.log(this.user);
-    }
-    else{
-      this.user.enabled==false;
-    }
+    this.setRoleTo(this.ROLE);
+  /* this.idRole=this.route.snapshot.params['idRole'];
+   this.idUser=this.route.snapshot.params['idUser'];*/
+    this.LoginUserService.affecteRole(this.idRole,this.idUser).subscribe(data=>{this.ROLE=data});
+    this.user.governorate=t7.controls["governorate"].value;
+    this.user.city=t7.controls["city"].value;
     this.LoginUserService.register(this.user).subscribe(()=>{
-
+   
      alert("Successfully User is register")
     },
     ()=>alert("Sorry User not register"));
-
+    
 
   }
 
@@ -94,7 +95,8 @@ export class RegisterComponent  implements OnInit{
     }
   }
 
+ 
 
-
+  
 
   }

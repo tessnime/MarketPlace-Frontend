@@ -96,15 +96,7 @@ const routes: Routes = [
 { path: 'user/signin', component: SignInComponent },
 { path: 'user/register', component: RegisterComponent },
 
-/*{
-  path:'user',component:HomeComponent,
-  children:[
-    { path: '', component: SignInComponent },
-    { path: 'user/signin', component: SignInComponent },
-    { path: 'user/register', component: RegisterComponent }
-  ]
-},
-*/
+
 
 {
   path:'Seller',component:sellerlayoutCMohsen,

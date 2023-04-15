@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute  } from '@angular/router';
 import { first } from 'rxjs';
 import { LoginUserService } from '../Services/login-user.service';
-
+import { CookieService } from 'ngx-cookie-service';
+import { User } from 'Models/User';
+import { RoleType } from 'Models/Enum/RoleType';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,8 +18,9 @@ export class SignInComponent implements OnInit {
   //submitted = false;
   //returnUrl!: string;
   error = '';
-
-  constructor( private LoginUserService:LoginUserService ,private router:Router ,private route: ActivatedRoute){}
+   user:  User  = new User();;
+  role!:string;
+  constructor( public LoginUserService:LoginUserService ,private router:Router ,private route: ActivatedRoute,private cookieService: CookieService ){}
   ngOnInit() {
    
   }
@@ -28,8 +31,19 @@ export class SignInComponent implements OnInit {
    .subscribe
    (
     () => {
-      this.router.navigate(['/buyer/buyer/cart']);
-    },
+      this.cookieService.get('accessToken');
+      
+     this.LoginUserService.getRole().subscribe(data=>{this.role=data
+      alert(data)
+    if (this.role === 'BUYER') {
+      this.router.navigate(['/']); 
+    } else if (this.role === 'SELLER') {
+      this.router.navigate(['/store']); 
+    }else if (this.role === 'DELIVERYMEN') {
+      this.router.navigate(['/freelancer']);  
+    }
+  });
+     },
 
 error =>{
   this.error =error;
@@ -37,5 +51,7 @@ error =>{
 });
 
   }
+
+ 
 
 }

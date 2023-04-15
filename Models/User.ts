@@ -17,9 +17,9 @@ export class User {
   tokenExpired!: boolean;
   banned!: boolean;
   phoneNumber!: string;
-  BirthDate!: Date;
+  birthDate!: Date;
   image!: string;
-  genderType!: GenderType;
+  gender!:string;
   identity!: string;
   brandName!: string;
   brandLogo!: string;
@@ -46,4 +46,5 @@ export class User {
   requestsAgencys: Request[] = [];
   agencyBranches: AgencyBranch[] = [];
   supplierRequests: SupplierRequest[] = [];
+ 
 }

@@ -26,7 +26,7 @@
   <!--====== Main App ======-->
   <div id="app">
     <!--====== Main Header ======-->
-    <app-header></app-header>
+   <!--<app-header></app-header>--> 
     <!--====== End - Main Header ======-->
 
     <!--====== App Content ======-->
@@ -80,7 +80,7 @@
                   <div class="l-f-o__pad-box">
                     <h1 class="gl-h1">PERSONAL INFORMATION</h1>
 
-                    <form class="l-f-o__form" name="form"(ngSubmit)="Create()" #f="ngForm">
+                    <form class="l-f-o__form" name="form"(ngSubmit)="Create(f)" #f="ngForm">
                       <div class="gl-s-api">
                         <div class="u-s-m-b-15">
                           <button
@@ -144,21 +144,20 @@
 
                           <input type="date" id="start" name="trip-start"
 
-                                 min="1991-01-01" max="2005-12-31"  [(ngModel)]="user.BirthDate" >
+                                 min="1991-01-01" max="2005-12-31"  [(ngModel)]="user.birthDate" >
 
                           <!--====== End - Date of Birth Select-Box ======-->
 
 
                         <div class="u-s-m-b-30">
-                          <label class="gl-label" for="gender">GENDER</label
+                          <label class="gl-label" for="gender">GENDER *</label
                           ><select
                             class="select-box select-box--primary-style u-w-100"
-                            id="gender" name="gender"  [(ngModel)]="user.genderType"
+                            id="gender" name="gender"  [(ngModel)]="user.gender"   
                           >
-
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Other">Other</option>
+                           <option value="MAN">MAN</option>
+                            <option value="WOMEN">WOMEN</option>
+                            <option value="OTHER">OTHER</option>
                           </select>
                         </div>
                       </div>
