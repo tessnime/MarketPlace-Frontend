@@ -286,6 +286,18 @@ countProductQuantityInOrderProduct(idOrder:number,idProduct:number){
   const options = { withCredentials: true };
   return this.http.get<number>(this.urlcountProductQuantityInOrderProduct+`${idOrder}`+'&idProduct='+`${idProduct}`,options);
 }
+
+urlgetStoreByPickup="http://localhost:8081/Pickup/getStoreByPickup?idPickup=";
+getStoreByPickup(idPickup:number){
+const options = { withCredentials: true };
+return this.http.get<Store>(this.urlgetStoreByPickup+`${idPickup}`,options);
+}
+
+
+
+
+
+
 //Freelancer
 urlkilometreTotalConsommerParFreelancerDelivery="http://localhost:8081/Pickup/kilometreTotalConsommerParFreelancerDelivery";
 kilometreTotalConsommerParFreelancerDelivery(){

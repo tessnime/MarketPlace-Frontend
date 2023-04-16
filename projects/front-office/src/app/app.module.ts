@@ -86,6 +86,9 @@ import { CarDashboardComponent } from './freelancer/car-dashboard/car-dashboard.
 import { AgmCoreModule } from '@agm/core';
 import { AddBranchInMapComponent } from './agency/add-branch-in-map/add-branch-in-map.component';
 import { AgencyMapComponent } from './agency/agency-map/agency-map.component';
+import { MapDetailsAgencyComponent } from './agency/map-details-agency/map-details-agency.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MapOfPickupStoreComponent } from './agency/map-of-pickup-store/map-of-pickup-store.component';
 
 @NgModule({
   declarations: [
@@ -121,6 +124,8 @@ import { AgencyMapComponent } from './agency/agency-map/agency-map.component';
     CarDashboardComponent,
     AddBranchInMapComponent,
     AgencyMapComponent,
+    MapDetailsAgencyComponent,
+    MapOfPickupStoreComponent,
   ],
   imports: [
     BrowserModule,
@@ -179,6 +184,7 @@ import { AgencyMapComponent } from './agency/agency-map/agency-map.component';
     MatFormFieldModule,
     MatInputModule,
     ToastrModule,
+    MatDialogModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDQCUA-GfJipPTO6s9N-cJr7SUHinNMFGY'
     })

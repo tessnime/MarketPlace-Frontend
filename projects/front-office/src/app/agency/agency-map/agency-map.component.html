@@ -18,14 +18,12 @@
       </div>
       <div class="pd-20 card-box mb-30 ">
 
-
         <agm-map [latitude]="lat" [longitude]="lng" [zoom]="5">
           <div *ngFor="let b of branch">
             <div *ngIf="b.x">
-          <agm-marker [latitude]="b.x" [longitude]="b.y"></agm-marker>
-          <agm-info-window [disableAutoPan]="true">
-            <strong >{{ b.brandName }}</strong>
-          </agm-info-window>
+          <agm-marker [latitude]="b.x" [longitude]="b.y" [markerClickable]="true"(markerClick)="markerClick(b)">
+            <agm-info-window><strong>{{b.brandName}}</strong></agm-info-window>
+          </agm-marker>
         </div>
       </div>
     </agm-map>

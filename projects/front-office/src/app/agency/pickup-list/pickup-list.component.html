@@ -30,18 +30,23 @@
               <tr>
                 <th class="table-plus datatable-nosort">#Traking Id</th>
                 <th>Sum</th>
-                <th>Store:Governorate - City</th>
-                <th>Pickup:Governorate - City</th>
+                <th>Store</th>
+                <th>Buyer</th>
                 <th>Nb Requests</th>
                 <th>Creation Date</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let p of pickup">
+              <tr *ngFor="let p of pickup;let i=index">
                 <td class="table-plus">{{p.codePickup}}</td>
                 <td>{{p.sum}}</td>
-                <td>{{p.store.governorate}}-{{p.store.city}}</td>
+                <td *ngFor="let s of store">{{s.governorate}}-{{s.city}}
+                  <div *ngIf="s.x">
+               <a (click)="markerClick(s)"> <i class="bi bi-geo-fill">
+                  </i></a>
+                </div>
+                </td>
                 <td>{{p.governorate}}-{{p.city}}</td>
                 <td>{{p.nbRequest}}</td>
                 <td>{{p.dateCreationPickup}}</td>

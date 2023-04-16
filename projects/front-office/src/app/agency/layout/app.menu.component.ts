@@ -41,11 +41,12 @@ export class AppMenuComponent implements OnInit {
             items: [
                 { label: 'Add Branch', icon: 'pi pi-fw pi-id-card', routerLink: ['/agency/addBranch'] },
                 { label: 'Add Delivery Men', icon: 'pi pi-fw pi-check-square', routerLink: ['/agency/MyBranch'] },
-                { label: 'My Branch', icon: 'pi pi-fw pi-bookmark', routerLink: ['/agency/BranchM'] }
+                { label: 'My Branch', icon: 'pi pi-fw pi-bookmark', routerLink: ['/agency/BranchM'] },
+                { label: 'My Map', icon: 'pi pi-fw pi-bookmark', routerLink: ['/agency/MyMap'] }
             ]
         },
             {
-                label: 'Utilities',
+                label: 'My Map',
                 items: [
                     { label: 'PrimeIcons', icon: 'pi pi-fw pi-prime', routerLink: ['/utilities/icons'] },
                     { label: 'PrimeFlex', icon: 'pi pi-fw pi-desktop', url: ['https://www.primefaces.org/primeflex/'], target: '_blank' },
