@@ -14,11 +14,6 @@
               <li class="breadcrumb-item active" aria-current="page">
                 Pickups
               </li>
-              <li>
-              <button class="btn btn-light " aria-current="page" (click)="generatePDF3()" style="margin-left: 1260px;">
-                PrintAll
-              </button>
-              </li>
             </ol>
           </nav>
         </div>
@@ -61,7 +56,7 @@
                     <div
                       class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
                     >
-                      <a class="dropdown-item" (click)="generatePDF()"
+                      <a class="dropdown-item" (click)="generatePDF(p.id)"
                         ><i class="dw dw-eye"></i> Print</a
                       >
                       <a class="dropdown-item" [routerLink]="['/Seller/pickups/update',p.id]"
@@ -79,6 +74,9 @@
             </tbody>
 
           </table>
+          <button class="btn btn-light " aria-current="page" (click)="generatePDF3()">
+            PrintAll
+          </button>
           <pagination-controls (pageChange)="onPageChange($event)"
   [maxSize]="10" [(ngModel)]="itemsPerPage" [(ngModel)]="totalItems"
   [(ngModel)]="p"></pagination-controls>

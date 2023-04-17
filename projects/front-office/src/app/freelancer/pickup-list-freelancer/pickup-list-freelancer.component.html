@@ -32,18 +32,27 @@
               <tr>
                 <th class="table-plus datatable-nosort">#Traking Id</th>
                 <th>Sum</th>
-                <th>Governorate - City</th>
+                <th>Store</th>
+                <th>Buyer</th>
                 <th>Nb Requests</th>
+                <th>Connects</th>
                 <th>Creation Date</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let p of pickup">
+              <tr *ngFor="let p of pickup;let i=index">
                 <td class="table-plus">{{p.codePickup}}</td>
                 <td>{{p.sum}}</td>
+                <td >{{store[i].governorate}}-{{store[i].city}}
+                  <div *ngIf="store[i].x">
+               <a (click)="markerClick(store[i])"> <i class="bi bi-geo-fill">
+                  </i></a>
+                </div>
+                </td>
                 <td>{{p.governorate}}-{{p.city}}</td>
                 <td>{{p.nbRequest}}</td>
+                <td>{{p.points}}</td>
                 <td>{{p.dateCreationPickup}}</td>
                 <td>
                   <a
@@ -68,7 +77,7 @@
                       <div class="modal-content">
                         <div class="modal-body text-center font-18">
                           <h4 class="padding-top-30 mb-30 weight-500">
-                            Are you sure you want to continue?
+                            Are you sure you want to take the pickup?
                           </h4>
                           <form #addform="ngForm" (ngSubmit)="addForm(addform)" >
                             <br>

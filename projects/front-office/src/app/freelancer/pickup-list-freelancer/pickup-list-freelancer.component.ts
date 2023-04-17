@@ -8,6 +8,10 @@ import { Request } from 'Models/Request';
 import { PickupService } from '../../sellerMohsen/servicesM/pickup.service';
 import { RequestService } from '../../sellerMohsen/servicesM/request.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { forkJoin } from 'rxjs';
+import { Store } from 'Models/Store';
+import { MapOfPickupStoreComponent } from '../../agency/map-of-pickup-store/map-of-pickup-store.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-pickup-list-freelancer',
@@ -15,7 +19,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./pickup-list-freelancer.component.scss']
 })
 export class PickupListFreelancerComponent {
-  constructor(private pickupService:PickupService,private http: HttpClient,private requestService:RequestService,private route:ActivatedRoute,private r:Router,private snackBar: MatSnackBar){}
+  constructor(private pickupService:PickupService,private http: HttpClient,private requestService:RequestService,
+    private route:ActivatedRoute,private r:Router,private snackBar: MatSnackBar,private dialog: MatDialog){}
 ngOnInit(){
   this.RetrievePickupsByGovernoratBetweenStoreAndDeliveryMenFreelancer();
 }
@@ -37,13 +42,31 @@ addForm(_t77:NgForm){
   window.location.href = 'http://localhost:4200/freelancer/requests';
 
 };
+store:Store[]=[] ;
 
  pickup!:Pickup[];
  RetrievePickupsByGovernoratBetweenStoreAndDeliveryMenFreelancer(){
-  this.pickupService.RetrievePickupsByGovernoratBetweenStoreAndDeliveryMenFreelancer().subscribe(data=>{this.pickup=data});
-
+  this.pickupService.RetrievePickupsByGovernoratBetweenStoreAndDeliveryMenFreelancer().subscribe(data=>{this.pickup=data;
+    const store=data.map(a=>this.pickupService.getStoreByPickup(a.id));
+    forkJoin(store).subscribe((results:Store[])=>{
+     this.store=results;console.log(results)
+    })})
  }
  selectPickup(id: number) {
   this.idPickup = id;
+}
+markerClick(store: Store) {
+  const dialogRef = this.dialog.open(MapOfPickupStoreComponent, {
+    data: { store },
+    width      : '100%',
+    maxWidth   : '400px',
+    height     : 'auto',
+    hasBackdrop: true,
+    maxHeight  : '700px',
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+  });
 }
 }

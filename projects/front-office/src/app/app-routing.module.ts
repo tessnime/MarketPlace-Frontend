@@ -46,6 +46,7 @@ import { SignInComponent } from './front/User/sign-in/sign-in.component';
 import { RegisterComponent } from './front/User/register/register.component';
 import { AddBranchInMapComponent } from './agency/add-branch-in-map/add-branch-in-map.component';
 import { AgencyMapComponent } from './agency/agency-map/agency-map.component';
+import { PickupListGridComponent } from './agency/pickup-list-grid/pickup-list-grid.component';
 
 
 
@@ -84,7 +85,8 @@ const routes: Routes = [
     {path:'BranchM/:idBranch',component:DeliveryMListAgencyComponent},
     {path:'MyPickups',component:MyPickupListAgencyComponent},
     {path:'MyPickups/track/:idPickup',component:TrackOrderByAgencyComponent},
-    {path:'MyMap',component:AgencyMapComponent}
+    {path:'MyMap',component:AgencyMapComponent},
+    {path:'pickupgrid',component:PickupListGridComponent}
    ]
 },
 
