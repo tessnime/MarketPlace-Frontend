@@ -4,6 +4,7 @@ import { AppLayoutComponent } from './layoutB/app.layout.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserListComponent } from './user-list/user-list.component';
 import {OrderStatsComponent} from "./order/order-stats/order-stats.component";
+import {EventsComponent} from "./order/events/events.component";
 
 const routes: Routes = [
 
@@ -17,7 +18,8 @@ const routes: Routes = [
 },{
     path:'',component:AppLayoutComponent,
     children:[
-      {path:'orders-stats',component:OrderStatsComponent}
+      {path:'orders-stats',component:OrderStatsComponent},
+      {path: 'events',component: EventsComponent}
       ]
 },]
 

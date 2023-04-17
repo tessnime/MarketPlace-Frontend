@@ -5,6 +5,7 @@ import { saveAs } from 'file-saver';
 import {OrdersRankUsers} from "../../../Models/OrdersRankUsers";
 import {StatusTypeStat} from "../../../Models/StatusTypeStat";
 import {Order} from "../../../Models/Order";
+import {EventModel} from "../../../Models/EventModel";
 
 
 @Injectable({
@@ -19,7 +20,8 @@ export class ServicesService {
   OrderRankForUsersByStatusType = "http://localhost:8081/orderStats/OrderRankForUsersByStatusType"
   OrderStatsByStatusType="http://localhost:8081/orderStats/OrderStatsByStatusType"
   GetBestUserOrders="http://localhost:8081/orderStats/GetBestUserOrders"
-
+  DisplayAllEvents="http://localhost:8081/Event/displayAllEvents"
+  DeleteEvent="http://localhost:8081/Event/deleteEvent?id="
 
     options = {withCredentials: true};
   option = {withCredentials: true, responseType: 'text'};
@@ -43,5 +45,14 @@ export class ServicesService {
   getBestUserOrders()
   {
     return this.http.get<Order[]>(this.GetBestUserOrders,this.options);
+  }
+
+  displayAllEvents()
+  {
+    return this.http.get<EventModel[]>(this.DisplayAllEvents,this.options);
+  }
+  deleteEvent(id:number)
+  {
+    return this.http.delete(this.DeleteEvent+`${id}`,this.options)
   }
 }

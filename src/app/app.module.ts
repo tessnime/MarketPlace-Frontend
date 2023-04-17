@@ -22,6 +22,20 @@ import {RippleModule} from "primeng/ripple";
 import {InputTextModule} from "primeng/inputtext";
 import {ButtonModule} from "primeng/button";
 import {TableModule} from "primeng/table";
+import { EventsComponent } from './order/events/events.component';
+import {FileUploadModule} from "primeng/fileupload";
+import {ToolbarModule} from "primeng/toolbar";
+import {RadioButtonModule} from "primeng/radiobutton";
+import {DialogModule} from "primeng/dialog";
+import {InputNumberModule} from "primeng/inputnumber";
+import {InputTextareaModule} from "primeng/inputtextarea";
+import {PasswordModule} from "primeng/password";
+import {CascadeSelectModule} from "primeng/cascadeselect";
+import {InputMaskModule} from "primeng/inputmask";
+import {ChipsModule} from "primeng/chips";
+import {CalendarModule} from "primeng/calendar";
+import {AutoCompleteModule} from "primeng/autocomplete";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -29,7 +43,8 @@ import {TableModule} from "primeng/table";
     AppComponent,
     UserDashboardComponent,
     UserListComponent,
-    OrderStatsComponent
+    OrderStatsComponent,
+    EventsComponent
 
   ],
   imports: [
@@ -53,7 +68,36 @@ import {TableModule} from "primeng/table";
     MultiSelectModule,
     DropdownModule,
     ProgressBarModule,
-    ToastModule
+    ToastModule,
+    CommonModule,
+    TableModule,
+    FileUploadModule,
+    FormsModule,
+    ButtonModule,
+    RippleModule,
+    ToastModule,
+    ToolbarModule,
+    RatingModule,
+    InputTextModule,
+    InputTextareaModule,
+    DropdownModule,
+    RadioButtonModule,
+    InputNumberModule,
+    DialogModule,
+    CommonModule,
+    FormsModule,
+    AutoCompleteModule,
+    CalendarModule,
+    ChipsModule,
+    DropdownModule,
+    InputMaskModule,
+    InputNumberModule,
+    CascadeSelectModule,
+    MultiSelectModule,
+    PasswordModule,
+    InputTextareaModule,
+    InputTextModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
