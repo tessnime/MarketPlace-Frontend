@@ -38,6 +38,7 @@ export class NewProductComponent implements OnInit, DoCheck {
     image3: '',
     productCategory: new ProductCategory,
     storesNames: [],
+    id: 0
   }
   user!: User;
   uploadedFiles: any[] = [];
@@ -199,12 +200,13 @@ export class NewProductComponent implements OnInit, DoCheck {
     this.prodcutService.createAndAssignCategoryAndSubCategory(this.product).subscribe((res: any) => { console.log('Product created') })
   };
 
-  onFileSelected(event:any) {
+  onFileSelected(event: any) {
     this.selectedFile = <File>event.target.files[0];
   }
   onExcel() {
     this.prodcutService.uploadFile(this.selectedFile).subscribe(
       (response) => {
+
         console.log(response);
       },
       (error) => {

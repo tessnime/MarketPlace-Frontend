@@ -2,26 +2,30 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from 'Models/Product';
 import { Observable } from 'rxjs';
-import {  ProductFormDTO} from 'Models/ProductFormDTO';
+import { ProductFormDTO } from 'Models/ProductFormDTO';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductSreviceService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  url="http://localhost:8081/product/";
+  url = "http://localhost:8081/product/";
 
-  getAllProductsBySeller(){
+  getAllProductsBySeller() {
     const options = { withCredentials: true };
-    return this.http.get(this.url+'retriveProductsByStore',options)
+    return this.http.get(this.url + 'retriveProductsByStore', options)
   }
-  getProductById(id:number):Observable<Product>{
-    return this.http.get<Product>(this.url+'GetProductById?id='+id)
+  getProductById(id: number): Observable<Product> {
+    const options = { withCredentials: true };
+
+    return this.http.get<Product>(this.url + 'GetProductById?id=' + id, options)
   }
-  updateProduct(p:Product):Observable<Product>{
-    return this.http.put<Product>(this.url+'UpdateProduct',p)
+  updateProduct(p: Product): Observable<Product> {
+    const options = { withCredentials: true };
+
+    return this.http.put<Product>(this.url + 'UpdateProduct', p, options)
 
   }
   // deleteProduct(p:Product){
@@ -31,16 +35,16 @@ export class ProductSreviceService {
   createAndAssignCategoryAndSubCategory(product: ProductFormDTO): Observable<Product> {
     const options = { withCredentials: true };
 
-    return this.http.post<Product>(this.url+'CreateProductAndAssignCatAndSub',product,options)
+    return this.http.post<Product>(this.url + 'CreateProductAndAssignCatAndSub', product, options)
 
-}
+  }
 
-uploadFile(file: File): Observable<any> {
-  const options = { withCredentials: true };
+  uploadFile(file: File): Observable<any> {
+    const options = { withCredentials: true };
 
-  const formData: FormData = new FormData();
-  formData.append('file', file, file.name);
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
 
-  return this.http.post<any>(this.url+'upload', formData,options);
-}
+    return this.http.post<any>(this.url + 'upload', formData, options);
+  }
 }

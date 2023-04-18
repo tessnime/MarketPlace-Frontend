@@ -81,6 +81,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { FrontModule  } from './front/front.module';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { UpdateProductComponent } from './seller/update-product/update-product.component';
 
 
 @NgModule({
@@ -114,6 +115,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
     TrackOrderByAgencyComponent,
     AddPickupComponent,
     ProductListComponent,
+    UpdateProductComponent,
   ],
   imports: [
     BrowserModule,
