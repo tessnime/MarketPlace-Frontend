@@ -8,6 +8,8 @@ import { AppLayoutModule } from './layoutB/app.layout.module';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserUpdateComponent } from './user-update/user-update.component';
+import { AddUserComponent } from './add-user/add-user.component';
 
 
 @NgModule({
@@ -15,6 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     UserDashboardComponent,
     UserListComponent,
+    UserUpdateComponent,
+    AddUserComponent,
 
 
   ],

@@ -1,1 +1,100 @@
-<p>user-list works!</p>
+<div class="pd-ltr-20 xs-pd-20-10">
+  <div class="min-height-200px">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+         
+          <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item " aria-current="page">
+                View Users
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                New  User
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+<body>
+   
+    <!--Main Content-->
+    <div class="card-box mb-30">
+      <div class="pd-20">
+        <h4 class="text-blue h4">Users List</h4>
+      
+   
+            <!--Add User Button-->
+            <div class="my-3">
+                <button type="button" class="btn btn-primary" [routerLink]="['/addUser']">Add User</button>
+            </div>
+            <table class="table border" >
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">image</th>
+                    <th scope="col">FirstName</th>
+                    <th scope="col">LastName </th>
+                    <th scope="col">PhoneNumber</th>
+                    <th scope="col">birthDate</th>
+                    <th scope="col">identity</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">governorate</th>
+                    <th scope="col">city</th>
+                    <th scope="col">gender</th>
+                    <th scope="col">brandLogo</th>
+                    <th scope="col">brandName</th>
+                    <th scope="col">driveLicense</th>
+                   <th scope="col">enabled</th>
+                   <th scope="col">gear</th>
+                   <th scope="col">justification</th>
+                   <th scope="col">GearAge</th>
+                   <th scope="col">levelDelivery</th>
+                    <th scope="col">Options</th>
+
+
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of users">
+                    <td>{{user.id}}</td>
+                    <td>{{user.image}}</td>
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}} </td>
+                   <td>{{user.phoneNumber}}</td>
+                    <td>{{user.birthDate}}</td>
+                    <td>{{user.identity}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.governorate}}</td>
+                    <td>{{user.city}}</td>
+                    <td>{{user.gender}}</td>
+                    <td>{{user.brandLogo}}</td>
+                    <td>{{user.brandName}}</td>
+                    <td>{{user.driveLicense}}</td>
+                   <td>{{user.enabled}}</td>
+                   <td>{{user.gear}}</td>
+                   <td>{{user.justification}}</td>
+                   <td>{{user.gearAge}}</td>
+                   <td>{{user.levelDelivery}}</td>
+                             
+                  <td>
+                   <div class="inline1">
+                        <button type="button" class="btn btn-secondary btn-lg1" [routerLink]="['/userUpdate',user.id]">Update</button>
+                    </div>
+                    <br>
+                    <div class="inline">
+                      <button type="button" class="btn btn-primary btn-lg btn-block"(click)="deleteUser(user.id)" >Delete</button>
+                    </div>
+
+                </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</body>
+
+
+

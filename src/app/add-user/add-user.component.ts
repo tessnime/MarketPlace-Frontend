@@ -1,19 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component ,OnInit } from '@angular/core';
 import { Shipping } from 'Models/Shipping';
 import { User } from 'Models/User';
-import { LoginUserService } from '../Services/login-user.service';
+import { ServiceAdminService } from '../service-admin.service';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { Role } from 'Models/Role';
-
 
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss','../../../../assets/front-template/css/vendor.css','../../../../assets/front-template/css/utility.css','../../../../assets/front-template/css/app.css']
+  selector: 'app-add-user',
+  templateUrl: './add-user.component.html',
+  styleUrls: ['./add-user.component.scss']
 })
-export class RegisterComponent  implements OnInit{
+export class AddUserComponent implements OnInit  {
+  constructor(private Service:ServiceAdminService,private http:HttpClient,private r:ActivatedRoute,private route:Router){}
+  
+  ngOnInit(): void {
+    
+  }
+
+
 
   form:any ={}
   ROLE="buyer";
@@ -26,44 +32,7 @@ export class RegisterComponent  implements OnInit{
     buyer:new User(),
   };
   user:  User  = new User();
-
-
-
-  constructor( private LoginUserService:LoginUserService ,private router:Router ,private route: ActivatedRoute){
-
-  }
-
-idRole!:number;
-idUser!:number;
-  ngOnInit(): void {
-
-  }
-  setRoleTo(role :string ) {
-    this.ROLE = role;
-  }
-
-  Create(t7:NgForm){
-    console.log(this.user);
-   // this.setRoleTo(this.ROLE);
-  /* this.idRole=this.route.snapshot.params['idRole'];
-   this.idUser=this.route.snapshot.params['idUser'];*/
-   // this.LoginUserService.affecteRole(this.idRole,this.idUser).subscribe(data=>{this.ROLE=data});
-    this.user.governorate=t7.controls["governorate"].value;
-    this.user.city=t7.controls["city"].value;
-    this.LoginUserService.register(this.user).subscribe(()=>{
-   
-     alert("Successfully User is register")
-    },
-    ()=>alert("Sorry User not register"));
-    
-
-  }
-
-
-
-
-
-
+ 
 
   governorates = [
     { name: 'Ariana', cities: ['Ariana', 'Raoued', 'Sidi Thabet'] },
@@ -95,8 +64,17 @@ idUser!:number;
     }
   }
 
+
+saveUser(t7:NgForm){
+    this.user.governorate=t7.controls["governorate"].value;
+    this.user.city=t7.controls["city"].value;
+    this.Service.adduser(this.user).subscribe(()=> {
  
+     
+});
+this.route.navigate(['/userlist']);
 
+}
   
+}
 
-  }
