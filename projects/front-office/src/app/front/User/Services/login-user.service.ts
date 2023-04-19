@@ -25,9 +25,8 @@ export class LoginUserService {
 
   }
   
-    register (user: User):Observable<Object>{
-      console.log(user);
-      return this.http.post('http://localhost:8081/User/add',user);
+    register (user: User,idRole:number):Observable<Object>{
+      return this.http.post('http://localhost:8081/User/add?idRole='+`${idRole}`,user);
      }
    
     login(email: string, password: string):Observable<any>{
@@ -48,14 +47,19 @@ export class LoginUserService {
     }
 
 
-    getRole():Observable<string>{
+    getRole(email:String):Observable<string>{
       // @ts-ignore
-      return this.http.get<string>('http://localhost:8081/Authentication/Role',httpOptions1)
+      const options = { withCredentials: true };
+      return this.http.get<string>('http://localhost:8081/User/role?email='+`${email}`,options)
     }
 
     affecteRole(idRole:number,idUser:number):Observable<any>{
       //@ts-ignore
       return this.http.post<any>('http://localhost:8081/User/affectRole' `${idRole}` + '&idUser=' + `${idUser}`,httpOptions1)
+    }
+    urlfindRolebyRoleType="http://localhost:8081/Role/findRolebyRoleType?roleType=";
+    getRoleByType(role:RoleType){
+       return this.http.get<Role>(this.urlfindRolebyRoleType+`${role}`);
     }
 }
 

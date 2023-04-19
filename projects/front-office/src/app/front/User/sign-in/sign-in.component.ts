@@ -32,8 +32,32 @@ export class SignInComponent implements OnInit {
    (
     () => {
       this.cookieService.get('accessToken');
+      this.LoginUserService.getRole(this.form.email).subscribe(data=>{this.role=data
       
-     this.LoginUserService.getRole().subscribe(data=>{this.role=data
+  console.log(data);
+        alert(data)
+      if (this.role === 'BUYER') {
+        this.router.navigate(['/']); 
+      } else if (this.role === 'SELLER') {
+        this.router.navigate(['/store']); 
+      }else if (this.role === 'DELIVERYMEN') {
+        this.router.navigate(['/freelancer']);  
+      }
+    });
+     },
+
+error =>{
+  this.error =error;
+  this.loading=false;
+});
+
+
+  }
+   redierctRole(email:String){
+     
+     this.LoginUserService.getRole(email).subscribe(data=>{this.role=data
+      
+
       alert(data)
     if (this.role === 'BUYER') {
       this.router.navigate(['/']); 
@@ -43,13 +67,6 @@ export class SignInComponent implements OnInit {
       this.router.navigate(['/freelancer']);  
     }
   });
-     },
-
-error =>{
-  this.error =error;
-  this.loading=false;
-});
-
   }
 
  

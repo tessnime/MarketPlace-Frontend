@@ -5,6 +5,7 @@ import { User } from 'Models/User';
 import { LoginUserService } from '../Services/login-user.service';
 import { NgForm } from '@angular/forms';
 import { Role } from 'Models/Role';
+import { RoleType } from 'Models/Enum/RoleType';
 
 
 
@@ -14,9 +15,11 @@ import { Role } from 'Models/Role';
   styleUrls: ['./register.component.scss','../../../../assets/front-template/css/vendor.css','../../../../assets/front-template/css/utility.css','../../../../assets/front-template/css/app.css']
 })
 export class RegisterComponent  implements OnInit{
-
+  role1!:Role;
+  getRoleByType(role:RoleType){
+    this.LoginUserService.getRoleByType(role).subscribe(data=>{this.role1=data});
+ }
   form:any ={}
-  ROLE="buyer";
   error:string = '';
   shipping: Shipping = {
     id: 0,
@@ -35,28 +38,38 @@ export class RegisterComponent  implements OnInit{
 
 idRole!:number;
 idUser!:number;
+rolefinal!:Role;
   ngOnInit(): void {
-
+   this.getRoleByType(this.ROLE as RoleType
+   );
   }
+  roles!:RoleType.SELLER;
+  roled!:RoleType.DELIVERYMEN;
+  roless!:RoleType.SUPPLIER;
+  roleDa!:RoleType.DELIVERYAGENCY;
+  ROLEroleType: RoleType = RoleType.BUYER;
+  ROLE: string = this.ROLEroleType.toString();
   setRoleTo(role :string ) {
-    this.ROLE = role;
+    this.ROLE==role;
   }
-
+  RoleF!:Role;
   Create(t7:NgForm){
     console.log(this.user);
    // this.setRoleTo(this.ROLE);
   /* this.idRole=this.route.snapshot.params['idRole'];
    this.idUser=this.route.snapshot.params['idUser'];*/
-   // this.LoginUserService.affecteRole(this.idRole,this.idUser).subscribe(data=>{this.ROLE=data});
     this.user.governorate=t7.controls["governorate"].value;
     this.user.city=t7.controls["city"].value;
-    this.LoginUserService.register(this.user).subscribe(()=>{
+    this.LoginUserService.register(this.user,this.role1.id).subscribe(()=>{
    
      alert("Successfully User is register")
     },
     ()=>alert("Sorry User not register"));
-    
-
+   /* 
+    affecteRole(idRole:number,idUser:number):Observable<any>{
+      //@ts-ignore
+      return this.http.post<any>('http://localhost:8081/User/affectRole' `${idRole}` + '&idUser=' + `${idUser}`,httpOptions1)
+    }*/
   }
 
 
