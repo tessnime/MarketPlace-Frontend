@@ -9,12 +9,6 @@
             <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"></button>
           </div>
         </ng-template>
-
-        <ng-template pTemplate="right">
-          <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="mr-2 inline-block"
-                        url="./upload.php" [customUpload]="true" (uploadHandler)="onFileUpload($event)">
-          </p-fileUpload>
-        </ng-template>
       </p-toolbar>
 
       <p-table #dt [value]="products" [columns]="cols" responsiveLayout="scroll" [rows]="10" [globalFilterFields]="['id','title','startDate','lastDate']" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[10,20,30]" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [(selection)]="selectedProducts" selectionMode="multiple" [rowHover]="true" dataKey="id">
@@ -54,7 +48,7 @@
             </td>
             <td style="width:14%; min-width:10rem;"><span class="p-column-title">Image</span>
 
-              <img src="../../../assets/banners/{{product.bandLing}}" [alt]="product.bandLing" width="100" class="shadow-4" />
+              <img src="../../../assets/uploads/{{product.bandLing}}" [alt]="product.bandLing" width="100" class="shadow-4" />
             </td>
             <td style="width:14%; min-width:10rem;">
               <span class="p-column-title">Start Date</span>
@@ -76,28 +70,34 @@
 
     <p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="Product Details" [modal]="true" class="p-fluid">
       <ng-template pTemplate="content">
-        <img  src="../../../assets/banners/{{product.bandLing}}" [alt]="product.bandLing" width="250" class="mt-0 mx-auto mb-5 block shadow-2" *ngIf="product.bandLing">
-        <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" *ngIf="!product.bandLing" chooseLabel="Import" class="mr-2 inline-block"
-                      url="./upload.php" [customUpload]="true" (uploadHandler)="onFileUpload($event)">
-        </p-fileUpload>
+        <img  src="../../../assets/uploads/{{product.bandLing}}" [alt]="product.bandLing" width="250" class="mt-0 mx-auto mb-5 block shadow-2" *ngIf="product.bandLing">
+
+        <div class="my-2">
+          <label class="custom-file-upload">
+            <input type="file" accept="image/*" (change)="handleFileInput($event)">
+            Choose File
+          </label>
+        </div>
+
+
         <br>
         <br>
         <div class="field">
           <label for="title">Title</label>
-          <input type="text" pInputText id="title" [(ngModel)]="product.title" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.title}"/>
-          <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.title">Name is required.</small>
+          <input type="text" pInputText id="title" [(ngModel)]="NewEvent.title" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !NewEvent.title}"/>
+          <small class="ng-dirty ng-invalid" *ngIf="submitted && !NewEvent.title">Name is required.</small>
         </div>
         <br>
         <br>
         <div class="field">
           <label for="startDate">Start Date</label>
-          <p-calendar inputId="calendar" [(ngModel)]="selectedStartDate" class="ng-invalid ng-dirty p-calendar" [showIcon]="true"></p-calendar>
+          <p-calendar inputId="calendar" [(ngModel)]="NewEvent.startDate" class="ng-invalid ng-dirty p-calendar" [showIcon]="true"></p-calendar>
         </div>
         <br>
         <br>
         <div class="field">
           <label for="lastDate">End Date</label>
-          <p-calendar inputId="calendar" [(ngModel)]="selectedLastDate" class="ng-invalid ng-dirty p-calendar" [showIcon]="true"></p-calendar>
+          <p-calendar inputId="calendar" [(ngModel)]="NewEvent.lastDate" class="ng-invalid ng-dirty p-calendar" [showIcon]="true"></p-calendar>
         </div>
         <br>
         <br>

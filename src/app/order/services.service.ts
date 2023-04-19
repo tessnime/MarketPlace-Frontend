@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {RankGouvernoratOrderData} from "../../../Models/RankGouvernoratOrderData";
 import { saveAs } from 'file-saver';
 import {OrdersRankUsers} from "../../../Models/OrdersRankUsers";
@@ -22,6 +22,9 @@ export class ServicesService {
   GetBestUserOrders="http://localhost:8081/orderStats/GetBestUserOrders"
   DisplayAllEvents="http://localhost:8081/Event/displayAllEvents"
   DeleteEvent="http://localhost:8081/Event/deleteEvent?id="
+  Upload="http://localhost:8081/Event/upload"
+  AddEvent="http://localhost:8081/Event/addEvent"
+
 
     options = {withCredentials: true};
   option = {withCredentials: true, responseType: 'text'};
@@ -54,5 +57,18 @@ export class ServicesService {
   deleteEvent(id:number)
   {
     return this.http.delete(this.DeleteEvent+`${id}`,this.options)
+  }
+
+  upload(image: File | null | undefined)
+  {
+    const formData = new FormData();
+    // @ts-ignore
+    formData.append('file', image, image.name);
+    return this.http.post(this.Upload,formData,this.options);
+  }
+
+  addEvent(event:EventModel)
+  {
+    return this.http.post(this.AddEvent,event,this.options)
   }
 }

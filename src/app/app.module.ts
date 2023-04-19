@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,7 +35,8 @@ import {ChipsModule} from "primeng/chips";
 import {CalendarModule} from "primeng/calendar";
 import {AutoCompleteModule} from "primeng/autocomplete";
 import {MatIconModule} from "@angular/material/icon";
-
+import {HttpClientModule} from '@angular/common/http';
+import {BrowserModule} from "@angular/platform-browser";
 
 @NgModule({
   declarations: [
@@ -97,7 +97,8 @@ import {MatIconModule} from "@angular/material/icon";
     PasswordModule,
     InputTextareaModule,
     InputTextModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

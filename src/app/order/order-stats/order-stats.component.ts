@@ -1,13 +1,13 @@
 import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Subscription} from "rxjs";
 import {RankGouvernoratOrderData} from "../../../../Models/RankGouvernoratOrderData";
-import {ServicesService} from "../services.service";
 import {OrdersRankUsers} from "../../../../Models/OrdersRankUsers";
 import {LayoutService} from "../../layoutB/service/app.layout.service";
 import {StatusTypeStat} from "../../../../Models/StatusTypeStat";
 import {Table} from "primeng/table";
 import {Representative} from "../../../../Models/customer";
 import {Order} from "../../../../Models/Order";
+import {ServicesService} from "../services.service";
 
 @Component({
   selector: 'app-order-stats',

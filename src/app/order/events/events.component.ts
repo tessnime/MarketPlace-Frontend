@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {Table} from "primeng/table";
 import {MessageService} from "primeng/api";
 import {EventModel} from "../../../../Models/EventModel";
+import {FileUpload} from "primeng/fileupload";
+import {map, Observable} from "rxjs";
+import {HttpClient, HttpEventType, HttpRequest} from "@angular/common/http";
 import {ServicesService} from "../services.service";
 
 @Component({
@@ -11,6 +14,8 @@ import {ServicesService} from "../services.service";
   providers: [MessageService]
 })
 export class EventsComponent implements OnInit {
+
+  NewEvent:EventModel =new EventModel();
 
   selectedStartDate!:Date;
 
@@ -38,11 +43,12 @@ export class EventsComponent implements OnInit {
 
   uploadedFiles: any[] = [];
 
-  constructor(private productService:ServicesService, private messageService: MessageService) { }
+  constructor(private productService:ServicesService, private messageService: MessageService,private http: HttpClient) { }
 
   ngOnInit() {
     this.productService.displayAllEvents().subscribe(data => this.products = data);
 
+    this.NewEvent.title='';
     this.cols = [
       { field: 'id', header: 'id' },
       { field: 'title', header: 'title' },
@@ -69,6 +75,7 @@ export class EventsComponent implements OnInit {
 
   editProduct(product: EventModel) {
     this.product = { ...product };
+    this.NewEvent.id=this.product.id;
     this.productDialog = true;
   }
 
@@ -98,22 +105,28 @@ export class EventsComponent implements OnInit {
   }
 
   saveProduct() {
-    this.submitted = true;
+    if(this.selectedFile!=null) {
+      this.onUpload();
+      this.submitted = true;
+      this.NewEvent.bandLing=this.selectedFile.name;
+      if (this.NewEvent.title?.trim()) {
+        if (this.NewEvent.id) {
+          // @ts-ignore
+          this.products[this.findIndexById(this.NewEvent.id)] = this.NewEvent;
+          this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Event Updated', life: 3000});
+        } else {
+          // @ts-ignore
+          this.products.push(this.NewEvent);
+          this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Event Created', life: 3000});
+        }
 
-    if (this.product.title?.trim()) {
-      if (this.product.id) {
-        // @ts-ignore
-        this.products[this.findIndexById(this.product.id)] = this.product;
-        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Event Updated', life: 3000 });
-      } else {
-        // @ts-ignore
-        this.products.push(this.product);
-        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Event Created', life: 3000 });
+        this.products = [...this.products];
+        this.productDialog = false;
+        this.productService.addEvent(this.NewEvent).subscribe();
+        this.NewEvent = new EventModel();
       }
 
-      this.products = [...this.products];
-      this.productDialog = false;
-      this.product = new EventModel();
+
     }
   }
 
@@ -142,22 +155,17 @@ export class EventsComponent implements OnInit {
     table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
   }
 
-  onFileUpload(event:any) {
-    // get the uploaded file
-    const file = event.files[0];
-    // create a FormData object to send the file to the server
-    const formData = new FormData();
-    formData.append(file.name, file, file.name);
-    // send the file to the server using an HTTP POST request
-    fetch('./upload.php', {
-      method: 'POST',
-      body: formData
-    })
-      .then(response => {
-        console.log('File uploaded successfully:', response);
-      })
-      .catch(error => {
-        console.error('Error uploading file:', error);
-      });
+  selectedFile!: File | null | undefined;
+  handleFileInput(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.selectedFile = inputElement.files?.item(0);
+  }
+
+  onUpload() {
+    this.productService.upload(this.selectedFile).subscribe(
+      response => {
+        console.log(response);
+      }
+    );
   }
 }
