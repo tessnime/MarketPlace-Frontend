@@ -6,6 +6,8 @@ import {FileUpload} from "primeng/fileupload";
 import {map, Observable} from "rxjs";
 import {HttpClient, HttpEventType, HttpRequest} from "@angular/common/http";
 import {ServicesService} from "../services.service";
+import {Product} from "../../../../Models/Product";
+import {KeyWords} from "../../../../Models/KeyWords";
 
 @Component({
   selector: 'app-events',
@@ -17,15 +19,25 @@ export class EventsComponent implements OnInit {
 
   NewEvent:EventModel =new EventModel();
 
+  newKey:KeyWords =new KeyWords();
+
   selectedStartDate!:Date;
 
   selectedLastDate!:Date;
 
   productDialog: boolean = false;
 
+  keyDialog: boolean = false;
+
+  productDisplay: boolean = false;
+
+  KeysDisplay: boolean = false;
+
   deleteProductDialog: boolean = false;
 
   deleteProductsDialog: boolean = false;
+
+  deleteKeywordsDialog: boolean = false;
 
   products: EventModel[] = [];
 
@@ -33,7 +45,11 @@ export class EventsComponent implements OnInit {
 
   selectedProducts: EventModel[] = [];
 
+  selectedKeyWords: KeyWords[] = [];
+
   submitted: boolean = false;
+
+  submittedKey: boolean = false;
 
   cols: any[] = [];
 
@@ -65,11 +81,24 @@ export class EventsComponent implements OnInit {
     this.productDialog = true;
   }
 
+  openNewKey() {
+    this.newKey = new KeyWords();
+    this.submittedKey = false;
+    this.keyDialog = true;
+  }
+
   deleteSelectedProducts() {
     this.deleteProductsDialog = true;
     for (let i=0;i<this.selectedProducts.length;i++)
     {
       this.productService.deleteEvent(this.selectedProducts[i].id).subscribe();
+    }
+  }
+  deleteSelectedKeywords() {
+    this.deleteKeywordsDialog = true;
+    for (let i=0;i<this.selectedKeyWords.length;i++)
+    {
+      this.productService.deleteKeywordFromEvent(this.idEv,this.selectedKeyWords[i].id).subscribe();
     }
   }
 
@@ -88,8 +117,14 @@ export class EventsComponent implements OnInit {
   confirmDeleteSelected() {
     this.deleteProductsDialog = false;
     this.products = this.products.filter(val => !this.selectedProducts.includes(val));
-    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
+    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Events Deleted', life: 3000 });
     this.selectedProducts = [];
+  }
+  confirmDeleteSelectedKeys() {
+    this.deleteProductsDialog = false;
+    this.keywordsList = this.keywordsList.filter(val => !this.selectedKeyWords.includes(val));
+    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Keywords Deleted', life: 3000 });
+    this.selectedKeyWords = [];
   }
 
   confirmDelete() {
@@ -102,6 +137,10 @@ export class EventsComponent implements OnInit {
   hideDialog() {
     this.productDialog = false;
     this.submitted = false;
+  }
+  hideKeyDialog() {
+    this.keyDialog = false;
+    this.submittedKey = false;
   }
 
   saveProduct() {
@@ -128,6 +167,29 @@ export class EventsComponent implements OnInit {
 
 
     }
+  }
+
+
+  saveKey() {
+
+      if (this.newKey.word?.trim()) {
+        if (this.newKey.id) {
+          // @ts-ignore
+          this.keywordsList[this.findIndexById(this.newKey.id)] = this.NewEvent;
+          this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Event Updated', life: 3000});
+        } else {
+          // @ts-ignore
+          this.keywordsList.push(this.newKey);
+          this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Event Created', life: 3000});
+        }
+
+        this.keywordsList = [...this.keywordsList];
+        this.keyDialog = false;
+        this.productService.addKeywordToEvent(this.idEv,this.newKey).subscribe();
+        this.newKey = new KeyWords();
+      }
+
+
   }
 
   findIndexById(id: number): number {
@@ -168,4 +230,47 @@ export class EventsComponent implements OnInit {
       }
     );
   }
+
+
+  productsDisp:Product[]=[];
+  keywordsList:KeyWords[]=[];
+
+  displayProducts(product: EventModel)
+  {
+    this.productsDisp=product.productList;
+    this.productDisplay = true;
+  }
+idEv:number=0;
+  displayKeyWords(product: EventModel)
+  {
+    this.idEv=product.id;
+    this.keywordsList=product.listkeyWords;
+    this.KeysDisplay= true;
+  }
+
+  keyWord:KeyWords=new KeyWords();
+  deleteKeyword(key:KeyWords)
+  {
+    this.deleteKeywordsDialog = true;
+    this.keyWord = { ...key };
+    this.productService.deleteKeywordFromEvent(this.idEv,key.id).subscribe();
+  }
+
+  carouselResponsiveOptions: any[] = [
+    {
+      breakpoint: '1024px',
+      numVisible: 3,
+      numScroll: 3
+    },
+    {
+      breakpoint: '768px',
+      numVisible: 2,
+      numScroll: 2
+    },
+    {
+      breakpoint: '560px',
+      numVisible: 1,
+      numScroll: 1
+    }
+  ];
 }

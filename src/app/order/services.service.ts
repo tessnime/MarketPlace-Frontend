@@ -6,6 +6,7 @@ import {OrdersRankUsers} from "../../../Models/OrdersRankUsers";
 import {StatusTypeStat} from "../../../Models/StatusTypeStat";
 import {Order} from "../../../Models/Order";
 import {EventModel} from "../../../Models/EventModel";
+import {KeyWords} from "../../../Models/KeyWords";
 
 
 @Injectable({
@@ -70,5 +71,15 @@ export class ServicesService {
   addEvent(event:EventModel)
   {
     return this.http.post(this.AddEvent,event,this.options)
+  }
+
+  deleteKeywordFromEvent(idEv:number,idKey:number)
+  {
+    return this.http.delete('http://localhost:8081/Event/deleteKeywordFromEvent?eventId='+`${idEv}`+'&keywordId='+`${idKey}`,this.options);
+  }
+
+  addKeywordToEvent(idEv:number,key:KeyWords)
+  {
+    return this.http.post('http://localhost:8081/Event/addKeywordToEvent?id='+`${idEv}`,key,this.options)
   }
 }

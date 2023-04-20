@@ -37,6 +37,9 @@ import {AutoCompleteModule} from "primeng/autocomplete";
 import {MatIconModule} from "@angular/material/icon";
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from "@angular/platform-browser";
+import { KeywordsComponent } from './order/keywords/keywords.component';
+import { CarouselModule } from 'primeng/carousel';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +47,8 @@ import {BrowserModule} from "@angular/platform-browser";
     UserDashboardComponent,
     UserListComponent,
     OrderStatsComponent,
-    EventsComponent
+    EventsComponent,
+    KeywordsComponent
 
   ],
   imports: [
@@ -98,7 +102,8 @@ import {BrowserModule} from "@angular/platform-browser";
     InputTextareaModule,
     InputTextModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]
