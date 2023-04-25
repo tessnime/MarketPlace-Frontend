@@ -1,0 +1,181 @@
+
+<div class="pd-ltr-20 xs-pd-20-10">
+  <div class="min-height-200px">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="title">
+            <h4>Create your Campain Publicitaire</h4>
+          </div>
+          <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item " aria-current="page">
+                Seller
+              </li>
+              <li class="breadcrumb-item " aria-current="page">
+                Add Ads
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!-- Default Basic Forms Start -->
+
+
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="pd-20 card-box mb-30">
+          <form #addform="ngForm" (ngSubmit)="addForm(addform)"  >
+            <div class="form-group row">
+              <label class="col-sm-12 col-md-2 col-form-label">Budget Type:</label>
+              <div class="col-md-6 col-sm-12">
+                <select class="custom-select col-12" id="BudgetType" name="BudgetType" [(ngModel)]="budgetTypee" required #fn1="ngModel" >
+                  <option *ngFor="let d of budgetType">{{ d }}</option>
+                </select>
+                <div *ngIf="fn1.invalid" class="has-danger">Budget Type is required</div>
+               </div>
+            </div>
+
+
+            <div class="form-group row">
+              <label class="col-sm-12 col-md-2 col-form-label"></label>
+              <div class="col-md-6 col-sm-12">
+                <div class="p-inputgroup">
+                  <span class="p-inputgroup-addon">$Pt</span>
+                  <input type="text" pInputText placeholder="Price" name="price" [(ngModel)]="points"  required #fn2="ngModel" (input)="getReach(addform)"/>
+                  <span class="p-inputgroup-addon">.00</span>
+              </div>
+              <div *ngIf="fn2.invalid" class="has-danger">$ is required</div>
+               </div>
+              </div>
+
+
+
+              <div class="form-group row">
+                <label class="col-sm-12 col-md-2 col-form-label">Objective Type:</label>
+                <div class="col-md-6 col-sm-12">
+                  <select class="custom-select col-12" id="ObjectiveType" name="ObjectiveType"  [(ngModel)]="objTypee" required #fn3="ngModel">
+                    <option *ngFor="let d of objType">{{ d }}</option>
+                  </select>
+                  <div *ngIf="fn3.invalid" class="has-danger">Objective Type: is required</div>
+
+                 </div>
+                </div>
+
+
+                <div class="form-group row">
+                  <label class="col-sm-12 col-md-2 col-form-label">Start date:</label>
+                  <div class="col-md-6 col-sm-12">
+                <input
+                  class="form-control date-picker"
+                  placeholder="Select Date"
+                  type="date"
+                  name="startDate" ngModel required #fn4="ngModel"
+                />
+                <div *ngIf="fn4.invalid" class="has-danger">Start Date: is required</div>
+                   </div>
+                  </div>
+
+
+
+                  <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">End:</label>
+                    <div class="col-md-6 col-sm-12 flex align-items-center gap-1">
+                      <p-checkbox formControlName="city" value="New York" inputId="ny" (click)="checked()" >
+                        </p-checkbox>
+                        <label for="ny">Set an end date</label>
+                     </div>
+                    </div>
+
+
+
+                <div class="form-group row" *ngIf="checkdata==1">
+                  <label class="col-sm-12 col-md-2 col-form-label">End date:</label>
+                  <div class="col-md-6 col-sm-12">
+                <input
+                  class="form-control date-picker"
+                  placeholder="Select Date"
+                  type="date"
+                  name="endDate" ngModel
+                  (input)="getReach(addform)"
+                />
+                   </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Age Minimale:</label>
+                    <div class="col-md-6 col-sm-12">
+                      <input type="number" id="quantity" name="agemin" ngModel min="15" max="75" required #fn6="ngModel" class="form-control age-input" style="display: inline-block;">
+                      <div *ngIf="fn6.invalid" class="has-danger">Age min: is required</div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Age Maximale:</label>
+                    <div class="col-md-6 col-sm-12">
+                      <input type="number" id="quantity" name="agemax" ngModel min="15" max="75" required #fn7="ngModel" class="form-control age-input" style="display: inline-block;">
+                      <div *ngIf="fn7.invalid" class="has-danger">Age max: is required</div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Gender:</label>
+                    <div class="col-md-6 col-sm-12">
+                      <select class="custom-select col-12" id="Gender" name="Gender" ngModel required #fn8="ngModel"  >
+                        <option *ngFor="let d of Gender">{{ d }}</option>
+                      </select>
+                      <div *ngIf="fn8.invalid" class="has-danger">Gender: is required</div>
+                     </div>
+                    </div>
+
+
+              <div class="form-group row">
+                <label class="col-sm-12 col-md-2 col-form-label">Select Product:</label>
+                <div class="col-md-6 col-sm-12">
+                  <select class="custom-select col-12" id="product" name="product" [(ngModel)]="idProduct" required #fn9="ngModel">
+                    <option *ngFor="let d of product" [value]="d.id">{{ d.name }}</option>
+                  </select>
+                  <div *ngIf="fn9.invalid" class="has-danger">Product: is required</div>
+                 </div>
+                </div>
+            <br>
+            <div class="btn-list">
+              <button
+                type="submit"
+                class="btn btn-primary btn-lg btn-block"
+                [disabled]="addform.invalid"
+              >
+              Add Branch
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary btn-lg btn-block"
+              >Cancel</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-sm-12">
+        <div class="pd-20 card-box mb-30">
+          <div class="card">
+            <div class="card-header">
+              <h2>Estimated Daily Results</h2>
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Reach:</strong> {{point}}P/k</li>
+                <li class="list-group-item"><strong>Link Clicks:</strong> {{click}}P/k</li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">*Results may vary</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

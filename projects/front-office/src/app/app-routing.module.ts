@@ -47,6 +47,7 @@ import { RegisterComponent } from './front/User/register/register.component';
 import { AddBranchInMapComponent } from './agency/add-branch-in-map/add-branch-in-map.component';
 import { AgencyMapComponent } from './agency/agency-map/agency-map.component';
 import { PickupListGridComponent } from './agency/pickup-list-grid/pickup-list-grid.component';
+import { AddAdsComponent } from './sellerMohsen/add-ads/add-ads.component';
 
 
 
@@ -123,7 +124,8 @@ const routes: Routes = [
     {path:'pickups/requests/:idP',component:RequestListSellerComponent},
     {path:'pickups/update/:idPickup',component:PickupUpdateComponent},
     {path:'pickupsInProgress',component:PikupInProgressSellerComponent},
-    {path:'pickupsInProgress/:CodePickup',component:TrakingPickupSellerComponent}
+    {path:'pickupsInProgress/:CodePickup',component:TrakingPickupSellerComponent},
+    {path:'addAds',component:AddAdsComponent}
   ]
 }
 ];

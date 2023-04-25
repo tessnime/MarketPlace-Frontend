@@ -42,10 +42,10 @@
               <tr *ngFor="let p of pickup;let i=index">
                 <td class="table-plus">{{p.codePickup}}</td>
                 <td>{{p.sum}}</td>
-                <td >{{store[i].governorate}}-{{store[i].city}}
+                <td >
                   <div *ngIf="store[i].x">
-               <a (click)="markerClick(store[i])"> <i class="bi bi-geo-fill">
-                  </i></a>
+                  <a (click)="markerClick(store[i])"> <i class="bi bi-geo-fill">
+                </i></a>{{store[i].governorate}}-{{store[i].city}}
                 </div>
                 </td>
                 <td>{{p.governorate}}-{{p.city}}</td>
