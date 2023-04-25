@@ -45,6 +45,7 @@ import {OrdersSettingComponent} from "./front/buyer/orders-setting/orders-settin
 import { SignInComponent } from './front/User/sign-in/sign-in.component';
 import { RegisterComponent } from './front/User/register/register.component';
 import { UpdateProductComponent } from './seller/update-product/update-product.component';
+import { SupplierRequestsListComponent } from './seller/supplier-requests-list/supplier-requests-list.component';
 
 
 
@@ -67,6 +68,7 @@ const routes: Routes = [
       {path:'prods',component:NewProductComponent},
       {path:'MyStore',component:StoreListComponent},
       {path:'list',component:ProductListComponent},
+      {path:'suppRequests',component:SupplierRequestsListComponent},
       {path:'list/updateP/:id',component:UpdateProductComponent}
 
     ]

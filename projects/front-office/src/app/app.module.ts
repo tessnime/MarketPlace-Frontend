@@ -82,6 +82,9 @@ import {MatInputModule} from "@angular/material/input";
 import { FrontModule  } from './front/front.module';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { UpdateProductComponent } from './seller/update-product/update-product.component';
+import { SupplierRequestsListComponent } from './seller/supplier-requests-list/supplier-requests-list.component';
+import { TableModule } from 'primeng/table';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 
 @NgModule({
@@ -116,6 +119,8 @@ import { UpdateProductComponent } from './seller/update-product/update-product.c
     AddPickupComponent,
     ProductListComponent,
     UpdateProductComponent,
+    SupplierRequestsListComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -173,6 +178,8 @@ import { UpdateProductComponent } from './seller/update-product/update-product.c
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
+    TableModule,
+    ConfirmDialogModule
     
 
   ],

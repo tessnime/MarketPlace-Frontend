@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Product } from 'Models/Product';
 import { Observable } from 'rxjs';
 import { ProductFormDTO } from 'Models/ProductFormDTO';
+import { SupplierRequest } from 'Models/SupplierRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -31,11 +32,23 @@ export class ProductSreviceService {
   // deleteProduct(p:Product){
   //   return this.http.delete<Product>(this.url+'DeleteProduct',p.id)
   // }
+  retriveRequestsByProduct(idProduct:number):Observable<SupplierRequest[]>{
+    const options = { withCredentials: true };
+
+    return this.http.get<SupplierRequest[]>(this.url + 'retriveRequestsByProduct?idProduct=' + idProduct,options)
+
+
+  }
 
   createAndAssignCategoryAndSubCategory(product: ProductFormDTO): Observable<Product> {
     const options = { withCredentials: true };
 
     return this.http.post<Product>(this.url + 'CreateProductAndAssignCatAndSub', product, options)
+
+  }
+  getProductsOutOfStockBySeller():Observable<Product[]>{
+    const options = { withCredentials: true };
+    return this.http.get<Product[]>(this.url + 'getProductsOutOfStockBySeller', options)
 
   }
 
@@ -46,5 +59,10 @@ export class ProductSreviceService {
     formData.append('file', file, file.name);
 
     return this.http.post<any>(this.url + 'upload', formData, options);
+  }
+
+  accpetRequestBySeller(id:number):Observable<SupplierRequest>{
+    const options = { withCredentials: true };
+    return this.http.put<SupplierRequest>('http://localhost:8081/SupplierRequest/AcceptRequest?supplierRequestId='+id,options)
   }
 }

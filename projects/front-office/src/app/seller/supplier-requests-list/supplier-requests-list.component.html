@@ -1,0 +1,94 @@
+<div class="col-12">
+    <div class="card">
+        <h5>Row Expand</h5>
+        <p-toast></p-toast>
+        <p-table [value]="products" dataKey="name" [expandedRowKeys]="expandedRows" responsiveLayout="scroll">
+            <ng-template pTemplate="caption">
+                <button pButton icon="pi pi-fw {{isExpanded ? 'pi-minus' : 'pi-plus'}}"
+                    label="{{isExpanded ? 'Collapse All' : 'Expand All'}}" (click)="expandAll()"></button>
+                <div class="flex table-header">
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 3rem"></th>
+                    <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                    <th>Image</th>
+                    <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
+                    <th pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon></th>
+                    <th pSortableColumn="rating">Reviews <p-sortIcon field="rating"></p-sortIcon></th>
+                    <th pSortableColumn="inventoryStatus">Status <p-sortIcon field="inventoryStatus"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product let-expanded="expanded">
+                <tr>
+                    <td>
+                        <button type="button" pButton pRipple [pRowToggler]="product"
+                            class="p-button-text p-button-rounded p-button-plain"
+                            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                    </td>
+                    <td style="min-width: 12rem;">{{product.name}}</td>
+                    <td><img [src]="'assets/prodcutsImages/'+product.image" [height]="80" [alt]="product.name"
+                            width="100" class="shadow-4" /></td>
+                    <td style="min-width: 8rem;">{{product.productPrice | currency:'TND '}}</td>
+                    <td style="min-width: 10rem;">{{product.productCategory.name}}</td>
+                    <td style="min-width: 10rem;"><p-rating [ngModel]="product.rating" [readonly]="true"
+                            [cancel]="false"></p-rating></td>
+                    <td><span
+                            [class]="'product-badge status-' + product.productStatus.toLowerCase()">{{product.productStatus}}</span>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="rowexpansion" let-product>
+                <tr>
+                    <td colspan="7">
+                        <div class="p-3">
+                            <p-table [value]="product.supplierRequests" dataKey="id" responsiveLayout="scroll">
+                                <ng-template pTemplate="header">
+                <tr>
+
+                    <th pSortableColumn="customer">Supplier <p-sortIcon field="customer"></p-sortIcon></th>
+                    <th pSortableColumn="id">Quantity<p-sortIcon field="price"></p-sortIcon></th>
+                    <th pSortableColumn="amount">Unity Price <p-sortIcon field="amount"></p-sortIcon></th>
+                    <th pSortableColumn="date">Delivery Date <p-sortIcon field="date"></p-sortIcon></th>
+
+                    <th pSortableColumn="stats">Status <p-sortIcon field="status"></p-sortIcon></th>
+                    <th style="width: 4rem"></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-suppRequest>
+                <tr>
+
+                    <td>{{suppRequest.supplier.brandName}}</td>
+                    <td>{{suppRequest.quantity}}</td>
+                    <td>{{suppRequest.unityPrice | currency:'TND '}}</td>
+
+                    <td>{{suppRequest.deliveryDate}}</td>
+                    <td><span [class]="'order-badge order-instock'">{{suppRequest.requestStatus}}</span></td>
+                    <td>   
+                    <p-confirmDialog header="Confirmation" key="confirm1" icon="pi pi-exclamation-triangle"
+                        message="Are you sure you want to proceed?" [style]="{width: '350px'}"
+                        acceptButtonStyleClass="p-button-text" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+                    <div class="grid">
+                        <div class="col-12">
+                            <button type="text" (click)="confirm1(suppRequest.id)" pButton icon="pi pi-check"
+                                class="p-button-success mr-2" ></button>
+                        </div>
+                    </div>
+                </td> 
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="6">There are no requests for this product yet.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    </td>
+    </tr>
+    </ng-template>
+    </p-table>
+</div>
+
+</div>
