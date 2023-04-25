@@ -91,6 +91,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MapOfPickupStoreComponent } from './agency/map-of-pickup-store/map-of-pickup-store.component';
 import { PickupListGridComponent } from './agency/pickup-list-grid/pickup-list-grid.component';
 import { AddAdsComponent } from './sellerMohsen/add-ads/add-ads.component';
+import { MyAdsComponent } from './sellerMohsen/my-ads/my-ads.component';
 
 @NgModule({
   declarations: [
@@ -130,6 +131,7 @@ import { AddAdsComponent } from './sellerMohsen/add-ads/add-ads.component';
     MapOfPickupStoreComponent,
     PickupListGridComponent,
     AddAdsComponent,
+    MyAdsComponent,
   ],
   imports: [
     BrowserModule,

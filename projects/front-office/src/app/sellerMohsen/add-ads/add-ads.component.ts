@@ -4,6 +4,8 @@ import { Ads } from 'Models/Ads';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Product } from 'Models/Product';
 import { BudgetType } from 'Models/Enum/BudgetType';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-ads',
@@ -15,7 +17,8 @@ export class AddAdsComponent {
   point:number=0;
   budgetTypee="DAILYBUDGET";
   objTypee="TRAFFIC";
-  constructor(private adsService:AdsService,private formBuilder: FormBuilder){}
+  constructor(private adsService:AdsService,private formBuilder: FormBuilder,
+    private r:Router,private snackBar: MatSnackBar){}
   ngOnInit() {
     this.getProductByUserSess();
   }
@@ -33,7 +36,14 @@ export class AddAdsComponent {
   this.ads.gender=t7.controls['Gender'].value;
   this.ads.objectiveType=t7.controls['ObjectiveType'].value;
   this.ads.adsPoints=t7.controls['price'].value;
-  this.adsService.assignAdsToProduct(this.ads,this.idProduct).subscribe();
+  this.adsService.assignAdsToProduct(this.ads,this.idProduct).subscribe(()=>{this.r.navigateByUrl("/Seller/myAds");
+  this.snackBar.open('The Ads added with success!', 'Close', {
+    duration: 3000,
+    verticalPosition: 'top',
+    horizontalPosition: 'end',
+    panelClass : ['green-snackbar'],
+  });
+});
   }
   AddAds(ads:Ads,idProduct:number){
   }
@@ -70,7 +80,6 @@ export class AddAdsComponent {
 
   }
 click:number=10;
-
 
 
 

@@ -33,7 +33,7 @@ export class AppMenuComponent implements OnInit {
             label: 'Ads Library',
             items: [
                 { label: 'Add Ads', icon: 'pi pi-fw pi-id-card', routerLink: ['/Seller/addAds'] },
-                { label: 'Statistical', icon: 'pi pi-fw pi-id-card', routerLink: ['/c/DashboardDelivery'] }
+                { label: 'My Ads', icon: 'pi pi-fw pi-id-card', routerLink: ['/Seller/myAds'] }
 
             ]
         },

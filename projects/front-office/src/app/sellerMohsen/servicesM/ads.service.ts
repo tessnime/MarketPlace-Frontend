@@ -33,4 +33,15 @@ export class AdsService {
     return this.http.get<number>(this.urlretrieveHMAwRWithAds+`${adsPoint}`+'&startDate='+`${dateStart}`+'&expiredDate='+`${dateEnd}`+'&budgetType='+`${budgetTupe}`,options);
   }
   }
+
+  urlgetMyAds="http://localhost:8081/getMyAds";
+  getMyAds(){
+    const options = { withCredentials: true };
+    return this.http.get<Ads[]>(this.urlgetMyAds,options);
+  }
+  urldeleteAds="http://localhost:8081/deleteAds?idAds=";
+  deleteAds(idAds:number){
+    const options = { withCredentials: true };
+    return this.http.delete<Ads>(this.urldeleteAds+`${idAds}`,options);
+  }
 }
