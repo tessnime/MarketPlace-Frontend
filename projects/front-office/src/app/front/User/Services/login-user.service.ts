@@ -29,8 +29,8 @@ export class LoginUserService {
       return this.http.post('http://localhost:8081/User/add?idRole='+`${idRole}`,user);
      }
    
-    login(email: string, password: string):Observable<any>{
- 
+    login(email: string, password: string){
+      
    return this.http.post<any>('http://localhost:8081/Authentication/auth',{ login: email, password: password },httpOptions)
    .pipe(map(AuthenticationResponse => {
   
@@ -61,6 +61,9 @@ export class LoginUserService {
     getRoleByType(role:RoleType){
        return this.http.get<Role>(this.urlfindRolebyRoleType+`${role}`);
     }
+
+
+    
 }
 
 

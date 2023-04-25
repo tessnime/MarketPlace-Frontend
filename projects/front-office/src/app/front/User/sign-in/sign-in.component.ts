@@ -27,14 +27,15 @@ export class SignInComponent implements OnInit {
   userLogin(){
   this.loading =true;
   this.LoginUserService.login(this.form.email,this.form.password)
-  .pipe(first())
-   .subscribe
+  .pipe(first()).subscribe
    (
     () => {
+      
       this.cookieService.get('accessToken');
       this.LoginUserService.getRole(this.form.email).subscribe(data=>{this.role=data
       
   console.log(data);
+  
         alert(data)
       if (this.role === 'BUYER') {
         this.router.navigate(['/']); 
@@ -42,6 +43,8 @@ export class SignInComponent implements OnInit {
         this.router.navigate(['/store']); 
       }else if (this.role === 'DELIVERYMEN') {
         this.router.navigate(['/freelancer']);  
+      }else if (this.role === 'DELIVERYAGENCY') {
+        this.router.navigate(['/deliveryAgency']);  
       }
     });
      },
@@ -53,11 +56,12 @@ error =>{
 
 
   }
-   redierctRole(email:String){
-     
-     this.LoginUserService.getRole(email).subscribe(data=>{this.role=data
-      
+  
+   redierctRole(){
 
+     this.LoginUserService.getRole(this.form.email).subscribe(data=>{this.role=data
+      
+     
       alert(data)
     if (this.role === 'BUYER') {
       this.router.navigate(['/']); 
@@ -69,6 +73,8 @@ error =>{
   });
   }
 
- 
+  goToForgetPass(){
+    this.router.navigate(['/forgetPassword']);
+  }
 
 }

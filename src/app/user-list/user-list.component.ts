@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LayoutService } from '../layoutB/service/app.layout.service';
 import { ServiceAdminService } from '../service-admin.service';
 import { Router } from '@angular/router';
 import { User } from 'Models/User';

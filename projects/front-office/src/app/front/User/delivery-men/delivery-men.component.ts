@@ -1,26 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Role } from 'Models/Role';
 import { Shipping } from 'Models/Shipping';
 import { User } from 'Models/User';
 import { LoginUserService } from '../Services/login-user.service';
-import { NgForm } from '@angular/forms';
-import { Role } from 'Models/Role';
-
-
-
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss','../../../../assets/front-template/css/vendor.css','../../../../assets/front-template/css/utility.css','../../../../assets/front-template/css/app.css']
+  selector: 'app-delivery-men',
+  templateUrl: './delivery-men.component.html',
+  styleUrls: ['./delivery-men.component.scss','../../../../assets/front-template/css/vendor.css','../../../../assets/front-template/css/utility.css','../../../../assets/front-template/css/app.css']
 })
+export class DeliveryMenComponent {
 
-export class RegisterComponent  implements OnInit{
-/*  role1!:Role;
-  getRoleByType(role:RoleType){
-    this.LoginUserService.getRoleByType(role).subscribe(data=>{this.role1=data});
- }*/
- 
   form:any ={}
   error:string = '';
   shipping: Shipping = {
@@ -37,12 +29,12 @@ export class RegisterComponent  implements OnInit{
 
   }
 
-idRole=4;;
+idRole=2;
 idUser!:number;
 rolefinal!:Role;
 
   ngOnInit(): void {
-    
+  
   }
   RoleF!:Role;
   Create(t7:NgForm){
@@ -58,6 +50,9 @@ rolefinal!:Role;
     ()=>alert("Sorry User not register"));
    
   }
+
+
+
   nagivateToSeller(){
     this.router.navigate(['/user/seller']);
   }
@@ -72,6 +67,8 @@ rolefinal!:Role;
   nagivateToSupplier(){
     this.router.navigate(['/user/supplier']);
   }
+
+
 
   governorates = [
     { name: 'Ariana', cities: ['Ariana', 'Raoued', 'Sidi Thabet'] },
@@ -104,7 +101,4 @@ rolefinal!:Role;
   }
 
  
-
-  
-
-  }
+}

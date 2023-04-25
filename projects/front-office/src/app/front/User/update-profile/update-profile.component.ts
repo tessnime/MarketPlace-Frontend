@@ -1,28 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Shipping } from 'Models/Shipping';
 import { User } from 'Models/User';
-import { LoginUserService } from '../Services/login-user.service';
-import { NgForm } from '@angular/forms';
-import { Role } from 'Models/Role';
-
-
-
+import { ProfileServiceService } from '../Services/profile-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss','../../../../assets/front-template/css/vendor.css','../../../../assets/front-template/css/utility.css','../../../../assets/front-template/css/app.css']
+  selector: 'app-update-profile',
+  templateUrl: './update-profile.component.html',
+  styleUrls: ['./update-profile.component.scss']
 })
+export class UpdateProfileComponent  implements OnInit{
 
-export class RegisterComponent  implements OnInit{
-/*  role1!:Role;
-  getRoleByType(role:RoleType){
-    this.LoginUserService.getRoleByType(role).subscribe(data=>{this.role1=data});
- }*/
- 
+
+  constructor(private serviceProfile: ProfileServiceService,private router:Router ,private route: ActivatedRoute ){
+
+  } 
+     ngOnInit(): void {
+   
+   
+      this.serviceProfile.GetUserBySession().subscribe(data =>{this.user=data}) 
+    }
+
   form:any ={}
-  error:string = '';
+  user:  User  = new User();
   shipping: Shipping = {
     id: 0,
     governorate: "",
@@ -30,49 +30,6 @@ export class RegisterComponent  implements OnInit{
     gpsPoint: "",
     buyer:new User(),
   };
-  user:  User  = new User();
-  
-
-  constructor( private LoginUserService:LoginUserService ,private router:Router ,private route: ActivatedRoute){
-
-  }
-
-idRole=4;;
-idUser!:number;
-rolefinal!:Role;
-
-  ngOnInit(): void {
-    
-  }
-  RoleF!:Role;
-  Create(t7:NgForm){
-    console.log(this.user);
-  
-    this.user.governorate=t7.controls["governorate"].value;
-    this.user.city=t7.controls["city"].value;
-    this.LoginUserService.register(this.user,this.idRole).subscribe(()=>{
-     
-   
-     alert("Successfully User is register")
-    },
-    ()=>alert("Sorry User not register"));
-   
-  }
-  nagivateToSeller(){
-    this.router.navigate(['/user/seller']);
-  }
-
-  nagivateToDeliveryMen(){
-    this.router.navigate(['/user/deliveryMen']);
-  }
-
-  nagivateToDeliveryAngency(){
-    this.router.navigate(['/user/deliveryAgency']);
-  }
-  nagivateToSupplier(){
-    this.router.navigate(['/user/supplier']);
-  }
-
   governorates = [
     { name: 'Ariana', cities: ['Ariana', 'Raoued', 'Sidi Thabet'] },
     { name: 'Béja', cities: ['Béja', 'Medjez el-Bab', 'Téboursouk', 'Testour'] },
@@ -104,7 +61,4 @@ rolefinal!:Role;
   }
 
  
-
-  
-
-  }
+}
