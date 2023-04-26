@@ -9,7 +9,7 @@ export class SupplierRequest {
   quantity!: number;
   deliveryTime!: Date;
   requestStatus!: SupplierRequestStatus;
-  reference!:string;
+  reference!:String;
   product!:Product;
   supplier!:User;
 }

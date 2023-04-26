@@ -1,8 +1,11 @@
-import { Component ,OnInit, ViewChild, ElementRef} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Product } from 'Models/Product';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { ProductSreviceService } from '../services/product-srevice.service';
+import { StoreServiceService } from '../services/store-service.service';
+import { SupplierRequestService } from '../services/supplier-request.service';
+import { SupplierRequest } from 'Models/SupplierRequest';
 
 interface expandedRows {
   [key: string]: boolean;
@@ -14,13 +17,14 @@ interface expandedRows {
   providers: [MessageService, ConfirmationService]
 
 })
-export class SupplierRequestsListComponent implements OnInit{
-  constructor(private MessageService:MessageService ,private confirmationService: ConfirmationService,private productService:ProductSreviceService){
-
+export class SupplierRequestsListComponent implements OnInit {
+  constructor(private MessageService: MessageService, private confirmationService: ConfirmationService, private productService: ProductSreviceService, private storeservice: SupplierRequestService) {
   }
+  displayConfirmationDialog!: Boolean;
+
   ngOnInit(): void {
-   
-          this.productService.getProductsOutOfStockBySeller().subscribe(res=>{console.log(res);this.products=res});
+
+    this.productService.getProductsOutOfStockBySeller().subscribe(res => { console.log(res); this.products = res });
 
   }
   products: Product[] = [];
@@ -30,29 +34,28 @@ export class SupplierRequestsListComponent implements OnInit{
 
   expandAll() {
     if (!this.isExpanded) {
-        this.products.forEach(product => product && product.name ? this.expandedRows[product.name] = true : '');
+      this.products.forEach(product => product && product.name ? this.expandedRows[product.name] = true : '');
 
     } else {
-        this.expandedRows = {};
+      this.expandedRows = {};
     }
     this.isExpanded = !this.isExpanded;
-}
-confirm1(id:number) {
-  this.confirmationService.confirm({
+  }
+  confirm1(id: SupplierRequest) {
+    this.confirmationService.confirm({
       key: 'confirm1',
       message: 'Are you sure to perform this action?',
       accept: () => {
         this.MessageService.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' });
-        this.productService.accpetRequestBySeller(id).subscribe(r=>console.log((r))
-        );
+        this.storeservice.accpetRequestBySeller(id).subscribe(r => console.log(r));
         console.log("test2222");
 
-    },
-    reject: () => {
+      },
+      reject: () => {
         this.MessageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
         console.log("test");
 
-    }
-  });
-}
+      }
+    });
+  }
 }

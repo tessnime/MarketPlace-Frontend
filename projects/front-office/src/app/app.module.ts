@@ -37,7 +37,6 @@ import { MyPickupListFreelancerComponent } from './freelancer/my-pickup-list-fre
 import { TrakOrderByFreelancerComponent } from './freelancer/trak-order-by-freelancer/trak-order-by-freelancer.component';
 import { MyPickupListAgencyComponent } from './agency/my-pickup-list-agency/my-pickup-list-agency.component';
 import { TrackOrderByAgencyComponent } from './agency/track-order-by-agency/track-order-by-agency.component';
-import { NgxPaginationModule } from 'ngx-pagination';
 import {HttpClientModule} from "@angular/common/http";
 import { ProductListComponent } from './seller/product-list/product-list.component';
 import { DataViewModule } from 'primeng/dataview';
@@ -69,7 +68,6 @@ import{	FileUploadModule } from 'primeng/fileupload';
 import { RippleModule } from 'primeng/ripple';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import {ToastModule} from 'primeng/toast';
-import { ReactiveFormsModule} from "@angular/forms";
 import {MAT_CHIPS_DEFAULT_OPTIONS, MatChipsModule} from '@angular/material/chips';
 import {COMMA, SPACE} from "@angular/cdk/keycodes";
 import {MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
@@ -85,6 +83,9 @@ import { UpdateProductComponent } from './seller/update-product/update-product.c
 import { SupplierRequestsListComponent } from './seller/supplier-requests-list/supplier-requests-list.component';
 import { TableModule } from 'primeng/table';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 
 @NgModule({

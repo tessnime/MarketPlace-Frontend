@@ -13,7 +13,6 @@ export class ProductSreviceService {
   constructor(private http: HttpClient) { }
 
   url = "http://localhost:8081/product/";
-
   getAllProductsBySeller() {
     const options = { withCredentials: true };
     return this.http.get(this.url + 'retriveProductsByStore', options)
@@ -32,10 +31,10 @@ export class ProductSreviceService {
   // deleteProduct(p:Product){
   //   return this.http.delete<Product>(this.url+'DeleteProduct',p.id)
   // }
-  retriveRequestsByProduct(idProduct:number):Observable<SupplierRequest[]>{
+  retriveRequestsByProduct(idProduct: number): Observable<SupplierRequest[]> {
     const options = { withCredentials: true };
 
-    return this.http.get<SupplierRequest[]>(this.url + 'retriveRequestsByProduct?idProduct=' + idProduct,options)
+    return this.http.get<SupplierRequest[]>(this.url + 'retriveRequestsByProduct?idProduct=' + idProduct, options)
 
 
   }
@@ -46,7 +45,7 @@ export class ProductSreviceService {
     return this.http.post<Product>(this.url + 'CreateProductAndAssignCatAndSub', product, options)
 
   }
-  getProductsOutOfStockBySeller():Observable<Product[]>{
+  getProductsOutOfStockBySeller(): Observable<Product[]> {
     const options = { withCredentials: true };
     return this.http.get<Product[]>(this.url + 'getProductsOutOfStockBySeller', options)
 
@@ -61,8 +60,5 @@ export class ProductSreviceService {
     return this.http.post<any>(this.url + 'upload', formData, options);
   }
 
-  accpetRequestBySeller(id:number):Observable<SupplierRequest>{
-    const options = { withCredentials: true };
-    return this.http.put<SupplierRequest>('http://localhost:8081/SupplierRequest/AcceptRequest?supplierRequestId='+id,options)
-  }
+
 }
