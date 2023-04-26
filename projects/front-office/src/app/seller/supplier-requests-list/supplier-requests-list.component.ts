@@ -58,4 +58,8 @@ export class SupplierRequestsListComponent implements OnInit {
       }
     });
   }
+
+  isApproved(request: SupplierRequest) {
+    return request.requestStatus === ('ACCEPTED' || 'WAITING_FOR_VALIDATION');
+  }
 }
