@@ -304,4 +304,33 @@ kilometreTotalConsommerParFreelancerDelivery(){
   const options = { withCredentials:true };
 return this.http.get<number>(this.urlkilometreTotalConsommerParFreelancerDelivery,options);
 }
+
+//Administrateur
+urlcountPickupDeliveredTodayAdministrator="http://localhost:8081/Pickup/countPickupDeliveredTodayAdministrator";
+
+countPickupDeliveredTodayAdministrator(){
+  const options = { withCredentials:true };
+  return this.http.get<number>(this.urlcountPickupDeliveredTodayAdministrator,options)
+}
+urlcountOfPickupDeliveredweekAdministrator="http://localhost:8081/Pickup/countOfPickupDeliveredweekAdministrator";
+countOfPickupDeliveredweekAdministrator(){
+  const options = { withCredentials:true };
+  return this.http.get<number>(this.urlcountOfPickupDeliveredweekAdministrator,options);
+}
+
+
+
+urlSumOfPricePickupDeliveredToday="http://localhost:8081/Pickup/SumOfPricePickupDeliveredToday";
+
+SumOfPricePickupDeliveredToday(){
+  const options = { withCredentials:true };
+  return this.http.get<number>(this.urlSumOfPricePickupDeliveredToday,options);
+}
+
+urlcountAllAgencyAdmin="http://localhost:8081/AgencyBranch/countAllAgencyAdmin";
+countAllAgencyAdmin(){
+  const options = { withCredentials:true };
+  return this.http.get<any>(this.urlcountAllAgencyAdmin,options);
+}
+
 }

@@ -37,7 +37,7 @@ export class PickupListComponent {
   pickup!:Pickup[];
   totalItems = 0;
   p = 1; // current page number
-  itemsPerPage = 2; // number of items to display per page
+  itemsPerPage = 6; // number of items to display per page
 
   DeletePickup(idPickup: number) {
     // Call the pickup service to delete the pickup

@@ -58,6 +58,17 @@ export class RequestService {
  retrieveRequestApprovedOfPickupAgency(){
   const options = { withCredentials: true };
   return this.http.get<Request[]>(this.urlretrieveRequestApprovedOfPickupAgency,options);
-  
+ }
+ //Seller
+ urlLastRequestCreatedForSeller="http://localhost:8081/RequestController/LastRequestCreatedForSeller";
+ LastRequestCreatedForSeller(){
+  const options = { withCredentials: true };
+  return this.http.get<Request[]>(this.urlLastRequestCreatedForSeller,options);
+ }
+ //freelancer
+ urlLastRequestAssignedToFreelancer="http://localhost:8081/RequestController/LastRequestAssignedToFreelancer";
+ LastRequestAssignedToFreelancer(){
+  const options = { withCredentials: true };
+  return this.http.get<Request[]>(this.urlLastRequestAssignedToFreelancer,options);
  }
 }

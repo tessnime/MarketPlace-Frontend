@@ -37,6 +37,7 @@ export class User {
   KilometreConsomer!: number;
   FraisEssance!: string;
   points!: number;
+  adsPoints!:number;
   orders: Order[] = [];
   stores: Store[] = [];
   role!: Role;

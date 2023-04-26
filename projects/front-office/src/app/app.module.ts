@@ -72,7 +72,7 @@ import {ToastModule} from 'primeng/toast';
 import { ReactiveFormsModule} from "@angular/forms";
 import {MAT_CHIPS_DEFAULT_OPTIONS, MatChipsModule} from '@angular/material/chips';
 import {COMMA, SPACE} from "@angular/cdk/keycodes";
-import {MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -92,6 +92,8 @@ import { MapOfPickupStoreComponent } from './agency/map-of-pickup-store/map-of-p
 import { PickupListGridComponent } from './agency/pickup-list-grid/pickup-list-grid.component';
 import { AddAdsComponent } from './sellerMohsen/add-ads/add-ads.component';
 import { MyAdsComponent } from './sellerMohsen/my-ads/my-ads.component';
+import { ChartModule } from 'primeng/chart';
+
 
 @NgModule({
   declarations: [
@@ -188,6 +190,7 @@ import { MyAdsComponent } from './sellerMohsen/my-ads/my-ads.component';
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
+    ChartModule,
     MatInputModule,
     ToastrModule,
     MatDialogModule,
@@ -201,6 +204,10 @@ import { MyAdsComponent } from './sellerMohsen/my-ads/my-ads.component';
       useValue: {
         separatorKeyCodes: [COMMA, SPACE]
       }
+    },
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: { panelClass: ['green-snackbar'] },
     },
     MatSnackBar
   ],

@@ -8,6 +8,7 @@ import { AppLayoutModule } from './layoutB/app.layout.module';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PickupDashboardComponent } from './PickupManagement/pickup-dashboard/pickup-dashboard.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     UserDashboardComponent,
     UserListComponent,
+    PickupDashboardComponent,
 
 
   ],

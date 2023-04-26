@@ -60,5 +60,14 @@ urlretrieveDeliveryMenTOPickup="http://localhost:8081/AgencyDeliveryMan/Retrieve
     const options = { withCredentials: true };
     return this.http.get<AgencyBranch>(this.urlRetrieveAgencyBranch+`${idBranch}`,options);
    }
-  
+  urlTopDeliveryMenByPickupDelivered="http://localhost:8081/AgencyDeliveryMan/TopDeliveryMenByPickupDelivered";
+  TopDeliveryMenByPickupDelivered(){
+    const options = { withCredentials: true };
+    return this.http.get<AgencyDeliveryMan[]>(this.urlTopDeliveryMenByPickupDelivered,options);
+  }
+  urlTopDeliveryAgencyByPickupDelivered="http://localhost:8081/AgencyDeliveryMan/TopDeliveryAgencyByPickupDelivered";
+  TopDeliveryAgencyByPickupDelivered(){
+    const options = { withCredentials: true };
+    return this.http.get<AgencyBranch[]>(this.urlTopDeliveryAgencyByPickupDelivered,options)
+  }
 }

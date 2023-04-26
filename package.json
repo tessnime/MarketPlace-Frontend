@@ -28,6 +28,7 @@
     "angular-ng-autocomplete": "^2.0.12",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
+    "chart.js": "^4.2.1",
     "circular-json": "^0.5.9",
     "jquery": "^3.6.4",
     "jspdf": "^2.5.1",

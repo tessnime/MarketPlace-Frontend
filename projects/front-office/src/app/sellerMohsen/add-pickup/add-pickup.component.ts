@@ -52,7 +52,7 @@ export class AddPickupComponent {
       duration: 3000,
       verticalPosition: 'top',
       horizontalPosition: 'end',
-      panelClass : ['green-snackbar'],
+      panelClass : ['success-snackbar'],
     });
   })
   };
