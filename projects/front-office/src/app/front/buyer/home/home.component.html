@@ -376,7 +376,7 @@
 
 
       <!--====== Section Intro ======-->
-      <div  class="section__intro u-s-m-b-46">
+      <div  class="section__intro u-s-m-b-46" *ngIf="Vued.length>0">
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
@@ -393,7 +393,7 @@
 
 
       <!--====== Section Content ======-->
-      <div  class="section__content">
+      <div  class="section__content" *ngIf="Vued.length>0">
         <div class="container">
           <div class="row">
             <div  class="slider-controls">
@@ -401,7 +401,7 @@
               <button class="slider-button slider-button-left" (click)="slideLeft()"><i class="fas fa-angle-left"></i>
               </button>
             </div>
-            <div class="slider-container" style="width:910px">
+            <div class="slider-container" style="width:910px" >
               <div *ngFor="let v of Vued" class="col-lg-3 col-md-6 col-sm-6 u-s-m-b-39">
                 <div class="product-r u-h-100">
                   <div class="product-r__container">

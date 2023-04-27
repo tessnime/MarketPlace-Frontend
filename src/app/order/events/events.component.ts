@@ -104,7 +104,8 @@ export class EventsComponent implements OnInit {
 
   editProduct(product: EventModel) {
     this.product = { ...product };
-    this.NewEvent.id=this.product.id;
+
+    this.NewEvent=this.product;
     this.productDialog = true;
   }
 

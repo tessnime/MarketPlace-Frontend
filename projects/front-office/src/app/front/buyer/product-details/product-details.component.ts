@@ -7,6 +7,8 @@ import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {ProductQuantity} from "../../../../../../../Models/ProductQuantity";
 import {CookieService} from "ngx-cookie-service";
 import {Order} from "../../../../../../../Models/Order";
+import 'slick-carousel';
+
 
 
 @Component({
@@ -19,6 +21,16 @@ export class ProductDetailsComponent implements OnInit {
   constructor(private router: Router, private home: HomeService, private snackBar: MatSnackBar, private ar: ActivatedRoute,private cookieService: CookieService, private sanitizer: DomSanitizer) {
   }
 
+
+  prev() {
+    const container = document.querySelector('.slider-container')!;
+    container.scrollBy({ left: -300, behavior: 'smooth' });
+  }
+
+  next() {
+    const container = document.querySelector('.slider-container')!;
+    container.scrollBy({ left: 300, behavior: 'smooth' });
+  }
 
 
   product!: Product;
@@ -42,12 +54,12 @@ export class ProductDetailsComponent implements OnInit {
       this.home.getProductById(this.idp).subscribe(data => {
         this.product = data;
         this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.product.videoLink);
-        /*this.home.lastVude().subscribe(data => {
+        this.home.lastVude().subscribe(data => {
            this.Vued = data;
 
          });
 
-         */
+
       });
     });
   }

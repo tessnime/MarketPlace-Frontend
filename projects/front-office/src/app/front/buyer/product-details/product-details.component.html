@@ -48,6 +48,7 @@
               </div>
             </div>
             <!--====== End - Product Detail Zoom ======-->
+
           </div>
           <div class="col-lg-7">
 
@@ -127,6 +128,21 @@
                     </div>
                   </div>
                 </form>
+                <div class="u-s-m-b-15">
+
+                  <span class="pd-detail__label u-s-m-b-8">Product Policy:</span>
+                  <ul class="pd-detail__policy-list">
+                    <li><i class="fas fa-check-circle u-s-m-r-8"></i>
+
+                      <span>Buyer Protection.</span></li>
+                    <li><i class="fas fa-check-circle u-s-m-r-8"></i>
+
+                      <span>Full Refund if you don't receive your order.</span></li>
+                    <li><i class="fas fa-check-circle u-s-m-r-8"></i>
+
+                      <span>Returns accepted if product not as described.</span></li>
+                  </ul>
+                </div>
               </div>
             </div>
             <!--====== End - Product Right Side Details ======-->
@@ -345,7 +361,7 @@
       </div>
     </div>
     <!--====== End - Product Detail Tab ======-->
-    <div class="u-s-p-b-90">
+    <div class="u-s-p-b-90" *ngIf="Vued.length>0">
       <!--====== Section Intro ======-->
       <div class="section__intro u-s-m-b-46">
         <div class="container">
@@ -363,14 +379,14 @@
       <!--====== End - Section Intro ======-->
 
       <!--====== Section Content ======-->
-      <div class="section__content">
+      <div class="section__content" *ngIf="Vued.length>0">
         <div class="container">
-          <div class="row">
-            <div class="slider-controls">
+          <div class="row" >
+            <div class="slider-controls" >
 
               <button class="slider-button slider-button-left" (click)="slideLeft()"><i class="fas fa-angle-left"></i></button>
             </div>
-            <div class="slider-container" style="width:910px">
+            <div class="slider-container" style="width:910px" >
               <div  *ngFor="let v of Vued" class="col-lg-3 col-md-6 col-sm-6 u-s-m-b-39">
                 <div  class="product-r u-h-100">
                   <div  class="product-r__container">
@@ -411,6 +427,8 @@
         </div>
       </div>
 
+
+
       <!--====== End - Section Content ======-->
     </div>
     <!--====== End - Section 1 ======-->
@@ -434,18 +452,6 @@
 </div>
 <!--====== End - Main App ======-->
 
-
-<!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->
-<script src="https://www.google-analytics.com/analytics.js" async defer></script>
-
-<!--====== Vendor Js ======-->
-<script src="../../../../assets/front-template/js/vendor.js"></script>
-
-<!--====== jQuery Shopnav plugin ======-->
-<script src="../../../../assets/front-template/js/jquery.shopnav.js"></script>
-
-<!--====== App ======-->
-<script src="../../../../assets/front-template/js/app.js"></script>
 
 <!--====== Noscript ======-->
 <noscript>
