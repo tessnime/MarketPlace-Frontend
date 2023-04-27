@@ -84,6 +84,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -115,6 +116,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
     TrackOrderByAgencyComponent,
     AddPickupComponent,
     ProductListComponent,
+   
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,186 @@
+ <!--====== Google Font ======-->
+<link
+href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800"
+rel="stylesheet"
+/>
+
+
+<!--====== Vendor Css ======-->
+<link
+rel="stylesheet"
+href="../../../../assets/front-template/css/vendor.css"
+/>
+
+<!--====== Utility-Spacing ======-->
+<link
+rel="stylesheet"
+href="../../../../assets/front-template/css/utility.css"
+/>
+
+<!--====== App ======-->
+<link rel="stylesheet" href="../../../../assets/front-template/css/app.css" />
+
+<body class="config">
+<!--====== Main App ======-->
+<div id="app">
+  <!--====== Main Header ======-->
+  
+
+
+  <!--====== App Content ======-->
+  <div class="app-content">
+    <!--====== Section 1 ======-->
+    <div class="u-s-p-y-60">
+      
+
+ <!--====== Tab 3 ======-->
+ <div class="tab-pane" id="pd-rev">
+    <div class="pd-tab__rev">
+      <div class="u-s-m-b-30">
+        <div class="pd-tab__rev-score">
+          <div class="u-s-m-b-8">
+            <h2>{{product.numberOfRatings}} Reviews - {{product.rating }} (Overall)</h2>
+          </div>
+          <div class="gl-rating-style-2 u-s-m-b-8">
+            <i class="fas fa-star" *ngFor="let i of countArray(product.rating);"></i>
+            <i *ngIf="getFloor(product.rating)<product.rating" class="fas fa-star-half-alt"></i>
+            <i *ngFor="let i of countArray(5-product.rating).keys()" class="far fa-star"></i>
+          </div>
+          <div class="u-s-m-b-8">
+            <h4>We want to hear from you!</h4>
+          </div>
+
+          <span class="gl-text">Tell us what you think about this item</span>
+        </div>
+      </div>
+      <div class="u-s-m-b-30">
+        <form class="pd-tab__rev-f1">
+          <div class="rev-f1__group">
+            <div class="u-s-m-b-15">
+              <h2>{{review.length}} Review(s) for {{product.name}}</h2>
+            </div>
+            <div class="u-s-m-b-15">
+
+              <label for="sort-review"></label><select class="select-box select-box--primary-style"
+                                                       id="sort-review">
+              <option selected>Sort by: Best Rating</option>
+              <option>Sort by: Worst Rating</option>
+            </select></div>
+          </div>
+          <div class="rev-f1__review">
+            <div class="review-o u-s-m-b-15" *ngFor="let review of review">
+                <div>
+              <div class="review-o__info u-s-m-b-8" >
+
+                <span class="review-o__name">{{review.userSender.firstName}}</span>
+
+                <span class="review-o__date">{{review.createdAt}}</span></div>
+              <div class="review-o__rating gl-rating-style u-s-m-b-8"><i class="fas fa-star"></i><i
+                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                class="far fa-star"></i>
+
+                <span>(4)</span></div>
+              <p class="review-o__text" >{{ review.comment }}</p>
+                <br>
+                <button *ngIf="review.userSender.id==user.id" class="btn btn--e-brand-b-2" (click)="deleteReview(review.id)">Delete Comment</button>
+            </div>
+            </div>
+            
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--====== End - Tab 3 ======-->
+   <!--====== Tab 2 ======-->
+ <div class="tab-pane" id="pd-tag">
+  <div class="pd-tab__tag">
+    <div class="u-s-m-b-30">
+      <div class="shop-w shop-w--style">
+          <div class="shop-w__intro-wrap">
+              <h1 class="shop-w__h">ADD YOUR REVIEW</h1>
+
+              <span class="fas fa-minus shop-w__toggle" data-target="#s-rating" data-toggle="collapse"></span>
+          </div>
+          <div class="shop-w__wrap collapse show" id="s-rating">
+              <ul class="shop-w__list gl-scroll">
+                  <li>
+                      <div class="rating__check">
+
+                          <input type="checkbox" (click)="setRate(5)">
+                          <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                      </div>
+
+                      
+                  </li>
+                  <li>
+                      <div class="rating__check" >
+
+                          <input type="checkbox" (click)="setRate(4)">
+                          <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+
+                              </div>
+                      </div>
+
+          
+                  </li>
+                  <li>
+                      <div class="rating__check" >
+
+                          <input type="checkbox" (click)="setRate(3)">
+                          <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                              </div>
+                      </div>
+
+                      
+                  </li>
+                  <li>
+                      <div class="rating__check" >
+
+                          <input type="checkbox" (click)="setRate(2)">
+                          <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                            </div>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="rating__check">
+
+                          <input type="checkbox" (click)="setRate(1)" >
+                          <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                              </div>
+                      </div>
+
+              
+                  </li>
+                  <li>
+                    <div class="rating__check">
+
+                        <input type="checkbox" (click)="setRate(0)" >
+                        <div class="rating__check-star-wrap"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                            </div>
+                    </div>
+
+            
+                </li>
+              </ul>
+              <div class="u-s-m-b-15">
+                <form>
+        
+                  <input class="input-text input-text--primary-style" type="text" [(ngModel)]="review2.comment" id="comment" name="comment">
+        
+                  <button class="btn btn--e-brand-b-2" (click)="addReview()">ADD REVIEW</button>
+                </form>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+    <span class="gl-text">Use spaces to separate tags. Use single quotes (') for phrases.</span>
+  </div>
+</div>
+<!--====== End - Tab 2 ======-->

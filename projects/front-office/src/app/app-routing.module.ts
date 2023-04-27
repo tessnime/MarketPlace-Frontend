@@ -44,6 +44,10 @@ import {OrdersSettingComponent} from "./front/buyer/orders-setting/orders-settin
 
 import { SignInComponent } from './front/User/sign-in/sign-in.component';
 import { RegisterComponent } from './front/User/register/register.component';
+import { ClaimComponent } from './front/claimreview/claim/claim.component';
+import { ShowclaimsComponent } from './front/claimreview/showclaims/showclaims.component';
+import { EditClaimComponent } from './front/claimreview/edit-claim/edit-claim.component';
+import { ReviewComponent } from './front/claimreview/review/review.component';
 
 
 
@@ -96,6 +100,20 @@ const routes: Routes = [
 { path: 'user/signin', component: SignInComponent },
 { path: 'user/register', component: RegisterComponent },
 
+{
+  path: 'claim',
+  component: ClaimComponent
+},
+{ path: 'claims', component: ShowclaimsComponent },
+
+{
+  path: 'claims/:id/edit',
+  component: EditClaimComponent
+},
+
+{ path: 'edit-claim/:id', component: EditClaimComponent },
+
+{ path: 'review/:id', component: ReviewComponent },
 /*{
   path:'user',component:HomeComponent,
   children:[
@@ -120,6 +138,8 @@ const routes: Routes = [
     {path:'pickupsInProgress/:CodePickup',component:TrakingPickupSellerComponent}
   ]
 }
+
+
 ];
 
 @NgModule({
