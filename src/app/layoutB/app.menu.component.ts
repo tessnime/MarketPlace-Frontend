@@ -45,7 +45,7 @@ export class AppMenuComponent implements OnInit {
                 label: 'Delivery Management',
                 items: [
                     { label: 'Dashboard ', icon: 'pi pi-fw pi-eye', routerLink: ['/PickupDashboard'], badge: 'NEW' },
-                    { label: 'All Blocks', icon: 'pi pi-fw pi-globe', url: ['https://www.primefaces.org/primeblocks-ng'], target: '_blank' },
+                    { label: 'Predict', icon: 'pi pi-fw pi-globe', routerLink: ['/predictCoco'], target: '_blank' },
                 ]
             },
             {

@@ -332,5 +332,29 @@ countAllAgencyAdmin(){
   const options = { withCredentials:true };
   return this.http.get<any>(this.urlcountAllAgencyAdmin,options);
 }
-
+urlgetNumberOfPickupByStatus="http://localhost:8081/Pickup/getNumberOfPickupByStatus";
+getNumberOfPickupByStatus(){
+  const options = { withCredentials:true };
+  return this.http.get<any>(this.urlgetNumberOfPickupByStatus,options);
+}
+urlgetNumberOfPickupByStatusByMonthAndYearAndAll="http://localhost:8081/Pickup/getNumberOfPickupByStatusByMonthAndYearAndAll";
+getNumberOfPickupByStatusByMonthAndYearAndAll(){
+  const options = { withCredentials:true };
+  return this.http.get<any>(this.urlgetNumberOfPickupByStatusByMonthAndYearAndAll,options);
+}
+urlpredict="http://localhost:8081/Pickup/predict";
+sendDataRegLineaire(){
+  const options = { withCredentials:true };
+  return this.http.post<any>(this.urlpredict,options);
+}
+urlgetPredictCo2="http://localhost:8081/Pickup/predictco2?gearage=";
+getPredictCo2(gearAge:number){
+  const options = { withCredentials:true };
+  return this.http.get<number>(this.urlgetPredictCo2+`${gearAge}`,options);
+}
+urlAllCo2User="http://localhost:8081/Pickup/AllCo2User";
+AllCo2User(){
+  const options = { withCredentials:true };
+  return this.http.get<number>(this.urlAllCo2User,options);
+}
 }

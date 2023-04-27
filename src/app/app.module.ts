@@ -9,6 +9,9 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { UserListComponent } from './user-list/user-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PickupDashboardComponent } from './PickupManagement/pickup-dashboard/pickup-dashboard.component';
+import { ChartModule } from 'primeng/chart';
+import { PredictAdminComponent } from './PickupManagement/predict-admin/predict-admin.component';
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -17,6 +20,7 @@ import { PickupDashboardComponent } from './PickupManagement/pickup-dashboard/pi
     UserDashboardComponent,
     UserListComponent,
     PickupDashboardComponent,
+    PredictAdminComponent,
 
 
   ],
@@ -26,7 +30,9 @@ import { PickupDashboardComponent } from './PickupManagement/pickup-dashboard/pi
     AppLayoutModule,
     FormsModule,
     RouterModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ChartModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

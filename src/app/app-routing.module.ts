@@ -4,6 +4,7 @@ import { AppLayoutComponent } from './layoutB/app.layout.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { PickupDashboardComponent } from './PickupManagement/pickup-dashboard/pickup-dashboard.component';
+import { PredictAdminComponent } from './PickupManagement/predict-admin/predict-admin.component';
 
 const routes: Routes = [
 
@@ -12,7 +13,8 @@ const routes: Routes = [
     children:[
       {path:'',component:UserDashboardComponent},
       {path:'userlist',component:UserListComponent},
-      {path:'PickupDashboard',component:PickupDashboardComponent}
+      {path:'PickupDashboard',component:PickupDashboardComponent},
+      {path:'predictCoco',component:PredictAdminComponent}
     ]
 },]
 
