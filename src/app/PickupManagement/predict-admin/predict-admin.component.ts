@@ -32,4 +32,5 @@ export class PredictAdminComponent {
   AllCo2User(){
     this.pickupService.AllCo2User().subscribe(data=>{this.aco2=data});
   }
+ 
 }

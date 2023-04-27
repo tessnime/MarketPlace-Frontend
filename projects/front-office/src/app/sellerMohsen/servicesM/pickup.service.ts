@@ -357,4 +357,14 @@ AllCo2User(){
   const options = { withCredentials:true };
   return this.http.get<number>(this.urlAllCo2User,options);
 }
+urlgetNumberRequestsInMonth="http://localhost:8081/Pickup/getNumberRequestsInMonth";
+getNumberRequestsInMonth(){
+  const options = { withCredentials:true };
+  return this.http.get<any>(this.urlgetNumberRequestsInMonth,options);
+}
+urlgetNumberPickupsInMonth="http://localhost:8081/Pickup/getNumberPickupsInMonth";
+getNumberPickupsInMonth(){
+  const options = { withCredentials:true };
+  return this.http.get<any>(this.urlgetNumberPickupsInMonth,options);
+ }
 }
