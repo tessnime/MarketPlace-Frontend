@@ -102,7 +102,7 @@
                         <a class="ship-b__edit btn--e-transparent-platinum-b-2" type="button"  data-toggle="modal" data-target="#edit" >Edit Profile </a>
                     <div>
 
-                    
+
                 </div>
             </div>
         </div>
@@ -112,30 +112,30 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-body">
-               <form name="form" (ngSubmit)="update(f)" #f="ngForm">
+               <form name="form" (ngSubmit)="update(user)" #f="ngForm">
                     <div class="row row--center">
-                    
+
                         <div class="l-f-o">
                           <div class="l-f-o__pad-box">
-                           
+
                               <div class="dash__pad-2">
                                   <h1 class="dash__h1 u-s-m-b-14">Edit Profile</h1>
-                              
+
                                   <span class="dash__text u-s-m-b-30">Looks like you haven't update your profile</span>
                                   <div class="dash__link dash__link--secondary u-s-m-b-30">
-        
+
                               <div class="u-s-m-b-30" *ngIf=user.image>
                                 <label class="gl-label" for="photo"
                                   >PROFILE PICTURE *</label
                                 >
                                 <input type="file"  accept=".png" id="photo" name="photo" [(ngModel)]="user.image"  />
                               </div>
-        
+
                               <div class="u-s-m-b-30" *ngIf= user.firstName>
                                 <label class="gl-label" id="espace" for="reg-fname"
                                   >FIRST NAME *</label
                                 >
-        
+
                                 <input
                                   class="input-text input-text--primary-style"
                                   type="text"
@@ -147,7 +147,7 @@
                                 <label class="gl-label" for="reg-lname"
                                   >LAST NAME *</label
                                 >
-        
+
                                 <input
                                   class="input-text input-text--primary-style"
                                   type="text"
@@ -155,25 +155,25 @@
                                   placeholder="Last Name" name="lastName"  [(ngModel)]="user.lastName"
                                 />
                               </div>
-        
+
                                 <div class="u-s-m-b-30"  >
                                   <!--====== Date of Birth Select-Box ======-->
-        
+
                                   <span class="gl-label">BIRTHDAY *</span>
-        
-        
+
+
                                   <input type="date" id="start" name="trip-start"
-        
+
                                          min="1991-01-01" max="2005-12-31"  [(ngModel)]="user.birthDate" >
-        
+
                                   <!--====== End - Date of Birth Select-Box ======-->
-        
-        
+
+
                                 <div class="u-s-m-b-30">
                                   <label class="gl-label" for="gender">GENDER *</label
                                   ><select
                                     class="select-box select-box--primary-style u-w-100"
-                                    id="gender" name="gender"  [(ngModel)]="user.gender"   
+                                    id="gender" name="gender"  [(ngModel)]="user.gender"
                                   >
                                    <option value="MAN">MAN</option>
                                     <option value="WOMEN">WOMEN</option>
@@ -181,12 +181,12 @@
                                   </select>
                                 </div>
                               </div>
-        
+
                               <div class="u-s-m-b-30">
                                 <label class="gl-label" for="phone"
                                   >PHONE-NUMBER *</label
                                 >
-        
+
                                 <input
                                   class="input-text input-text--primary-style"
                                   type="tel"
@@ -196,12 +196,12 @@
                                   placeholder="Enter phone-Number"  [(ngModel)]="user.phoneNumber"
                                   required
                                 />
-        
+
                                 <div class="u-s-m-b-30"  *ngIf= user.identity>
                                   <label class="gl-label" id="espace" for="reg-Iname"
                                     >IDENTITY *</label
                                   >
-        
+
                                   <input
                                     class="input-text input-text--primary-style"
                                     type="text"
@@ -209,12 +209,12 @@
                                     placeholder="identity" name="identity"  [(ngModel)]="user.identity"
                                   />
                                 </div>
-        
+
                                 <div class="u-s-m-b-30" *ngIf=user.brandName>
                                   <label class="gl-label" id="espace" for="reg-bname"
                                     >BRAND NAME *</label
                                   >
-        
+
                                   <input
                                     class="input-text input-text--primary-style"
                                     type="text"
@@ -222,61 +222,61 @@
                                     placeholder="BrandName"   name="brandName"  [(ngModel)]="user.brandName"
                                   />
                                 </div>
-        
+
                                 <div class="u-s-m-b-30"  *ngIf= user.brandLogo>
-                                  <label class="gl-label" id="espace" for="reg-bLname" 
+                                  <label class="gl-label" id="espace" for="reg-bLname"
                                     >BRAND LOGO *</label
                                   >
-        
+
                                   <input
-        
+
                                     type="file"
                                     accept=".png"
                                     id="reg-bLname"
                                     placeholder="BrandLogo"   name="brandlogo"  [(ngModel)]="user.brandLogo"
                                   />
                                 </div>
-        
+
                                 <div class="u-s-m-b-30"  *ngIf= user.justification>
-        
+
                                   <label class="gl-label" id="espace" for="reg-Jname"
                                     >JUSTIFICATION *(Place Your Document)</label
                                   >
-        
+
                                   <input
-        
+
                                     type="file"
                                     accept=".pdf"
                                     id="reg-Jname"
-                                    placeholder="Justification"  name="Justification"  [(ngModel)]="user.justification" 
+                                    placeholder="Justification"  name="Justification"  [(ngModel)]="user.justification"
                                   />
                                 </div>
-      
-                                
+
+
                               <div class="u-s-m-b-30"  *ngIf= user.gear>
                                   <label  class="gl-label" for="gear">GEAR *</label>
                                   <select
                                   class="select-box select-box--primary-style u-w-100"
-        
+
                                   id="reg-Gname"
                                    name="gear"  [(ngModel)]="user.gear"
                                 >
-        
+
                                   <option value="CAR">CAR</option>
                                   <option value="MOTO">MOTO</option>
                                   <option value="TRUCK">TRUCK</option>
                                   <option value="BIKE">BIKE</option>
                                 </select>
                                   </div>
-        
-        
-        
-        
-        
+
+
+
+
+
                                 <div class="u-s-m-b-30"  *ngIf= user.driveLicense>
                                   <label class="gl-label" id="espace" for="reg-Dname"
                                     >DRIVER LICENSE *</label>
-        
+
                                   <input
                                     class="input-text input-text--primary-style"
                                     type="text"
@@ -288,7 +288,7 @@
                                   <label class="gl-label" id="espace" for="reg-Gname"
                                     >GEAR AGE *</label
                                   >
-        
+
                                   <input
                                     class="input-text input-text--primary-style"
                                     type="text"
@@ -296,27 +296,27 @@
                                     placeholder="GearAge" name="GearAge"  [(ngModel)]="user.GearAge"
                                   />
                                 </div>
-        
-                               
+
+
                                 <div class="u-s-m-b-30" >
                                 <label class="gl-label">GOVERNORATE *   </label>
-        
+
                                   <select class="select-box select-box--primary-style u-w-100" id="governorate" name="governorate" [(ngModel)]="selectedGovernorate"  [(ngModel)]="shipping.governorate"(ngModelChange)="updateCities()">
                                     <option *ngFor="let gov of governorates" [value]="gov.name">{{ gov.name }}</option>
                                   </select>
                                 </div>
-        
+
                                 <div class="u-s-m-b-30" >
                                     <label class="gl-label">CITY *</label>
-        
+
                                     <select  class="select-box select-box--primary-style u-w-100" id="city" name="city" [(ngModel)]="shipping.city">
                                     <option>{{ shipping.city }}</option>
                                     <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
                                     </select>
-        
+
                                 </div>
                                 <label class="gl-label" for="reg-email">E-MAIL *</label>
-        
+
                                 <input
                                   class="input-text input-text--primary-style"
                                   type="text"
@@ -328,7 +328,7 @@
                                 <label class="gl-label" for="reg-password"
                                   >PASSWORD *</label
                                 >
-      
+
                                 <input
                                   class="input-text input-text--primary-style"
                                   type="password"
@@ -339,18 +339,18 @@
                               <button  class="btn btn--e-brand-b-2" data-toggle="modal" data-target="#ShowConfirmation"  type="submit">SAVE</button>
                           </div>
                         </div>
-                      
+
                     </div>
-                 
+
                 </div>
-           
+
             </div>
         </form>
           </div>
         </div>
       </div>
       <!--====== End - Shipping Address Add Modal ======-->
-  
+
       <div class="modal fade" id="ShowConfirmation">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">

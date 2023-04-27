@@ -5,6 +5,7 @@ import { User } from 'Models/User';
 import { LoginUserService } from '../Services/login-user.service';
 import { NgForm } from '@angular/forms';
 import { Role } from 'Models/Role';
+import { GenderType } from 'Models/Enum/GenderType';
 
 
 
@@ -21,6 +22,7 @@ export class RegisterComponent  implements OnInit{
     this.LoginUserService.getRoleByType(role).subscribe(data=>{this.role1=data});
  }*/
  
+
   form:any ={}
   error:string = '';
   shipping: Shipping = {
@@ -38,15 +40,59 @@ export class RegisterComponent  implements OnInit{
   }
 
 idRole=4;;
-idUser!:number;
+idUser!:number;  
 rolefinal!:Role;
 
   ngOnInit(): void {
     
   }
   RoleF!:Role;
+
+  selectedFile1!: File | null | undefined;
+  onUploadImage1() {
+    if(this.selectedFile1!=null)
+    this.LoginUserService.upload(this.selectedFile1).subscribe(
+      response => {
+        console.log(response);
+      }
+    );
+  }
+
+  selectedFile2!: File | null | undefined;
+
+  onUploadImage2() {
+    if(this.selectedFile2!=null)
+    this.LoginUserService.upload(this.selectedFile2).subscribe(
+      response => {
+        console.log(response);
+      }
+    );
+  }
+
+  selectedFile3!: File | null | undefined;
+
+  onUploadImage3() {
+    if(this.selectedFile3!=null)
+    this.LoginUserService.upload(this.selectedFile3).subscribe(
+      response => {
+        console.log(response);
+      }
+    );
+  }
+
   Create(t7:NgForm){
     console.log(this.user);
+
+    this.onUploadImage1();
+    this.onUploadImage2();
+    this.onUploadImage3();
+   /* // @ts-ignore
+   this.user.justification = this.selectedFile2.name;
+    // @ts-ignore
+    this.user.image = this.selectedFile1.name;
+    // @ts-ignore
+    this.user.brandLogo = this.selectedFile3.name;*/
+   
   
     this.user.governorate=t7.controls["governorate"].value;
     this.user.city=t7.controls["city"].value;
@@ -102,9 +148,11 @@ rolefinal!:Role;
       this.cities = [];
     }
   }
+  cinPattern = '^[0-9]{8}$';
 
- 
+  Gender=['MAN','WOMEN','Other']
 
-  
+  passwordPattern="[a-zA-Z0-9]*"
+  phonePattern="[0-9]{2}-[0-9]{3}-[0-9]{3}"
 
   }

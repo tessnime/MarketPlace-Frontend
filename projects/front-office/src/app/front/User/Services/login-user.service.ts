@@ -14,12 +14,13 @@ const httpOptions ={
 const httpOptions1 ={
 withCredentials:true,responseType:'text'
 };
+const options = { withCredentials: true };
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginUserService {
-
+  Upload="http://localhost:8081/User/upload";
 
   constructor( private http: HttpClient, private cookieService: CookieService) { 
 
@@ -62,6 +63,13 @@ export class LoginUserService {
        return this.http.get<Role>(this.urlfindRolebyRoleType+`${role}`);
     }
 
+    upload(image: File | null | undefined)
+    {
+      const formData = new FormData();
+      // @ts-ignore
+      formData.append('file', image, image.name);
+      return this.http.post(this.Upload,formData,options);
+    }
 
     
 }

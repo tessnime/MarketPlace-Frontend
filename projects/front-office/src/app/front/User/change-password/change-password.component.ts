@@ -16,26 +16,32 @@ public tok:string="";
 
   constructor( private ServiceForgetPass:ForgetPasswordService ,private router:Router ,private route: ActivatedRoute){
 
-  } 
+  }
+  token:string="";
   ngOnInit(): void {
+    this.token = this.route.snapshot.params['token'];
     //console.log('token ='+this.verif.token)
+   
   }
   user:  User  = new User();
   form:any ={}
-  
-  
-    
+
+
+
 
   changePassword(){
-    
-    this.ServiceForgetPass.changePassword(this.form.token, this.form.password).subscribe(
+
+    this.ServiceForgetPass.changePassword(this.token, this.form.password).subscribe(
       data => {
+        
         alert(data);
+       
       },
       error => {
         console.error(error);
         // Handle the error here.
       }
     );
+    this.router.navigate(['/user/signin'])
   }
 }

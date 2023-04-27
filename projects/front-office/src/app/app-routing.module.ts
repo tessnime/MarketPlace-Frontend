@@ -110,7 +110,7 @@ const routes: Routes = [
 { path: 'user/deliveryMen', component: DeliveryMenComponent },
 { path: 'forgetPassword', component: ForgetPasswordComponent },
 { path: 'verificationCode', component: VerificationCodeComponent },
-{ path: 'verificationCode/changePass', component: ChangePasswordComponent },
+{ path: 'verificationCode/changePass/:token', component: ChangePasswordComponent },
 { path: 'freelancer/affichageProfile', component: AffichageProfileComponent },
 { path: 'affichageProfile', component: AffichageProfileComponent },
 { path: 'store/affichageProfile', component: AffichageProfileComponent },

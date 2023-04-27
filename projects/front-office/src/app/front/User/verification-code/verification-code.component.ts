@@ -17,40 +17,40 @@ public token:string=' ';
 
 
   constructor( private ServiceForgetPass:ForgetPasswordService ,private router:Router ,private route: ActivatedRoute){
-    
+
   }
 
   user:  User  = new User();
   form:any ={}
-  
+
   checkEmail(){
-    
-    
+
+
     this.ServiceForgetPass.ForgetPass(this.form.email).subscribe();
-      
+
   };
 
 
   verifyCode(){
     this.ServiceForgetPass.checkCode(this.form.token).subscribe((data: any) => {
-    
+
       if (data.isValidToken) {
-        
-        this.router.navigate(['/verificationCode/changePass']);
+
+        this.router.navigate(['/verificationCode/changePass/'+this.form.token]);
       } else {
         alert("Invalid Code Try Again Please")
       }
     }
-    
+
      )
     };
-    
+
 
   };
-  
-      
-    
-  
+
+
+
+
 
 
 

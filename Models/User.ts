@@ -18,12 +18,12 @@ export class User {
   banned!: boolean;
   phoneNumber!: string;
   birthDate!: Date;
-  image!: string;
-  gender!:string;
+  image!: string ;
+  gender!:GenderType;
   identity!: string;
   brandName!: string;
-  brandLogo!: string;
-  justification!: string;
+  brandLogo!: string ;
+  justification!: string ;
   governorate!: string;
   city!: string;
   gear!: string;
@@ -46,5 +46,5 @@ export class User {
   requestsAgencys: Request[] = [];
   agencyBranches: AgencyBranch[] = [];
   supplierRequests: SupplierRequest[] = [];
- 
+
 }

@@ -14,17 +14,17 @@ import { NgForm } from '@angular/forms';
 })
 
 export class AffichageProfileComponent implements OnInit {
- 
+
   constructor(private serviceProfile: ProfileServiceService,private router:Router ,private route: ActivatedRoute , private cookieService: CookieService){
 
-  } 
+  }
   user!:User;
   ngOnInit(): void {
-    this.serviceProfile.GetUserBySession().subscribe(data =>{this.user=data}) 
+    this.serviceProfile.GetUserBySession().subscribe(data =>{this.user=data})
   }
 
   form:any ={}
- 
+
   shipping: Shipping = {
     id: 0,
     governorate: "",
@@ -61,9 +61,10 @@ export class AffichageProfileComponent implements OnInit {
       this.cities = [];
     }
   }
- 
- update(_t7: NgForm){
-  this.serviceProfile.UpdateUser(this.form.user).subscribe();
+
+ update(user:User){
+  
+  this.serviceProfile.UpdateUser(user).subscribe();
  }
 
 
