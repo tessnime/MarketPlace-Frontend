@@ -9,7 +9,7 @@ import { Store } from 'Models/Store';
 import { ProductFormDTO } from 'Models/ProductFormDTO';
 import { ProductCategory } from 'Models/ProductCategory';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Product } from 'Models/Product';
 import { ProductStatus } from 'Models/Enum/ProductStatus';
 
@@ -114,7 +114,7 @@ export class UpdateProductComponent {
   value11: any[] = [];
   value12: any;
 
-  constructor(private act: ActivatedRoute, private prodcutService: ProductSreviceService, private messageService: MessageService, private catgeoryService: CategoryService, private storeService: StoreServiceService, private userService: UserService) { }
+  constructor(private act: ActivatedRoute,private route:Router, private prodcutService: ProductSreviceService, private messageService: MessageService, private catgeoryService: CategoryService, private storeService: StoreServiceService, private userService: UserService) { }
   ngDoCheck(): void {
     for (let c of this.subcategries) {
       if (this.selectedSubAdvanced == c) {
@@ -263,6 +263,8 @@ export class UpdateProductComponent {
     }
 
     this.prodcutService.updateProduct(this.product1).subscribe((res: any) => { console.log('Product updated') })
+    this.route.navigateByUrl('/store/list');
+
   };
 
 }

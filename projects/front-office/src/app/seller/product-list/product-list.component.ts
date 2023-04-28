@@ -3,6 +3,7 @@ import { ProductSreviceService } from '../services/product-srevice.service';
 import { SelectItem } from 'primeng/api';
 import { DataView } from 'primeng/dataview';
 import { Product } from 'Models/Product';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -36,6 +37,7 @@ export class ProductListComponent {
           { label: 'Price Low to High', value: 'productPrice' }
       ];
   }
+  display: boolean = false;
 
   onSortChange(event: any) {
       const value = event.value;
@@ -51,5 +53,11 @@ export class ProductListComponent {
 
   onFilter(dv: DataView, event: Event) {
       dv.filter((event.target as HTMLInputElement).value);
+  }
+
+  voucher!:string;
+  endDate!:Date;
+  addPromotionCode(F:NgForm){
+    
   }
 }

@@ -88,6 +88,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { StoresListComponent } from './seller/stores-list/stores-list.component';
 import { CarouselModule } from 'primeng/carousel';
 import { AddStoreComponent } from './seller/add-store/add-store.component';
+import { PromotionCodeComponent } from './seller/promotion-code/promotion-code.component';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { DialogModule } from 'primeng/dialog';
 
 
 
@@ -126,7 +129,8 @@ import { AddStoreComponent } from './seller/add-store/add-store.component';
     UpdateProductComponent,
     SupplierRequestsListComponent,
     StoresListComponent,
-    AddStoreComponent
+    AddStoreComponent,
+    PromotionCodeComponent
     
   ],
   imports: [
@@ -187,7 +191,9 @@ import { AddStoreComponent } from './seller/add-store/add-store.component';
     MatInputModule,
     TableModule,
     ConfirmDialogModule,
-    CarouselModule
+    CarouselModule,
+    OverlayPanelModule,
+    DialogModule
     
 
   ],

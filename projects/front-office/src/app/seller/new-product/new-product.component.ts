@@ -11,6 +11,7 @@ import { ProductSreviceService } from '../services/product-srevice.service';
 import { StoreServiceService } from '../services/store-service.service';
 import { UserService } from '../services/user.service';
 import { ProductFormDTO } from 'Models/ProductFormDTO';
+import { Router } from '@angular/router';
 
 
 interface names {
@@ -81,7 +82,7 @@ export class NewProductComponent implements OnInit, DoCheck {
   value12: any;
   selectedFile!: File;
 
-  constructor(private prodcutService: ProductSreviceService, private messageService: MessageService, private catgeoryService: CategoryService, private storeService: StoreServiceService, private userService: UserService) { }
+  constructor(private prodcutService: ProductSreviceService, private route:Router,private messageService: MessageService, private catgeoryService: CategoryService, private storeService: StoreServiceService, private userService: UserService) { }
   ngDoCheck(): void {
     for (let c of this.subcategries) {
       if (this.selectedSubAdvanced == c) {
@@ -198,6 +199,7 @@ export class NewProductComponent implements OnInit, DoCheck {
       i++;
     }
     this.prodcutService.createAndAssignCategoryAndSubCategory(this.product).subscribe((res: any) => { console.log('Product created') })
+    this.route.navigateByUrl('/store/list');
   };
 
   onFileSelected(event: any) {
