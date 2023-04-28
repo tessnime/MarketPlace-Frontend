@@ -367,4 +367,10 @@ getNumberPickupsInMonth(){
   const options = { withCredentials:true };
   return this.http.get<any>(this.urlgetNumberPickupsInMonth,options);
  }
+ urlRetrieveAllPickupsOfUser="http://localhost:8081/Pickup/RetrieveAllPickupsOfUser";
+ RetrieveAllPickupsOfUser(){
+  const options = { withCredentials:true };
+  return this.http.get<Pickup[]>(this.urlRetrieveAllPickupsOfUser,options);
+ }
+
 }

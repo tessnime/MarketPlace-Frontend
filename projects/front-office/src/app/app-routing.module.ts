@@ -49,6 +49,8 @@ import { AgencyMapComponent } from './agency/agency-map/agency-map.component';
 import { PickupListGridComponent } from './agency/pickup-list-grid/pickup-list-grid.component';
 import { AddAdsComponent } from './sellerMohsen/add-ads/add-ads.component';
 import { MyAdsComponent } from './sellerMohsen/my-ads/my-ads.component';
+import { HistoryPickupsComponent } from './agency/history-pickups/history-pickups.component';
+import { HistoryRequestsComponent } from './agency/history-requests/history-requests.component';
 
 
 
@@ -88,7 +90,11 @@ const routes: Routes = [
     {path:'MyPickups',component:MyPickupListAgencyComponent},
     {path:'MyPickups/track/:idPickup',component:TrackOrderByAgencyComponent},
     {path:'MyMap',component:AgencyMapComponent},
-    {path:'pickupgrid',component:PickupListGridComponent}
+    {path:'pickupgrid',component:PickupListGridComponent},
+    {path:'HistoryPickup',component:HistoryPickupsComponent},
+    {path:'HistoryRequest',component:HistoryRequestsComponent}
+
+
    ]
 },
 

@@ -3,14 +3,16 @@ import { PickupService } from '../../sellerMohsen/servicesM/pickup.service';
 import { ActivatedRoute } from '@angular/router';
 import { Pickup } from 'Models/Pickup';
 import { NgForm } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-track-order-by-agency',
   templateUrl: './track-order-by-agency.component.html',
-  styleUrls: ['./track-order-by-agency.component.scss']
+  styleUrls: ['./track-order-by-agency.component.scss'],
+  providers: [MessageService]
 })
 export class TrackOrderByAgencyComponent {
-  constructor(private pickupService:PickupService,private r:ActivatedRoute){
+  constructor(private pickupService:PickupService,private r:ActivatedRoute,private messageService: MessageService){
   }
   ngOnInit(){
     this.idPickup=this.r.snapshot.params["idPickup"];

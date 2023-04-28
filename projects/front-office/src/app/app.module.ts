@@ -93,7 +93,9 @@ import { PickupListGridComponent } from './agency/pickup-list-grid/pickup-list-g
 import { AddAdsComponent } from './sellerMohsen/add-ads/add-ads.component';
 import { MyAdsComponent } from './sellerMohsen/my-ads/my-ads.component';
 import { ChartModule } from 'primeng/chart';
-
+import { HistoryPickupsComponent } from './agency/history-pickups/history-pickups.component';
+import { HistoryRequestsComponent } from './agency/history-requests/history-requests.component';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -134,6 +136,8 @@ import { ChartModule } from 'primeng/chart';
     PickupListGridComponent,
     AddAdsComponent,
     MyAdsComponent,
+    HistoryPickupsComponent,
+    HistoryRequestsComponent,
   ],
   imports: [
     BrowserModule,
@@ -180,6 +184,7 @@ import { ChartModule } from 'primeng/chart';
     RippleModule,
     SplitButtonModule,
     ToastModule,
+    TableModule,
     MatSnackBarModule,
     MatChipsModule,
     MatIconModule,

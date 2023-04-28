@@ -71,4 +71,7 @@ export class RequestService {
   const options = { withCredentials: true };
   return this.http.get<Request[]>(this.urlLastRequestAssignedToFreelancer,options);
  }
+
+ //agency
+
 }

@@ -46,10 +46,10 @@ export class AppMenuComponent implements OnInit {
             ]
         },
             {
-                label: 'My Map',
+                label: 'History',
                 items: [
-                    { label: 'PrimeIcons', icon: 'pi pi-fw pi-prime', routerLink: ['/utilities/icons'] },
-                    { label: 'PrimeFlex', icon: 'pi pi-fw pi-desktop', url: ['https://www.primefaces.org/primeflex/'], target: '_blank' },
+                    { label: 'Pickups', icon: 'pi pi-fw pi-prime', routerLink: ['/agency/HistoryPickup'] },
+                    { label: 'Requests', icon: 'pi pi-fw pi-desktop', routerLink: ['/agency/HistoryRequest'], target: '_blank' },
                 ]
             },
         ];

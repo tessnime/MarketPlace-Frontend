@@ -1,0 +1,65 @@
+<div class="min-height-200px">
+  <div class="page-header" style="margin-top: 3px;">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="title">
+          <h4>History</h4>
+        </div>
+        <nav aria-label="breadcrumb" role="navigation">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item " aria-current="page">
+              Pickups
+            </li>
+
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <!-- Default Basic Forms Start -->
+<div  class="pd-20 card-box mb-30">
+
+  <div class="card" >
+    <h3>Search</h3>
+    <div class="card-header">
+      <div class="form-outline">
+        <input type="search" id="form1" class="form-control" placeholder="Type query" aria-label="Search" (input)="search($event)" />
+      </div>
+    </div>
+    <div class="card-body">
+
+        <table datatable class="table table-bordered">
+            <thead class="bg-dark text-white">
+                <tr>
+                    <td>#CodePickup</td>
+                    <td>Status</td>
+                    <td>Sum</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+<tr *ngFor="let item of filteredItems">
+    <td>{{item.codePickup}}</td>
+    <td>{{item.statusPickupSeller}}</td>
+    <td>{{item.sum}}</td>
+    <td style="width: 30%">
+<a class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">View buyer</a> |
+<a class="btn btn-primary" >View seller</a> |
+<a class="btn btn-danger" >Delete</a> |
+<a class="btn btn-success" >Print</a>
+    </td>
+
+</tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+
+
+</div>
+
