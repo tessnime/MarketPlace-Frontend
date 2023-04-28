@@ -85,6 +85,10 @@ import { TableModule } from 'primeng/table';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { StoresListComponent } from './seller/stores-list/stores-list.component';
+import { CarouselModule } from 'primeng/carousel';
+import { AddStoreComponent } from './seller/add-store/add-store.component';
+
 
 
 
@@ -120,7 +124,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AddPickupComponent,
     ProductListComponent,
     UpdateProductComponent,
-    SupplierRequestsListComponent
+    SupplierRequestsListComponent,
+    StoresListComponent,
+    AddStoreComponent
     
   ],
   imports: [
@@ -180,7 +186,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatFormFieldModule,
     MatInputModule,
     TableModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    CarouselModule
     
 
   ],

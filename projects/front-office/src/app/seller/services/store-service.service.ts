@@ -18,5 +18,10 @@ export class StoreServiceService {
 
     return this.http.get<Store[]>(this.url+"getStoresByUser?id="+id,options)
   }
+  saveStore(Store:Store):Observable<Store>{
+    const options = { withCredentials: true };
+
+    return this.http.post<Store>(this.url+"SaveStore",Store,options)
+  }
 
 }

@@ -46,6 +46,8 @@ import { SignInComponent } from './front/User/sign-in/sign-in.component';
 import { RegisterComponent } from './front/User/register/register.component';
 import { UpdateProductComponent } from './seller/update-product/update-product.component';
 import { SupplierRequestsListComponent } from './seller/supplier-requests-list/supplier-requests-list.component';
+import { StoresListComponent } from './seller/stores-list/stores-list.component';
+import { AddStoreComponent } from './seller/add-store/add-store.component';
 
 
 
@@ -69,7 +71,11 @@ const routes: Routes = [
       {path:'MyStore',component:StoreListComponent},
       {path:'list',component:ProductListComponent},
       {path:'suppRequests',component:SupplierRequestsListComponent},
-      {path:'list/updateP/:id',component:UpdateProductComponent}
+      {path:'list/updateP/:id',component:UpdateProductComponent},
+      {path:'stores',component:StoresListComponent},
+      {path:'AddStore',component:AddStoreComponent},
+
+
 
     ]
 },

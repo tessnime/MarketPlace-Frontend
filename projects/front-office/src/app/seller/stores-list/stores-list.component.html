@@ -1,0 +1,24 @@
+<div class="col-12">
+    <div class="card">
+        <button pButton type="button" label="New" icon="pi pi-plus" [routerLink]="['/store/AddStore']" class="mr-2"></button>
+
+        <p-carousel [value]="stores" [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="carouselResponsiveOptions">
+            <ng-template let-store pTemplate="item">
+                    <div class="border-round m-2 text-center p-2" style="border: 1px solid var(--surface-d)">
+                        <div class="my-5">
+                            <img [src]="'assets/brandLogo/'+user.brandLogo" [alt]="store.name" class="shadow-4" width="50%"/>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">{{store.name}}</h5>
+                            <span [class]="'product-badge status-'+store.governorate.toLowerCase()">{{store.city}}</span>
+                            <div class="my-5">
+                                <button pButton pRipple icon="pi pi-search" class="mr-2 p-button-rounded"></button>
+                                <button pButton pRipple icon="pi pi-star-fill" class="mr-2 p-button-rounded p-button-success"></button>
+                                <button pButton pRipple icon="pi pi-cog" class="p-button-rounded p-button-info"></button>
+                            </div>
+                        </div>
+                    </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+</div>

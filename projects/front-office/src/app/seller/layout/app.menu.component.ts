@@ -23,6 +23,8 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'UI Components',
                 items: [
+                    { label: 'Stores', icon: 'pi pi-fw pi-circle', routerLink: ['/store/stores'] },
+
                     { label: 'Products', icon: 'pi pi-fw pi-id-card', routerLink: ['/store/list'] },
                     { label: 'Suppliers Requests', icon: 'pi pi-fw pi-check-square', routerLink: ['/store/suppRequests'] },
                     { label: 'Float Label', icon: 'pi pi-fw pi-bookmark', routerLink: ['/uikit/floatlabel'] },
@@ -37,8 +39,7 @@ export class AppMenuComponent implements OnInit {
                     { label: 'Menu', icon: 'pi pi-fw pi-bars', routerLink: ['/uikit/menu'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
                     { label: 'Message', icon: 'pi pi-fw pi-comment', routerLink: ['/uikit/message'] },
                     { label: 'File', icon: 'pi pi-fw pi-file', routerLink: ['/uikit/file'] },
-                    { label: 'Chart', icon: 'pi pi-fw pi-chart-bar', routerLink: ['/uikit/charts'] },
-                    { label: 'Misc', icon: 'pi pi-fw pi-circle', routerLink: ['/uikit/misc'] }
+                    { label: 'Chart', icon: 'pi pi-fw pi-chart-bar', routerLink: ['/uikit/charts'] }
                 ]
             },
             {
