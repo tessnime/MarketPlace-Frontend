@@ -40,7 +40,7 @@ export class AppMenuComponent implements OnInit {
         {
           label: 'History delivery Management',
           items: [
-              { label: 'All Pickups', icon: 'pi pi-fw pi-id-card', routerLink: ['/c/DashboardDelivery'] },
+              { label: 'All Pickups', icon: 'pi pi-fw pi-id-card', routerLink: ['/Seller/HistoryPickups'] },
               { label: 'Statistical', icon: 'pi pi-fw pi-id-card', routerLink: ['/c/DashboardDelivery'] }
 
           ]

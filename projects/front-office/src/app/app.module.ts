@@ -96,6 +96,8 @@ import { ChartModule } from 'primeng/chart';
 import { HistoryPickupsComponent } from './agency/history-pickups/history-pickups.component';
 import { HistoryRequestsComponent } from './agency/history-requests/history-requests.component';
 import { TableModule } from 'primeng/table';
+import { BuyerOfPickupComponent } from './agency/buyer-of-pickup/buyer-of-pickup.component';
+import { HistoryPickupsSellerComponent } from './sellerMohsen/history-pickups-seller/history-pickups-seller.component';
 
 @NgModule({
   declarations: [
@@ -138,6 +140,8 @@ import { TableModule } from 'primeng/table';
     MyAdsComponent,
     HistoryPickupsComponent,
     HistoryRequestsComponent,
+    BuyerOfPickupComponent,
+    HistoryPickupsSellerComponent,
   ],
   imports: [
     BrowserModule,
@@ -200,7 +204,7 @@ import { TableModule } from 'primeng/table';
     ToastrModule,
     MatDialogModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDQCUA-GfJipPTO6s9N-cJr7SUHinNMFGY'
+      apiKey: 'AIzaSyBdVAHuNwlcMICaKUcx8RNGUb5dBiMYIIo'
     })
   ],
   providers: [

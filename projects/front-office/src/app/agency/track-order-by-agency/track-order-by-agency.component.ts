@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Pickup } from 'Models/Pickup';
 import { NgForm } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-track-order-by-agency',
@@ -12,7 +13,8 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService]
 })
 export class TrackOrderByAgencyComponent {
-  constructor(private pickupService:PickupService,private r:ActivatedRoute,private messageService: MessageService){
+  constructor(private pickupService:PickupService,private r:ActivatedRoute,
+    private snackBar:MatSnackBar){
   }
   ngOnInit(){
     this.idPickup=this.r.snapshot.params["idPickup"];
@@ -23,7 +25,12 @@ export class TrackOrderByAgencyComponent {
   status!:String;
   addForm(tt:NgForm){
     this.status=tt.controls["typeOfGearr"].value;
-    this.pickupService.ModifyStatusOfPickupByDelivery(this.status,this.idPickup).subscribe();
+    this.pickupService.ModifyStatusOfPickupByDelivery(this.status,this.idPickup).subscribe(()=>{ this.snackBar.open('The status of pickup modified with success!', 'Close', {
+      duration: 3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'end',
+      panelClass : ['green-snackbar'],
+    });});
   }
 
 

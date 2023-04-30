@@ -51,6 +51,7 @@ import { AddAdsComponent } from './sellerMohsen/add-ads/add-ads.component';
 import { MyAdsComponent } from './sellerMohsen/my-ads/my-ads.component';
 import { HistoryPickupsComponent } from './agency/history-pickups/history-pickups.component';
 import { HistoryRequestsComponent } from './agency/history-requests/history-requests.component';
+import { HistoryPickupsSellerComponent } from './sellerMohsen/history-pickups-seller/history-pickups-seller.component';
 
 
 
@@ -133,6 +134,7 @@ const routes: Routes = [
     {path:'pickupsInProgress',component:PikupInProgressSellerComponent},
     {path:'pickupsInProgress/:CodePickup',component:TrakingPickupSellerComponent},
     {path:'addAds',component:AddAdsComponent},
+    {path:'HistoryPickups',component:HistoryPickupsSellerComponent},
     {path:'myAds',component:MyAdsComponent}
   ]
 }

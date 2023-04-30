@@ -3,6 +3,8 @@ import { PickupService } from '../../sellerMohsen/servicesM/pickup.service';
 import { Pickup } from 'Models/Pickup';
 import { Table } from 'primeng/table';
 import { DataView } from 'primeng/dataview';
+import { MatDialog } from '@angular/material/dialog';
+import { BuyerOfPickupComponent } from '../buyer-of-pickup/buyer-of-pickup.component';
 
 
 @Component({
@@ -11,7 +13,7 @@ import { DataView } from 'primeng/dataview';
   styleUrls: ['./history-pickups.component.scss']
 })
 export class HistoryPickupsComponent {
-constructor(private pickupService:PickupService){}
+constructor(private pickupService:PickupService,private dialog: MatDialog){}
 ngOnInit(){
   this.RetrieveAllPickupsOfUser();
 }
@@ -46,5 +48,20 @@ query: string = '';
     this.filteredItems = this.pickup.filter(item =>
       item.codePickup.toLowerCase().includes(this.query)
     );
+  }
+
+  buyerGet(pickup:Pickup){
+    const dialogRef = this.dialog.open(BuyerOfPickupComponent, {
+      data: { pickup },
+      width      : '100%',
+      maxWidth   : '400px',
+      height     : 'auto',
+      hasBackdrop: true,
+      maxHeight  : '700px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }
