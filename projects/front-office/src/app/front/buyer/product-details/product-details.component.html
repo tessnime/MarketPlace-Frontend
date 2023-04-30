@@ -1,10 +1,11 @@
 
 <div class="config">
 
-<!--====== Main App ======-->
-<div id="app">
-  <!--====== Main Header ======-->
-  <app-header></app-header>
+  <!--====== Main App ======-->
+  <div id="app">
+
+    <!--====== Main Header ======-->
+    <app-header></app-header>
 
   <div *ngIf="product.id!=idp" class="app-content">
     <app-not-found></app-not-found>
@@ -76,11 +77,10 @@
                 </div>
               </div>
               <div class="u-s-m-b-15">
-                <div class="pd-detail__inline">
-
+                <div class="pd-detail__inline" >
                   <span class="pd-detail__stock" *ngIf="product.quantity>0">{{product.quantity}} in stock</span>
-
                   <span class="pd-detail__left" *ngIf="product.quantity==0">Out Of Stock</span></div>
+
               </div>
               <div class="u-s-m-b-15">
 

@@ -45,6 +45,7 @@ export class HomeService {
   EndPaimentProcess='http://localhost:8081/order/EndPaimentProcess?paymentType=CASH_ON_DELIVERY&cardPaiment=false'
   GetAllOrdersByUserId='http://localhost:8081/order/getAllOrdersByUserId'
   SessionReteurn='http://localhost:8081/order/sessionReteurn'
+  AddOrder='http://localhost:8081/order/AddOrder'
 
 
 
@@ -164,6 +165,11 @@ export class HomeService {
   {
     // @ts-ignore
     return this.http.get<boolean>(this.SessionReteurn,this.options)
+  }
+
+  addOrder(order:Order)
+  {
+    return this.http.post(this.AddOrder,order,this.options)
   }
 
 }

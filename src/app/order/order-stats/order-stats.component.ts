@@ -42,6 +42,13 @@ export class OrderStatsComponent implements OnInit, OnDestroy {
 
   representatives: Representative[] = [];
 
+  breadcrumbItems=[
+    {'label':'HOME'},
+    {'label':'ORDER'},
+    {'label':'DASHBOARD'},
+  ]
+
+
   @ViewChild('filter') filter!: ElementRef;
 
   rankGovData!:RankGouvernoratOrderData[];

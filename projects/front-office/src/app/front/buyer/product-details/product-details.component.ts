@@ -33,7 +33,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
 
-  product!: Product;
+  product: Product=new Product();
   idp!: number;
   da: any = {};
   url!: string;
@@ -47,18 +47,20 @@ export class ProductDetailsComponent implements OnInit {
   sess:boolean=false;
  basket:Order=new Order();
   ngOnInit() {
-
+    this.product.quantity=0;
     this.home.sessionReteurn().subscribe(data=>{this.sess=data;
       this.idp = this.ar.snapshot.params['id'];
-      this.home.addNewLastVuedProduct(this.idp).subscribe();
+      if(this.sess) {
+        this.home.addNewLastVuedProduct(this.idp).subscribe();
+      }
       this.home.getProductById(this.idp).subscribe(data => {
         this.product = data;
         this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.product.videoLink);
+        if(this.sess) {
         this.home.lastVude().subscribe(data => {
            this.Vued = data;
-
          });
-
+        }
 
       });
     });

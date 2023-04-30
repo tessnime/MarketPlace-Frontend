@@ -1,6 +1,13 @@
 <div class="grid">
   <div class="col-12">
-    <div class="card px-6 py-6">
+    <div class="card card-w-title">
+      <p-breadcrumb [model]="breadcrumbItems" [home]="{icon: 'pi pi-home'}"></p-breadcrumb>
+    </div>
+  </div>
+  <div class="col-12 xl:col-8">
+    <div class="card">
+      <h5>Events Table</h5>
+      <div class="card px-6 py-6">
       <p-toast></p-toast>
       <p-toolbar styleClass="mb-4">
         <ng-template pTemplate="left">
@@ -11,7 +18,7 @@
         </ng-template>
       </p-toolbar>
 
-      <p-table #dt1 [value]="products" [columns]="cols" responsiveLayout="scroll" [rows]="10" [globalFilterFields]="['id','title','startDate','lastDate']" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[10,20,30]" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [(selection)]="selectedProducts" selectionMode="multiple" [rowHover]="true" dataKey="id">
+      <p-table #dt1 [value]="products" [columns]="cols" responsiveLayout="scroll" [rows]="10" [globalFilterFields]="['title','startDate','lastDate']" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[10,20,30]" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [(selection)]="selectedProducts" selectionMode="multiple" [rowHover]="true" dataKey="id">
         <ng-template pTemplate="caption">
           <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
             <h5 class="m-0">Manage Events</h5>
@@ -26,7 +33,6 @@
             <th style="width: 3rem">
               <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
             </th>
-            <th pSortableColumn="id">ID <p-sortIcon field="id"></p-sortIcon></th>
             <th pSortableColumn="title">Title <p-sortIcon field="title"></p-sortIcon></th>
             <th>Image</th>
             <th pSortableColumn="startDate">Start Date <p-sortIcon field="startDate"></p-sortIcon></th>
@@ -38,9 +44,6 @@
           <tr>
             <td>
               <p-tableCheckbox [value]="product"></p-tableCheckbox>
-            </td>
-            <td style="width:14%; min-width:10rem;"><span class="p-column-title">Code</span>
-              {{product.code || product.id}}
             </td>
             <td style="width:14%; min-width:10rem;">
               <span class="p-column-title">Title</span>
@@ -69,8 +72,7 @@
         </ng-template>
       </p-table>
     </div>
-
-    <p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="Event Details" [modal]="true" class="p-fluid">
+      <p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="Event Details" [modal]="true" class="p-fluid">
       <ng-template pTemplate="content">
         <img  src="../../../assets/uploads/{{product.bandLing}}" [alt]="product.bandLing" width="250" class="mt-0 mx-auto mb-5 block shadow-2" *ngIf="product.bandLing">
 
@@ -226,4 +228,33 @@
       </div>
     </p-dialog>
   </div>
+    <div class="card" >
+      <h5>Event Linear Chart</h5>
+      <div class="card">
+      <p-chart type="line" [data]="lineData" [options]="lineOptions"></p-chart>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 xl:col-4 ">
+    <div class="card">
+    <h5>Events TimeLine</h5>
+      <div class="card">
+    <p-timeline [value]="products" align="alternate" styleClass="customized-timeline">
+      <ng-template pTemplate="marker" let-event>
+        <span class="flex z-1 w-2rem h-2rem align-items-center justify-content-center text-white border-circle shadow-2" style="background-color: #b2abeb">
+            <i class="pi pi-angle-down"></i>
+        </span>
+      </ng-template>
+      <ng-template pTemplate="content" let-event>
+        <p-card [header]="event.title" [subheader]="event.startDate">
+          <img *ngIf="event.bandLing" [src]="'../../../assets/uploads/'+event.bandLing" [alt]="event.title" width="100" class="shadow-2" />
+          <p class="line-height-3 my-3"></p>
+        </p-card>
+      </ng-template>
+    </p-timeline>
+      </div>
+  </div>
+  </div>
+
 </div>

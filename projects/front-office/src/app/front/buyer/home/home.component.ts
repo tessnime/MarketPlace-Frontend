@@ -105,7 +105,7 @@ export class HomeComponent {
 
   lastVued()
   {
-    this.home.lastVude().subscribe(data =>{this.Vued=data});
+    this.home.lastVude().subscribe(data =>{this.Vued=data });
   }
 
   searchProduct(maxprix:number,minprix:number,nameProd:string,mark:string,categorie:string,filtre:String)

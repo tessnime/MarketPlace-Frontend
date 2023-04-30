@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Table} from "primeng/table";
 import {MessageService} from "primeng/api";
 import {EventModel} from "../../../../Models/EventModel";
@@ -16,6 +16,8 @@ import {KeyWords} from "../../../../Models/KeyWords";
   providers: [MessageService]
 })
 export class EventsComponent implements OnInit {
+
+  lineData: any;
 
   NewEvent:EventModel =new EventModel();
 
@@ -59,10 +61,63 @@ export class EventsComponent implements OnInit {
 
   uploadedFiles: any[] = [];
 
+
+  breadcrumbItems=[
+    {'label':'HOME'},
+    {'label':'EVENT'},
+    {'label':'DASHBOARD'},
+  ]
+
+
+
+  jan:number=0;
+  feb:number=0;
+  mar:number=0;
+  apr:number=0;
+  may:number=0;
+  jun:number=0;
+  jul:number=0;
+  aug:number=0;
+  sep:number=0;
+  oct:number=0;
+  nov:number=0;
+  dec:number=0;
+
   constructor(private productService:ServicesService, private messageService: MessageService,private http: HttpClient) { }
 
+  mon:number=0;
   ngOnInit() {
-    this.productService.displayAllEvents().subscribe(data => this.products = data);
+    this.productService.displayAllEvents().subscribe(data => {this.products = data;
+      for(let i=0; i<this.products.length; i++) {
+        const dateObject = new Date(this.products[i].startDate);
+        this.mon=dateObject.getMonth()+1;
+        if(this.mon=== 1) {
+          this.jan++;
+        } else if(this.mon == 2) {
+          this.feb++;
+        } else if(this.mon == 3) {
+          this.mar++;
+        } else if(this.mon == 4) {
+          this.apr++;
+        } else if(this.mon == 5) {
+          this.may++;
+        } else if(this.mon == 6) {
+          this.jun++;
+        } else if(this.mon == 7) {
+          this.jul++;
+        } else if(this.mon == 8) {
+          this.aug++;
+        } else if(this.mon == 9) {
+          this.sep++;
+        } else if(this.products[i].startDate.getMonth() === 10) {
+          this.oct++;
+        } else if(this.products[i].startDate.getMonth() === 11) {
+          this.nov++;
+        } else if(this.products[i].startDate.getMonth() === 12) {
+          this.dec++;
+        }
+      }
+    this.chartInit()});
 
     this.NewEvent.title='';
     this.cols = [
@@ -256,6 +311,61 @@ idEv:number=0;
     this.keyWord = { ...key };
     this.productService.deleteKeywordFromEvent(this.idEv,key.id).subscribe();
   }
+
+  lineOptions: any;
+  @Input() options: any;
+  chartInit()
+  {
+    const documentStyle = getComputedStyle(document.documentElement);
+    const textColor = documentStyle.getPropertyValue('--text-color');
+    const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
+    const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+
+    this.lineOptions = {
+      plugins: {
+        legend: {
+          labels: {
+            fontColor: textColor
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: {
+            color: textColorSecondary
+          },
+          grid: {
+            color: surfaceBorder,
+            drawBorder: false
+          }
+        },
+        y: {
+          ticks: {
+            color: textColorSecondary
+          },
+          grid: {
+            color: surfaceBorder,
+            drawBorder: false
+          }
+        },
+      }
+    };
+
+    this.lineData = {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: [
+        {
+          label: 'First Dataset',
+          data: [this.jan, this.feb, this.mar, this.apr, this.may, this.jun, this.jul, this.aug, this.sep, this.oct, this.nov, this.dec],
+          fill: false,
+          backgroundColor: documentStyle.getPropertyValue('--primary-500'),
+          borderColor: documentStyle.getPropertyValue('--primary-500'),
+          tension: .4
+        }
+      ]
+    };
+  }
+
 
   carouselResponsiveOptions: any[] = [
     {

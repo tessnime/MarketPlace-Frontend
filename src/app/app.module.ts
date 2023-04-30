@@ -39,6 +39,11 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from "@angular/platform-browser";
 import { KeywordsComponent } from './order/keywords/keywords.component';
 import { CarouselModule } from 'primeng/carousel';
+import {CardModule} from "primeng/card";
+import {TimelineModule} from "primeng/timeline";
+import {MenuModule} from "primeng/menu";
+import {MenubarModule} from "primeng/menubar";
+import {BreadcrumbModule} from "primeng/breadcrumb";
 
 
 @NgModule({
@@ -103,7 +108,12 @@ import { CarouselModule } from 'primeng/carousel';
     InputTextModule,
     MatIconModule,
     HttpClientModule,
-    CarouselModule
+    CarouselModule,
+    CardModule,
+    TimelineModule,
+    MenuModule,
+    MenubarModule,
+    BreadcrumbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

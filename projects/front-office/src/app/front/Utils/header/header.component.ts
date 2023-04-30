@@ -27,10 +27,27 @@ export class HeaderComponent {
 
   ngOnInit() {
 
-    this.home.sessionReteurn().subscribe(data=>{this.sess=data;if(this.sess){
+    this.home.sessionReteurn().subscribe(data=>{this.sess=data;
+    if(this.sess){
+      this.requestOrder=JSON.parse(this.cookieService.get('basket') || '{}');
+      console.log(JSON.stringify(this.requestOrder));
+      this.request=this.requestOrder.productQuantities;
       this.getListProduct();
       this.getBaskerOrder();
       this.loyalityPoints();
+      if(JSON.stringify(this.requestOrder)!='{"pickups":[],"productQuantities":[],"promotionCodeList":[]}' && JSON.stringify(this.requestOrder)!='{}' ) {
+        for(let i=0;i<this.requestOrder.productQuantities.length;i++) {
+          this.home.addProductToOrder(this.requestOrder.productQuantities[i]).subscribe(data => {
+            this.cookieService.set('basket', JSON.stringify(new Order()), {
+              sameSite: 'None',
+              secure: true,
+              domain: 'localhost',
+              path: '/'
+            });
+          });
+        }
+
+      }
     }
     else{
       this.requestOrder=JSON.parse(this.cookieService.get('basket') || '{}');
