@@ -81,16 +81,18 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let claim of claims">
+                <ng-container *ngFor="let claim of claims">
+                <tr >
                     <td>{{ claim.reference }}</td>
                     <td>{{ claim.object }}</td>
                     <td>{{ claim.status }}</td>
-                   
+
                     <td>
                       <button class="btn btn-sm btn-primary" (click)="updateClaim(claim)">Edit</button>
                       <button class="btn btn-sm btn-danger" (click)="deleteClaim(claim.id)">Delete</button>
                     </td>
                   </tr>
+                </ng-container>
                 </tbody>
               </table>
             </div>

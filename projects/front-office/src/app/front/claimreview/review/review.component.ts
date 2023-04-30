@@ -21,7 +21,7 @@ export class ReviewComponent implements OnInit{
     this.claimService.getUserSession().subscribe(data=>{this.user=data;
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.claimService.getProductById(this.id).subscribe(data=>{this.product=data
-    this.getallreview();    
+    this.getallreview();
   })
   })
   }
@@ -40,7 +40,7 @@ export class ReviewComponent implements OnInit{
   }
 
   rate:number=0;
-  
+
   setRate(rt:number)
   {
     this.rate=rt;
@@ -61,6 +61,8 @@ export class ReviewComponent implements OnInit{
     }
   );}
   constructor(private claimService:ClaimreviewserviceService,private router:Router,private route: ActivatedRoute) { }
+
+
   gotoHome()
   {
     this.router.navigate(["/buyer"]);
@@ -83,6 +85,6 @@ export class ReviewComponent implements OnInit{
   addReview()
   {
     this.claimService.addReview(this.review2,this.id,this.rate).subscribe(data=>{this.refresh();});
-    
+
   }
 }

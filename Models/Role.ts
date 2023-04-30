@@ -4,7 +4,7 @@ import {Privilege} from "./Privilege";
 
 export class Role{
   id!: number;
-  RoleType!:RoleType;
+  type!:RoleType;
   users:User[]=[];
   privileges:Privilege[]=[];
 }

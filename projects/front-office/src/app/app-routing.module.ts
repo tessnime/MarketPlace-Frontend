@@ -101,7 +101,7 @@ const routes: Routes = [
 { path: 'user/register', component: RegisterComponent },
 
 {
-  path: 'claim',
+  path: 'claim/:id',
   component: ClaimComponent
 },
 { path: 'claims', component: ShowclaimsComponent },

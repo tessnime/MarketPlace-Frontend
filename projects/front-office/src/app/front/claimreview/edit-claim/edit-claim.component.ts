@@ -24,12 +24,12 @@ export class EditClaimComponent implements OnInit {
       }
     );
   }
- 
+
   claim!:ClaimSav;
   updateForm(t7:NgForm){
           this.claim=new ClaimSav;
           this.claim.status=ClaimSavStatusType.NONTRAITE;
-          this.claim.ClaimSavType=ClaimSavType.TECHNICAL_REPORT;
+          this.claim.claimSavType=ClaimSavType.TECHNICAL_REPORT;
           // @ts-ignore
           this.claim.screenshot= this.selectedFile.name;
           this.claim.reference=t7.controls['reference'].value;
@@ -41,7 +41,7 @@ export class EditClaimComponent implements OnInit {
             this.router.navigate(['/claims']);
           });
   }
-  
+
   gotoHome()
   {
     this.router.navigate(["/buyer"]);

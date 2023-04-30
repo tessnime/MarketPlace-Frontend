@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ClaimreviewserviceService } from '../sevice/claimreviewservice.service';
 import { Router } from '@angular/router';
 import { ClaimSav } from 'Models/ClaimSav';
+import {User} from "../../../../../../../Models/User";
 
 @Component({
   selector: 'app-showclaims',
@@ -11,10 +12,13 @@ import { ClaimSav } from 'Models/ClaimSav';
 export class ShowclaimsComponent {
 
   constructor(private claimService:ClaimreviewserviceService,private router:Router) { }
-
+user:User=new User();
   ngOnInit(): void{
-    this.getallclaims();
-    console.log(this.getallclaims());
+    this.claimService.getUserSession().subscribe(data=> {
+      this.user = data;
+      this.getallclaims();
+      console.log(this.getallclaims());
+    })
   }
   getallclaims(){this.claimService.getClaims().subscribe(
     (data) => {
@@ -47,6 +51,6 @@ export class ShowclaimsComponent {
       });
     }
   }
-  
+
 
 }

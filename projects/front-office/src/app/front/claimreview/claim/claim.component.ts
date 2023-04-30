@@ -6,7 +6,7 @@ import { ClaimSavType } from 'Models/Enum/ClaimSavType';
 import { ProductQuantity } from 'Models/ProductQuantity';
 import { User } from 'Models/User';
 import { ClaimreviewserviceService } from '../sevice/claimreviewservice.service';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-claim',
@@ -14,19 +14,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./claim.component.scss','../../../../assets/layout/styles/theme/lara-light-indigo/theme.css','../../../../assets/front-template/css/vendor.css','../../../../assets/front-template/css/utility.css','../../../../assets/front-template/css/app.css']
 })
 export class ClaimComponent implements OnInit {
- 
 
-  constructor(private claimService:ClaimreviewserviceService,private router:Router) { }
 
+  constructor(private claimService:ClaimreviewserviceService,private router:Router,private route: ActivatedRoute) { }
+
+  idProduct:number=0;
   ngOnInit(): void {
-    
+    this.idProduct = Number(this.route.snapshot.paramMap.get('id'));
   }
-idProduct=1;
+
   claim!:ClaimSav;
   addForm(t7:NgForm){
           this.claim=new ClaimSav;
           this.claim.status=ClaimSavStatusType.NONTRAITE;
-          this.claim.ClaimSavType=ClaimSavType.TECHNICAL_REPORT;
+          this.claim.claimSavType=ClaimSavType.TECHNICAL_REPORT;
           // @ts-ignore
           this.claim.screenshot= this.selectedFile.name;
           this.claim.reference=t7.controls['ref'].value;
@@ -55,5 +56,5 @@ idProduct=1;
       }
     );
   }
- 
+
 }
