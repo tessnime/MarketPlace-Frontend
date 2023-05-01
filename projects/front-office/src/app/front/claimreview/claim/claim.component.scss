@@ -1,0 +1,20 @@
+.input-text--primary-style {
+  text-align: left;
+}
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px;
+  background-color: #ed420e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.custom-file-upload:hover {
+  background-color: #d93d00;
+}

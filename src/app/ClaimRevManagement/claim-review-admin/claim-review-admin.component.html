@@ -1,0 +1,193 @@
+<div class="surface-ground px-4 py-5 md:px-6 lg:px-8">
+  <div class="grid">
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="surface-card shadow-2 p-3 border-round">
+        <div class="flex justify-content-between mb-3">
+          <div>
+            <span class="block text-500 font-medium mb-3">NONTRAITE Claims</span>
+            <div class="text-900 font-medium text-xl">{{NONTRAITE}}</div>
+          </div>
+          <div class="flex align-items-center justify-content-center bg-yellow-100 border-round" style="width:2.5rem;height:2.5rem">
+            <i class="pi pi-inbox text-yellow-500 text-xl"></i>
+          </div>
+        </div>
+        <span class="text-green-500 font-medium">%{{(NONTRAITE/leng*100) | number:'1.2-2'}} </span>
+        <span class="text-500"> from</span>
+        <span class="text-green-500 font-medium"> {{leng}}</span>
+        <span class="text-500"> Claims</span>
+      </div>
+    </div>
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="surface-card shadow-2 p-3 border-round">
+        <div class="flex justify-content-between mb-3">
+          <div>
+            <span class="block text-500 font-medium mb-3">APPROVED Claims</span>
+            <div class="text-900 font-medium text-xl">{{APPROVED}}</div>
+          </div>
+          <div class="flex align-items-center justify-content-center bg-green-100 border-round" style="width:2.5rem;height:2.5rem">
+            <i class="pi pi-check-circle text-green-500 text-xl"></i>
+          </div>
+        </div>
+        <span class="text-green-500 font-medium">%{{(APPROVED/leng*100) | number:'1.2-2'}} </span>
+        <span class="text-500"> from</span>
+        <span class="text-green-500 font-medium"> {{leng}}</span>
+        <span class="text-500"> Claims</span>
+      </div>
+    </div>
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="surface-card shadow-2 p-3 border-round">
+        <div class="flex justify-content-between mb-3">
+          <div>
+            <span class="block text-500 font-medium mb-3">REJECTED Claims</span>
+            <div class="text-900 font-medium text-xl">{{REJECTED}}</div>
+          </div>
+          <div class="flex align-items-center justify-content-center bg-red-100 border-round" style="width:2.5rem;height:2.5rem">
+            <i class="pi pi-times-circle text-red-500 text-xl"></i>
+          </div>
+        </div>
+        <span class="text-green-500 font-medium">%{{(REJECTED/leng*100) | number:'1.2-2'}} </span>
+        <span class="text-500"> from</span>
+        <span class="text-green-500 font-medium"> {{leng}}</span>
+        <span class="text-500"> Claims</span>
+      </div>
+    </div>
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="surface-card shadow-2 p-3 border-round">
+        <div class="flex justify-content-between mb-3">
+          <div>
+            <span class="block text-500 font-medium mb-3">COMPLETED Claims</span>
+            <div class="text-900 font-medium text-xl">{{COMPLETED}}</div>
+          </div>
+          <div class="flex align-items-center justify-content-center bg-blue-100 border-round" style="width:2.5rem;height:2.5rem">
+            <i class="pi pi-money-bill text-blue-500 text-xl"></i>
+          </div>
+        </div>
+        <span class="text-green-500 font-medium">%{{(COMPLETED/leng*100) | number:'1.2-2'}} </span>
+        <span class="text-500"> from</span>
+        <span class="text-green-500 font-medium"> {{leng}}</span>
+        <span class="text-500"> Claims</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="card">
+      <h5>Claims Data</h5>
+      <p-table #dt1 [value]="claims" dataKey="id" [rows]="4" [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['reference','user.firstName','object','body','screenshot','status','ClaimSavType','createdAt','updatedAt']" responsiveLayout="scroll">
+        <ng-template pTemplate="caption">
+          <div class="flex justify-content-between flex-column sm:flex-row">
+            <button pButton label="Clear" class="p-button-outlined mb-2" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+            <span class="p-input-icon-left mb-2">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" #filter (input)="onGlobalFilter(dt1, $event)" placeholder="Search Keyword" class="w-full"/>
+          </span>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="min-width: 12rem">
+              <div class="flex justify-content-between align-items-center">
+                Referance
+              </div>
+            </th>
+            <th style="min-width: 12rem">
+              <div class="flex justify-content-between align-items-center">
+                User Name
+              </div>
+            </th>
+            <th style="min-width: 14rem">
+              <div class="flex justify-content-between align-items-center">
+                Object
+              </div>
+            </th>
+            <th style="min-width: 10rem">
+              <div class="flex justify-content-between align-items-center">
+                Body
+              </div>
+            </th>
+            <th style="min-width: 10rem">
+              <div class="flex justify-content-between align-items-center">
+                ScreenShot
+              </div>
+            </th>
+            <th style="min-width: 12rem">
+              <div class="flex justify-content-between align-items-center">
+                Status
+              </div>
+            </th>
+            <th style="min-width: 8rem">
+              <div class="flex justify-content-between align-items-center">
+                Type
+              </div>
+            </th>
+            <th style="min-width: 8rem">
+              <div class="flex justify-content-between align-items-center">
+                UpdatedAt
+              </div>
+            </th>
+            <th style="min-width: 8rem">
+              <div class="flex justify-content-between align-items-center">
+                CreatedAt
+              </div>
+            </th>
+            <th style="min-width: 8rem">
+              <div class="flex justify-content-between align-items-center">
+
+              </div>
+            </th>
+            <th style="min-width: 8rem">
+              <div class="flex justify-content-between align-items-center">
+
+              </div>
+            </th>
+
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-c >
+          <tr>
+            <td>
+              {{c.reference}}
+            </td>
+            <td>
+              {{c.user.firstName}}
+            </td>
+            <td>
+              {{c.object}}
+            </td>
+            <td>
+              {{c.body}}
+            </td>
+            <td>
+              <span class="image-text ml-2">{{c.screenshot}}</span>
+            </td>
+            <td>
+              {{c.status}}
+            </td>
+            <td>
+              {{c.claimSavType}}
+            </td>
+            <td>
+              {{c.createdAt | date: 'dd/MM/yyyy'}}
+            </td>
+            <td>
+              {{c.updatedAt | date: 'dd/MM/yyyy'}}
+            </td>
+            <td class="text-center">
+              <i class="pi" [ngClass]="{'true-icon pi-check-circle text-green-500': (c.status=='APPROVED'), 'false-icon pi-times-circle text-pink-500': (c.status=='REJECTED')}"></i>
+            </td>
+            <td>
+                <button class="btn btn-outline-secondary mr-2" (click)="updateClaim('APPROVED',c.id)">Approve</button>
+                <br>
+                <button class="btn btn-outline-danger mr-2" (click)="updateClaim('REJECTED',c.id)">Reject</button>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="8">No customers found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

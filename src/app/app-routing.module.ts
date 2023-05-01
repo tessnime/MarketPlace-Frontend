@@ -5,6 +5,9 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { UserListComponent } from './user-list/user-list.component';
 import { PickupDashboardComponent } from './PickupManagement/pickup-dashboard/pickup-dashboard.component';
 import { PredictAdminComponent } from './PickupManagement/predict-admin/predict-admin.component';
+import { ClaimReviewAdminComponent } from './ClaimRevManagement/claim-review-admin/claim-review-admin.component';
+import {OrderStatsComponent} from "./order/order-stats/order-stats.component";
+import {EventsComponent} from "./order/events/events.component";
 
 const routes: Routes = [
 
@@ -14,8 +17,15 @@ const routes: Routes = [
       {path:'',component:UserDashboardComponent},
       {path:'userlist',component:UserListComponent},
       {path:'PickupDashboard',component:PickupDashboardComponent},
-      {path:'predictCoco',component:PredictAdminComponent}
+      {path:'predictCoco',component:PredictAdminComponent},
+      {path:'claimlist',component:ClaimReviewAdminComponent}
     ]
+},{
+    path:'',component:AppLayoutComponent,
+    children:[
+      {path:'orders-stats',component:OrderStatsComponent},
+      {path: 'events',component: EventsComponent}
+      ]
 },]
 
 @NgModule({

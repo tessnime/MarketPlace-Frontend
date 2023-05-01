@@ -1,4 +1,4 @@
-import { OnInit } from '@angular/core';
+import {Input, OnInit} from '@angular/core';
 import { Component } from '@angular/core';
 import { LayoutService } from './service/app.layout.service';
 
@@ -10,9 +10,13 @@ export class AppMenuComponent implements OnInit {
 
     model: any[] = [];
 
-    constructor(public layoutService: LayoutService) { }
+
+
+  constructor(public layoutService: LayoutService) { }
 
     ngOnInit() {
+
+
         this.model = [
             {
                 label: 'Home',
@@ -38,7 +42,10 @@ export class AppMenuComponent implements OnInit {
                     { label: 'Message', icon: 'pi pi-fw pi-comment', routerLink: ['/uikit/message'] },
                     { label: 'File', icon: 'pi pi-fw pi-file', routerLink: ['/uikit/file'] },
                     { label: 'Chart', icon: 'pi pi-fw pi-chart-bar', routerLink: ['/uikit/charts'] },
-                    { label: 'Misc', icon: 'pi pi-fw pi-circle', routerLink: ['/uikit/misc'] }
+                    { label: 'Misc', icon: 'pi pi-fw pi-circle', routerLink: ['/uikit/misc'] },
+                    { label: 'claim', icon: 'pi pi-fw pi-circle', routerLink: ['/claimlist'] }
+                    
+
                 ]
             },
             {
@@ -46,6 +53,12 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     { label: 'Dashboard ', icon: 'pi pi-fw pi-eye', routerLink: ['/PickupDashboard'], badge: 'NEW' },
                     { label: 'Predict', icon: 'pi pi-fw pi-globe', routerLink: ['/predictCoco'], target: '_blank' },
+             },
+            {
+                label: 'Front Dashboard',
+                items: [
+                    { label: 'Order', icon: 'pi pi-fw pi-shopping-cart', routerLink: ['/orders-stats'] },
+                    { label: 'Events', icon: 'pi pi-fw pi-bookmark-fill', routerLink: ['/events'] }
                 ]
             },
             {
@@ -160,6 +173,8 @@ export class AppMenuComponent implements OnInit {
                     }
                 ]
             }
+
         ];
+
     }
 }

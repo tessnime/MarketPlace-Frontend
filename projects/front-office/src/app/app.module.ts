@@ -102,6 +102,7 @@ import { HistoryPickupsFreelancerComponent } from './freelancer/history-pickups-
 import { HistoryRequestFreelancerComponent } from './freelancer/history-request-freelancer/history-request-freelancer.component';
 import { ViewDeliveryMenOfPickupComponent } from './sellerMohsen/view-delivery-men-of-pickup/view-delivery-men-of-pickup.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -148,6 +149,7 @@ import { ViewDeliveryMenOfPickupComponent } from './sellerMohsen/view-delivery-m
     HistoryPickupsFreelancerComponent,
     HistoryRequestFreelancerComponent,
     ViewDeliveryMenOfPickupComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -212,6 +214,7 @@ import { ViewDeliveryMenOfPickupComponent } from './sellerMohsen/view-delivery-m
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBdVAHuNwlcMICaKUcx8RNGUb5dBiMYIIo'
     })
+
   ],
   providers: [
     {

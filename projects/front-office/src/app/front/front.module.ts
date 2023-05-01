@@ -21,6 +21,10 @@ import { OrdersSettingComponent } from './buyer/orders-setting/orders-setting.co
 import { TrackOrderComponent } from './buyer/orders-setting/track-order/track-order.component';
 import { RegisterComponent } from './User/register/register.component';
 import { SignInComponent } from './User/sign-in/sign-in.component';
+import { ClaimComponent } from './claimreview/claim/claim.component';
+import { ShowclaimsComponent } from './claimreview/showclaims/showclaims.component';
+import { EditClaimComponent } from './claimreview/edit-claim/edit-claim.component';
+import { ReviewComponent } from './claimreview/review/review.component';
 
 
 
@@ -43,7 +47,11 @@ import { SignInComponent } from './User/sign-in/sign-in.component';
     OrdersSettingComponent,
     TrackOrderComponent,
     RegisterComponent,
-    SignInComponent
+    SignInComponent,
+    ClaimComponent,
+    ShowclaimsComponent,
+    EditClaimComponent,
+    ReviewComponent
 ],
   imports: [
     CommonModule,
