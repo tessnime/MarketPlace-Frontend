@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AgencyBranch } from 'Models/AgencyBranch';
 import { AgencyService } from '../../sellerMohsen/servicesM/agency.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-branch',
@@ -10,7 +11,7 @@ import { AgencyService } from '../../sellerMohsen/servicesM/agency.service';
   styleUrls: ['./add-branch.component.scss']
 })
 export class AddBranchComponent {
-  constructor(private agencyService:AgencyService,private r:Router){}
+  constructor(private agencyService:AgencyService,private r:Router,private snackBar: MatSnackBar){}
 
 
 agencyBranch!:AgencyBranch;
@@ -20,7 +21,13 @@ addForm(t7:NgForm){
   this.agencyBranch.brandName=t7.controls["BranchName"].value;
   this.agencyBranch.governorate=t7.controls["governorate"].value;
   this.agencyBranch.city=t7.controls["city"].value;
-  this.agencyService.assignBranchToAgency(this.agencyBranch).subscribe(()=>{this.r.navigateByUrl('/agency/MyBranch');});
+  this.agencyService.assignBranchToAgency(this.agencyBranch).subscribe(()=>{this.r.navigateByUrl('/agency/MyBranch');
+  this.snackBar.open('The Agency Branch added with success!', 'Close', {
+    duration: 3000,
+    verticalPosition: 'top',
+    horizontalPosition: 'end',
+    panelClass : ['green-snackbar'],
+  });});
 }
 governorates = [
   { name: 'Ariana', cities: ['Ariana', 'Raoued', 'Sidi Thabet'] },

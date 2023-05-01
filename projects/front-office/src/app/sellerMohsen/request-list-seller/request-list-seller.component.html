@@ -1,6 +1,5 @@
-<div class="pd-ltr-20 xs-pd-20-10">
   <div class="min-height-200px">
-    <div class="page-header">
+    <div class="page-header" style="margin-top: 3px;">
       <div class="row">
         <div class="col-md-6 col-sm-12">
           <div class="title">
@@ -72,13 +71,13 @@
                 <div *ngIf="r.agency;else find">
                 <div class="font-14 weight-600">Mr. {{r.agency.firstName}} {{r.agency.lastName}}</div>
                 <div class="font-12 weight-500" data-color="#b2b1b6">
-                  Pediatrician
+                  agency : {{r.agency.brandName}}
                 </div>
                 </div>
                 <ng-template #find>
                   <div class="font-14 weight-600">Mr. {{r.deliveryman.firstName}}{{r.deliveryman.lastName}}</div>
                   <div class="font-12 weight-500" data-color="#b2b1b6">
-                    Pediatrician
+                    Freelancer
                   </div>
                 </ng-template>
               </div>
@@ -96,50 +95,4 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-lg-12 col-md-6 mb-20">
-    <div class="card-box height-100-p pd-20 min-height-200px">
-      <div class="d-flex justify-content-between pb-10">
-        <div class="h5 mb-0">Top Delivery Men </div>
-      </div>
-      <div class="user-list">
-        <ul *ngFor="let r of request">
-          <li class="d-flex align-items-center justify-content-between" >
-            <div class="name-avatar d-flex align-items-center pr-2">
-              <div class="avatar mr-2 flex-shrink-0">
-                <img
-                  src="../../../assets/vendors/images/photo1.jpg"
-                  class="border-radius-100 box-shadow"
-                  width="50"
-                  height="50"
-                  alt=""
-                />
-              </div>
-              <div class="txt">
-                <span
-                  class="badge badge-pill badge-sm"
-                  data-bgcolor="#e7ebf5"
-                  data-color="#265ed7"
-                  >4.9</span
-                >
-                <div class="font-14 weight-600">Dr. Neil Wagner</div>
-                <div class="font-12 weight-500" data-color="#b2b1b6">
-                  Pediatrician
-                </div>
-              </div>
-            </div>
-            <div class="cta flex-shrink-0">
-              <a href="#" class="btn btn-sm btn-outline-primary"
-                >Schedule</a
-              >
-            </div>
-          </li>
-
-        </ul>
-      </div>
-    </div>
   </div>
-
-</div>
-  </div>
-</div>

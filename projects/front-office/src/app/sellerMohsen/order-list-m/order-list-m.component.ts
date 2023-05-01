@@ -17,12 +17,12 @@ export class OrderListMComponent {
   order!:Order[];
   idStore!: number;
   productQuantity!:ProductQuantity[];
-  id!:number;
-  product:Product[] = [];
+
+  product:Product[][] = [];
   SumProduct:number[] = [];
   ngOnInit(): void {
-    this.id=this.route.snapshot.params['idStore'];
-    this.getOrdersByStore(this.id); // Replace 1 with the actual store ID
+    this.idStore=this.route.snapshot.params['idStore'];
+    this.getOrdersByStore(this.idStore); // Replace 1 with the actual store ID
     this.getAllproductQuantity();
      // Read idStore parameter from URL and assign to idStore property
      this.route.paramMap.subscribe(params => {
@@ -38,25 +38,27 @@ export class OrderListMComponent {
     this.pickupService.getOrderByStore(ido)
       .subscribe(data => { this.order= data;
         const requests=data.map(a=>this.pickupService.getSumPriceProductOfOrder(a.id,this.idStore));
+        const products=data.map(a=>this.pickupService.getListProductOfOrder(a.id,this.idStore));
         forkJoin(requests).subscribe((results: number[]) => {
           this.SumProduct = results;
         });
+        forkJoin(products).subscribe((result:Product[][])=>{this.product=result;console.log(result)})
       } );
-          }
+    }
+/*/
+  getListProductOfOrder(idOrder:number, idStore:number) {
+  this.pickupService.getListProductOfOrder(idOrder, idStore).subscribe((res) => {
+   for (let i = 0; i < res.length; i++) {
+         this.product.push(res[i]);
+         }
+         });
+   }*/
+   getSumPriceProductOfOrder(idOrder:number,idStore:number)
+   {
+    this.pickupService.getSumPriceProductOfOrder(idOrder,idStore).subscribe(data=>{this.SumProduct.push(data)});
+   }
 
-          getListProductOfOrder(idOrder:number, idStore:number) {
-            this.pickupService.getListProductOfOrder(idOrder, idStore).subscribe((res) => {
-              for (let i = 0; i < res.length; i++) {
-                this.product.push(res[i]);
-              }
-            });
-          }
-          getSumPriceProductOfOrder(idOrder:number,idStore:number)
-          {
-            this.pickupService.getSumPriceProductOfOrder(idOrder,idStore).subscribe(data=>{this.SumProduct.push(data)});
-          }
-
-          getAllproductQuantity(){
-            this.pickupService.getAllproductQuantity().subscribe(data=>{this.productQuantity=data})
-                    }
+   getAllproductQuantity(){
+   this.pickupService.getAllproductQuantity().subscribe(data=>{this.productQuantity=data})
+    }
 }

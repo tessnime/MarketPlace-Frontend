@@ -24,4 +24,5 @@ export class Pickup {
   order!: Order;
   requests: Request[] = [];
   store!: Store;
+  points!: number;
 }

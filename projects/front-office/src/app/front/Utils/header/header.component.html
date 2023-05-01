@@ -12,7 +12,7 @@
 
         <a class="main-logo"  (click)="goToIndex()">
 
-          <img src="../../../../assets/front-template/images/logo/logo-1.png" alt=""></a>
+          <img src="../../../../assets/images/coco.png" style="width:60px" alt=""></a>
         <!--====== End - Main Logo ======-->
 
 
@@ -54,17 +54,17 @@
                       <span>Account</span></a></li>
                   <li>
 
-                    <a href="../../../../assets/front-template/signup.html"><i class="fas fa-user-plus u-s-m-r-6"></i>
+                    <a href="/user/register"><i class="fas fa-user-plus u-s-m-r-6"></i>
 
                       <span>Signup</span></a></li>
                   <li>
 
-                    <a href="../../../../assets/front-template/signin.html"><i class="fas fa-lock u-s-m-r-6"></i>
+                    <a href="/user/signin"><i class="fas fa-lock u-s-m-r-6"></i>
 
                       <span>Signin</span></a></li>
-                  <li>
+                  <li >
 
-                    <a href="../../../../assets/front-template/signup.html"><i class="fas fa-lock-open u-s-m-r-6"></i>
+                    <a  (click)="logout()" ><i class="fas fa-lock-open u-s-m-r-6"></i>
 
                       <span>Signout</span></a></li>
                 </ul>
@@ -938,10 +938,10 @@
                     <ul style="width:200px">
                       <li>
 
-                        <a href="../../../../assets/front-template/signin.html">Signin / Already Registered</a></li>
+                        <a href="">Signin / Already Registered</a></li>
                       <li>
 
-                        <a href="../../../../assets/front-template/signup.html">Signup / Register</a></li>
+                        <a href="/user/Register">Signup / Register</a></li>
                       <li>
 
                         <a href="../../../../assets/front-template/lost-password.html">Lost Password</a></li>

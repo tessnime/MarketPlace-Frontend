@@ -24,16 +24,13 @@ export class AppMenuComponent implements OnInit {
                 label: 'Pickups Management',
                 items: [
                     { label: 'New Pickups', icon: 'pi pi-fw pi-id-card', routerLink: ['/agency/Pickups'] },
-                    { label: 'My Pickup', icon: 'pi pi-fw pi-check-square', routerLink: ['/agency/MyPickups'] },
-                    { label: 'Float Label', icon: 'pi pi-fw pi-bookmark', routerLink: ['/uikit/floatlabel'] }
+                    { label: 'My Pickup', icon: 'pi pi-fw pi-check-square', routerLink: ['/agency/MyPickups'] }
                 ]
             },
             {
               label: 'Requests Management',
               items: [
                   { label: 'My Requests', icon: 'pi pi-fw pi-id-card', routerLink: ['/agency/Requests'] },
-                  { label: 'My Pickup', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input'] },
-                  { label: 'Float Label', icon: 'pi pi-fw pi-bookmark', routerLink: ['/uikit/floatlabel'] }
               ]
           },
           {
@@ -41,14 +38,15 @@ export class AppMenuComponent implements OnInit {
             items: [
                 { label: 'Add Branch', icon: 'pi pi-fw pi-id-card', routerLink: ['/agency/addBranch'] },
                 { label: 'Add Delivery Men', icon: 'pi pi-fw pi-check-square', routerLink: ['/agency/MyBranch'] },
-                { label: 'My Branch', icon: 'pi pi-fw pi-bookmark', routerLink: ['/agency/BranchM'] }
+                { label: 'My Branch', icon: 'pi pi-fw pi-bookmark', routerLink: ['/agency/BranchM'] },
+                { label: 'My Map', icon: 'pi pi-fw pi-bookmark', routerLink: ['/agency/MyMap'] }
             ]
         },
             {
-                label: 'Utilities',
+                label: 'History',
                 items: [
-                    { label: 'PrimeIcons', icon: 'pi pi-fw pi-prime', routerLink: ['/utilities/icons'] },
-                    { label: 'PrimeFlex', icon: 'pi pi-fw pi-desktop', url: ['https://www.primefaces.org/primeflex/'], target: '_blank' },
+                    { label: 'Pickups', icon: 'pi pi-fw pi-prime', routerLink: ['/agency/HistoryPickup'] },
+                    { label: 'Requests', icon: 'pi pi-fw pi-desktop', routerLink: ['/agency/HistoryRequest'], target: '_blank' },
                 ]
             },
         ];

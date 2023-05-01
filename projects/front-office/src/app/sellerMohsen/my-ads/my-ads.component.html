@@ -1,0 +1,84 @@
+  <div class="min-height-200px">
+    <div class="page-header " style="margin-top: 3px;">
+      <div class="row">
+        <div class="col-md-6 col-sm-12" >
+          <div class="title">
+            <h4>Ads</h4>
+          </div>
+          <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item " aria-current="page">
+                Ads
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                My Ads
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+    	<!-- Simple Datatable start -->
+      <div class="card-box mb-30">
+
+        <div class="pb-20">
+          <table class="data-table table stripe hover nowrap">
+            <thead>
+              <tr>
+                <th >Started Date</th>
+                <th>Expired Date</th>
+                <th>Budget Type</th>
+                <th>Objective Type</th>
+                <th>Reach</th>
+                <th>Points</th>
+                <th>Status</th>
+                <th class="datatable-nosort">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of ads | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+                <td class="table-plus">{{p.startDate}}</td>
+                <td *ngIf="p.expiredDate!=null;else en1">{{p.expiredDate}}</td>
+                <ng-template #en1><td>Opened</td></ng-template>
+                <td>{{p.budgetType}}</td>
+                <td>{{p.objectiveType}}</td>
+                <td >{{p.reach}}</td>
+                <td >{{p.adsPoints}}</td>
+                <td *ngIf="p.enabled==true; else en" style="color:green">1</td>
+                <ng-template #en>
+                  <td style="color:red">0</td>
+                </ng-template>
+
+                <td>
+                  <div class="dropdown">
+                    <a
+                      class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-toggle="dropdown"
+                    >
+                      <i class="dw dw-more"></i>
+                    </a>
+                    <div
+                      class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
+                    >
+                      <a class="dropdown-item" [routerLink]="['/Seller/pickups/update',p.id]"
+                        ><i class="dw dw-edit2"></i> Edit</a
+                      >
+                      <a class="dropdown-item"
+                        ><i class="dw dw-delete-3" (click)="deleteAds(p.id)" ></i> Delete</a
+                      >
+                    </div>
+
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+          <pagination-controls (pageChange)="onPageChange($event)"
+  [maxSize]="10" [(ngModel)]="itemsPerPage" [(ngModel)]="totalItems"
+  [(ngModel)]="p"></pagination-controls>
+        </div>
+      </div>

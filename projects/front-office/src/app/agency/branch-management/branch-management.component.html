@@ -1,6 +1,5 @@
-<div class="pd-ltr-20 xs-pd-20-10">
   <div class="min-height-200px">
-    <div class="page-header">
+    <div class="page-header" style="margin-top: 3px;">
       <div class="row">
         <div class="col-md-6 col-sm-12">
           <div class="title">
@@ -55,6 +54,11 @@
                       <a class="dropdown-item"(click)="deleteAgencyBranch(b.id)"
                         ><i class="dw dw-delete-3"  ></i> Delete</a
                       >
+                      <div *ngIf="b.x==0.0">
+                      <a class="dropdown-item" [routerLink]="['/agency/Branch/',b.id]"
+                        ><i class="bi bi-geo-alt-fill"></i> Add in Map</a
+                      >
+                    </div>
                     </div>
                   </div>
                 </td>

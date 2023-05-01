@@ -12,7 +12,6 @@ import {BrowserModule} from "@angular/platform-browser";
 import {HttpClientModule} from "@angular/common/http";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
-import {AutocompleteLibModule} from "angular-ng-autocomplete";
 import {FinalizeOrderComponent} from "./buyer/finalize-order/finalize-order.component";
 import { NotFoundComponent } from './Utils/not-found/not-found.component';
 import { AllOrdrsComponent } from './buyer/orders-setting/all-ordrs/all-ordrs.component';
@@ -21,11 +20,19 @@ import { OrdersSettingComponent } from './buyer/orders-setting/orders-setting.co
 import { TrackOrderComponent } from './buyer/orders-setting/track-order/track-order.component';
 import { RegisterComponent } from './User/register/register.component';
 import { SignInComponent } from './User/sign-in/sign-in.component';
-
-
-
-
-
+import { SellerComponent } from './User/seller/seller.component';
+import { SupplierComponent } from './User/supplier/supplier.component';
+import { DeliveryAgencyComponent } from './User/delivery-agency/delivery-agency.component';
+import { DeliveryMenComponent } from './User/delivery-men/delivery-men.component';
+import { ForgetPasswordComponent } from './User/forget-password/forget-password.component';
+import { VerificationCodeComponent } from './User/verification-code/verification-code.component';
+import { ChangePasswordComponent } from './User/change-password/change-password.component';
+import { UpdateProfileComponent } from './User/update-profile/update-profile.component';
+import { AffichageProfileComponent } from './User/affichage-profile/affichage-profile.component';
+import { ClaimComponent } from './claimreview/claim/claim.component';
+import { ShowclaimsComponent } from './claimreview/showclaims/showclaims.component';
+import { EditClaimComponent } from './claimreview/edit-claim/edit-claim.component';
+import { ReviewComponent } from './claimreview/review/review.component';
 
 
 @NgModule({
@@ -43,7 +50,20 @@ import { SignInComponent } from './User/sign-in/sign-in.component';
     OrdersSettingComponent,
     TrackOrderComponent,
     RegisterComponent,
-    SignInComponent
+    SignInComponent,
+    SellerComponent,
+    SupplierComponent,
+    DeliveryAgencyComponent,
+    DeliveryMenComponent,
+    ForgetPasswordComponent,
+    VerificationCodeComponent,
+    ChangePasswordComponent,
+    UpdateProfileComponent,
+    AffichageProfileComponent,
+    ClaimComponent,
+    ShowclaimsComponent,
+    EditClaimComponent,
+    ReviewComponent
 ],
   imports: [
     CommonModule,

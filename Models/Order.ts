@@ -15,7 +15,7 @@ export class Order{
   orderCode!: number;
   payment!: PaymentType;
   status!: StatusOrderType;
-  creationDate!: number;
+  creationDate!: Date;
   pickups:Pickup[]=[];
   shipping!: Shipping;
   buyer!:User;
