@@ -51,17 +51,17 @@ ngOnInit(){
 
   }
   CountPickupRefunbded(){
-    this.pickupService.CountPickupRefunbded().subscribe(data=>{this.nbCountPickupRefunbded=data});
+    this.pickupService.CountPickupRefunbded().subscribe(data=>{this.nbCountPickupRefunbded=data;this.chartjs()});
   }
   CountPickupOnTheWay(){
-    this.pickupService.CountPickupOnTheWay().subscribe(data=>{this.nbCountPickupOnTheWay=data});
+    this.pickupService.CountPickupOnTheWay().subscribe(data=>{this.nbCountPickupOnTheWay=data;this.chartjs()});
   }
   CountPickupDeliverted(){
     this.pickupService.CountPickupDeliverted().subscribe(data=>{this.nbCountPickupDeliverted=data;
       this.chartjs()});
   }
   CountPickupReturned(){
-    this.pickupService.CountPickupReturned().subscribe(data=>{this.nbCountPickupReturned=data});
+    this.pickupService.CountPickupReturned().subscribe(data=>{this.nbCountPickupReturned=data;this.chartjs()});
   }
   cps!:number;
   CountPickupAssigned(){
@@ -69,7 +69,7 @@ ngOnInit(){
   }
   cpt!:number;
   CountPickupTakedSeller(){
-  this.pickupService.CountPickupTakedSeller().subscribe(data=>{this.cpt=data});
+  this.pickupService.CountPickupTakedSeller().subscribe(data=>{this.cpt=data;this.chartjs()});
   }
 
   request!:Request[];
@@ -103,10 +103,10 @@ statusRequest!:"test";
       const textColor = documentStyle.getPropertyValue('--text-color');
     console.log(this.nbCountPickupPending);
       this.data = {
-          labels: ['Picked', 'Assigned', 'Delivered'],
+          labels: ['Picked', 'Assigned', 'Delivered','Taked','On The Way','Returned','Refunded'],
           datasets: [
               {
-                  data: [this.nbCountPickupPending, this.cps, this.nbCountPickupDeliverted],
+                  data: [this.nbCountPickupPending, this.cps, this.nbCountPickupDeliverted,this.cpt,this.nbCountPickupOnTheWay,this.nbCountPickupReturned,this.nbCountPickupRefunbded],
                   backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
                   hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
               }

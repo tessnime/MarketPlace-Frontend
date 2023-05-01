@@ -24,16 +24,13 @@ export class AppMenuComponent implements OnInit {
                 label: 'Pickups Management',
                 items: [
                     { label: 'New Pickups', icon: 'pi pi-fw pi-id-card', routerLink: ['/agency/Pickups'] },
-                    { label: 'My Pickup', icon: 'pi pi-fw pi-check-square', routerLink: ['/agency/MyPickups'] },
-                    { label: 'Float Label', icon: 'pi pi-fw pi-bookmark', routerLink: ['/uikit/floatlabel'] }
+                    { label: 'My Pickup', icon: 'pi pi-fw pi-check-square', routerLink: ['/agency/MyPickups'] }
                 ]
             },
             {
               label: 'Requests Management',
               items: [
                   { label: 'My Requests', icon: 'pi pi-fw pi-id-card', routerLink: ['/agency/Requests'] },
-                  { label: 'My Pickup', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input'] },
-                  { label: 'Float Label', icon: 'pi pi-fw pi-bookmark', routerLink: ['/uikit/floatlabel'] }
               ]
           },
           {

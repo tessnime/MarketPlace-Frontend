@@ -72,6 +72,11 @@ export class RequestService {
   return this.http.get<Request[]>(this.urlLastRequestAssignedToFreelancer,options);
  }
 
- //agency
+ //admin
+ urlretriveRequests="http://localhost:8081/RequestController/retriveRequests";
+ retriveRequests(){
+  const options = { withCredentials: true };
+  return this.http.get<Request[]>(this.urlretriveRequests,options);
+ }
 
 }

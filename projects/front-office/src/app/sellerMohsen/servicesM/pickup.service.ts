@@ -342,10 +342,10 @@ getNumberOfPickupByStatusByMonthAndYearAndAll(){
   const options = { withCredentials:true };
   return this.http.get<any>(this.urlgetNumberOfPickupByStatusByMonthAndYearAndAll,options);
 }
-urlpredict="http://localhost:8081/Pickup/predict";
+urlpredict="http://localhost:8081/Pickup/predictc";
 sendDataRegLineaire(){
   const options = { withCredentials:true };
-  return this.http.post<any>(this.urlpredict,options);
+  return this.http.get<any>(this.urlpredict,options);
 }
 urlgetPredictCo2="http://localhost:8081/Pickup/predictco2?gearage=";
 getPredictCo2(gearAge:number){
@@ -376,5 +376,16 @@ urlRetrieveAllPickupsOfSeller="http://localhost:8081/Pickup/RetrieveAllPickupsOf
 RetrieveAllPickupsOfSeller(){
   const options = { withCredentials:true };
   return this.http.get<Pickup[]>(this.urlRetrieveAllPickupsOfSeller,options);
+}
+//predict admin
+urlpredictrequest="http://localhost:8081/Pickup/predictrequest";
+preductRequest(){
+  const options = { withCredentials:true };
+  return this.http.get<any>(this.urlpredictrequest,options)
+}
+urlgetprdeuctRequest="http://localhost:8081/Pickup/predict/requedt?r=";
+getprdeuctRequest(nbRequest:number){
+  const options = { withCredentials:true };
+ return this.http.get<number>(this.urlgetprdeuctRequest+`${nbRequest}`,options);
 }
 }
