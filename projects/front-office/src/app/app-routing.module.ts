@@ -52,6 +52,8 @@ import { MyAdsComponent } from './sellerMohsen/my-ads/my-ads.component';
 import { HistoryPickupsComponent } from './agency/history-pickups/history-pickups.component';
 import { HistoryRequestsComponent } from './agency/history-requests/history-requests.component';
 import { HistoryPickupsSellerComponent } from './sellerMohsen/history-pickups-seller/history-pickups-seller.component';
+import { HistoryPickupsFreelancerComponent } from './freelancer/history-pickups-freelancer/history-pickups-freelancer.component';
+import { HistoryRequestFreelancerComponent } from './freelancer/history-request-freelancer/history-request-freelancer.component';
 
 
 
@@ -63,6 +65,8 @@ const routes: Routes = [
       {path:'pickups',component:PickupListFreelancerComponent},
       {path:'requests',component:RequestListComponent},
       {path:'myPickups',component:MyPickupListFreelancerComponent},
+      {path:'HistoryPic',component:HistoryPickupsFreelancerComponent},
+      {path:'HistoryReq',component:HistoryRequestFreelancerComponent},
       {path:'myPickups/track/:idPickup',component:TrakOrderByFreelancerComponent}
 
     ]

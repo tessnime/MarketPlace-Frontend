@@ -98,6 +98,8 @@ import { HistoryRequestsComponent } from './agency/history-requests/history-requ
 import { TableModule } from 'primeng/table';
 import { BuyerOfPickupComponent } from './agency/buyer-of-pickup/buyer-of-pickup.component';
 import { HistoryPickupsSellerComponent } from './sellerMohsen/history-pickups-seller/history-pickups-seller.component';
+import { HistoryPickupsFreelancerComponent } from './freelancer/history-pickups-freelancer/history-pickups-freelancer.component';
+import { HistoryRequestFreelancerComponent } from './freelancer/history-request-freelancer/history-request-freelancer.component';
 
 @NgModule({
   declarations: [
@@ -142,6 +144,8 @@ import { HistoryPickupsSellerComponent } from './sellerMohsen/history-pickups-se
     HistoryRequestsComponent,
     BuyerOfPickupComponent,
     HistoryPickupsSellerComponent,
+    HistoryPickupsFreelancerComponent,
+    HistoryRequestFreelancerComponent,
   ],
   imports: [
     BrowserModule,

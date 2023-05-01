@@ -78,5 +78,10 @@ export class RequestService {
   const options = { withCredentials: true };
   return this.http.get<Request[]>(this.urlretriveRequests,options);
  }
-
+ //freelancer
+ urlRetrieveRequestOfFreelancer="http://localhost:8081/RequestController/RetrieveRequestOfFreelancer";
+ RetrieveRequestOfFreelancer(){
+  const options = { withCredentials: true };
+  return this.http.get<Request[]>(this.urlRetrieveRequestOfFreelancer,options);
+ }
 }

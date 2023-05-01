@@ -76,4 +76,5 @@ markerClick(store: Store) {
     console.log('The dialog was closed');
   });
 }
+
 }

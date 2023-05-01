@@ -40,6 +40,14 @@ export class AppMenuComponent implements OnInit {
                   { label: 'PrimeFlex', icon: 'pi pi-fw pi-desktop', url: ['https://www.primefaces.org/primeflex/'], target: '_blank' },
               ]
           },
+          {
+            label: 'History delivery Management',
+            items: [
+                { label: 'All Pickups', icon: 'pi pi-fw pi-id-card', routerLink: ['/freelancer/HistoryPic'] },
+                { label: 'All Request', icon: 'pi pi-fw pi-id-card', routerLink: ['/freelancer/HistoryReq'] }
+
+            ]
+        },
       ];
   }
 }
