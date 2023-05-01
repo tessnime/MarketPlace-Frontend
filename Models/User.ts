@@ -17,13 +17,13 @@ export class User {
   tokenExpired!: boolean;
   banned!: boolean;
   phoneNumber!: string;
-  BirthDate!: Date;
-  image!: string;
-  genderType!: GenderType;
+  birthDate!: Date;
+  image!: string ;
+  gender!:GenderType;
   identity!: string;
   brandName!: string;
-  brandLogo!: string;
-  justification!: string;
+  brandLogo!: string ;
+  justification!: string ;
   governorate!: string;
   city!: string;
   gear!: string;
@@ -50,4 +50,5 @@ export class User {
   requestsAgencys: Request[] = [];
   agencyBranches: AgencyBranch[] = [];
   supplierRequests: SupplierRequest[] = [];
+
 }

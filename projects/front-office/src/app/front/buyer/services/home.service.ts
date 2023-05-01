@@ -9,6 +9,7 @@ import {EventModel} from "../../../../../../../Models/EventModel";
 import {Shipping} from "../../../../../../../Models/Shipping";
 import {ProductCategory} from "../../../../../../../Models/ProductCategory";
 import {CustemerModel} from "../../../../../../../Models/CustemerModel";
+import { Observable } from 'rxjs';
 
 
 
@@ -44,6 +45,8 @@ export class HomeService {
   Payements='http://localhost:8081/order/payements'
   EndPaimentProcess='http://localhost:8081/order/EndPaimentProcess?paymentType=CASH_ON_DELIVERY&cardPaiment=false'
   GetAllOrdersByUserId='http://localhost:8081/order/getAllOrdersByUserId'
+  urlsession='http://localhost:8081/User/session';
+
   SessionReteurn='http://localhost:8081/order/sessionReteurn'
   AddOrder='http://localhost:8081/order/AddOrder'
 
@@ -88,6 +91,7 @@ export class HomeService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
+
     return this.http.put<ProductQuantity>('http://localhost:8081/order/UpdateQuantityInOrder?refProuct=' + `${ref}` + '&quantity=' + `${quan}`, null, {headers})
   }
 
@@ -101,7 +105,11 @@ export class HomeService {
   }
 
   searchProduct(maxprix: number, minprix: number, nameProd: string, mark: string, categorie: string, filtre: String) {
-
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
     let url = 'http://localhost:8081/order/ProductResearch?maxPrix=' + `${maxprix}` + '&minPrix=' + `${minprix}`
     if (nameProd.length > 0)
       url = url + '&nameProduct=' + `${nameProd}`;
@@ -113,11 +121,13 @@ export class HomeService {
 
     url = url + '&productFiltre=' + `${filtre}`;
 
+
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
+
 
     return this.http.get<Product[]>(url, {headers});
 
@@ -294,5 +304,10 @@ export class HomeService {
     });
     return this.http.post(this.AddOrder,order,{headers})
   }
+
+getSession(){
+  //@ts-ignore
+  return this.http.get<boolean>(this.urlsession,this.options)
+}
 
 }

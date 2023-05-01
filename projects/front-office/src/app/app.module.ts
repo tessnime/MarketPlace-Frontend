@@ -81,6 +81,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { FrontModule  } from './front/front.module';
 import { NgImageSliderModule } from 'ng-image-slider';
+
+import {JwtModule} from '@auth0/angular-jwt';
+
 import { ToastrModule } from 'ngx-toastr';
 import { CarDashboardComponent } from './freelancer/car-dashboard/car-dashboard.component';
 import { AgmCoreModule } from '@agm/core';
@@ -201,12 +204,19 @@ import { ViewDeliveryMenOfPickupComponent } from './sellerMohsen/view-delivery-m
     MatChipsModule,
     MatIconModule,
     MatButtonModule,
-    BrowserModule,
     NgImageSliderModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
+    JwtModule.forRoot({
+      config:{
+        tokenGetter: ()=>{
+          return localStorage.getItem('token');
+        },
+        allowedDomains:['localhost']
+      }
+      })
     ChartModule,
     MatInputModule,
     ToastrModule,
@@ -228,7 +238,7 @@ import { ViewDeliveryMenOfPickupComponent } from './sellerMohsen/view-delivery-m
       useValue: { panelClass: ['green-snackbar'] },
     },
     MatSnackBar
-  ],
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

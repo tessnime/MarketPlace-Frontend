@@ -3,6 +3,9 @@ import {Router} from "@angular/router";
 import {HomeService} from "../../buyer/services/home.service";
 import {ProductQuantity} from "../../../../../../../Models/ProductQuantity";
 import {Order} from "../../../../../../../Models/Order";
+
+import { CookieServiceService } from '../../User/Services/cookie-service.service';
+
 import {CookieService} from "ngx-cookie-service";
 
 @Component({
@@ -11,6 +14,7 @@ import {CookieService} from "ngx-cookie-service";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+
   constructor(private router: Router, private home: HomeService,private cookieService: CookieService) {}
 
   points!: number
@@ -23,6 +27,23 @@ export class HeaderComponent {
     window.history.replaceState(null, null, currentUrl);
     window.location.reload();
   }
+
+private roles: string[] = [];
+logedin:boolean=false;
+isLoggedIn=false;
+ret:boolean=false;
+  ngOnInit() :void {
+   this.isLoggedIn =!!this.cookieService.get('accessToken');
+   
+if(this.isLoggedIn){
+  const user = this.cookieService.get('accaccessToken');
+  
+}
+
+    this.getListProduct();
+    this.getBaskerOrder();
+    this.loyalityPoints()
+
   sess:boolean=false;
 
   ngOnInit() {
@@ -158,5 +179,15 @@ export class HeaderComponent {
   {
     this.router.navigate(["/buyer/shop-side"]);
   }
+ 
 
+logout(){
+  localStorage.clear()
+  this.router.navigate(['/user/signin'])
 }
+
+
+   
+  }
+
+

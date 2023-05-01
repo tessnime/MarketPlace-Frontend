@@ -44,6 +44,16 @@ import {OrdersSettingComponent} from "./front/buyer/orders-setting/orders-settin
 
 import { SignInComponent } from './front/User/sign-in/sign-in.component';
 import { RegisterComponent } from './front/User/register/register.component';
+import { SellerComponent } from './front/User/seller/seller.component';
+import { SupplierComponent } from './front/User/supplier/supplier.component';
+import { DeliveryMenComponent } from './front/User/delivery-men/delivery-men.component';
+import { DeliveryAgencyComponent } from './front/User/delivery-agency/delivery-agency.component';
+import { ForgetPasswordComponent } from './front/User/forget-password/forget-password.component';
+import { VerificationCodeComponent } from './front/User/verification-code/verification-code.component';
+import { ChangePasswordComponent } from './front/User/change-password/change-password.component';
+import { AffichageProfileComponent } from './front/User/affichage-profile/affichage-profile.component';
+import { UpdateProfileComponent } from './front/User/update-profile/update-profile.component';
+
 import { AddBranchInMapComponent } from './agency/add-branch-in-map/add-branch-in-map.component';
 import { AgencyMapComponent } from './agency/agency-map/agency-map.component';
 import { PickupListGridComponent } from './agency/pickup-list-grid/pickup-list-grid.component';
@@ -59,6 +69,7 @@ import { ClaimComponent } from './front/claimreview/claim/claim.component';
 import { ShowclaimsComponent } from './front/claimreview/showclaims/showclaims.component';
 import { EditClaimComponent } from './front/claimreview/edit-claim/edit-claim.component';
 import { ReviewComponent } from './front/claimreview/review/review.component';
+
 
 
 
@@ -120,6 +131,19 @@ const routes: Routes = [
 { path: '', component: HomeComponent },
 { path: 'user/signin', component: SignInComponent },
 { path: 'user/register', component: RegisterComponent },
+{ path: 'user/seller', component: SellerComponent },
+{ path: 'user/supplier', component: SupplierComponent },
+{ path: 'user/deliveryAgency', component: DeliveryAgencyComponent },
+{ path: 'user/deliveryMen', component: DeliveryMenComponent },
+{ path: 'forgetPassword', component: ForgetPasswordComponent },
+{ path: 'verificationCode', component: VerificationCodeComponent },
+{ path: 'verificationCode/changePass/:token', component: ChangePasswordComponent },
+{ path: 'freelancer/affichageProfile', component: AffichageProfileComponent },
+{ path: 'affichageProfile', component: AffichageProfileComponent },
+{ path: 'store/affichageProfile', component: AffichageProfileComponent },
+{ path: 'deliveryAgency/affichageProfile', component: AffichageProfileComponent },
+{ path: 'updateProfile', component: UpdateProfileComponent },
+
 
 {
   path: 'claim/:id',
@@ -144,6 +168,7 @@ const routes: Routes = [
   ]
 },
 */
+
 
 {
   path:'Seller',component:sellerlayoutCMohsen,
