@@ -10,7 +10,7 @@ export class ClaimSav {
   body!: string;
   screenshot!: string;
   status!: ClaimSavStatusType;
-  ClaimSavType!: ClaimSavType;
+  claimSavType!: ClaimSavType;
   createdAt!: Date;
   updatedAt!: Date;
   user!: User;

@@ -7,6 +7,8 @@ import { AppLayoutModule } from './layoutB/app.layout.module';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ClaimReviewAdminComponent } from './ClaimRevManagement/claim-review-admin/claim-review-admin.component';
+import {MatIconModule} from "@angular/material/icon";
 import {OrderStatsComponent} from "./order/order-stats/order-stats.component";
 import {CommonModule} from "@angular/common";
 import {ChartModule} from "primeng/chart";
@@ -34,7 +36,6 @@ import {InputMaskModule} from "primeng/inputmask";
 import {ChipsModule} from "primeng/chips";
 import {CalendarModule} from "primeng/calendar";
 import {AutoCompleteModule} from "primeng/autocomplete";
-import {MatIconModule} from "@angular/material/icon";
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from "@angular/platform-browser";
 import { KeywordsComponent } from './order/keywords/keywords.component';
@@ -46,11 +47,13 @@ import {MenubarModule} from "primeng/menubar";
 import {BreadcrumbModule} from "primeng/breadcrumb";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     UserDashboardComponent,
     UserListComponent,
+    ClaimReviewAdminComponent,
     OrderStatsComponent,
     EventsComponent,
     KeywordsComponent
@@ -63,9 +66,7 @@ import {BreadcrumbModule} from "primeng/breadcrumb";
     FormsModule,
     RouterModule,
     BrowserAnimationsModule,
-    CommonModule,
     ChartModule,
-    CommonModule,
     FormsModule,
     TableModule,
     RatingModule,

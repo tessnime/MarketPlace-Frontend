@@ -1,0 +1,90 @@
+<!--====== Google Font ======-->
+<link
+  href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800"
+  rel="stylesheet"
+/>
+
+
+<!--====== Vendor Css ======-->
+<link
+  rel="stylesheet"
+  href="../../../../assets/front-template/css/vendor.css"
+/>
+
+<!--====== Utility-Spacing ======-->
+<link
+  rel="stylesheet"
+  href="../../../../assets/front-template/css/utility.css"
+/>
+
+<!--====== App ======-->
+<link rel="stylesheet" href="../../../../assets/front-template/css/app.css" />
+
+<body class="config">
+  <!--====== Main App ======-->
+  <div id="app">
+    <!--====== Main Header ======-->
+    <app-header></app-header>
+
+ 
+    <!--====== App Content ======-->
+    <div class="app-content">
+      <!--====== Section 1 ======-->
+      <div class="u-s-p-y-60">
+        <!--====== Section Content ======-->
+        <div class="section__content">
+          <div class="container">
+            <div class="breadcrumb">
+              <div class="breadcrumb__wrap">
+                <ul class="breadcrumb__list">
+                  <li class="has-separator">
+                    <a (click)="gotoHome()">Home</a>
+                  </li>
+                  <li class="is-marked">
+                    <a>Claim</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container u-s-p-b-60">
+        
+        <h1 class="checkout-f__h1">PLEASE COMPLETE THE FORM AND SUBMIT YOUR CLAIM</h1>
+        <form #addform="ngForm" (ngSubmit)="addForm(addform)">
+          <div class="form-group row">
+            <label class="col-sm-12 col-md-2 col-form-label">Reference:</label>
+            <div class="col-sm-12 col-md-10">
+              <input class="form-control" id="ref" name="ref" ngModel required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-12 col-md-2 col-form-label">Object:</label>
+            <div class="col-sm-12 col-md-10">
+              <input class="form-control" id="obj" name="obj" ngModel required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-12 col-md-2 col-form-label">Body:</label>
+            <div class="col-sm-12 col-md-10">
+              <textarea class="form-control" id="body" name="body" ngModel required></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-12 col-md-2 col-form-label">Screenshot:</label>
+            <div class="my-2">
+              <label class="custom-file-upload">
+                <input type="file" accept="image/*" (change)="handleFileInput($event)">
+                Choose File
+              </label>
+            </div>
+    
+          </div>
+          <button class="btn btn--e-transparent-brand-b-2" type="submit">SUBMIT</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
