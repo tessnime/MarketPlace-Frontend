@@ -80,7 +80,9 @@ export class AddAdsComponent {
 
   }
 click:number=10;
-
-
+ageMax!:any;
+valueofAge(t7:NgForm){
+ this.ageMax=t7.controls['agemin'].value;
+}
 
 }

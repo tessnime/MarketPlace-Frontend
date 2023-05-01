@@ -100,6 +100,7 @@ import { BuyerOfPickupComponent } from './agency/buyer-of-pickup/buyer-of-pickup
 import { HistoryPickupsSellerComponent } from './sellerMohsen/history-pickups-seller/history-pickups-seller.component';
 import { HistoryPickupsFreelancerComponent } from './freelancer/history-pickups-freelancer/history-pickups-freelancer.component';
 import { HistoryRequestFreelancerComponent } from './freelancer/history-request-freelancer/history-request-freelancer.component';
+import { ViewDeliveryMenOfPickupComponent } from './sellerMohsen/view-delivery-men-of-pickup/view-delivery-men-of-pickup.component';
 
 @NgModule({
   declarations: [
@@ -146,6 +147,7 @@ import { HistoryRequestFreelancerComponent } from './freelancer/history-request-
     HistoryPickupsSellerComponent,
     HistoryPickupsFreelancerComponent,
     HistoryRequestFreelancerComponent,
+    ViewDeliveryMenOfPickupComponent,
   ],
   imports: [
     BrowserModule,

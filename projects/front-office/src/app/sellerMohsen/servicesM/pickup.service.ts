@@ -388,4 +388,10 @@ getprdeuctRequest(nbRequest:number){
   const options = { withCredentials:true };
  return this.http.get<number>(this.urlgetprdeuctRequest+`${nbRequest}`,options);
 }
+//seller
+urlretrieveTheFreelancerOfPickup="http://localhost:8081/Pickup/retrieveTheFreelancerOfPickup?idPickup=";
+retrieveTheFreelancerOfPickup(idPickup:number){
+  const options = { withCredentials:true };
+  return this.http.get<User>(this.urlretrieveTheFreelancerOfPickup+`${idPickup}`,options);
+}
 }
