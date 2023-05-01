@@ -9,4 +9,6 @@ export class AgencyBranch{
   brandName!:String;
   deliveryAgency!:User;
   agencyDeliveryMEN:AgencyDeliveryMan[]=[];
+  x!: number;
+  y!: number;
 }

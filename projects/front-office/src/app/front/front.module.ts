@@ -29,6 +29,11 @@ import { VerificationCodeComponent } from './User/verification-code/verification
 import { ChangePasswordComponent } from './User/change-password/change-password.component';
 import { UpdateProfileComponent } from './User/update-profile/update-profile.component';
 import { AffichageProfileComponent } from './User/affichage-profile/affichage-profile.component';
+import { ClaimComponent } from './claimreview/claim/claim.component';
+import { ShowclaimsComponent } from './claimreview/showclaims/showclaims.component';
+import { EditClaimComponent } from './claimreview/edit-claim/edit-claim.component';
+import { ReviewComponent } from './claimreview/review/review.component';
+
 
 @NgModule({
   declarations: [
@@ -55,6 +60,10 @@ import { AffichageProfileComponent } from './User/affichage-profile/affichage-pr
     ChangePasswordComponent,
     UpdateProfileComponent,
     AffichageProfileComponent,
+    ClaimComponent,
+    ShowclaimsComponent,
+    EditClaimComponent,
+    ReviewComponent
 ],
   imports: [
     CommonModule,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { AgencyBranch } from 'Models/AgencyBranch';
 import { forkJoin } from 'rxjs';
 import { AgencyService } from '../../sellerMohsen/servicesM/agency.service';
@@ -9,6 +10,9 @@ import { AgencyService } from '../../sellerMohsen/servicesM/agency.service';
   styleUrls: ['./branch-management.component.scss']
 })
 export class BranchManagementComponent {
+addForm(_t52: NgForm) {
+throw new Error('Method not implemented.');
+}
   constructor(private agencyService:AgencyService){}
   ngOnInit(){
     this.retrieveAgencyBranchOfUser();

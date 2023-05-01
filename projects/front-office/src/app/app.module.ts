@@ -72,7 +72,7 @@ import {ToastModule} from 'primeng/toast';
 import { ReactiveFormsModule} from "@angular/forms";
 import {MAT_CHIPS_DEFAULT_OPTIONS, MatChipsModule} from '@angular/material/chips';
 import {COMMA, SPACE} from "@angular/cdk/keycodes";
-import {MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -81,8 +81,29 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { FrontModule  } from './front/front.module';
 import { NgImageSliderModule } from 'ng-image-slider';
-import {JwtModule} from '@auth0/angular-jwt'
 
+import {JwtModule} from '@auth0/angular-jwt';
+
+import { ToastrModule } from 'ngx-toastr';
+import { CarDashboardComponent } from './freelancer/car-dashboard/car-dashboard.component';
+import { AgmCoreModule } from '@agm/core';
+import { AddBranchInMapComponent } from './agency/add-branch-in-map/add-branch-in-map.component';
+import { AgencyMapComponent } from './agency/agency-map/agency-map.component';
+import { MapDetailsAgencyComponent } from './agency/map-details-agency/map-details-agency.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MapOfPickupStoreComponent } from './agency/map-of-pickup-store/map-of-pickup-store.component';
+import { PickupListGridComponent } from './agency/pickup-list-grid/pickup-list-grid.component';
+import { AddAdsComponent } from './sellerMohsen/add-ads/add-ads.component';
+import { MyAdsComponent } from './sellerMohsen/my-ads/my-ads.component';
+import { ChartModule } from 'primeng/chart';
+import { HistoryPickupsComponent } from './agency/history-pickups/history-pickups.component';
+import { HistoryRequestsComponent } from './agency/history-requests/history-requests.component';
+import { TableModule } from 'primeng/table';
+import { BuyerOfPickupComponent } from './agency/buyer-of-pickup/buyer-of-pickup.component';
+import { HistoryPickupsSellerComponent } from './sellerMohsen/history-pickups-seller/history-pickups-seller.component';
+import { HistoryPickupsFreelancerComponent } from './freelancer/history-pickups-freelancer/history-pickups-freelancer.component';
+import { HistoryRequestFreelancerComponent } from './freelancer/history-request-freelancer/history-request-freelancer.component';
+import { ViewDeliveryMenOfPickupComponent } from './sellerMohsen/view-delivery-men-of-pickup/view-delivery-men-of-pickup.component';
 
 
 @NgModule({
@@ -116,6 +137,22 @@ import {JwtModule} from '@auth0/angular-jwt'
     TrackOrderByAgencyComponent,
     AddPickupComponent,
     ProductListComponent,
+    CarDashboardComponent,
+    AddBranchInMapComponent,
+    AgencyMapComponent,
+    MapDetailsAgencyComponent,
+    MapOfPickupStoreComponent,
+    PickupListGridComponent,
+    AddAdsComponent,
+    MyAdsComponent,
+    HistoryPickupsComponent,
+    HistoryRequestsComponent,
+    BuyerOfPickupComponent,
+    HistoryPickupsSellerComponent,
+    HistoryPickupsFreelancerComponent,
+    HistoryRequestFreelancerComponent,
+    ViewDeliveryMenOfPickupComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -162,20 +199,16 @@ import {JwtModule} from '@auth0/angular-jwt'
     RippleModule,
     SplitButtonModule,
     ToastModule,
+    TableModule,
     MatSnackBarModule,
     MatChipsModule,
     MatIconModule,
-    MatSnackBarModule,
     MatButtonModule,
-    BrowserModule,
     NgImageSliderModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatInputModule,
-    BrowserModule,
-    HttpClientModule,
     JwtModule.forRoot({
       config:{
         tokenGetter: ()=>{
@@ -183,6 +216,13 @@ import {JwtModule} from '@auth0/angular-jwt'
         },
         allowedDomains:['localhost']
       }
+      })
+    ChartModule,
+    MatInputModule,
+    ToastrModule,
+    MatDialogModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBdVAHuNwlcMICaKUcx8RNGUb5dBiMYIIo'
     })
 
   ],
@@ -192,6 +232,10 @@ import {JwtModule} from '@auth0/angular-jwt'
       useValue: {
         separatorKeyCodes: [COMMA, SPACE]
       }
+    },
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: { panelClass: ['green-snackbar'] },
     },
     MatSnackBar
     ],

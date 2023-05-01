@@ -3,8 +3,10 @@ import {Router} from "@angular/router";
 import {HomeService} from "../../buyer/services/home.service";
 import {ProductQuantity} from "../../../../../../../Models/ProductQuantity";
 import {Order} from "../../../../../../../Models/Order";
-import { CookieService } from 'ngx-cookie-service';
+
 import { CookieServiceService } from '../../User/Services/cookie-service.service';
+
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-header',
@@ -12,8 +14,12 @@ import { CookieServiceService } from '../../User/Services/cookie-service.service
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
- 
-  constructor(private router: Router, private home: HomeService, private cookies:CookieServiceService) {}
+
+  constructor(private router: Router, private home: HomeService,private cookieService: CookieService) {}
+
+  points!: number
+  link!:any;
+  request!: ProductQuantity[];
 
   refresh() {
     const currentUrl = window.location.href;
@@ -21,24 +27,57 @@ export class HeaderComponent {
     window.history.replaceState(null, null, currentUrl);
     window.location.reload();
   }
+
 private roles: string[] = [];
 logedin:boolean=false;
 isLoggedIn=false;
 ret:boolean=false;
   ngOnInit() :void {
-   this.isLoggedIn =!!this.cookies.get('accessToken');
+   this.isLoggedIn =!!this.cookieService.get('accessToken');
    
 if(this.isLoggedIn){
-  const user = this.cookies.get('accaccessToken');
+  const user = this.cookieService.get('accaccessToken');
   
 }
 
     this.getListProduct();
     this.getBaskerOrder();
     this.loyalityPoints()
+
+  sess:boolean=false;
+
+  ngOnInit() {
+
+    this.home.sessionReteurn().subscribe(data=>{this.sess=data;
+    if(this.sess){
+      this.requestOrder=JSON.parse(this.cookieService.get('basket') || '{}');
+      console.log(JSON.stringify(this.requestOrder));
+      this.request=this.requestOrder.productQuantities;
+      this.getListProduct();
+      this.getBaskerOrder();
+      this.loyalityPoints();
+      if(JSON.stringify(this.requestOrder)!='{"pickups":[],"productQuantities":[],"promotionCodeList":[]}' && JSON.stringify(this.requestOrder)!='{}' ) {
+        for(let i=0;i<this.requestOrder.productQuantities.length;i++) {
+          this.home.addProductToOrder(this.requestOrder.productQuantities[i]).subscribe(data => {
+            this.cookieService.set('basket', JSON.stringify(new Order()), {
+              sameSite: 'None',
+              secure: true,
+              domain: 'localhost',
+              path: '/'
+            });
+          });
+        }
+
+      }
+    }
+    else{
+      this.requestOrder=JSON.parse(this.cookieService.get('basket') || '{}');
+      this.request=this.requestOrder.productQuantities;
+    }
+    })
+
   }
 
-  request!: ProductQuantity[];
 
   getListProduct() {
     this.home.loadPosts().subscribe(data => {
@@ -55,25 +94,53 @@ if(this.isLoggedIn){
   }
   gotoFinalize()
   {
-    this.router.navigate(["buyer/cart/finaliseOrder"]);
+    this.home.sessionReteurn().subscribe(data=>{this.sess=data;if(this.sess) {
+      this.router.navigate(["buyer/cart/finaliseOrder"]);
+    }
+    else
+    {
+      this.router.navigate(["user/signin"]);
+    }});
   }
   gotoOrderSettings()
   {
     this.router.navigate(["buyer/Orders"]);
   }
-  requestOrder!: Order;
+  requestOrder: Order=new Order();
 
   getBaskerOrder() {
     this.home.loadOrder().subscribe(data => (this.requestOrder = data))
   }
 
+  basket:Order=new Order();
   deleteProductFromOrder(ref:string)
   {
-    this.home.deleteProductFromOrder(ref).subscribe(()=>{this.getListProduct();this.refresh();});
+    this.home.sessionReteurn().subscribe(data=>{this.sess=data;if(this.sess) {
+      this.home.deleteProductFromOrder(ref).subscribe(() => {
+        this.getListProduct();
+        this.refresh();
+      });
+    }
+    else
+    {
+      this.basket = JSON.parse(this.cookieService.get('basket') || '{}');
+      for (let i = 0; i < this.basket.productQuantities.length; i++) {
+        if (this.basket.productQuantities[i].product.reference === ref) {
+          this.basket.productQuantities.splice(i, 1); // remove productQuantity from array
+          i--; // decrement i to account for removed element
+        }
+      }
+      this.cookieService.set('basket', JSON.stringify(this.basket), {
+        sameSite: 'None',
+        secure: true,
+        domain: 'localhost',
+        path: '/'
+      });
+      this.refresh();
+    }
+    });
   }
 
-  points!: number
-  link!:any;
   loyalityPoints() {
     this.home.lyaltypoints().subscribe(data => {
       this.points = data

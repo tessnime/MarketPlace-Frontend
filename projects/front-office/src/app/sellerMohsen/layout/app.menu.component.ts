@@ -30,13 +30,21 @@ export class AppMenuComponent implements OnInit {
               ]
           },
           {
-            label: 'History delivery Management',
+            label: 'Ads Library',
             items: [
-                { label: 'All Pickups', icon: 'pi pi-fw pi-id-card', routerLink: ['/c/DashboardDelivery'] },
-                { label: 'Statistical', icon: 'pi pi-fw pi-id-card', routerLink: ['/c/DashboardDelivery'] }
+                { label: 'Add Ads', icon: 'pi pi-fw pi-id-card', routerLink: ['/Seller/addAds'] },
+                { label: 'My Ads', icon: 'pi pi-fw pi-id-card', routerLink: ['/Seller/myAds'] }
 
             ]
         },
+        {
+          label: 'History delivery Management',
+          items: [
+              { label: 'All Pickups', icon: 'pi pi-fw pi-id-card', routerLink: ['/Seller/HistoryPickups'] },
+              { label: 'Statistical', icon: 'pi pi-fw pi-id-card', routerLink: ['/c/DashboardDelivery'] }
+
+          ]
+      },
         ];
     }
 }

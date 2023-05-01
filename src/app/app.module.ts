@@ -1,41 +1,56 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppLayoutModule } from './layoutB/app.layout.module';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AddUserComponent } from './add-user/add-user.component';
-import {DropdownModule} from "primeng/dropdown";
-import {InputTextareaModule} from "primeng/inputtextarea";
-import {InputTextModule} from "primeng/inputtext";
-import {MatIconModule} from "@angular/material/icon";
 import {CarouselModule} from "primeng/carousel";
-import {HttpClientModule} from "@angular/common/http";
-import {PasswordModule} from "primeng/password";
+import { PickupDashboardComponent } from './PickupManagement/pickup-dashboard/pickup-dashboard.component';
+import { PredictAdminComponent } from './PickupManagement/predict-admin/predict-admin.component';
+import { ButtonModule } from 'primeng/button';
+import { ClaimReviewAdminComponent } from './ClaimRevManagement/claim-review-admin/claim-review-admin.component';
+import {MatIconModule} from "@angular/material/icon";
+import {OrderStatsComponent} from "./order/order-stats/order-stats.component";
+import {ChartModule} from "primeng/chart";
+import {ProgressBarModule} from "primeng/progressbar";
+import {RatingModule} from "primeng/rating";
+import {SliderModule} from "primeng/slider";
+import {ToggleButtonModule} from "primeng/togglebutton";
 import {MultiSelectModule} from "primeng/multiselect";
-import {CascadeSelectModule} from "primeng/cascadeselect";
+import {DropdownModule} from "primeng/dropdown";
+import {ToastModule} from "primeng/toast";
+import {RippleModule} from "primeng/ripple";
+import {InputTextModule} from "primeng/inputtext";
+import {ButtonModule} from "primeng/button";
+import {TableModule} from "primeng/table";
+import { EventsComponent } from './order/events/events.component';
+import {FileUploadModule} from "primeng/fileupload";
+import {ToolbarModule} from "primeng/toolbar";
+import {RadioButtonModule} from "primeng/radiobutton";
+import {DialogModule} from "primeng/dialog";
 import {InputNumberModule} from "primeng/inputnumber";
+import {InputTextareaModule} from "primeng/inputtextarea";
+import {PasswordModule} from "primeng/password";
+import {CascadeSelectModule} from "primeng/cascadeselect";
 import {InputMaskModule} from "primeng/inputmask";
 import {ChipsModule} from "primeng/chips";
 import {CalendarModule} from "primeng/calendar";
 import {AutoCompleteModule} from "primeng/autocomplete";
 import {CommonModule} from "@angular/common";
-import {DialogModule} from "primeng/dialog";
-import {RadioButtonModule} from "primeng/radiobutton";
-import {RatingModule} from "primeng/rating";
-import {TableModule} from "primeng/table";
-import {ButtonModule} from "primeng/button";
-import {RippleModule} from "primeng/ripple";
-import {ToggleButtonModule} from "primeng/togglebutton";
-import {SliderModule} from "primeng/slider";
-import {ProgressBarModule} from "primeng/progressbar";
-import {ToastModule} from "primeng/toast";
-import {FileUploadModule} from "primeng/fileupload";
-import {ToolbarModule} from "primeng/toolbar";
-import {ChartModule} from "primeng/chart";
+
+import {HttpClientModule} from '@angular/common/http';
+import {BrowserModule} from "@angular/platform-browser";
+import { KeywordsComponent } from './order/keywords/keywords.component';
+import { CarouselModule } from 'primeng/carousel';
+import {CardModule} from "primeng/card";
+import {TimelineModule} from "primeng/timeline";
+import {MenuModule} from "primeng/menu";
+import {MenubarModule} from "primeng/menubar";
+import {BreadcrumbModule} from "primeng/breadcrumb";
 
 
 @NgModule({
@@ -43,7 +58,13 @@ import {ChartModule} from "primeng/chart";
     AppComponent,
     UserDashboardComponent,
     AddUserComponent,
-
+    UserListComponent,
+    PickupDashboardComponent,
+    PredictAdminComponent,
+    ClaimReviewAdminComponent,
+    OrderStatsComponent,
+    EventsComponent,
+    KeywordsComponent
 
   ],
   imports: [
@@ -53,12 +74,9 @@ import {ChartModule} from "primeng/chart";
     FormsModule,
     RouterModule,
     BrowserAnimationsModule,
-    CommonModule,
-    CommonModule,
     FormsModule,
     TableModule,
     RatingModule,
-    ButtonModule,
     SliderModule,
     InputTextModule,
     ToggleButtonModule,
@@ -67,7 +85,6 @@ import {ChartModule} from "primeng/chart";
     DropdownModule,
     ProgressBarModule,
     ToastModule,
-    CommonModule,
     TableModule,
     FileUploadModule,
     FormsModule,
@@ -98,7 +115,12 @@ import {ChartModule} from "primeng/chart";
     MatIconModule,
     HttpClientModule,
     CarouselModule,
-    ChartModule
+    ChartModule,
+    CardModule,
+    TimelineModule,
+    MenuModule,
+    MenubarModule,
+    BreadcrumbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

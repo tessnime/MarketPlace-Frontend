@@ -3,6 +3,7 @@ import { RequestService } from '../servicesM/request.service';
 import { Request } from 'Models/Request';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-request-list-seller',
@@ -11,7 +12,7 @@ import { NgForm } from '@angular/forms';
 })
 export class RequestListSellerComponent {
 
-constructor(private requestService:RequestService,private r:ActivatedRoute,private route:Router){}
+constructor(private requestService:RequestService,private r:ActivatedRoute,private route:Router,private snackBar: MatSnackBar){}
 request!:Request[];
 request1!:Request;
 idPickup!:number;
@@ -31,7 +32,13 @@ assignRequesttoseller(idRequest:number,statusRequest:String,idPickup:number){
 addForm(_t51: NgForm) {
    this.request1=new Request;
    this.idRequest = _t51.controls["ir"].value;
-   this.requestService.assignRequesttoseller(this.idRequest,this.statusRequest,this.idPickup).subscribe(data=>{this.request1=data;this.route.navigateByUrl('/Seller/pickupsInProgress')});
+   this.requestService.assignRequesttoseller(this.idRequest,this.statusRequest,this.idPickup).subscribe(data=>{this.request1=data;this.route.navigateByUrl('/Seller/pickupsInProgress');
+    this.snackBar.open('The Request is Approved!', 'Close', {
+    duration: 3000,
+    verticalPosition: 'top',
+    horizontalPosition: 'end',
+    panelClass : ['green-snackbar'],
+  });});
    console.log(this.idRequest);
   }
 }

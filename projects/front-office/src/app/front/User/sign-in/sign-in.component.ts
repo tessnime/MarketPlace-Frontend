@@ -23,7 +23,7 @@ export class SignInComponent implements OnInit {
   role!:string;
   constructor(private jwtHelper:JwtHelperService,  public LoginUserService:LoginUserService ,private router:Router ,private route: ActivatedRoute,private cookieService: CookieService ){}
   ngOnInit() {
-   
+
   }
   userLogin(){
   this.loading =true;

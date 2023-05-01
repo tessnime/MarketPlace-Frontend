@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { PickupService } from '../../sellerMohsen/servicesM/pickup.service';
 import { Pickup } from 'Models/Pickup';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-trak-order-by-freelancer',
@@ -10,7 +12,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./trak-order-by-freelancer.component.scss']
 })
 export class TrakOrderByFreelancerComponent {
-constructor(private pickupService:PickupService,private r:ActivatedRoute){
+constructor(private pickupService:PickupService,private r:ActivatedRoute,private route:Router,private snackBar: MatSnackBar){
 }
 ngOnInit(){
   this.idPickup=this.r.snapshot.params["idPickup"];
@@ -21,7 +23,15 @@ pickup!:Pickup;
 status!:String;
 addForm(tt:NgForm){
   this.status=tt.controls["typeOfGearr"].value;
-  this.pickupService.ModifyStatusOfPickupByDelivery(this.status,this.idPickup).subscribe();
+  this.pickupService.ModifyStatusOfPickupByDelivery(this.status,this.idPickup).subscribe(()=>{this.route.navigateByUrl('/freelancer/myPickups');
+  this.snackBar.open('The status changed with success!', 'Close', {
+    duration: 3000,
+    verticalPosition: 'top',
+    horizontalPosition: 'end',
+    panelClass : ['green-snackbar'],
+  });
+
+});
 }
 
 
