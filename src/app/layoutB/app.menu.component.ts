@@ -1,4 +1,4 @@
-import { OnInit } from '@angular/core';
+import {Input, OnInit} from '@angular/core';
 import { Component } from '@angular/core';
 import { LayoutService } from './service/app.layout.service';
 
@@ -10,9 +10,13 @@ export class AppMenuComponent implements OnInit {
 
     model: any[] = [];
 
-    constructor(public layoutService: LayoutService) { }
+
+
+  constructor(public layoutService: LayoutService) { }
 
     ngOnInit() {
+
+
         this.model = [
             {
                 label: 'Home',
@@ -42,10 +46,10 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
-                label: 'Prime Blocks',
+                label: 'Front Dashboard',
                 items: [
-                    { label: 'Free Blocks', icon: 'pi pi-fw pi-eye', routerLink: ['/blocks'], badge: 'NEW' },
-                    { label: 'All Blocks', icon: 'pi pi-fw pi-globe', url: ['https://www.primefaces.org/primeblocks-ng'], target: '_blank' },
+                    { label: 'Order', icon: 'pi pi-fw pi-shopping-cart', routerLink: ['/orders-stats'] },
+                    { label: 'Events', icon: 'pi pi-fw pi-bookmark-fill', routerLink: ['/events'] }
                 ]
             },
             {
@@ -160,6 +164,8 @@ export class AppMenuComponent implements OnInit {
                     }
                 ]
             }
+
         ];
+
     }
 }
