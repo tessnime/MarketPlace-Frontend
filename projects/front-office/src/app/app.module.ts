@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AgmCoreModule, AgmMarker } from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,7 +38,6 @@ import { MyPickupListFreelancerComponent } from './freelancer/my-pickup-list-fre
 import { TrakOrderByFreelancerComponent } from './freelancer/trak-order-by-freelancer/trak-order-by-freelancer.component';
 import { MyPickupListAgencyComponent } from './agency/my-pickup-list-agency/my-pickup-list-agency.component';
 import { TrackOrderByAgencyComponent } from './agency/track-order-by-agency/track-order-by-agency.component';
-import { NgxPaginationModule } from 'ngx-pagination';
 import {HttpClientModule} from "@angular/common/http";
 import { ProductListComponent } from './seller/product-list/product-list.component';
 import { DataViewModule } from 'primeng/dataview';
@@ -69,7 +69,6 @@ import{	FileUploadModule } from 'primeng/fileupload';
 import { RippleModule } from 'primeng/ripple';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import {ToastModule} from 'primeng/toast';
-import { ReactiveFormsModule} from "@angular/forms";
 import {MAT_CHIPS_DEFAULT_OPTIONS, MatChipsModule} from '@angular/material/chips';
 import {COMMA, SPACE} from "@angular/cdk/keycodes";
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
@@ -81,6 +80,22 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { FrontModule  } from './front/front.module';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { UpdateProductComponent } from './seller/update-product/update-product.component';
+import { SupplierRequestsListComponent } from './seller/supplier-requests-list/supplier-requests-list.component';
+import { TableModule } from 'primeng/table';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { StoresListComponent } from './seller/stores-list/stores-list.component';
+import { CarouselModule } from 'primeng/carousel';
+import { AddStoreComponent } from './seller/add-store/add-store.component';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { DialogModule } from 'primeng/dialog';
+import { ProductSupplierListComponent } from './supplier/product-supplier-list/product-supplier-list.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { StoreSupplierMapComponent } from './supplier/store-supplier-map/store-supplier-map.component';
+
+
 
 import {JwtModule} from '@auth0/angular-jwt';
 
@@ -137,6 +152,12 @@ import { ViewDeliveryMenOfPickupComponent } from './sellerMohsen/view-delivery-m
     TrackOrderByAgencyComponent,
     AddPickupComponent,
     ProductListComponent,
+    UpdateProductComponent,
+    SupplierRequestsListComponent,
+    StoresListComponent,
+    AddStoreComponent,
+    ProductSupplierListComponent,
+    StoreSupplierMapComponent,
     CarDashboardComponent,
     AddBranchInMapComponent,
     AgencyMapComponent,
@@ -152,9 +173,9 @@ import { ViewDeliveryMenOfPickupComponent } from './sellerMohsen/view-delivery-m
     HistoryPickupsFreelancerComponent,
     HistoryRequestFreelancerComponent,
     ViewDeliveryMenOfPickupComponent,
-
   ],
   imports: [
+   
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -209,6 +230,11 @@ import { ViewDeliveryMenOfPickupComponent } from './sellerMohsen/view-delivery-m
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
+    TableModule,
+    ConfirmDialogModule,
+    CarouselModule,
+    OverlayPanelModule,
+   DialogModule,
     JwtModule.forRoot({
       config:{
         tokenGetter: ()=>{

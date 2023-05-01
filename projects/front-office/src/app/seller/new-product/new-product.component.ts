@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ProductStatus } from 'Models/Enum/ProductStatus';
 import { Product } from 'Models/Product';
@@ -11,10 +11,11 @@ import { ProductSreviceService } from '../services/product-srevice.service';
 import { StoreServiceService } from '../services/store-service.service';
 import { UserService } from '../services/user.service';
 import { ProductFormDTO } from 'Models/ProductFormDTO';
+import { Router } from '@angular/router';
 
 
-interface names{
-  name:string,code:string
+interface names {
+  name: string, code: string
 }
 @Component({
   selector: 'app-new-product',
@@ -23,7 +24,7 @@ interface names{
   providers: [MessageService]
 
 })
-export class NewProductComponent implements OnInit {
+export class NewProductComponent implements OnInit, DoCheck {
 
   product: ProductFormDTO = {
     name: '',
@@ -37,14 +38,15 @@ export class NewProductComponent implements OnInit {
     image2: '',
     image3: '',
     productCategory: new ProductCategory,
-    storesNames: []
+    storesNames: [],
+    id: 0
   }
   user!: User;
   uploadedFiles: any[] = [];
 
   categries: any[] = [];
   subcategries: any[] = [];
-  storeNames: names[]=[] ;
+  storeNames: names[] = [];
 
   stores: Store[] = [];
 
@@ -52,9 +54,10 @@ export class NewProductComponent implements OnInit {
   filteredCategories: any[] = [];
   filteredSubCategories: any[] = [];
 
-  selectedCategoryAdvanced: string = '';
+  selectedCategoryAdvanced!: any;
+  joker!: any;
 
-  selectedSubAdvanced: string = '';
+  selectedSubAdvanced!: any;
   value1: any;
 
   value2: any;
@@ -77,31 +80,41 @@ export class NewProductComponent implements OnInit {
 
   value11: any[] = [];
   value12: any;
+  selectedFile!: File;
 
-  constructor(private prodcutService: ProductSreviceService, private messageService: MessageService, private catgeoryService: CategoryService, private storeService: StoreServiceService, private userService: UserService) { }
+  constructor(private prodcutService: ProductSreviceService, private route:Router,private messageService: MessageService, private catgeoryService: CategoryService, private storeService: StoreServiceService, private userService: UserService) { }
+  ngDoCheck(): void {
+    for (let c of this.subcategries) {
+      if (this.selectedSubAdvanced == c) {
+        this.selectedCategoryAdvanced = this.selectedSubAdvanced.category; break;
+      }
+      else {
+        this.selectedCategoryAdvanced = this.joker;
+      }
 
-
+    }
+  }
 
 
 
   ngOnInit() {
 
-    this.catgeoryService.getAllCategories().subscribe(cat => {
+    this.catgeoryService.getAllCategories().subscribe((cat: any[]) => {
       this.categries = cat;
 
     });
-    this.catgeoryService.getAllSubCategories().subscribe(sub => { this.subcategries = sub });
+    this.catgeoryService.getAllSubCategories().subscribe((sub: any[]) => {
+      this.subcategries = sub
+    });
 
-    this.userService.getUserLoggidIn().subscribe(user => {
-      this.user = user; this.stores = this.user.stores; console.log(user);
-      console.log(this.stores.length);
+    this.userService.getUserLoggidIn().subscribe((user: User) => {
+      this.user = user; this.stores = this.user.stores;
 
       for (let i = 0; i < this.stores.length; i++) {
 
-        this.storeNames.push({name:this.stores[i].name,code:i.toString()})
+        this.storeNames.push({ name: this.stores[i].name, code: i.toString() })
 
       }
-      console.log(this.storeNames);
     });
 
 
@@ -144,21 +157,19 @@ export class NewProductComponent implements OnInit {
   onUpload(event: { files: File[]; }) {
     let i = 0;
     for (let file of event.files) {
-      console.log(this.user);
-      let brandName = this.user.brandName;
-      const updatedFile = new File([file], brandName + file.name, { type: file.type });
-      this.uploadedFiles.push(updatedFile);
+      // let brandName = this.user.brandName;
+      // const updatedFile = new File([file], brandName + file.name, { type: file.type });
+      this.uploadedFiles.push(file);
       if (i == 0)
-        this.product.image = updatedFile.name;
+        this.product.image = file.name;
       if (i == 1)
-        this.product.image1 = updatedFile.name;
+        this.product.image1 = file.name;
       if (i == 2)
-        this.product.image2 = updatedFile.name;
+        this.product.image2 = file.name;
       if (i == 3)
-        this.product.image3 = updatedFile.name;
+        this.product.image3 = file.name;
       i++;
 
-      console.log(this.uploadedFiles);
     }
     //this will fire toast notification after image upload
     this.messageService.add({ severity: 'success', summary: 'File Uploaded', detail: '' });
@@ -166,27 +177,44 @@ export class NewProductComponent implements OnInit {
 
 
   add(F: NgForm) {
-    console.log(F);
     this.product.productPrice = this.value8;
     this.product.quantity = this.value3;
     this.product.productWeight = this.value4;
     this.product.description = this.value12;
     this.product.additionalDeliveryInstructions = this.value10;
     this.product.name = this.value2;
-    this.product.productCategory.name = this.selectedSubAdvanced;
-    this.product.productCategory.setCategory(new ProductCategory);
-    this.product.productCategory.category.name = this.selectedCategoryAdvanced;
-    console.log('test' + this.value11)
+    //this.product.productCategory.name = this.selectedSubAdvanced;
+
+    for (let c of this.subcategries) {
+      if (c.name == this.selectedSubAdvanced.name) {
+        this.product.productCategory.category = c;
+        //this.product.productCategory.category.category=c.category;
+      }
+    }
+    // this.product.productCategory.setCategory(new ProductCategory);
+    // this.product.productCategory.category.name = this.selectedCategoryAdvanced;
     let i = 0;
     for (let s of this.value11) {
       this.product.storesNames[i] = s.name;
       i++;
     }
-    console.log(this.value11[0].name);
-    console.log(this.product);
-    this.prodcutService.createAndAssignCategoryAndSubCategory(this.product).subscribe(res => { console.log('Product created') })
+    this.prodcutService.createAndAssignCategoryAndSubCategory(this.product).subscribe((res: any) => { console.log('Product created') })
+    this.route.navigateByUrl('/store/list');
   };
 
+  onFileSelected(event: any) {
+    this.selectedFile = <File>event.target.files[0];
+  }
+  onExcel() {
+    this.prodcutService.uploadFile(this.selectedFile).subscribe(
+      (response) => {
 
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 
 }

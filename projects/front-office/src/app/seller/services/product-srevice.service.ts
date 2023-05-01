@@ -2,36 +2,63 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from 'Models/Product';
 import { Observable } from 'rxjs';
-import {  ProductFormDTO} from 'Models/ProductFormDTO';
+import { ProductFormDTO } from 'Models/ProductFormDTO';
+import { SupplierRequest } from 'Models/SupplierRequest';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductSreviceService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  url="http://localhost:8081/product/";
-
-  getAllProductsBySeller(){
+  url = "http://localhost:8081/product/";
+  getAllProductsBySeller() {
     const options = { withCredentials: true };
-    return this.http.get(this.url+'retriveProductsByStore',options)
+    return this.http.get(this.url + 'retriveProductsByStore', options)
   }
-  getProductById(id:number):Observable<Product>{
-    return this.http.get<Product>(this.url+'GetProductById?id='+id)
+  getProductById(id: number): Observable<Product> {
+    const options = { withCredentials: true };
+
+    return this.http.get<Product>(this.url + 'GetProductById?id=' + id, options)
   }
-  updateProduct(p:Product):Observable<Product>{
-    return this.http.put<Product>(this.url+'UpdateProduct',p)
+  updateProduct(p: Product): Observable<Product> {
+    const options = { withCredentials: true };
+
+    return this.http.put<Product>(this.url + 'UpdateProduct', p, options)
 
   }
   // deleteProduct(p:Product){
   //   return this.http.delete<Product>(this.url+'DeleteProduct',p.id)
   // }
+  retriveRequestsByProduct(idProduct: number): Observable<SupplierRequest[]> {
+    const options = { withCredentials: true };
+
+    return this.http.get<SupplierRequest[]>(this.url + 'retriveRequestsByProduct?idProduct=' + idProduct, options)
+
+
+  }
 
   createAndAssignCategoryAndSubCategory(product: ProductFormDTO): Observable<Product> {
     const options = { withCredentials: true };
 
-    return this.http.post<Product>(this.url+'CreateProductAndAssignCatAndSub',product,options)
+    return this.http.post<Product>(this.url + 'CreateProductAndAssignCatAndSub', product, options)
 
-}
+  }
+  getProductsOutOfStockBySeller(): Observable<Product[]> {
+    const options = { withCredentials: true };
+    return this.http.get<Product[]>(this.url + 'getProductsOutOfStockBySeller', options)
+
+  }
+
+  uploadFile(file: File): Observable<any> {
+    const options = { withCredentials: true };
+
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+
+    return this.http.post<any>(this.url + 'upload', formData, options);
+  }
+
+
 }

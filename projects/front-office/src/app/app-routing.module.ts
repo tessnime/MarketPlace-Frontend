@@ -44,6 +44,11 @@ import {OrdersSettingComponent} from "./front/buyer/orders-setting/orders-settin
 
 import { SignInComponent } from './front/User/sign-in/sign-in.component';
 import { RegisterComponent } from './front/User/register/register.component';
+import { UpdateProductComponent } from './seller/update-product/update-product.component';
+import { SupplierRequestsListComponent } from './seller/supplier-requests-list/supplier-requests-list.component';
+import { StoresListComponent } from './seller/stores-list/stores-list.component';
+import { AddStoreComponent } from './seller/add-store/add-store.component';
+import { ProductSupplierListComponent } from './supplier/product-supplier-list/product-supplier-list.component';
 import { SellerComponent } from './front/User/seller/seller.component';
 import { SupplierComponent } from './front/User/supplier/supplier.component';
 import { DeliveryMenComponent } from './front/User/delivery-men/delivery-men.component';
@@ -94,8 +99,26 @@ const routes: Routes = [
       {path:'',component:SellerDashComponent},
       {path:'prods',component:NewProductComponent},
       {path:'MyStore',component:StoreListComponent},
-      {path:'list',component:ProductListComponent}
+      {path:'list',component:ProductListComponent},
+      {path:'suppRequests',component:SupplierRequestsListComponent},
+      {path:'list/updateP/:id',component:UpdateProductComponent},
+      {path:'stores',component:StoresListComponent},
+      {path:'AddStore',component:AddStoreComponent},
+
+
+
     ]
+},
+{
+  path:'supplier',component:sellerlayoutC,
+  children:[
+    {path:'',component:ProductSupplierListComponent},
+    {path:'prods',component:NewProductComponent},
+
+
+
+
+  ]
 },
 {
   path:'agency',component:agencylayoutC,

@@ -10,7 +10,7 @@
   },
   "private": true,
   "dependencies": {
-    "@agm/core": "^1.0.0-beta.7",
+    "@agm/core": "^1.1.0",
     "@angular/animations": "^15.2.5",
     "@angular/cdk": "^15.2.4",
     "@angular/common": "^15.1.0",
@@ -26,6 +26,7 @@
     "@auth0/angular-jwt": "^5.1.2",
     "@stripe/stripe-js": "^1.52.0",
     "@types/facebook-js-sdk": "^3.3.6",
+    "agm": "^0.0.0",
     "@types/file-saver": "^2.0.5",
     "angular-ng-autocomplete": "^2.0.12",
     "bootstrap": "^5.2.3",
@@ -53,6 +54,7 @@
     "rxjs": "~7.8.0",
     "slick-carousel": "^1.8.1",
     "tslib": "^2.3.0",
+    "webpack-sources": "^3.2.3",
     "zone.js": "^0.12.0"
   },
   "devDependencies": {
@@ -71,6 +73,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "postcss-loader": "^7.1.0",
-    "typescript": "~4.9.4"
+    "typescript": "~4.9.4",
+    "webpack": "^5.81.0"
   }
 }

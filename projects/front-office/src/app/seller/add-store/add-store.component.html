@@ -1,0 +1,60 @@
+<div class="card">
+    <h3><strong>Store Form</strong> </h3>
+    <form #form="ngForm" (ngSubmit)="add(form)">
+        <div class="grid p-fluid mt-3">
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                    <input name="name" type="text" id="inputtext" pInputText [(ngModel)]="name">
+                    <label for="inputtext"> Name</label>
+                </span>
+            </div>
+            <div class="field col-12 md:col-4">
+                <div class="p-inputgroup">
+         
+                    <span class="p-float-label ">
+                        <input type="text" id="righticon1" name="city" pInputText [(ngModel)]="city">
+                        <label for="righticon1">City</label>
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="field col-12 md:col-4">
+                <div class="p-inputgroup">
+           
+                    <span class="p-float-label ">
+                        <input type="text" id="righticon2" pInputText name="governorate" [(ngModel)]="governorate">
+                        <label for="righticon2">Governorate</label>
+
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="grid p-fluid mt-3">
+
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label ">
+                    <input type="text" id="righticon" name="iban" pInputText [(ngModel)]="iban">
+                    <label for="righticon">IBAN</label>
+                </span>
+            </div>
+            
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label ">
+                    <input type="text" id="righticon" name="x" pInputText [(ngModel)]="x">
+                    <label for="righticon">X</label>
+                </span>
+            </div>
+            
+            <div class="field col-12 md:col-4">
+                <span class="p-float-label ">
+                    <input type="double" id="righticon" name="y" pInputText [(ngModel)]="y">
+                    <label for="righticon">Y</label>
+                </span>
+            </div>
+            <button pButton pRipple label="Submit" icon="pi pi-bookmark" iconPos="right"></button>
+
+
+</div>

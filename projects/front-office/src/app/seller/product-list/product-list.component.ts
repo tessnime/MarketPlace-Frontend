@@ -3,6 +3,10 @@ import { ProductSreviceService } from '../services/product-srevice.service';
 import { SelectItem } from 'primeng/api';
 import { DataView } from 'primeng/dataview';
 import { Product } from 'Models/Product';
+import { NgForm } from '@angular/forms';
+import { StoreServiceService } from '../services/store-service.service';
+import { PromotionCode } from 'Models/PromotionCode';
+import { now } from 'moment';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -25,36 +29,18 @@ export class ProductListComponent {
 
 
 
-  constructor(private productService: ProductSreviceService) { }
+  constructor(private productService: ProductSreviceService, private promortioncode: StoreServiceService) { }
 
   ngOnInit() {
       this.productService.getAllProductsBySeller().subscribe(res=>{console.log(res);this.products=res});
 
-      this.sourceCities = [
-          { name: 'San Francisco', code: 'SF' },
-          { name: 'London', code: 'LDN' },
-          { name: 'Paris', code: 'PRS' },
-          { name: 'Istanbul', code: 'IST' },
-          { name: 'Berlin', code: 'BRL' },
-          { name: 'Barcelona', code: 'BRC' },
-          { name: 'Rome', code: 'RM' }];
-
-      this.targetCities = [];
-
-      this.orderCities = [
-          { name: 'San Francisco', code: 'SF' },
-          { name: 'London', code: 'LDN' },
-          { name: 'Paris', code: 'PRS' },
-          { name: 'Istanbul', code: 'IST' },
-          { name: 'Berlin', code: 'BRL' },
-          { name: 'Barcelona', code: 'BRC' },
-          { name: 'Rome', code: 'RM' }];
-
+  
       this.sortOptions = [
           { label: 'Price High to Low', value: '!productPrice' },
           { label: 'Price Low to High', value: 'productPrice' }
       ];
   }
+  display: boolean = false;
 
   onSortChange(event: any) {
       const value = event.value;
@@ -71,4 +57,27 @@ export class ProductListComponent {
   onFilter(dv: DataView, event: Event) {
       dv.filter((event.target as HTMLInputElement).value);
   }
+
+  voucher!:string;
+  endDate!:Date;
+  promo!:PromotionCode;
+  addPromotionCode(F:NgForm,id:number){
+    //this.promo.startDate=new Date();
+    this.promo.EndtDate=F.value.endDate;
+    this.promo.voucher=F.value.voucher;
+   return this.promortioncode.addPormotionCode(this.promo, id).subscribe(
+        response => {
+        //   const url = window.URL.createObjectURL(response);
+        //   const a = document.createElement('a');
+        //   a.href = url;
+        //   a.download = 'qr-code.png';
+        //   a.click();
+        //   window.URL.revokeObjectURL(url);
+          console.log(response)
+        },
+        error => {
+          console.error(error);
+        }
+      );
+        }
 }
