@@ -1,6 +1,5 @@
-<div class="pd-ltr-20 xs-pd-20-10">
   <div class="min-height-200px">
-    <div class="page-header">
+    <div class="page-header"style="margin-top: 3px;">
       <div class="row">
         <div class="col-md-6 col-sm-12">
           <div class="title">
@@ -29,6 +28,7 @@
           <h4 class="text-blue h4">Create Pickup</h4>
         </div>
       </div>
+      <br>
       <form #addform="ngForm" (ngSubmit)="addForm(addform)">
         <div class="form-group row">
           <label class="col-sm-12 col-md-2 col-form-label">First Name:</label>
@@ -48,10 +48,12 @@
             <input class="form-control" id="PhoneNumber" name="PhoneNumber" [(ngModel)]="user.phoneNumber" disabled >
           </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row has-succes ">
           <label class="col-sm-12 col-md-2 col-form-label">Second Number:</label>
           <div class="col-sm-12 col-md-10">
-            <input class="form-control" id="SecondPhoneNumber" name="secondphoneNumber" ngModel >
+            <input class="form-control form-control-danger" id="SecondPhoneNumber" name="secondphoneNumber" ngModel required pattern="{{phoneNumberPattern}}" #phoneNumber="ngModel" >
+            <div *ngIf="phoneNumber?.errors?.['required']" class="has-danger" > Phone number is required</div>
+            <div *ngIf="phoneNumber?.errors?.['pattern']" class="has-danger"> Invalid phone number</div>
           </div>
         </div>
         <div class="form-group row">
@@ -75,7 +77,8 @@
         <div class="form-group row">
           <label class="col-sm-12 col-md-2 col-form-label">Full address and availability</label>
           <div class="col-sm-12 col-md-10">
-            <input class="form-control" id="availability" name="availability" ngModel   >
+            <input class="form-control" id="availability" name="availability" ngModel required #ava="ngModel"  >
+            <div *ngIf="ava.invalid" class="has-danger">Full address and availability is required</div>
           </div>
         </div>
         <div class="form-group row">
@@ -110,6 +113,7 @@
           <button
             type="submit"
             class="btn btn-primary btn-lg btn-block"
+            [disabled]="addform.invalid"
           >
           Add Pickup
           </button>

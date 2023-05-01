@@ -49,6 +49,12 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
+                label: 'Delivery Management',
+                items: [
+                    { label: 'Dashboard ', icon: 'pi pi-fw pi-eye', routerLink: ['/PickupDashboard'], badge: 'NEW' },
+                    { label: 'Predict', icon: 'pi pi-fw pi-globe', routerLink: ['/predictCoco'], target: '_blank' },
+             },
+            {
                 label: 'Front Dashboard',
                 items: [
                     { label: 'Order', icon: 'pi pi-fw pi-shopping-cart', routerLink: ['/orders-stats'] },

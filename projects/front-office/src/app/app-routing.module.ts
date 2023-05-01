@@ -44,10 +44,22 @@ import {OrdersSettingComponent} from "./front/buyer/orders-setting/orders-settin
 
 import { SignInComponent } from './front/User/sign-in/sign-in.component';
 import { RegisterComponent } from './front/User/register/register.component';
+import { AddBranchInMapComponent } from './agency/add-branch-in-map/add-branch-in-map.component';
+import { AgencyMapComponent } from './agency/agency-map/agency-map.component';
+import { PickupListGridComponent } from './agency/pickup-list-grid/pickup-list-grid.component';
+import { AddAdsComponent } from './sellerMohsen/add-ads/add-ads.component';
+import { MyAdsComponent } from './sellerMohsen/my-ads/my-ads.component';
+import { HistoryPickupsComponent } from './agency/history-pickups/history-pickups.component';
+import { HistoryRequestsComponent } from './agency/history-requests/history-requests.component';
+import { HistoryPickupsSellerComponent } from './sellerMohsen/history-pickups-seller/history-pickups-seller.component';
+import { HistoryPickupsFreelancerComponent } from './freelancer/history-pickups-freelancer/history-pickups-freelancer.component';
+import { HistoryRequestFreelancerComponent } from './freelancer/history-request-freelancer/history-request-freelancer.component';
+
 import { ClaimComponent } from './front/claimreview/claim/claim.component';
 import { ShowclaimsComponent } from './front/claimreview/showclaims/showclaims.component';
 import { EditClaimComponent } from './front/claimreview/edit-claim/edit-claim.component';
 import { ReviewComponent } from './front/claimreview/review/review.component';
+
 
 
 
@@ -59,6 +71,8 @@ const routes: Routes = [
       {path:'pickups',component:PickupListFreelancerComponent},
       {path:'requests',component:RequestListComponent},
       {path:'myPickups',component:MyPickupListFreelancerComponent},
+      {path:'HistoryPic',component:HistoryPickupsFreelancerComponent},
+      {path:'HistoryReq',component:HistoryRequestFreelancerComponent},
       {path:'myPickups/track/:idPickup',component:TrakOrderByFreelancerComponent}
 
     ]
@@ -82,9 +96,16 @@ const routes: Routes = [
     {path:'MyBranch',component:BranchListAgencyComponent},
     {path:'MyBranch/:idBranch',component:AddDeliveryMenAgencyComponent},
     {path:'BranchM',component:BranchManagementComponent},
+    {path:'Branch/:idBranch',component:AddBranchInMapComponent},
     {path:'BranchM/:idBranch',component:DeliveryMListAgencyComponent},
     {path:'MyPickups',component:MyPickupListAgencyComponent},
-    {path:'MyPickups/track/:idPickup',component:TrackOrderByAgencyComponent}
+    {path:'MyPickups/track/:idPickup',component:TrackOrderByAgencyComponent},
+    {path:'MyMap',component:AgencyMapComponent},
+    {path:'pickupgrid',component:PickupListGridComponent},
+    {path:'HistoryPickup',component:HistoryPickupsComponent},
+    {path:'HistoryRequest',component:HistoryRequestsComponent}
+
+
    ]
 },
 
@@ -135,7 +156,10 @@ const routes: Routes = [
     {path:'pickups/requests/:idP',component:RequestListSellerComponent},
     {path:'pickups/update/:idPickup',component:PickupUpdateComponent},
     {path:'pickupsInProgress',component:PikupInProgressSellerComponent},
-    {path:'pickupsInProgress/:CodePickup',component:TrakingPickupSellerComponent}
+    {path:'pickupsInProgress/:CodePickup',component:TrakingPickupSellerComponent},
+    {path:'addAds',component:AddAdsComponent},
+    {path:'HistoryPickups',component:HistoryPickupsSellerComponent},
+    {path:'myAds',component:MyAdsComponent}
   ]
 }
 

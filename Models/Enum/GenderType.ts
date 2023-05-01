@@ -1,5 +1,6 @@
 export enum GenderType{
   WOMEN='WOMEN',
   MAN='MAN',
-  OTHER='OTHER'
+  OTHER='OTHER',
+  ALL='ALL'
 }

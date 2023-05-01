@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@agm/core": "^1.0.0-beta.7",
     "@angular/animations": "^15.2.5",
     "@angular/cdk": "^15.2.4",
     "@angular/common": "^15.1.0",
@@ -41,6 +42,7 @@
     "ngx-drag-drop": "^15.0.1",
     "ngx-owl-carousel-o": "^15.0.0",
     "ngx-pagination": "^6.0.3",
+    "ngx-toastr": "^16.1.0",
     "popper.js": "^1.16.1",
     "primeflex": "^3.3.0",
     "primeicons": "^6.0.1",

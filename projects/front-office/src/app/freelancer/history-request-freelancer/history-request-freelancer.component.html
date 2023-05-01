@@ -1,0 +1,59 @@
+<div class="min-height-200px">
+  <div class="page-header" style="margin-top: 3px;">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="title">
+          <h4>History</h4>
+        </div>
+        <nav aria-label="breadcrumb" role="navigation">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item " aria-current="page">
+              Pickups
+            </li>
+
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <!-- Default Basic Forms Start -->
+<div  class="pd-20 card-box mb-30">
+
+  <div class="card" >
+    <h3>Search</h3>
+    <div class="card-header">
+      <div class="form-outline">
+        <input type="search" id="form1" class="form-control" placeholder="Type query" aria-label="Search" (input)="search($event)" />
+      </div>
+    </div>
+    <div class="card-body">
+
+        <table datatable class="table table-bordered">
+            <thead class="bg-dark text-white">
+                <tr>
+                    <td>#CodePickup</td>
+                    <td>Status Request</td>
+                    <td>Sum</td>
+
+                </tr>
+            </thead>
+            <tbody>
+<tr *ngFor="let item of filteredItems">
+    <td>{{item.pickup.codePickup}}</td>
+    <td>{{item.requestStatus}}</td>
+    <td>{{item.pickup.sum}}
+
+</tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+
+
+</div>
+

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pickup } from 'Models/Pickup';
 import { Request } from 'Models/Request';
@@ -15,49 +15,125 @@ export class RequestService {
 
 
   AssignRequestDeliveryManToPickup(r:Request,idDeliveryMan:number,idPickup:number){
-    const options = { withCredentials: true };
-   return this.http.post<Request>(this.urlAssignRequestDeliveryManToPickup+`${idPickup}`+'&idDeliveryMenAgency='+`${idDeliveryMan}`,r,options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+   return this.http.post<Request>(this.urlAssignRequestDeliveryManToPickup+`${idPickup}`+'&idDeliveryMenAgency='+`${idDeliveryMan}`,r,{headers});
   }
   RetrieveRequestByAgency(){
-    const options = { withCredentials: true };
-    return this.http.get<Request[]>(this.urlRetrieveRequestByAgency,options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Request[]>(this.urlRetrieveRequestByAgency,{headers});
   }
   urlDeleteRequest="http://localhost:8081/RequestController/deleteRequest?id=";
   DeleteRequest(idRequest:number){
-    const options = { withCredentials: true };
-    return this.http.delete<Request>(this.urlDeleteRequest+`${idRequest}`,options)
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.delete<Request>(this.urlDeleteRequest+`${idRequest}`,{headers})
    }
    ////freelancer
    urlassignRequestDeliveryMenFreelancerandPickup="http://localhost:8081/RequestController/assignRequestDeliveryMenFreelancerandPickup?idPickup=";
    assignRequestDeliveryMenFreelancerandPickup(r:Request,idPickup:number){
-    const options = { withCredentials: true };
-    return this.http.post<Request>(this.urlassignRequestDeliveryMenFreelancerandPickup+`${idPickup}`,r,options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<Request>(this.urlassignRequestDeliveryMenFreelancerandPickup+`${idPickup}`,r,{headers});
    }
    RetrieveRequestByFreelancer(){
-    const options = { withCredentials: true };
-    return this.http.get<Request[]>("http://localhost:8081/RequestController/RetrieveRequestByFreelancer",options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Request[]>("http://localhost:8081/RequestController/RetrieveRequestByFreelancer",{headers});
    }
   //seller
  urlretrieveRequestByPickup="http://localhost:8081/RequestController/retrieveRequestByPickup?idPickup=";
   retrieveRequestByPickup(idPickup:number){
-    const options = { withCredentials: true };
-    return this.http.get<Request[]>(this.urlretrieveRequestByPickup+`${idPickup}`,options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Request[]>(this.urlretrieveRequestByPickup+`${idPickup}`,{headers});
   }
   urlassignRequesttoseller="http://localhost:8081/RequestController/assignRequesttoseller?idRequest=";
   assignRequesttoseller(idRequest:number,statusRequest:String,idPickup:number){
-    const options = { withCredentials: true };
-    return this.http.post<Request>(this.urlassignRequesttoseller+`${idRequest}`+"&status=APPROVED"+"&idPickup="+`${idPickup}`,statusRequest,options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<Request>(this.urlassignRequesttoseller+`${idRequest}`+"&status=APPROVED"+"&idPickup="+`${idPickup}`,statusRequest,{headers});
   }
   urlretrieveRequestApprovedOfPickupFreelancer="http://localhost:8081/RequestController/retrieveRequestApprovedOfPickupFreelancer";
   retrieveRequestApprovedOfPickupFreelancer(){
-    const options = { withCredentials: true };
-    return this.http.get<Request[]>(this.urlretrieveRequestApprovedOfPickupFreelancer,options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Request[]>(this.urlretrieveRequestApprovedOfPickupFreelancer,{headers});
   }
  //agency
  urlretrieveRequestApprovedOfPickupAgency="http://localhost:8081/RequestController/retrieveRequestApprovedOfPickupAgency";
  retrieveRequestApprovedOfPickupAgency(){
-  const options = { withCredentials: true };
-  return this.http.get<Request[]>(this.urlretrieveRequestApprovedOfPickupAgency,options);
-  
+  const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+  return this.http.get<Request[]>(this.urlretrieveRequestApprovedOfPickupAgency,{headers});
+ }
+ //Seller
+ urlLastRequestCreatedForSeller="http://localhost:8081/RequestController/LastRequestCreatedForSeller";
+ LastRequestCreatedForSeller(){
+  const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+  return this.http.get<Request[]>(this.urlLastRequestCreatedForSeller,{headers});
+ }
+ //freelancer
+ urlLastRequestAssignedToFreelancer="http://localhost:8081/RequestController/LastRequestAssignedToFreelancer";
+ LastRequestAssignedToFreelancer(){
+  const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+  return this.http.get<Request[]>(this.urlLastRequestAssignedToFreelancer,{headers});
+ }
+
+ //admin
+ urlretriveRequests="http://localhost:8081/RequestController/retriveRequests";
+ retriveRequests(){
+  const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+  return this.http.get<Request[]>(this.urlretriveRequests,{headers});
+ }
+ //freelancer
+ urlRetrieveRequestOfFreelancer="http://localhost:8081/RequestController/RetrieveRequestOfFreelancer";
+ RetrieveRequestOfFreelancer(){
+  const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+  return this.http.get<Request[]>(this.urlRetrieveRequestOfFreelancer,{headers});
  }
 }

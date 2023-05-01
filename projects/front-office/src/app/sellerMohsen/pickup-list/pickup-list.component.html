@@ -1,6 +1,5 @@
-<div class="pd-ltr-20 xs-pd-20-10">
   <div class="min-height-200px">
-    <div class="page-header">
+    <div class="page-header" style="margin-top: 3px;">
       <div class="row">
         <div class="col-md-6 col-sm-12">
           <div class="title">
@@ -13,11 +12,6 @@
               </li>
               <li class="breadcrumb-item active" aria-current="page">
                 Pickups
-              </li>
-              <li>
-              <button class="btn btn-light " aria-current="page" (click)="generatePDF3()" style="margin-left: 1260px;">
-                PrintAll
-              </button>
               </li>
             </ol>
           </nav>
@@ -61,7 +55,7 @@
                     <div
                       class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
                     >
-                      <a class="dropdown-item" (click)="generatePDF()"
+                      <a class="dropdown-item" (click)="generatePDF(p.id)"
                         ><i class="dw dw-eye"></i> Print</a
                       >
                       <a class="dropdown-item" [routerLink]="['/Seller/pickups/update',p.id]"
@@ -79,6 +73,9 @@
             </tbody>
 
           </table>
+          <button class="btn btn-light " aria-current="page" (click)="generatePDF3()">
+            PrintAll
+          </button>
           <pagination-controls (pageChange)="onPageChange($event)"
   [maxSize]="10" [(ngModel)]="itemsPerPage" [(ngModel)]="totalItems"
   [(ngModel)]="p"></pagination-controls>

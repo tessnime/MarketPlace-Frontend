@@ -7,6 +7,7 @@ import { Pickup } from 'Models/Pickup';
 import { Shipping } from 'Models/Shipping';
 import { User } from 'Models/User';
 import { PickupService } from '../servicesM/pickup.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-pickup-update',
@@ -14,7 +15,7 @@ import { PickupService } from '../servicesM/pickup.service';
   styleUrls: ['./pickup-update.component.scss']
 })
 export class PickupUpdateComponent {
-  constructor(private pickupService:PickupService,private http:HttpClient,private r:ActivatedRoute,private route:Router){}
+  constructor(private pickupService:PickupService,private http:HttpClient,private r:ActivatedRoute,private route:Router,private snackBar: MatSnackBar){}
   ngOnInit(){
     this.idpickup=this.r.snapshot.params['idPickup'];
     this.GetPickupById(this.idpickup);
@@ -66,7 +67,15 @@ export class PickupUpdateComponent {
   shipping!:Shipping;
   UpdatePickup(p:Pickup,idPickup:number){
     this.pickupService.UpdatePickup(p,idPickup).subscribe
-      (res =>{console.log('Pickup updatedd');this.route.navigateByUrl('/Seller/pickups');});
+      (res =>{console.log('Pickup updatedd');
+      this.route.navigateByUrl('/Seller/pickups');
+      this.snackBar.open('The pickup Updated with success!', 'Close', {
+        duration: 3000,
+        verticalPosition: 'top',
+        horizontalPosition: 'end',
+        panelClass : ['green-snackbar'],
+      });
+    })
   }
   GetPickupById(idPicku:number){
        this.pickupService.GetPickupById(idPicku).subscribe(res=>{this.pickup=res});

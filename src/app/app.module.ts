@@ -7,6 +7,9 @@ import { AppLayoutModule } from './layoutB/app.layout.module';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PickupDashboardComponent } from './PickupManagement/pickup-dashboard/pickup-dashboard.component';
+import { PredictAdminComponent } from './PickupManagement/predict-admin/predict-admin.component';
+import { ButtonModule } from 'primeng/button';
 import { ClaimReviewAdminComponent } from './ClaimRevManagement/claim-review-admin/claim-review-admin.component';
 import {MatIconModule} from "@angular/material/icon";
 import {OrderStatsComponent} from "./order/order-stats/order-stats.component";
@@ -53,6 +56,8 @@ import {BreadcrumbModule} from "primeng/breadcrumb";
     AppComponent,
     UserDashboardComponent,
     UserListComponent,
+    PickupDashboardComponent,
+    PredictAdminComponent,
     ClaimReviewAdminComponent,
     OrderStatsComponent,
     EventsComponent,
@@ -67,6 +72,7 @@ import {BreadcrumbModule} from "primeng/breadcrumb";
     RouterModule,
     BrowserAnimationsModule,
     ChartModule,
+    ButtonModule,
     FormsModule,
     TableModule,
     RatingModule,

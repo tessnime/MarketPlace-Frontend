@@ -24,18 +24,38 @@
 
 
   <div class="row pb-10">
+
+
     <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
       <div class="card-box height-100-p widget-style3">
         <div class="d-flex flex-wrap">
           <div class="widget-data">
-            <div class="weight-700 font-24 text-dark">{{cpdf}}</div>
+            <div class="weight-700 font-24 text-dark">{{cpaff}}</div>
             <div class="font-14 text-secondary weight-500">
-              Delivered
+              Assigned
             </div>
           </div>
           <div class="widget-icon">
-            <div class="icon" >
-              <span class="icon-copy bi bi-box-seam"></span>
+            <div class="icon" data-color="#00eccf">
+              <i class="icon-copy dw bi bi-activity"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+      <div class="card-box height-100-p widget-style3">
+        <div class="d-flex flex-wrap">
+          <div class="widget-data">
+            <div class="weight-700 font-24 text-dark">{{cptff}}</div>
+            <div class="font-14 text-secondary weight-500">
+              Taked
+            </div>
+          </div>
+          <div class="widget-icon">
+            <div class="icon" data-color="#00eccf">
+              <i class="icon-copy dw  bi bi-box2"></i>
             </div>
           </div>
         </div>
@@ -93,7 +113,124 @@
         </div>
       </div>
     </div>
+    <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+      <div class="card-box height-100-p widget-style3">
+        <div class="d-flex flex-wrap">
+          <div class="widget-data">
+            <div class="weight-700 font-24 text-dark">{{cpdf}}</div>
+            <div class="font-14 text-secondary weight-500">
+              Delivered
+            </div>
+          </div>
+          <div class="widget-icon">
+            <div class="icon" >
+              <span class="icon-copy bi bi-box-seam"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 
 
+  <div class="xs-pd-20-10 pd-ltr-20">
+    <div class="title pb-20">
+      <h2 class="h3 mb-0">My Pickups Overview</h2>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-20">
+        <div class="card-box height-100-p pd-20 min-height-200px">
+          <div class="d-flex justify-content-between pb-10">
+            <div class="h5 mb-0">Last Request </div>
+            <div class="dropdown">
+              <a
+                class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+                data-color="#1b3133"
+                href="#"
+                role="button"
+                data-toggle="dropdown"
+              >
+                <i class="dw dw-more"></i>
+              </a>
+
+            </div>
+          </div>
+          <div class="user-list">
+            <ul>
+              <li class="d-flex align-items-center justify-content-between" *ngFor="let i of request">
+                <div class="name-avatar d-flex align-items-center pr-2">
+                  <div class="avatar mr-2 flex-shrink-0">
+                    <img
+                      src="../../../assets/vendors/images/photo1.jpg"
+                      class="border-radius-100 box-shadow"
+                      width="50"
+                      height="50"
+                      alt=""
+                    />
+                  </div>
+                  <div class="txt">
+                    <span
+                      class="badge badge-pill badge-sm"
+                      data-bgcolor="#e7ebf5"
+                      data-color="#265ed7"
+                      >{{i.pickup.governorate}}-{{i.pickup.city}}</span
+                    >
+                    <div class="font-14 weight-600" >#{{i.pickup.codePickup}}</div>
+                  </div>
+                </div>
+
+                  <div class="cta flex-shrink-0">
+                    <button type="submit" class="btn btn-sm btn-success" name="ir" *ngIf="i.requestStatus=='APPROVED';else m"
+                      >{{i.requestStatus}}</button
+                    >
+                    <ng-template #m><button type="submit" class="btn btn-sm btn-danger" name="ir"
+                      >{{i.requestStatus}}</button
+                    ></ng-template>
+                  </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-lg-4 col-md-12 mb-20">
+        <div class="card-box height-100-p pd-20 min-height-200px">
+          <div class="max-width-300 mx-auto">
+            <p-chart type="doughnut" [data]="data" [options]="options"></p-chart>
+          </div>
+          <br>
+          <div class="text-center">
+            <a [routerLink]="['/Seller/addAds']" class="btn btn-primary btn-lg">Check History</a>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-lg-4 col-md-12 mb-20">
+        <div class="card-box height-100-p pd-20 min-height-200px">
+          <div class="max-width-300 mx-auto">
+            <img src="../../../assets/vendors/images/upgrade.svg" alt="" />
+          </div>
+          <div class="text-center">
+            <div class="h5 mb-1">Your Level is  <strong>{{user.levelDelivery}}</strong> </div>
+            <div
+              class="font-14 weight-500 max-width-200 mx-auto pb-20"
+              data-color="#a6a6a7"
+            >
+            You Must Delivery more than 100 colis to pass to other level
+            </div>
+            <a [routerLink]="['/Seller/addAds']" class="btn btn-primary btn-lg">Check ypur pickup</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>

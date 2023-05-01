@@ -34,6 +34,10 @@ export class User {
   rating!: number;
   numberOfRatings!: number;
   levelDelivery!: string;
+  KilometreConsomer!: number;
+  FraisEssance!: string;
+  points!: number;
+  adsPoints!:number;
   orders: Order[] = [];
   stores: Store[] = [];
   role!: Role;

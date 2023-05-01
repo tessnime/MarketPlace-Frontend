@@ -1,0 +1,93 @@
+<div class="grid">
+  <div class="col-12 lg:col-6 xl:col-3">
+      <div class="card mb-0">
+          <div class="flex justify-content-between mb-3">
+              <div>
+                  <span class="block text-500 font-medium mb-3">Pickups Delivered</span>
+                  <div class="text-900 font-medium text-xl">{{cpd1}}</div>
+              </div>
+              <div class="flex align-items-center justify-content-center bg-blue-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                  <i class="pi pi-shopping-cart text-blue-500 text-xl"></i>
+              </div>
+          </div>
+          <span class="text-green-500 font-medium">{{cpd}} new </span>
+          <span class="text-500">since Today</span>
+      </div>
+  </div>
+  <div class="col-12 lg:col-6 xl:col-3">
+      <div class="card mb-0">
+          <div class="flex justify-content-between mb-3">
+              <div>
+                  <span class="block text-500 font-medium mb-3">Revenue Delivery Service </span>
+                  <div class="text-900 font-medium text-xl">{{cpd2}} Dinars</div>
+              </div>
+              <div class="flex align-items-center justify-content-center bg-orange-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                  <i class="pi pi-map-marker text-orange-500 text-xl"></i>
+              </div>
+          </div>
+          <span class="text-green-500 font-medium">%52+ </span>
+          <span class="text-500">since last week</span>
+      </div>
+  </div>
+  <div class="col-12 lg:col-6 xl:col-3">
+      <div class="card mb-0">
+          <div class="flex justify-content-between mb-3">
+              <div>
+                  <span class="block text-500 font-medium mb-3">Agency</span>
+                  <div class="text-900 font-medium text-xl">{{cpd3.DELIVERYAGENCY}}</div>
+              </div>
+              <div class="flex align-items-center justify-content-center bg-cyan-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                  <i class="pi pi-inbox text-cyan-500 text-xl"></i>
+              </div>
+          </div>
+          <span class="text-green-500 font-medium">%52+  </span>
+          <span class="text-500">since last week</span>
+      </div>
+  </div>
+  <div class="col-12 lg:col-6 xl:col-3">
+      <div class="card mb-0">
+          <div class="flex justify-content-between mb-3">
+              <div>
+                  <span class="block text-500 font-medium mb-3">Freelancers</span>
+                  <div class="text-900 font-medium text-xl">{{cpd3.DELIVERYMEN}}</div>
+              </div>
+              <div class="flex align-items-center justify-content-center bg-purple-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                  <i class="pi pi-comment text-purple-500 text-xl"></i>
+              </div>
+          </div>
+          <span class="text-green-500 font-medium">%52+</span>
+          <span class="text-500">since last week</span>
+      </div>
+  </div>
+<div class="col-12 xl:col-6">
+  <div class="card">
+    <h5>Pickups Overview</h5>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked (click)="getNumberOfPickupByStatus()">
+      <label class="form-check-label" for="flexRadioDefault1">
+        Year
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"  (click)="getNumberOfPickupByStatusByMonthAndYearAndAll()">
+      <label class="form-check-label" for="flexRadioDefault2">
+Month      </label>
+    </div>
+    <div class="card">
+      <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
+      <br>
+      <br>
+      <br>
+  </div>
+  </div>
+</div>
+
+<div class="col-12 xl:col-6">
+  <div class="card">
+      <h5>Pickups and Requests Overview
+      </h5>
+      <p-chart type="bar" [data]="data" [options]="options"></p-chart>
+
+  </div>
+</div>
+</div>
