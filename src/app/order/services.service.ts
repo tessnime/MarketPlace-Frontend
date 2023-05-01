@@ -33,53 +33,103 @@ export class ServicesService {
 
 
   rankGouvernoratByOrdersNumber() {
-    return this.http.get<RankGouvernoratOrderData[]>(this.RankGouvernoratByOrdersNumber, this.options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<RankGouvernoratOrderData[]>(this.RankGouvernoratByOrdersNumber, {headers});
   }
 
   orderRankForUsersByStatusType()
   {
-    return this.http.get<OrdersRankUsers[]>(this.OrderRankForUsersByStatusType,this.options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<OrdersRankUsers[]>(this.OrderRankForUsersByStatusType,{headers});
   }
 
   orderStatsByStatusType()
   {
-    return this.http.get<StatusTypeStat>(this.OrderStatsByStatusType,this.options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<StatusTypeStat>(this.OrderStatsByStatusType,{headers});
   }
 
   getBestUserOrders()
   {
-    return this.http.get<Order[]>(this.GetBestUserOrders,this.options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Order[]>(this.GetBestUserOrders,{headers});
   }
 
   displayAllEvents()
   {
-    return this.http.get<EventModel[]>(this.DisplayAllEvents,this.options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<EventModel[]>(this.DisplayAllEvents,{headers});
   }
   deleteEvent(id:number)
   {
-    return this.http.delete(this.DeleteEvent+`${id}`,this.options)
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.delete(this.DeleteEvent+`${id}`,{headers})
   }
 
   upload(image: File | null | undefined)
   {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
     const formData = new FormData();
     // @ts-ignore
     formData.append('file', image, image.name);
-    return this.http.post(this.Upload,formData,this.options);
+    return this.http.post(this.Upload,formData,{headers});
   }
 
   addEvent(event:EventModel)
   {
-    return this.http.post(this.AddEvent,event,this.options)
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post(this.AddEvent,event,{headers})
   }
 
   deleteKeywordFromEvent(idEv:number,idKey:number)
   {
-    return this.http.delete('http://localhost:8081/Event/deleteKeywordFromEvent?eventId='+`${idEv}`+'&keywordId='+`${idKey}`,this.options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.delete('http://localhost:8081/Event/deleteKeywordFromEvent?eventId='+`${idEv}`+'&keywordId='+`${idKey}`,{headers});
   }
 
   addKeywordToEvent(idEv:number,key:KeyWords)
   {
-    return this.http.post('http://localhost:8081/Event/addKeywordToEvent?id='+`${idEv}`,key,this.options)
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post('http://localhost:8081/Event/addKeywordToEvent?id='+`${idEv}`,key,{headers})
   }
 }
