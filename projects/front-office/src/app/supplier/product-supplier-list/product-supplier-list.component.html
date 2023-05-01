@@ -1,0 +1,148 @@
+<div class="card">
+    <h5>Filter Menu</h5>
+    <p-table #dt1 [value]="products" dataKey="id" [rows]="10" [loading]="loading" [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']" responsiveLayout="scroll">
+        <ng-template pTemplate="caption">
+            <div class="flex justify-content-between flex-column sm:flex-row">
+                <button pButton label="Clear" class="p-button-outlined mb-2" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                <span class="p-input-icon-left mb-2">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" #filter (input)="onGlobalFilter(dt1, $event)" placeholder="Search Keyword" class="w-full"/>
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="min-width: 12rem">
+                    <div class="flex justify-content-between align-items-center">
+                        Name
+                        <p-columnFilter type="text" field="name" display="menu" placeholder="Search by name"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width: 12rem">
+                    <div class="flex justify-content-between align-items-center">
+                        Reference
+                        <p-columnFilter type="text" field="refernece" display="menu" placeholder="Search by refernece"></p-columnFilter>
+                    </div>
+                </th>
+      
+                <th style="min-width: 10rem">
+                    <div class="flex justify-content-between align-items-center">
+                        Quantity desired
+                        <p-columnFilter type="date" field="date" display="menu" placeholder="mm/dd/yyyy"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width: 10rem">
+                    <div class="flex justify-content-between align-items-center">
+                        Previous unity price
+                        <p-columnFilter type="numeric" field="balance" display="menu" currency="USD"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width: 10rem">
+                    <div class="flex justify-content-between align-items-center">
+                        Product image
+                    </div>
+                </th>
+                <th style="min-width: 10rem">
+                    <div class="flex justify-content-between align-items-center">
+                        Actions
+                    </div>
+                </th>
+             
+    
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>
+                    {{product.name}}
+                </td>
+                <td>
+                    <span class="image-text ml-2">{{product.reference}}</span>
+                </td>
+
+                <td>
+                    {{product.deliveryQuantity }}
+                </td>
+       
+                <td>
+                    {{product.unityPriceFromSupplier | currency:'TND ':'symbol'}}
+                </td>
+              
+            
+                <td class="text-center">
+                    <img [src]="'assets/prodcutsImages/'+product.image" [height]="50" [alt]="product.name">
+
+                </td>
+                <td class="text-center">
+                    <div class="flex align-items-center justify-content-between">
+
+                    <p-dialog header="Dialog" [(visible)]="display" [modal]="true" showEffect="fade"
+                    [style]="{width: '30vw'}" [breakpoints]="{'960px': '75vw'}">
+                    
+                    <div class="card">
+                        <h3><strong>Store Form</strong> </h3>
+                        <form #form="ngForm" (ngSubmit)="addresquest(form,product.id)">
+                            <div class="grid p-fluid mt-3">
+                                <div class="field col-12 md:col-4">
+                                    <span class="p-float-label">
+                                        <input name="delivQuantity" type="text" id="inputtext" pInputText [(ngModel)]="delivQuantity">
+                                        <label for="inputtext"> Quantity</label>
+                                    </span>
+                                </div>
+                                <div class="field col-12 md:col-4">
+                                    <div class="p-inputgroup">
+                             
+                                        <span class="p-float-label ">
+                                            <input type="date" id="righticon1" name="delivDate" pInputText [(ngModel)]="delivDate">
+                                            <label for="righticon1">Delivery Date</label>
+                                        </span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="field col-12 md:col-4">
+                                    <div class="p-inputgroup">
+                             
+                                        <span class="p-float-label ">
+                                            <input type="text" id="righticon1" name="unityP" pInputText [(ngModel)]="unityP">
+                                            <label for="righticon1">Unity Price</label>
+                                        </span>
+                                    </div>
+                                    
+                                </div>
+                    
+                            
+                    
+                            </div>
+                    
+                            
+                                <button pButton pRipple  label="Submit" icon="pi pi-bookmark" iconPos="right"></button>
+                    
+                    </form>
+                    </div>
+
+
+                    <ng-template pTemplate="footer">
+                        <button pButton icon="pi pi-check" (click)="display=false" label="Close"
+                            class="p-button-outlined"></button>
+                    </ng-template>
+                </p-dialog>
+
+                <button pButton (click)="markerClick(product)"   icon="pi pi-check"  label="Map"></button>
+
+                    <button pButton (click)="display=true" icon="pi pi-reply"  label="apply"></button>
+               </div>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="8">No customers found.</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="loadingbody">
+            <tr>
+                <td colspan="8">Loading customers data. Please wait.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { PromotionCode } from 'Models/PromotionCode';
 import { Store } from 'Models/Store';
 import { Observable } from 'rxjs';
 
@@ -22,6 +23,11 @@ export class StoreServiceService {
     const options = { withCredentials: true };
 
     return this.http.post<Store>(this.url+"SaveStore",Store,options)
+  }
+  addPormotionCode(promo:PromotionCode,prodId:number):Observable<Blob>{
+    const options = { withCredentials: true };
+
+    return this.http.post<Blob>("http://localhost:8081/PromotionCode/savePromotionCode?id="+prodId,promo,options)
   }
 
 }

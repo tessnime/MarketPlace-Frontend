@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@agm/core": "^1.1.0",
     "@angular/animations": "^15.2.5",
     "@angular/cdk": "^15.2.4",
     "@angular/common": "^15.1.0",
@@ -24,6 +25,7 @@
     "@angular/router": "^15.2.5",
     "@stripe/stripe-js": "^1.52.0",
     "@types/facebook-js-sdk": "^3.3.6",
+    "agm": "^0.0.0",
     "angular-ng-autocomplete": "^2.0.12",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",

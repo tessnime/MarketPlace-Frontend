@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AgmCoreModule, AgmMarker } from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -88,9 +89,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { StoresListComponent } from './seller/stores-list/stores-list.component';
 import { CarouselModule } from 'primeng/carousel';
 import { AddStoreComponent } from './seller/add-store/add-store.component';
-import { PromotionCodeComponent } from './seller/promotion-code/promotion-code.component';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { DialogModule } from 'primeng/dialog';
+import { ProductSupplierListComponent } from './supplier/product-supplier-list/product-supplier-list.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { StoreSupplierMapComponent } from './supplier/store-supplier-map/store-supplier-map.component';
+
 
 
 
@@ -130,10 +134,12 @@ import { DialogModule } from 'primeng/dialog';
     SupplierRequestsListComponent,
     StoresListComponent,
     AddStoreComponent,
-    PromotionCodeComponent
+    ProductSupplierListComponent,
+    StoreSupplierMapComponent,
     
   ],
   imports: [
+   
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -193,7 +199,12 @@ import { DialogModule } from 'primeng/dialog';
     ConfirmDialogModule,
     CarouselModule,
     OverlayPanelModule,
-    DialogModule
+   DialogModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBdVAHuNwlcMICaKUcx8RNGUb5dBiMYIIo'
+    }),
+    MatDialogModule
+    
     
 
   ],

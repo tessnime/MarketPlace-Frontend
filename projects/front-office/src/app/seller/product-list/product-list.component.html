@@ -99,7 +99,7 @@
 									
 									<div class="card">
 										<h3><strong>Store Form</strong> </h3>
-										<form #form="ngForm" (ngSubmit)="addPromotionCode(form)">
+										<form #form="ngForm" (ngSubmit)="addPromotionCode(form,product.id)">
 											<div class="grid p-fluid mt-3">
 												<div class="field col-12 md:col-4">
 													<span class="p-float-label">
@@ -111,7 +111,7 @@
 													<div class="p-inputgroup">
 											 
 														<span class="p-float-label ">
-															<input type="date" id="righticon1" name="city" pInputText [(ngModel)]="endDate">
+															<input type="date" id="righticon1" name="endDate" pInputd [(ngModel)]="endDate">
 															<label for="righticon1"></label>
 														</span>
 													</div>

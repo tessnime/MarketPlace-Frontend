@@ -48,6 +48,7 @@ import { UpdateProductComponent } from './seller/update-product/update-product.c
 import { SupplierRequestsListComponent } from './seller/supplier-requests-list/supplier-requests-list.component';
 import { StoresListComponent } from './seller/stores-list/stores-list.component';
 import { AddStoreComponent } from './seller/add-store/add-store.component';
+import { ProductSupplierListComponent } from './supplier/product-supplier-list/product-supplier-list.component';
 
 
 
@@ -78,6 +79,17 @@ const routes: Routes = [
 
 
     ]
+},
+{
+  path:'supplier',component:sellerlayoutC,
+  children:[
+    {path:'',component:ProductSupplierListComponent},
+    {path:'prods',component:NewProductComponent},
+
+
+
+
+  ]
 },
 {
   path:'agency',component:agencylayoutC,
