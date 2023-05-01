@@ -39,7 +39,7 @@ export class RegisterComponent  implements OnInit{
 
   }
 
-idRole=4;;
+idRole=4;
 idUser!:number;  
 rolefinal!:Role;
 
@@ -80,18 +80,20 @@ rolefinal!:Role;
     );
   }
 
-  Create(t7:NgForm){
-    console.log(this.user);
+  handleFileInput1(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.selectedFile1 = inputElement.files?.item(0);
+  }
 
+  Create(t7:NgForm){
+    console.log(JSON.stringify(this.user));
+    if(this.selectedFile1!=null)
+    {
     this.onUploadImage1();
-    this.onUploadImage2();
-    this.onUploadImage3();
-   /* // @ts-ignore
-   this.user.justification = this.selectedFile2.name;
-    // @ts-ignore
+        // @ts-ignore
     this.user.image = this.selectedFile1.name;
-    // @ts-ignore
-    this.user.brandLogo = this.selectedFile3.name;*/
+    }
+
    
   
     this.user.governorate=t7.controls["governorate"].value;
@@ -100,6 +102,7 @@ rolefinal!:Role;
      
    
      alert("Successfully User is register")
+     
     },
     ()=>alert("Sorry User not register"));
    

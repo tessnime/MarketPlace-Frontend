@@ -20,7 +20,10 @@ export class AffichageProfileComponent implements OnInit {
   }
   user!:User;
   ngOnInit(): void {
-    this.serviceProfile.GetUserBySession().subscribe(data =>{this.user=data})
+    let token = localStorage.getItem('token')
+
+     this.serviceProfile.GetUserBySession().subscribe(data =>{this.user=data;});
+    
   }
 
   form:any ={}

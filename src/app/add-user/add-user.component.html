@@ -1,724 +1,720 @@
+<div class="surface-ground px-4 py-5 md:px-6 lg:px-8">
 
-
-
-  <div class="surface-ground px-4 py-5 md:px-6 lg:px-8">
-
-    <div class="grid">
+  <div class="grid">
+<div class="col-12 md:col-6 lg:col-3">
+    <div class="surface-card shadow-2 p-3 border-round">
+      <div class="flex justify-content-between mb-3">
+        <div>
+          <span class="block text-500 font-medium mb-3">Buyers</span>
+          <div class="text-900 font-medium text-xl">{{BUYER}}</div>
+        </div>
+        <div class="flex align-items-center justify-content-center bg-blue-100 border-round" style="width:2.5rem;height:2.5rem">
+          <i class="pi pi-money-bill text-blue-500 text-xl"></i>
+        </div>
+      </div>
+      <span class="text-green-500 font-medium">%{{(BUYER/users.length*100) | number:'1.2-2'}} </span>
+      <span class="text-500"> from</span>
+      <span class="text-green-500 font-medium">{{users.length}}</span>
+      <span class="text-500"> User</span>
+    </div>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+    <div class="surface-card shadow-2 p-3 border-round">
+      <div class="flex justify-content-between mb-3">
+        <div>
+          <span class="block text-500 font-medium mb-3">Seller</span>
+          <div class="text-900 font-medium text-xl">{{SELLER}}</div>
+        </div>
+        <div class="flex align-items-center justify-content-center bg-blue-100 border-round" style="width:2.5rem;height:2.5rem">
+          <i class="pi pi-id-card text-blue-500 text-xl"></i>
+        </div>
+      </div>
+      <span class="text-green-500 font-medium">%{{(SELLER/users.length*100) | number:'1.2-2'}}</span>
+      <span class="text-500"> from</span>
+      <span class="text-green-500 font-medium"> {{users.length}}</span>
+      <span class="text-500"> User</span>
+    </div>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+    <div class="surface-card shadow-2 p-3 border-round">
+      <div class="flex justify-content-between mb-3">
+        <div>
+          <span class="block text-500 font-medium mb-3">Delivery Man</span>
+          <div class="text-900 font-medium text-xl">{{DELIVERYMEN}}</div>
+        </div>
+        <div class="flex align-items-center justify-content-center bg-green-100 border-round" style="width:2.5rem;height:2.5rem">
+          <i class="pi pi-box text-green-500 text-xl"></i>
+        </div>
+      </div>
+      <span class="text-green-500 font-medium">%{{(DELIVERYMEN/users.length*100) | number:'1.2-2'}}  </span>
+      <span class="text-500"> from</span>
+      <span class="text-green-500 font-medium"> {{users.length}}</span>
+      <span class="text-500"> User</span>
+    </div>
+  </div>
   <div class="col-12 md:col-6 lg:col-3">
       <div class="surface-card shadow-2 p-3 border-round">
         <div class="flex justify-content-between mb-3">
           <div>
-            <span class="block text-500 font-medium mb-3">Buyers</span>
-            <div class="text-900 font-medium text-xl">{{BUYER}}</div>
-          </div>
-          <div class="flex align-items-center justify-content-center bg-blue-100 border-round" style="width:2.5rem;height:2.5rem">
-            <i class="pi pi-money-bill text-blue-500 text-xl"></i>
-          </div>
-        </div>
-        <span class="text-green-500 font-medium">%{{(BUYER/users.length*100) | number:'1.2-2'}} </span>
-        <span class="text-500"> from</span>
-        <span class="text-green-500 font-medium">{{users.length}}</span>
-        <span class="text-500"> User</span>
-      </div>
-    </div>
-    <div class="col-12 md:col-6 lg:col-3">
-      <div class="surface-card shadow-2 p-3 border-round">
-        <div class="flex justify-content-between mb-3">
-          <div>
-            <span class="block text-500 font-medium mb-3">Seller</span>
-            <div class="text-900 font-medium text-xl">{{SELLER}}</div>
-          </div>
-          <div class="flex align-items-center justify-content-center bg-blue-100 border-round" style="width:2.5rem;height:2.5rem">
-            <i class="pi pi-id-card text-blue-500 text-xl"></i>
-          </div>
-        </div>
-        <span class="text-green-500 font-medium">%{{(SELLER/users.length*100) | number:'1.2-2'}}</span>
-        <span class="text-500"> from</span>
-        <span class="text-green-500 font-medium"> {{users.length}}</span>
-        <span class="text-500"> User</span>
-      </div>
-    </div>
-    <div class="col-12 md:col-6 lg:col-3">
-      <div class="surface-card shadow-2 p-3 border-round">
-        <div class="flex justify-content-between mb-3">
-          <div>
-            <span class="block text-500 font-medium mb-3">Delivery Man</span>
-            <div class="text-900 font-medium text-xl">{{DELIVERYMEN}}</div>
+            <span class="block text-500 font-medium mb-3">Delivery Agency</span>
+            <div class="text-900 font-medium text-xl">{{DELIVERYAGENCY}}</div>
           </div>
           <div class="flex align-items-center justify-content-center bg-green-100 border-round" style="width:2.5rem;height:2.5rem">
-            <i class="pi pi-box text-green-500 text-xl"></i>
+            <i class="pi pi-building text-green-500 text-xl"></i>
           </div>
         </div>
-        <span class="text-green-500 font-medium">%{{(DELIVERYMEN/users.length*100) | number:'1.2-2'}}  </span>
+        <span class="text-green-500 font-medium">%{{(DELIVERYAGENCY/users.length*100) | number:'1.2-2'}}  </span>
         <span class="text-500"> from</span>
         <span class="text-green-500 font-medium"> {{users.length}}</span>
         <span class="text-500"> User</span>
       </div>
     </div>
-    <div class="col-12 md:col-6 lg:col-3">
-        <div class="surface-card shadow-2 p-3 border-round">
-          <div class="flex justify-content-between mb-3">
-            <div>
-              <span class="block text-500 font-medium mb-3">Delivery Agency</span>
-              <div class="text-900 font-medium text-xl">{{DELIVERYAGENCY}}</div>
-            </div>
-            <div class="flex align-items-center justify-content-center bg-green-100 border-round" style="width:2.5rem;height:2.5rem">
-              <i class="pi pi-building text-green-500 text-xl"></i>
-            </div>
-          </div>
-          <span class="text-green-500 font-medium">%{{(DELIVERYAGENCY/users.length*100) | number:'1.2-2'}}  </span>
-          <span class="text-500"> from</span>
-          <span class="text-green-500 font-medium"> {{users.length}}</span>
-          <span class="text-500"> User</span>
-        </div>
-      </div>
 
-    <div class="col-12 md:col-6 lg:col-3">
-    <div class="surface-card shadow-2 p-3 border-round">
-      <div class="flex justify-content-between mb-3">
-        <div>
-          <span class="block text-500 font-medium mb-3">Modirators</span>
-          <div class="text-900 font-medium text-xl">{{MODERATOR}}</div>
-        </div>
-        <div class="flex align-items-center justify-content-center bg-cyan-100 border-round" style="width:2.5rem;height:2.5rem">
-          <i class="pi pi-user-edit text-cyan-500 text-xl"></i>
-        </div>
+  <div class="col-12 md:col-6 lg:col-3">
+  <div class="surface-card shadow-2 p-3 border-round">
+    <div class="flex justify-content-between mb-3">
+      <div>
+        <span class="block text-500 font-medium mb-3">Modirators</span>
+        <div class="text-900 font-medium text-xl">{{MODERATOR}}</div>
       </div>
-      <span class="text-green-500 font-medium">%{{(MODERATOR/users.length*100) | number:'1.2-2'}}  </span>
-      <span class="text-500"> from</span>
-      <span class="text-green-500 font-medium"> {{users.length}}</span>
-      <span class="text-500"> User</span>
+      <div class="flex align-items-center justify-content-center bg-cyan-100 border-round" style="width:2.5rem;height:2.5rem">
+        <i class="pi pi-user-edit text-cyan-500 text-xl"></i>
+      </div>
     </div>
+    <span class="text-green-500 font-medium">%{{(MODERATOR/users.length*100) | number:'1.2-2'}}  </span>
+    <span class="text-500"> from</span>
+    <span class="text-green-500 font-medium"> {{users.length}}</span>
+    <span class="text-500"> User</span>
   </div>
-    <div class="col-12 md:col-6 lg:col-3">
-        <div class="surface-card shadow-2 p-3 border-round">
-          <div class="flex justify-content-between mb-3">
-            <div>
-              <span class="block text-500 font-medium mb-3">After Sales Support</span>
-              <div class="text-900 font-medium text-xl">{{AFTERSALESSUPPORT}}</div>
-            </div>
-            <div class="flex align-items-center justify-content-center bg-red-100 border-round" style="width:2.5rem;height:2.5rem">
-              <i class="pi pi-times-circle text-red-500 text-xl"></i>
-            </div>
+</div>
+  <div class="col-12 md:col-6 lg:col-3">
+      <div class="surface-card shadow-2 p-3 border-round">
+        <div class="flex justify-content-between mb-3">
+          <div>
+            <span class="block text-500 font-medium mb-3">After Sales Support</span>
+            <div class="text-900 font-medium text-xl">{{AFTERSALESSUPPORT}}</div>
           </div>
-          <span class="text-green-500 font-medium">%{{(AFTERSALESSUPPORT/users.length*100) | number:'1.2-2'}}  </span>
-          <span class="text-500"> from</span>
-          <span class="text-green-500 font-medium"> {{users.length}}</span>
-          <span class="text-500"> User</span>
-        </div>
-      </div>
-    <div class="col-12 md:col-6 lg:col-3">
-        <div class="surface-card shadow-2 p-3 border-round">
-          <div class="flex justify-content-between mb-3">
-            <div>
-              <span class="block text-500 font-medium mb-3">Technical Support</span>
-              <div class="text-900 font-medium text-xl">{{TECHNICALSUPPORT}}</div>
-            </div>
-            <div class="flex align-items-center justify-content-center bg-blue-100 border-round" style="width:2.5rem;height:2.5rem">
-              <i class="pi pi-cog text-blue-500 text-xl"></i>
-            </div>
+          <div class="flex align-items-center justify-content-center bg-red-100 border-round" style="width:2.5rem;height:2.5rem">
+            <i class="pi pi-times-circle text-red-500 text-xl"></i>
           </div>
-          <span class="text-green-500 font-medium">%{{(TECHNICALSUPPORT/users.length*100) | number:'1.2-2'}}  </span>
-          <span class="text-500"> from</span>
-          <span class="text-green-500 font-medium"> {{users.length}}</span>
-          <span class="text-500"> User</span>
         </div>
+        <span class="text-green-500 font-medium">%{{(AFTERSALESSUPPORT/users.length*100) | number:'1.2-2'}}  </span>
+        <span class="text-500"> from</span>
+        <span class="text-green-500 font-medium"> {{users.length}}</span>
+        <span class="text-500"> User</span>
       </div>
-    <div class="col-12 md:col-6 lg:col-3">
-    <div class="surface-card shadow-2 p-3 border-round">
-      <div class="flex justify-content-between mb-3">
-        <div>
-          <span class="block text-500 font-medium mb-3">Supplier</span>
-          <div class="text-900 font-medium text-xl">{{SUPPLIER}}</div>
-        </div>
-        <div class="flex align-items-center justify-content-center bg-cyan-100 border-round" style="width:2.5rem;height:2.5rem">
-          <i class="pi pi-shopping-cart text-cyan-500 text-xl"></i>
-        </div>
-      </div>
-      <span class="text-green-500 font-medium">%{{(SUPPLIER/users.length*100) | number:'1.2-2'}}  </span>
-      <span class="text-500"> from</span>
-      <span class="text-green-500 font-medium"> {{users.length}}</span>
-      <span class="text-500"> User</span>
     </div>
-  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+      <div class="surface-card shadow-2 p-3 border-round">
+        <div class="flex justify-content-between mb-3">
+          <div>
+            <span class="block text-500 font-medium mb-3">Technical Support</span>
+            <div class="text-900 font-medium text-xl">{{TECHNICALSUPPORT}}</div>
+          </div>
+          <div class="flex align-items-center justify-content-center bg-blue-100 border-round" style="width:2.5rem;height:2.5rem">
+            <i class="pi pi-cog text-blue-500 text-xl"></i>
+          </div>
+        </div>
+        <span class="text-green-500 font-medium">%{{(TECHNICALSUPPORT/users.length*100) | number:'1.2-2'}}  </span>
+        <span class="text-500"> from</span>
+        <span class="text-green-500 font-medium"> {{users.length}}</span>
+        <span class="text-500"> User</span>
+      </div>
     </div>
-  <div class="grid">
-  <div class="col-12 md:col-6 lg:col-12">
-    <div class="col-12 lg:col-12">
-      <div class="card">
-        <h5>Users by Role Numbers</h5>
-        <p-chart type="bar" [data]="barData" [options]="barOptions"></p-chart>
+  <div class="col-12 md:col-6 lg:col-3">
+  <div class="surface-card shadow-2 p-3 border-round">
+    <div class="flex justify-content-between mb-3">
+      <div>
+        <span class="block text-500 font-medium mb-3">Supplier</span>
+        <div class="text-900 font-medium text-xl">{{SUPPLIER}}</div>
       </div>
-  </div>
-
-    <div class="col-12 md:col-6 lg:col-12">
-    <div class="card px-6 py-6">
-      <div class="page-header">
-        <div class="row">
-          <div class="col-md-6 col-sm-12">
-
-            <nav aria-label="breadcrumb" role="navigation">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item " aria-current="page">
-                  View Users
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                  New  User
-                </li>
-              </ol>
-            </nav>
-          </div>
-        </div>
+      <div class="flex align-items-center justify-content-center bg-cyan-100 border-round" style="width:2.5rem;height:2.5rem">
+        <i class="pi pi-shopping-cart text-cyan-500 text-xl"></i>
       </div>
-      <div class="my-3">
-        <button type="button" class="btn btn-primary" (click)="AddUser()">Add User</button>
-      </div>
-      <p-table #dt1 [value]="users" [columns]="cols" responsiveLayout="scroll" [rows]="10" [globalFilterFields]="['firstName', 'lastName', 'image', 'phoneNumber', 'birthDate', 'identity', 'email', 'governorate', 'city', 'gender', 'brandLogo', 'brandName', 'driveLicense', 'enabled', 'gear', 'justification', 'gearAge', 'levelDelivery', 'Options']" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[10,20,30]" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [(selection)]="selectedUsers" selectionMode="multiple" [rowHover]="true" dataKey="id">
-        <ng-template pTemplate="caption">
-          <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
-            <h5 class="m-0">Manage Events</h5>
-            <span class="block mt-2 md:mt-0 p-input-icon-left">
-                            <i class="pi pi-search"></i>
-                            <input pInputText type="text" (input)="onGlobalFilter(dt1, $event)" placeholder="Search..."  class="w-full sm:w-auto"/>
-                        </span>
-          </div>
-        </ng-template>
-        <ng-template pTemplate="header">
-          <tr>
-            <th style="width: 3rem">
-              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-            </th>
-            <th pSortableColumn="firstName">FirstName <p-sortIcon field="firstName"></p-sortIcon>
-            <th pSortableColumn="lastName">LastName <p-sortIcon field="lastName"></p-sortIcon>
-            <th pSortableColumn="image">Image <p-sortIcon field="image"></p-sortIcon>
-            <th pSortableColumn="phoneNumber">PhoneNumber <p-sortIcon field="phoneNumber"></p-sortIcon>
-            <th pSortableColumn="birthDate">BirthDate <p-sortIcon field="birthDate"></p-sortIcon></th>
-            <th pSortableColumn="identity">Identity <p-sortIcon field="identity"></p-sortIcon></th>
-            <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
-            <th pSortableColumn="governorate">Governorate <p-sortIcon field="governorate"></p-sortIcon></th>
-            <th pSortableColumn="city">City <p-sortIcon field="city"></p-sortIcon></th>
-            <th pSortableColumn="gender">Gender <p-sortIcon field="gender"></p-sortIcon></th>
-            <th pSortableColumn="brandLogo">Brand Logo <p-sortIcon field="brandLogo"></p-sortIcon></th>
-            <th pSortableColumn="brandName">Brand Name <p-sortIcon field="brandName"></p-sortIcon></th>
-            <th pSortableColumn="driveLicense">Drive License <p-sortIcon field="driveLicense"></p-sortIcon></th>
-            <th pSortableColumn="enabled">Enabled <p-sortIcon field="enabled"></p-sortIcon></th>
-            <th pSortableColumn="gear">Gear <p-sortIcon field="gear"></p-sortIcon></th>
-            <th pSortableColumn="justification">Justification <p-sortIcon field="justification"></p-sortIcon></th>
-            <th pSortableColumn="gearAge">Gear Age <p-sortIcon field="gearAge"></p-sortIcon></th>
-            <th pSortableColumn="levelDelivery">Level Delivery <p-sortIcon field="levelDelivery"></p-sortIcon></th>
-            <th pSortableColumn="Options">Options <p-sortIcon field="Options"></p-sortIcon></th>
-            <th></th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-user>
-          <tr>
-            <td>
-              <p-tableCheckbox [value]="user"></p-tableCheckbox>
-            </td>
-            <td style="width:14%; min-width:10rem;">
-              <span class="p-column-title">FirstName</span>
-              {{user.firstName}}
-            </td>
-            <td style="width:14%; min-width:10rem;">
-              <span class="p-column-title">LastName </span>
-              {{user.lastName}}
-            </td>
-            <td style="width:14%; min-width:10rem;"><span class="p-column-title">Image</span>
-
-              <img *ngIf="user.image" src="../../../assets/uploads/{{user.image}}" [alt]="user.image" width="100" class="shadow-4" />
-            </td>
-            <td style="width:14%; min-width:10rem;">
-              <span class="p-column-title">PhoneNumber </span>
-              {{user.phoneNumber}}
-            </td>
-            <td style="width:14%; min-width:10rem;">
-              <span class="p-column-title">BirthDate</span>
-              {{user.birthDate}}
-            </td>
-            <td style="width:14%; min-width:10rem;">
-              <span class="p-column-title">Identity </span>
-              {{user.identity}}
-            </td>
-            <td style="width:14%; min-width:10rem;">
-              <span class="p-column-title">Email </span>
-              {{user.email}}
-            </td>
-            <td style="width:14%; min-width:10rem;">
-              <span class="p-column-title">Governorate</span>
-              {{user.governorate}}
-            </td>
-            <td style="width:14%; min-width:10rem;">
-              <span class="p-column-title">City</span>
-              {{user.city}}
-            </td>
-            <td style="width:14%; min-width:10rem;">
-              <span class="p-column-title">Gender</span>
-              {{user.gender}}
-            </td>
-
-            <td style="width:14%; min-width:10rem;"><span class="p-column-title">Brand Logo</span>
-
-              <img *ngIf="user.brandLogo" src="../../../assets/uploads/{{user.brandLogo}}" [alt]="user.brandLogo" width="100" class="shadow-4" />
-            </td>
-
-            <td style="width:14%; min-width:10rem;">
-              <span class="p-column-title">BrandName</span>
-              {{user.brandName}}
-            </td>
-
-            <td style="width:14%; min-width:10rem;">
-              <span class="p-column-title">Driver Licence</span>
-              {{user.driveLicense}}
-            </td>
-
-            <td style="width:14%; min-width:10rem;">
-              <span class="p-column-title">Enabled</span>
-              {{user.enabled}}
-            </td>
-
-            <td style="width:14%; min-width:10rem;">
-              <span class="p-column-title">Gear</span>
-              {{user.gear}}
-            </td>
-
-            <td style="width:14%; min-width:10rem;"><span class="p-column-title">Justification</span>
-
-              <img *ngIf="user.justification" src="../../../assets/uploads/{{user.justification}}" [alt]="user.justification" width="100" class="shadow-4" />
-            </td>
-
-            <td style="width:14%; min-width:10rem;">
-              <span class="p-column-title">Gear Age</span>
-              {{user.gearAge}}
-            </td>
-
-            <td style="width:14%; min-width:10rem;">
-              <span class="p-column-title">Level Dilevery</span>
-              {{user.levelDelivery}}
-            </td>
-
-            <td>
-              <div class="flex">
-
-                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editUser(user)" ></button>
-
-                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning mr-2" (click)="deleteUser(user.id)" ></button>
-
-              </div>
-          </tr>
-        </ng-template>
-      </p-table>
     </div>
+    <span class="text-green-500 font-medium">%{{(SUPPLIER/users.length*100) | number:'1.2-2'}}  </span>
+    <span class="text-500"> from</span>
+    <span class="text-green-500 font-medium"> {{users.length}}</span>
+    <span class="text-500"> User</span>
   </div>
-
-
-
-
-    <p-dialog [(visible)]="productDialog" [style]="{width: '850px'}" header="Edit User" [modal]="true" class="p-fluid">
-      <ng-template pTemplate="content">
-        <div class="col-12 md:col-6 lg:col-12">
-        <div class="card px-6 py-6">
-          <!-- Default Basic Forms Start -->
-          <div class="grid p-fluid">
-            <div class="clearfix">
-              <div class="pull-left">
-                <h4 class="text-blue h4">Edit User</h4>
-              </div>
-            </div>
-            <form #addform="ngForm" (ngSubmit)="updateUser()" #f="ngForm" >
-              <div class="p-fluid p-formgrid grid">
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="photo">Profile Picture:</label>
-                  <div class="my-2">
-                    <label class="custom-file-upload">
-                      <input type="file" accept="image/*" (change)="handleFileInput1($event)">
-                      Choose File
-                    </label>
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="firstName">First Name:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input  type="text" pInputText class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName"  >
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="lastName">Last Name:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input pInputText class="form-control" id="lastName" name="lastName" [(ngModel)]="user.lastName"  >
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="PhoneNumber">Phone Number:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input  pInputText class="form-control"   type="tel" id="PhoneNumber" name="PhoneNumber"  pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}" [(ngModel)]="user.phoneNumber"  >
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="start">BirthDay:</label>
-                  <div class="col-sm-12 col-md-10">
-
-                    <input pInputText type="date" id="start" name="trip-start"
-
-                           min="1991-01-01" max="2005-12-31"  [(ngModel)]="user.birthDate" class="form-control" >
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="reg-Iname">Identity:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input  pInputText class="form-control"  type="text"
-                            id="reg-Iname"
-                            name="identity"  [(ngModel)]="user.identity" >
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="reg-email">Email:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input pInputText class="form-control" type="text"
-                           id="reg-email"
-                           name="email"  [(ngModel)]="user.email"  >
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="governorate">Governorate</label>
-                  <div class="col-sm-12 col-md-10">
-                    <select class="custom-select col-12" id="governorate" name="governorate" [(ngModel)]="selectedGovernorate"  [(ngModel)]="shipping.governorate"(ngModelChange)="updateCities()">
-                      <option *ngFor="let gov of governorates" [value]="gov.name">{{ gov.name }}</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="governorate">City</label>
-                  <div class="col-sm-12 col-md-10">
-                    <select  class="custom-select col-12"id="city" name="city" [(ngModel)]="shipping.city">
-                      <option>{{ shipping.city }}</option>
-                      <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="gender">Gender</label>
-                  <div class="col-sm-12 col-md-10">
-                    <select class="custom-select col-12"  id="gender" name="gender"  [(ngModel)]="user.gender" >
-                      <option value="MAN">MAN</option>
-                      <option value="WOMEN">WOMEN</option>
-                      <option value="OTHER">OTHER</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="reg-bLname">BrandLogo:</label>
-                  <div class="my-2">
-                    <label class="custom-file-upload">
-                      <input type="file" accept="image/*" (change)="handleFileInput2($event)">
-                      Choose File
-                    </label>
-                  </div>
-                </div>
-
-
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="reg-bname">BrandName:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input pInputText class="form-control"  type="text"
-                           id="reg-bname"
-                           name="brandName"  [(ngModel)]="user.brandName"
-                    />
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="reg-Dname">DriverLicense:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input pInputText class="form-control"   type="text"
-                           id="reg-Dname"
-                           name="DriverLicense"  [(ngModel)]="user.driveLicense"
-                    />
-                  </div>
-                </div>
-
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="enabledID">enabled:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input pInputText  class="form-control"   type="text"
-                           id="enabledID"
-                           name="enabled"  [(ngModel)]="user.enabled"
-                    />
-                  </div>
-                </div>
-
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="reg-Gname">Gear</label>
-                  <div class="col-sm-12 col-md-10">
-                    <select class="custom-select col-12"   id="reg-Gname"
-                            name="gear"  [(ngModel)]="user.gear" >
-                      <option value="CAR">CAR</option>
-                      <option value="MOTO">MOTO</option>
-                      <option value="TRUCK">TRUCK</option>
-                      <option value="BIKE">BIKE</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="reg-reg-Jname">Justification(Document):</label>
-                  <div class="my-2">
-                    <label class="custom-file-upload">
-                      <input type="file" accept="image/*" (change)="handleFileInput3($event)">
-                      Choose File
-                    </label>
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="reg-Gname">GearAge:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input pInputText class="form-control"   type="text"
-                           id="reg-Gname"
-                           name="GearAge"  [(ngModel)]="user.GearAge"
-                    />
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label  htmlFor="level">levelDelivery:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input pInputText class="form-control"   type="text"
-                           id="level"
-                           name="levelDelivery"  [(ngModel)]="user.levelDelivery"
-                    />
-                  </div>
-                </div>
-
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="psw">password:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input
-                      pInputPassword
-                      class="form-control"
-                      type="password"
-                      id="psw" name="psw"
-                      placeholder="Enter Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required   [(ngModel)]="user.password"
-                    />
-                  </div>
-
-                  <br>
-                  <div class="btn-list">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" >Save</button>
-                  </div>
-
-                </div>
-              </div>
-            </form>
-          </div>
-
-        </div>
-        </div>
-      </ng-template>
-    </p-dialog>
-
-  <p-dialog [(visible)]="productDialogAdd" [style]="{width: '850px'}" header="Add User" [modal]="true" class="p-fluid">
-    <ng-template pTemplate="content">
-      <div class="col-12 md:col-6 lg:col-12">
-        <div class="card px-6 py-6">
-          <!-- Default Basic Forms Start -->
-          <div class="grid p-fluid">
-            <div class="clearfix">
-              <div class="pull-left">
-                <h4 class="text-blue h4">Add User</h4>
-              </div>
-            </div>
-            <form #addform="ngForm" (ngSubmit)="saveUser(f)" #f="ngForm" >
-              <div class="p-fluid p-formgrid grid">
-                <div class="field col-12 md:col-6">
-                  <select class="custom-select col-12" id="role" name="role" [(ngModel)]="role">
-                    <option *ngFor="let r of roles" [value]="r.id">{{ r.type }}</option>
-                  </select>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="photo">Profile Picture:</label>
-                  <div class="my-2">
-                    <label class="custom-file-upload">
-                      <input type="file" accept="image/*" (change)="handleFileInput1($event)">
-                      Choose File
-                    </label>
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="firstName">First Name:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input  type="text" pInputText class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName"  >
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="lastName">Last Name:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input pInputText class="form-control" id="lastName" name="lastName" [(ngModel)]="user.lastName"  >
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="PhoneNumber">Phone Number:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input  pInputText class="form-control"   type="tel" id="PhoneNumber" name="PhoneNumber"  pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}" [(ngModel)]="user.phoneNumber"  >
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="start">BirthDay:</label>
-                  <div class="col-sm-12 col-md-10">
-
-                    <input pInputText type="date" id="start" name="trip-start"
-
-                           min="1991-01-01" max="2005-12-31"  [(ngModel)]="user.birthDate" class="form-control" >
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="reg-Iname">Identity:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input  pInputText class="form-control"  type="text"
-                            id="reg-Iname"
-                            name="identity"  [(ngModel)]="user.identity" >
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="reg-email">Email:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input pInputText class="form-control" type="text"
-                           id="reg-email"
-                           name="email"  [(ngModel)]="user.email"  >
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="governorate">Governorate</label>
-                  <div class="col-sm-12 col-md-10">
-                    <select class="custom-select col-12" id="governorate" name="governorate" [(ngModel)]="selectedGovernorate"  [(ngModel)]="shipping.governorate"(ngModelChange)="updateCities()">
-                      <option *ngFor="let gov of governorates" [value]="gov.name">{{ gov.name }}</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="governorate">City</label>
-                  <div class="col-sm-12 col-md-10">
-                    <select  class="custom-select col-12"id="city" name="city" [(ngModel)]="shipping.city">
-                      <option>{{ shipping.city }}</option>
-                      <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="gender">Gender</label>
-                  <div class="col-sm-12 col-md-10">
-                    <select class="custom-select col-12"  id="gender" name="gender"  [(ngModel)]="user.gender" >
-                      <option value="MAN">MAN</option>
-                      <option value="WOMEN">WOMEN</option>
-                      <option value="OTHER">OTHER</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="reg-bLname">BrandLogo:</label>
-                  <div class="my-2">
-                    <label class="custom-file-upload">
-                      <input type="file" accept="image/*" (change)="handleFileInput2($event)">
-                      Choose File
-                    </label>
-                  </div>
-                </div>
-
-
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="reg-bname">BrandName:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input pInputText class="form-control"  type="text"
-                           id="reg-bname"
-                           name="brandName"  [(ngModel)]="user.brandName"
-                    />
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="reg-Dname">DriverLicense:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input pInputText class="form-control"   type="text"
-                           id="reg-Dname"
-                           name="DriverLicense"  [(ngModel)]="user.driveLicense"
-                    />
-                  </div>
-                </div>
-
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="enabledID">enabled:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input pInputText  class="form-control"   type="text"
-                           id="enabledID"
-                           name="enabled"  [(ngModel)]="user.enabled"
-                    />
-                  </div>
-                </div>
-
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="reg-Gname">Gear</label>
-                  <div class="col-sm-12 col-md-10">
-                    <select class="custom-select col-12"   id="reg-Gname"
-                            name="gear"  [(ngModel)]="user.gear" >
-                      <option value="CAR">CAR</option>
-                      <option value="MOTO">MOTO</option>
-                      <option value="TRUCK">TRUCK</option>
-                      <option value="BIKE">BIKE</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="reg-reg-Jname">Justification(Document):</label>
-                  <div class="my-2">
-                    <label class="custom-file-upload">
-                      <input type="file" accept="image/*" (change)="handleFileInput3($event)">
-                      Choose File
-                    </label>
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="reg-Gname">GearAge:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input pInputText class="form-control"   type="text"
-                           id="reg-Gname"
-                           name="GearAge"  [(ngModel)]="user.GearAge"
-                    />
-                  </div>
-                </div>
-                <div class="field col-12 md:col-6">
-                  <label  htmlFor="level">levelDelivery:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input pInputText class="form-control"   type="text"
-                           id="level"
-                           name="levelDelivery"  [(ngModel)]="user.levelDelivery"
-                    />
-                  </div>
-                </div>
-
-                <div class="field col-12 md:col-6">
-                  <label htmlFor="psw">password:</label>
-                  <div class="col-sm-12 col-md-10">
-                    <input
-                      pInputPassword
-                      class="form-control"
-                      type="password"
-                      id="psw" name="psw"
-                      placeholder="Enter Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required   [(ngModel)]="user.password"
-                    />
-                  </div>
-
-                  <br>
-                  <div class="btn-list">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Save</button>
-                  </div>
-
-                </div>
-              </div>
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </ng-template>
-  </p-dialog>
-
-
 </div>
   </div>
+  <a href="{{PDF_urlStatUser}}">Download PDF</a>
+<div class="grid">
+<div class="col-12 md:col-6 lg:col-12">
+  <div class="col-12 lg:col-12">
+    <div class="card">
+      <h5>Users by Role Numbers</h5>
+      <p-chart type="bar" [data]="barData" [options]="barOptions"></p-chart>
+    </div>
+</div>
+
+  <div class="col-12 md:col-6 lg:col-12">
+  <div class="card px-6 py-6">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+
+          <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item " aria-current="page">
+                View Users
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                New  User
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="my-3">
+      <button type="button" class="btn btn-primary" (click)="AddUser()">Add User</button>
+    </div>
+    <p-table #dt1 [value]="users" [columns]="cols" responsiveLayout="scroll" [rows]="10" [globalFilterFields]="['firstName', 'lastName', 'image', 'phoneNumber', 'birthDate', 'identity', 'email', 'governorate', 'city', 'gender', 'brandLogo', 'brandName', 'driveLicense', 'enabled', 'gear', 'justification', 'gearAge', 'levelDelivery', 'Options']" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[10,20,30]" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [(selection)]="selectedUsers" selectionMode="multiple" [rowHover]="true" dataKey="id">
+      <ng-template pTemplate="caption">
+        <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
+          <h5 class="m-0">Manage Events</h5>
+          <span class="block mt-2 md:mt-0 p-input-icon-left">
+                          <i class="pi pi-search"></i>
+                          <input pInputText type="text" (input)="onGlobalFilter(dt1, $event)" placeholder="Search..."  class="w-full sm:w-auto"/>
+                      </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 3rem">
+            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+          </th>
+          <th pSortableColumn="firstName">FirstName <p-sortIcon field="firstName"></p-sortIcon>
+          <th pSortableColumn="lastName">LastName <p-sortIcon field="lastName"></p-sortIcon>
+          <th pSortableColumn="image">Image <p-sortIcon field="image"></p-sortIcon>
+          <th pSortableColumn="phoneNumber">PhoneNumber <p-sortIcon field="phoneNumber"></p-sortIcon>
+          <th pSortableColumn="birthDate">BirthDate <p-sortIcon field="birthDate"></p-sortIcon></th>
+          <th pSortableColumn="identity">Identity <p-sortIcon field="identity"></p-sortIcon></th>
+          <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+          <th pSortableColumn="governorate">Governorate <p-sortIcon field="governorate"></p-sortIcon></th>
+          <th pSortableColumn="city">City <p-sortIcon field="city"></p-sortIcon></th>
+          <th pSortableColumn="gender">Gender <p-sortIcon field="gender"></p-sortIcon></th>
+          <th pSortableColumn="brandLogo">Brand Logo <p-sortIcon field="brandLogo"></p-sortIcon></th>
+          <th pSortableColumn="brandName">Brand Name <p-sortIcon field="brandName"></p-sortIcon></th>
+          <th pSortableColumn="driveLicense">Drive License <p-sortIcon field="driveLicense"></p-sortIcon></th>
+          <th pSortableColumn="enabled">Enabled <p-sortIcon field="enabled"></p-sortIcon></th>
+          <th pSortableColumn="gear">Gear <p-sortIcon field="gear"></p-sortIcon></th>
+          <th pSortableColumn="justification">Justification <p-sortIcon field="justification"></p-sortIcon></th>
+          <th pSortableColumn="gearAge">Gear Age <p-sortIcon field="gearAge"></p-sortIcon></th>
+          <th pSortableColumn="levelDelivery">Level Delivery <p-sortIcon field="levelDelivery"></p-sortIcon></th>
+          <th pSortableColumn="Options">Options <p-sortIcon field="Options"></p-sortIcon></th>
+          <th></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user>
+        <tr>
+          <td>
+            <p-tableCheckbox [value]="user"></p-tableCheckbox>
+          </td>
+          <td style="width:14%; min-width:10rem;">
+            <span class="p-column-title">FirstName</span>
+            {{user.firstName}}
+          </td>
+          <td style="width:14%; min-width:10rem;">
+            <span class="p-column-title">LastName </span>
+            {{user.lastName}}
+          </td>
+          <td style="width:14%; min-width:10rem;"><span class="p-column-title">Image</span>
+
+            <img *ngIf="user.image" src="../../../assets/uploads/{{user.image}}" [alt]="user.image" width="100" class="shadow-4" />
+          </td>
+          <td style="width:14%; min-width:10rem;">
+            <span class="p-column-title">PhoneNumber </span>
+            {{user.phoneNumber}}
+          </td>
+          <td style="width:14%; min-width:10rem;">
+            <span class="p-column-title">BirthDate</span>
+            {{user.birthDate}}
+          </td>
+          <td style="width:14%; min-width:10rem;">
+            <span class="p-column-title">Identity </span>
+            {{user.identity}}
+          </td>
+          <td style="width:14%; min-width:10rem;">
+            <span class="p-column-title">Email </span>
+            {{user.email}}
+          </td>
+          <td style="width:14%; min-width:10rem;">
+            <span class="p-column-title">Governorate</span>
+            {{user.governorate}}
+          </td>
+          <td style="width:14%; min-width:10rem;">
+            <span class="p-column-title">City</span>
+            {{user.city}}
+          </td>
+          <td style="width:14%; min-width:10rem;">
+            <span class="p-column-title">Gender</span>
+            {{user.gender}}
+          </td>
+
+          <td style="width:14%; min-width:10rem;"><span class="p-column-title">Brand Logo</span>
+
+            <img *ngIf="user.brandLogo" src="../../../assets/uploads/{{user.brandLogo}}" [alt]="user.brandLogo" width="100" class="shadow-4" />
+          </td>
+
+          <td style="width:14%; min-width:10rem;">
+            <span class="p-column-title">BrandName</span>
+            {{user.brandName}}
+          </td>
+
+          <td style="width:14%; min-width:10rem;">
+            <span class="p-column-title">Driver Licence</span>
+            {{user.driveLicense}}
+          </td>
+
+          <td style="width:14%; min-width:10rem;">
+            <span class="p-column-title">Enabled</span>
+            {{user.enabled}}
+          </td>
+
+          <td style="width:14%; min-width:10rem;">
+            <span class="p-column-title">Gear</span>
+            {{user.gear}}
+          </td>
+
+          <td style="width:14%; min-width:10rem;"><span class="p-column-title">Justification</span>
+
+            <img *ngIf="user.justification" src="../../../assets/uploads/{{user.justification}}" [alt]="user.justification" width="100" class="shadow-4" />
+          </td>
+
+          <td style="width:14%; min-width:10rem;">
+            <span class="p-column-title">Gear Age</span>
+            {{user.gearAge}}
+          </td>
+
+          <td style="width:14%; min-width:10rem;">
+            <span class="p-column-title">Level Dilevery</span>
+            {{user.levelDelivery}}
+          </td>
+
+          <td>
+            <div class="flex">
+
+              <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editUser(user)" ></button>
+
+              <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning mr-2" (click)="deleteUser(user.id)" ></button>
+
+            </div>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
+</div>
+
+
+
+
+  <p-dialog [(visible)]="productDialog" [style]="{width: '850px'}" header="Edit User" [modal]="true" class="p-fluid">
+    <ng-template pTemplate="content">
+      <div class="col-12 md:col-6 lg:col-12">
+      <div class="card px-6 py-6">
+        <!-- Default Basic Forms Start -->
+        <div class="grid p-fluid">
+          <div class="clearfix">
+            <div class="pull-left">
+              <h4 class="text-blue h4">Edit User</h4>
+            </div>
+          </div>
+          <form #addform="ngForm" (ngSubmit)="updateUser()" #f="ngForm" >
+            <div class="p-fluid p-formgrid grid">
+              <div class="field col-12 md:col-6" *ngIf=user.image>
+                <label htmlFor="photo">Profile Picture:</label>
+                <div class="my-2">
+                  <label class="custom-file-upload">
+                    <input type="file" accept="image/*" (change)="handleFileInput1($event)">
+                    Choose File
+                  </label>
+                </div>
+              </div>
+              <div class="field col-12 md:col-6"  *ngIf=user.firstName>
+                <label htmlFor="firstName">First Name:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input  type="text" pInputText class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName"  >
+                </div>
+              </div>
+              <div class="field col-12 md:col-6" *ngIf=user.lastName>
+                <label htmlFor="lastName">Last Name:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input pInputText class="form-control" id="lastName" name="lastName" [(ngModel)]="user.lastName"  >
+                </div>
+              </div>
+              <div class="field col-12 md:col-6" *ngIf=user.phoneNumber>
+                <label htmlFor="PhoneNumber">Phone Number:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input  pInputText class="form-control"   type="tel" id="PhoneNumber" name="PhoneNumber"  pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}" [(ngModel)]="user.phoneNumber"  >
+                </div>
+              </div>
+              <div class="field col-12 md:col-6" *ngIf=user.birthDate>
+                <label htmlFor="start">BirthDay:</label>
+                <div class="col-sm-12 col-md-10">
+
+                  <input pInputText type="date" id="start" name="trip-start"
+
+                         min="1991-01-01" max="2005-12-31"  [(ngModel)]="user.birthDate" class="form-control" >
+                </div>
+              </div>
+              <div class="field col-12 md:col-6" *ngIf=user.identity>
+                <label htmlFor="reg-Iname">Identity:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input  pInputText class="form-control"  type="text"
+                          id="reg-Iname"
+                          name="identity"  [(ngModel)]="user.identity" >
+                </div>
+              </div>
+              <div class="field col-12 md:col-6" *ngIf=user.email >
+                <label htmlFor="reg-email">Email:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input pInputText class="form-control" type="text"
+                         id="reg-email"
+                         name="email"  [(ngModel)]="user.email"  >
+                </div>
+              </div>
+              <div class="field col-12 md:col-6" *ngIf=user.governorate>
+                <label htmlFor="governorate">Governorate</label>
+                <div class="col-sm-12 col-md-10">
+                  <select class="custom-select col-12" id="governorate" name="governorate" [(ngModel)]="selectedGovernorate"  [(ngModel)]="shipping.governorate"(ngModelChange)="updateCities()">
+                    <option *ngFor="let gov of governorates" [value]="gov.name">{{ gov.name }}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field col-12 md:col-6" *ngIf=user.city>
+                <label htmlFor="governorate">City</label>
+                <div class="col-sm-12 col-md-10">
+                  <select  class="custom-select col-12"id="city" name="city" [(ngModel)]="shipping.city">
+                    <option>{{ shipping.city }}</option>
+                    <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field col-12 md:col-6" *ngIf=user.gender>
+                <label htmlFor="gender">Gender</label>
+                <div class="col-sm-12 col-md-10">
+                  <select class="custom-select col-12"  id="gender" name="gender"  [(ngModel)]="user.gender" >
+                    <option value="MAN">MAN</option>
+                    <option value="WOMEN">WOMEN</option>
+                    <option value="OTHER">OTHER</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field col-12 md:col-6" *ngIf=user.brandLogo>
+                <label htmlFor="reg-bLname">BrandLogo:</label>
+                <div class="my-2">
+                  <label class="custom-file-upload">
+                    <input type="file" accept="image/*" (change)="handleFileInput2($event)">
+                    Choose File
+                  </label>
+                </div>
+              </div>
+
+
+              <div class="field col-12 md:col-6"  *ngIf=user.brandName>
+                <label htmlFor="reg-bname">BrandName:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input pInputText class="form-control"  type="text"
+                         id="reg-bname"
+                         name="brandName"  [(ngModel)]="user.brandName"
+                  />
+                </div>
+              </div>
+              <div class="field col-12 md:col-6" *ngIf=user.driveLicense>
+                <label htmlFor="reg-Dname">DriverLicense:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input pInputText class="form-control"   type="text"
+                         id="reg-Dname"
+                         name="DriverLicense"  [(ngModel)]="user.driveLicense"
+                  />
+                </div>
+              </div>
+
+              <div class="field col-12 md:col-6" *ngIf=user.enabled>
+                <label htmlFor="enabledID">enabled:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input pInputText  class="form-control"   type="text"
+                         id="enabledID"
+                         name="enabled"  [(ngModel)]="user.enabled"
+                  />
+                </div>
+              </div>
+
+              <div class="field col-12 md:col-6" *ngIf=user.gear>
+                <label htmlFor="reg-Gname">Gear</label>
+                <div class="col-sm-12 col-md-10">
+                  <select class="custom-select col-12"   id="reg-Gname"
+                          name="gear"  [(ngModel)]="user.gear" >
+                    <option value="CAR">CAR</option>
+                    <option value="MOTO">MOTO</option>
+                    <option value="TRUCK">TRUCK</option>
+                    <option value="BIKE">BIKE</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field col-12 md:col-6" *ngIf=user.justification>
+                <label htmlFor="reg-reg-Jname">Justification(Document):</label>
+                <div class="my-2">
+                  <label class="custom-file-upload">
+                    <input type="file" accept="image/*" (change)="handleFileInput3($event)">
+                    Choose File
+                  </label>
+                </div>
+              </div>
+              <div class="field col-12 md:col-6" *ngIf=user.GearAge>
+                <label htmlFor="reg-Gname">GearAge:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input pInputText class="form-control"   type="text"
+                         id="reg-Gname"
+                         name="GearAge"  [(ngModel)]="user.GearAge"
+                  />
+                </div>
+              </div>
+              <div class="field col-12 md:col-6" *ngIf=user.levelDelivery>
+                <label  htmlFor="level">levelDelivery:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input pInputText class="form-control"   type="text"
+                         id="level"
+                         name="levelDelivery"  [(ngModel)]="user.levelDelivery"
+                  />
+                </div>
+              </div>
+
+              <div class="field col-12 md:col-6" *ngIf=user.password>
+                <label htmlFor="psw">password:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input
+                    pInputPassword
+                    class="form-control"
+                    type="password"
+                    id="psw" name="psw"
+                    placeholder="Enter Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required   [(ngModel)]="user.password"
+                  />
+                </div>
+
+                <br>
+                <div class="btn-list">
+                  <button type="submit" class="btn btn-primary btn-lg btn-block">Save</button>
+                </div>
+
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </ng-template>
+</p-dialog>
+<p-dialog [(visible)]="productDialogAdd" [style]="{width: '850px'}" header="Add User" [modal]="true" class="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="col-12 md:col-6 lg:col-12">
+      <div class="card px-6 py-6">
+        <!-- Default Basic Forms Start -->
+        <div class="grid p-fluid">
+          <div class="clearfix">
+            <div class="pull-left">
+              <h4 class="text-blue h4">Add User</h4>
+            </div>
+          </div>
+          <form #addform="ngForm" (ngSubmit)="saveUser(f)" #f="ngForm" >
+            <div class="p-fluid p-formgrid grid">
+              <div class="field col-12 md:col-6">
+                <select class="custom-select col-12" id="role" name="role" [(ngModel)]="role">
+                  <option *ngFor="let r of roles" [value]="r.id">{{ r.type }}</option>
+                </select>
+              </div>
+              <div class="field col-12 md:col-6">
+                <label htmlFor="photo">Profile Picture:</label>
+                <div class="my-2">
+                  <label class="custom-file-upload">
+                    <input type="file" accept="image/*" (change)="handleFileInput1($event)">
+                    Choose File
+                  </label>
+                </div>
+              </div>
+              <div class="field col-12 md:col-6">
+                <label htmlFor="firstName">First Name:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input  type="text" pInputText class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName"  >
+                </div>
+              </div>
+              <div class="field col-12 md:col-6">
+                <label htmlFor="lastName">Last Name:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input pInputText class="form-control" id="lastName" name="lastName" [(ngModel)]="user.lastName"  >
+                </div>
+              </div>
+              <div class="field col-12 md:col-6">
+                <label htmlFor="PhoneNumber">Phone Number:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input  pInputText class="form-control"   type="tel" id="PhoneNumber" name="PhoneNumber"  pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}" [(ngModel)]="user.phoneNumber"  >
+                </div>
+              </div>
+              <div class="field col-12 md:col-6">
+                <label htmlFor="start">BirthDay:</label>
+                <div class="col-sm-12 col-md-10">
+
+                  <input pInputText type="date" id="start" name="trip-start"
+
+                         min="1991-01-01" max="2005-12-31"  [(ngModel)]="user.birthDate" class="form-control" >
+                </div>
+              </div>
+              <div class="field col-12 md:col-6">
+                <label htmlFor="reg-Iname">Identity:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input  pInputText class="form-control"  type="text"
+                          id="reg-Iname"
+                          name="identity"  [(ngModel)]="user.identity" >
+                </div>
+              </div>
+              <div class="field col-12 md:col-6">
+                <label htmlFor="reg-email">Email:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input pInputText class="form-control" type="text"
+                         id="reg-email"
+                         name="email"  [(ngModel)]="user.email"  >
+                </div>
+              </div>
+              <div class="field col-12 md:col-6">
+                <label htmlFor="governorate">Governorate</label>
+                <div class="col-sm-12 col-md-10">
+                  <select class="custom-select col-12" id="governorate" name="governorate" [(ngModel)]="selectedGovernorate"  [(ngModel)]="shipping.governorate"(ngModelChange)="updateCities()">
+                    <option *ngFor="let gov of governorates" [value]="gov.name">{{ gov.name }}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field col-12 md:col-6">
+                <label htmlFor="governorate">City</label>
+                <div class="col-sm-12 col-md-10">
+                  <select  class="custom-select col-12"id="city" name="city" [(ngModel)]="shipping.city">
+                    <option>{{ shipping.city }}</option>
+                    <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field col-12 md:col-6">
+                <label htmlFor="gender">Gender</label>
+                <div class="col-sm-12 col-md-10">
+                  <select class="custom-select col-12"  id="gender" name="gender"  [(ngModel)]="user.gender" >
+                    <option value="MAN">MAN</option>
+                    <option value="WOMEN">WOMEN</option>
+                    <option value="OTHER">OTHER</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field col-12 md:col-6" *ngIf="role==2 || role==6 || role==7" >
+                <label htmlFor="reg-bLname">BrandLogo:</label>
+                <div class="my-2">
+                  <label class="custom-file-upload">
+                    <input type="file" accept="image/*" (change)="handleFileInput2($event)">
+                    Choose File
+                  </label>
+                </div>
+              </div>
+
+
+              <div class="field col-12 md:col-6" *ngIf="role==2 || role==6 || role==7"  >
+                <label htmlFor="reg-bname">BrandName:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input pInputText class="form-control"  type="text"
+                         id="reg-bname"
+                         name="brandName"  [(ngModel)]="user.brandName"
+                  />
+                </div>
+              </div>
+              <div class="field col-12 md:col-6"  *ngIf="role==5" >
+                <label htmlFor="reg-Dname">DriverLicense:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input pInputText class="form-control"   type="text"
+                         id="reg-Dname"
+                         name="DriverLicense"  [(ngModel)]="user.driveLicense"
+                  />
+                </div>
+              </div>
+
+              <div class="field col-12 md:col-6">
+                <label htmlFor="enabledID">enabled:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input pInputText  class="form-control"   type="text"
+                         id="enabledID"
+                         name="enabled"  [(ngModel)]="user.enabled"
+                  />
+                </div>
+              </div>
+
+              <div class="field col-12 md:col-6" *ngIf="role==5" >
+                <label htmlFor="reg-Gname">Gear</label>
+                <div class="col-sm-12 col-md-10">
+                  <select class="custom-select col-12"   id="reg-Gname"
+                          name="gear"  [(ngModel)]="user.gear" >
+                    <option value="CAR">CAR</option>
+                    <option value="MOTO">MOTO</option>
+                    <option value="TRUCK">TRUCK</option>
+                    <option value="BIKE">BIKE</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field col-12 md:col-6" *ngIf="role==5 || role==2 || role==6 || role==7" >
+                <label htmlFor="reg-reg-Jname">Justification(Document):</label>
+                <div class="my-2">
+                  <label class="custom-file-upload">
+                    <input type="file" accept="image/*" (change)="handleFileInput3($event)">
+                    Choose File
+                  </label>
+                </div>
+              </div>
+              <div class="field col-12 md:col-6" *ngIf="role==5" >
+                <label htmlFor="reg-Gname">GearAge:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input pInputText class="form-control"   type="text"
+                         id="reg-Gname"
+                         name="GearAge"  [(ngModel)]="user.GearAge"
+                  />
+                </div>
+              </div>
+              <div class="field col-12 md:col-6" *ngIf="role==5" >
+                <label  htmlFor="level">levelDelivery:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input pInputText class="form-control"   type="text"
+                         id="level"
+                         name="levelDelivery"  [(ngModel)]="user.levelDelivery"
+                  />
+                </div>
+              </div>
+
+              <div class="field col-12 md:col-6">
+                <label htmlFor="psw">password:</label>
+                <div class="col-sm-12 col-md-10">
+                  <input
+                    pInputPassword
+                    class="form-control"
+                    type="password"
+                    id="psw" name="psw"
+                    placeholder="Enter Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required   [(ngModel)]="user.password"
+                  />
+                </div>
+
+                <br>
+                <div class="btn-list">
+                  <button type="submit" class="btn btn-primary btn-lg btn-block">Save</button>
+                </div>
+
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </ng-template>
+</p-dialog>
+
+</div>
+</div>
+</div>

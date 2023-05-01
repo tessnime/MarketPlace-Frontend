@@ -4,7 +4,8 @@ import { first } from 'rxjs';
 import { LoginUserService } from '../Services/login-user.service';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from 'Models/User';
-import { RoleType } from 'Models/Enum/RoleType';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -20,58 +21,34 @@ export class SignInComponent implements OnInit {
   error = '';
    user:  User  = new User();;
   role!:string;
-  constructor( public LoginUserService:LoginUserService ,private router:Router ,private route: ActivatedRoute,private cookieService: CookieService ){}
+  constructor(private jwtHelper:JwtHelperService,  public LoginUserService:LoginUserService ,private router:Router ,private route: ActivatedRoute,private cookieService: CookieService ){}
   ngOnInit() {
    
   }
   userLogin(){
   this.loading =true;
-  this.LoginUserService.login(this.form.email,this.form.password)
-  .pipe(first()).subscribe
-   (
-    () => {
-      
-      this.cookieService.get('accessToken');
-      this.LoginUserService.getRole(this.form.email).subscribe(data=>{this.role=data
-      
-  console.log(data);
-  
-        alert(data)
-      if (this.role === 'BUYER') {
-        this.router.navigate(['/']); 
-      } else if (this.role === 'SELLER') {
-        this.router.navigate(['/store']); 
-      }else if (this.role === 'DELIVERYMEN') {
-        this.router.navigate(['/freelancer']);  
-      }else if (this.role === 'DELIVERYAGENCY') {
-        this.router.navigate(['/deliveryAgency']);  
-      }
-    });
-     },
-
-error =>{
-  this.error =error;
-  this.loading=false;
-});
-
-
-  }
-  
-   redierctRole(){
-
-     this.LoginUserService.getRole(this.form.email).subscribe(data=>{this.role=data
-      
-     
-      alert(data)
-    if (this.role === 'BUYER') {
+  this.LoginUserService.login(this.form.email,this.form.password).subscribe((response:any)=>{
+    localStorage.setItem('token',response.accessToken)
+    let decodedToken = this.jwtHelper.decodeToken(response.accessToken)
+    let role = decodedToken.role[0];
+    if (role === 'BUYER') {
       this.router.navigate(['/']); 
-    } else if (this.role === 'SELLER') {
+    } else if (role === 'SELLER') {
       this.router.navigate(['/store']); 
-    }else if (this.role === 'DELIVERYMEN') {
+    }else if (role === 'DELIVERYMEN') {
       this.router.navigate(['/freelancer']);  
     }
-  });
+  },(error) =>{
+    if(error.error){
+      console.log(error)
+    }
+  })
+
+
+
   }
+  
+   
 
   goToForgetPass(){
     this.router.navigate(['/forgetPassword']);

@@ -10,6 +10,7 @@ import {UsersRole} from "../../../Models/UsersRole";
 import {Subscription} from "rxjs";
 import {LayoutService} from "../layoutB/service/app.layout.service";
 import {Role} from "../../../Models/Role";
+import { RoleType } from 'Models/Enum/RoleType';
 
 
 
@@ -19,6 +20,8 @@ import {Role} from "../../../Models/Role";
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit, OnDestroy {
+
+  PDF_urlStatUser:string="http://localhost:8081/User/PDF_StatStore";
   constructor(public layoutService: LayoutService,private Service: ServiceAdminService, private http: HttpClient, private r: ActivatedRoute, private route: Router) {
     this.subscription = this.layoutService.configUpdate$.subscribe(config => {
       this.initCharts();
@@ -38,6 +41,12 @@ export class AddUserComponent implements OnInit, OnDestroy {
 
     this.Service.getUsers().subscribe(data => {
       this.users = data;
+
+      this.selectedFile2=null ;
+    
+       this.selectedFile1=null;
+     
+       this.selectedFile3=null;
     });
     });
     });
@@ -50,7 +59,7 @@ export class AddUserComponent implements OnInit, OnDestroy {
 
   selectedUsers: User[] = [];
   form: any = {}
-  ROLE = "buyer";
+  ROLE = "BUYER";
   error: string = '';
   shipping: Shipping = {
     id: 0,
@@ -60,7 +69,7 @@ export class AddUserComponent implements OnInit, OnDestroy {
     buyer: new User(),
   };
   user: User = new User();
-
+  
   governorates = [
     {name: 'Ariana', cities: ['Ariana', 'Raoued', 'Sidi Thabet']},
     {name: 'Béja', cities: ['Béja', 'Medjez el-Bab', 'Téboursouk', 'Testour']},
@@ -204,15 +213,26 @@ export class AddUserComponent implements OnInit, OnDestroy {
   users: User[] = []
 
   saveUser(t7: NgForm) {
+    if(this.selectedFile1!=null)
+    {
     this.onUploadImage1();
-    this.onUploadImage2();
-    this.onUploadImage3();
-    // @ts-ignore
-    this.user.justification = this.selectedFile2.name;
-    // @ts-ignore
+        // @ts-ignore
     this.user.image = this.selectedFile1.name;
-    // @ts-ignore
-    this.user.brandLogo = this.selectedFile3.name;
+    }
+
+    if( this.selectedFile2!=null)
+    {
+      this.onUploadImage2();
+      // @ts-ignore
+      this.user.justification = this.selectedFile2.name;
+    }  
+
+    if(this.selectedFile3!=null)
+    {
+        this.onUploadImage3();
+        // @ts-ignore
+        this.user.brandLogo = this.selectedFile3.name;
+    }
     this.user.governorate = t7.controls["governorate"].value;
     this.user.city = t7.controls["city"].value;
     this.Service.adduser(this.user, this.role).subscribe(() => {

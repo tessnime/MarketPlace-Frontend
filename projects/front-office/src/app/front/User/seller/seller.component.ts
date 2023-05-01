@@ -22,7 +22,10 @@ export class SellerComponent implements OnInit {
     buyer:new User(),
   };
   user:  User  = new User();
-  
+  Gender=['MAN','WOMEN','Other']
+  passwordPattern="[a-zA-Z0-9]*"
+  phonePattern="[0-9]{2}-[0-9]{3}-[0-9]{3}"
+  cinPattern = '^[0-9]{8}$';
 
   constructor( private LoginUserService:LoginUserService ,private router:Router ,private route: ActivatedRoute){
 

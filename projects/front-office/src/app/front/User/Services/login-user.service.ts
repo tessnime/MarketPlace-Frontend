@@ -33,13 +33,13 @@ export class LoginUserService {
     login(email: string, password: string){
       
    return this.http.post<any>('http://localhost:8081/Authentication/auth',{ login: email, password: password },httpOptions)
-   .pipe(map(AuthenticationResponse => {
+  //  .pipe(map(AuthenticationResponse => {
   
-    const token = AuthenticationResponse.accessToken;
-    this.cookieService.set('accessToken', token);
+  //   const token = AuthenticationResponse.accessToken;
+  //   this.cookieService.set('accessToken', token);
 
 
-   }));
+  //  }));
     }
 
     getAccessToken(): string {
@@ -71,12 +71,7 @@ export class LoginUserService {
       return this.http.post(this.Upload,formData,options);
     }
 
+
+
     
 }
-
-
-
-
-
-
-

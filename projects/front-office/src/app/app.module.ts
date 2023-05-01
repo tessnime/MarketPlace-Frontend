@@ -81,6 +81,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { FrontModule  } from './front/front.module';
 import { NgImageSliderModule } from 'ng-image-slider';
+import {JwtModule} from '@auth0/angular-jwt'
 
 
 
@@ -172,7 +173,17 @@ import { NgImageSliderModule } from 'ng-image-slider';
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    BrowserModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      config:{
+        tokenGetter: ()=>{
+          return localStorage.getItem('token');
+        },
+        allowedDomains:['localhost']
+      }
+    })
 
   ],
   providers: [
@@ -183,7 +194,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
       }
     },
     MatSnackBar
-  ],
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

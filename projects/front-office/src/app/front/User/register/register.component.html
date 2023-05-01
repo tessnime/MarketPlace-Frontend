@@ -1,5 +1,3 @@
-
-
 <!--====== Google Font ======-->
 <link
   href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800"
@@ -87,7 +85,7 @@
                         <label class="gl-label" for="photo"
                           >PROFILE PICTURE *</label
                         >
-                        <input type="file"  accept=".png" id="photo" name="photo" [(ngModel)]="user.image"  />
+                        <input type="file" accept="image/*" (change)="handleFileInput1($event)" id="photo" name="photo" [(ngModel)]="user.image"  />
                       </div>
 
                       <div class="u-s-m-b-30">
@@ -210,10 +208,10 @@
                           >PASSWORD *</label
                         >
 
-                        <input   class="input-text input-text--primary-style" type="password" id="password" name="password"  minlength="6" ngModel #password="ngModel" required
+                        <input   class="input-text input-text--primary-style" type="password" id="password" name="password"  ngModel #password="ngModel" required [(ngModel)]="user.password" 
                         />
                         <div *ngIf="password?.errors?.['required']" class="has-danger">password is required</div>
-                        <div *ngIf="password?.errors?.['pattern']" class="has-danger">password must only contain letters and numbers </div>
+                  
                       </div>
                       <div class="u-s-m-b-15">
                         <button
