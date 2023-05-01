@@ -89,7 +89,7 @@
                         <label class="gl-label" for="photo"
                           >PROFILE PICTURE *</label
                         >
-                        <input type="file"  accept=".png" id="photo" name="photo" [(ngModel)]="user.image"  />
+                        <input type="file"  accept="image/*" (change)="handleFileInput1($event)" id="photo" name="photo" [(ngModel)]="user.image"  />
                       </div>
 
                       <div class="u-s-m-b-30">
@@ -196,7 +196,7 @@
                           <input
 
                             type="file"
-                            accept=".png"
+                            accept="image/*" (change)="handleFileInput3($event)"
                             id="reg-bLname"
                             placeholder="BrandLogo"   name="brandlogo"  [(ngModel)]="user.brandLogo" ngModel required #fn8="ngModel" 
                           />
@@ -212,7 +212,7 @@
                           <input
 
                             type="file"
-                            accept=".pdf"
+                            accept="image/*" (change)="handleFileInput2($event)"
                             id="reg-Jname"
                             placeholder="Justification"  name="Justification"  [(ngModel)]="user.justification" ngModel required #fn8="ngModel"
                           />

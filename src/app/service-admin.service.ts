@@ -28,29 +28,53 @@ export class ServiceAdminService {
 
   // Add User - Create
   adduser(user: User,role:number){
-    
-    return this.http.post<User>(this.urlAddUser+`${role}`, user,options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<User>(this.urlAddUser+`${role}`, user,{headers});
   }
 
   // Get Users - Read
   getUsers(): Observable<any[]>{
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
     const options = { withCredentials: true };
-    return this.http.get<any[]>(this.urlgetUsers,options);
+    return this.http.get<any[]>(this.urlgetUsers,{headers});
   }
 
   // Get User by Id - Read
   getUserById(id: number){
-    return  this.http.get<User>(this.urlGetUserById,options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return  this.http.get<User>(this.urlGetUserById,{headers});
   }
 
   // Update User - Update
   updateUser(id: number,user: User){
-    return this.http.put<User>(this.urlUpdateUser +`${id}`,user,options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put<User>(this.urlUpdateUser +`${id}`,user,{headers});
   }
 
   // Delete User - Delete
   deleteUser(id: number){
-    return this.http.delete<User>(this.urlDeleteUser +`${id}`,options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.delete<User>(this.urlDeleteUser +`${id}`,{headers});
   }
 
 
@@ -63,11 +87,21 @@ export class ServiceAdminService {
   }
 
   UsersByRole()
-  {
-    return this.http.get<UsersRole[]>(this.UserRole,options);
+  {const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+    return this.http.get<UsersRole[]>(this.UserRole,{headers});
   }
+
+
   getAllRoles()
-  {
-    return this.http.get<Role[]>(this.GetAllRoles,options);
+  { const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+    return this.http.get<Role[]>(this.GetAllRoles,{headers});
   }
 }

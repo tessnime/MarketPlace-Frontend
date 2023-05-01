@@ -196,7 +196,7 @@
                           <input
 
                             type="file"
-                            accept=".png"
+                            accept="image/*" (change)="handleFileInput3($event)"  
                             id="reg-bLname"
                             placeholder="BrandLogo"   name="brandlogo"  [(ngModel)]="user.brandLogo" ngModel required #fn8="ngModel" 
                           />
@@ -212,8 +212,7 @@
                           <input
 
                             type="file"
-                            accept=".pdf"
-                            id="reg-Jname"
+                            accept="image/*" (change)="handleFileInput2($event)"
                             placeholder="Justification"  name="Justification"  [(ngModel)]="user.justification" ngModel required #fn8="ngModel"
                           />
                           <div *ngIf="fn8.invalid" class="has-danger">Justification is required</div>

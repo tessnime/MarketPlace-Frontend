@@ -40,8 +40,75 @@ rolefinal!:Role;
   
   }
   RoleF!:Role;
+  selectedFile1!: File | null | undefined;
+  onUploadImage1() {
+    if(this.selectedFile1!=null)
+    this.LoginUserService.upload(this.selectedFile1).subscribe(
+      response => {
+        console.log(response);
+      }
+    );
+  }
+
+  selectedFile2!: File | null | undefined;
+
+  onUploadImage2() {
+    if(this.selectedFile2!=null)
+    this.LoginUserService.upload(this.selectedFile2).subscribe(
+      response => {
+        console.log(response);
+      }
+    );
+  }
+
+  selectedFile3!: File | null | undefined;
+
+  onUploadImage3() {
+    if(this.selectedFile3!=null)
+    this.LoginUserService.upload(this.selectedFile3).subscribe(
+      response => {
+        console.log(response);
+      }
+    );
+  }
+
+  handleFileInput1(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.selectedFile1 = inputElement.files?.item(0);
+  }
+
+  handleFileInput2(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.selectedFile2 = inputElement.files?.item(0);
+  }
+
+  handleFileInput3(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.selectedFile3 = inputElement.files?.item(0);
+  }
   Create(t7:NgForm){
     console.log(this.user);
+    if(this.selectedFile1!=null)
+    {
+    this.onUploadImage1();
+        // @ts-ignore
+    this.user.image = this.selectedFile1.name;
+    }
+
+    if( this.selectedFile2!=null)
+    {
+      this.onUploadImage2();
+      // @ts-ignore
+      this.user.justification = this.selectedFile2.name;
+    }  
+
+    if(this.selectedFile3!=null)
+    {
+        this.onUploadImage3();
+        // @ts-ignore
+        this.user.brandLogo = this.selectedFile3.name;
+    }
+  
   
     this.user.governorate=t7.controls["governorate"].value;
     this.user.city=t7.controls["city"].value;

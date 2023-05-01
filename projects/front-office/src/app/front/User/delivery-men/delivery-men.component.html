@@ -86,7 +86,7 @@
                         <label class="gl-label" for="photo"
                           >PROFILE PICTURE *</label
                         >
-                        <input type="file"  accept=".png" id="photo" name="photo" [(ngModel)]="user.image"  />
+                        <input type="file"   accept="image/*" (change)="handleFileInput1($event)"  id="photo" name="photo" [(ngModel)]="user.image"  />
                       </div>
 
                       <div class="u-s-m-b-30">
