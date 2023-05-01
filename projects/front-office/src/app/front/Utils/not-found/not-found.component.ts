@@ -12,8 +12,6 @@ export class NotFoundComponent {
 
   constructor(private router : Router) {
   }
-
-
   gotoHome()
   {
     this.router.navigate(["/buyer"]);
