@@ -128,10 +128,12 @@ getClaims(): Observable<ClaimSav[]> {
   }
 
   getReviewsByProductId(productId:number): Observable<Review[]> {
-
-    const options = { withCredentials: true };
-
-    return this.http.get<Review[]>(this.getreviewsbyProductId+`${productId}`, options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Review[]>(this.getreviewsbyProductId+`${productId}`, {headers});
 
 
 
