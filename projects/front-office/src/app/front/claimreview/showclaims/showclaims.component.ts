@@ -3,6 +3,7 @@ import { ClaimreviewserviceService } from '../sevice/claimreviewservice.service'
 import { Router } from '@angular/router';
 import { ClaimSav } from 'Models/ClaimSav';
 import {User} from "../../../../../../../Models/User";
+import { PaginationInstance } from 'ngx-pagination';
 
 @Component({
   selector: 'app-showclaims',
@@ -30,6 +31,7 @@ user:User=new User();
     }
   );}
   claims!:ClaimSav[];
+  searchTerm!: string;
 
   gotoHome()
   {
@@ -50,6 +52,29 @@ user:User=new User();
         this.claims = this.claims.filter(c => c.id !== id);
       });
     }
+  }
+
+  filterClaims(): void {
+    const filterValue = this.searchTerm.trim().toLowerCase();
+    if (filterValue) {
+      this.claims = this.claims.filter((claim) =>
+        claim.reference.toLowerCase().includes(filterValue) ||
+        claim.object.toLowerCase().includes(filterValue) ||
+        claim.status.toLowerCase().includes(filterValue)
+      );
+    } else {
+      this.getallclaims();
+    }
+  }
+
+  paginationConfig: PaginationInstance = {
+    id: 'table-pagination',
+    itemsPerPage: 5,
+    currentPage: 1
+  };
+
+  onPageChange(pageNumber: number) {
+    this.paginationConfig.currentPage = pageNumber;
   }
 
 

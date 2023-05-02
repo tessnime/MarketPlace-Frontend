@@ -11,6 +11,13 @@ import { RequestService } from 'projects/front-office/src/app/sellerMohsen/servi
 })
 export class PredictAdminComponent {
   constructor(private pickupService:PickupService,private requestService:RequestService){}
+
+  breadcrumbItems=[
+    {'label':'HOME'},
+    {'label':'PREDICT'},
+    {'label':'DASHBOARD'},
+  ]
+
   ngOnInit(){
     this.sendDataRegLineaire();
     this. AllCo2User();

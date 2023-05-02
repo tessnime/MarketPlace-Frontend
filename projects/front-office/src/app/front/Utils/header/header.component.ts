@@ -45,6 +45,8 @@ export class HeaderComponent {
     this.loyalityPoints();
 
     this.home.sessionReteurn().subscribe(data=>{this.sess=data;
+    if(data==null)
+      this.sess=false;
     if(this.sess){
       this.requestOrder=JSON.parse(this.cookieService.get('basket') || '{}');
       console.log(JSON.stringify(this.requestOrder));

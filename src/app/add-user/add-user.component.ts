@@ -28,6 +28,12 @@ export class AddUserComponent implements OnInit, OnDestroy {
     });
   }
 
+  breadcrumbItems=[
+    {'label':'HOME'},
+    {'label':'USERS'},
+    {'label':'DASHBOARD'},
+  ]
+
   cols: any[] = [];
   barData: any;
   roles:Role[]=[];
@@ -35,7 +41,7 @@ export class AddUserComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.Service.getAllRoles().subscribe(data=>{this.roles=data
-   
+
     this.Service.UsersByRole().subscribe(data=>{this.UserRole=data;
       this.initCharts();
 
@@ -43,9 +49,9 @@ export class AddUserComponent implements OnInit, OnDestroy {
       this.users = data;
 
       this.selectedFile2=null ;
-    
+
        this.selectedFile1=null;
-     
+
        this.selectedFile3=null;
     });
     });
@@ -69,7 +75,7 @@ export class AddUserComponent implements OnInit, OnDestroy {
     buyer: new User(),
   };
   user: User = new User();
-  
+
   governorates = [
     {name: 'Ariana', cities: ['Ariana', 'Raoued', 'Sidi Thabet']},
     {name: 'Béja', cities: ['Béja', 'Medjez el-Bab', 'Téboursouk', 'Testour']},
@@ -225,7 +231,7 @@ export class AddUserComponent implements OnInit, OnDestroy {
       this.onUploadImage2();
       // @ts-ignore
       this.user.justification = this.selectedFile2.name;
-    }  
+    }
 
     if(this.selectedFile3!=null)
     {
