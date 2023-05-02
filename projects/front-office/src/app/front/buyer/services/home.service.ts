@@ -105,11 +105,7 @@ export class HomeService {
   }
 
   searchProduct(maxprix: number, minprix: number, nameProd: string, mark: string, categorie: string, filtre: String) {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
+
     let url = 'http://localhost:8081/order/ProductResearch?maxPrix=' + `${maxprix}` + '&minPrix=' + `${minprix}`
     if (nameProd.length > 0)
       url = url + '&nameProduct=' + `${nameProd}`;

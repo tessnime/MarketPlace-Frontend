@@ -28,25 +28,21 @@ export class HeaderComponent {
     window.location.reload();
   }
 
-private roles: string[] = [];
-logedin:boolean=false;
-isLoggedIn=false;
-ret:boolean=false;
-  ngOnInit() :void {
-   this.isLoggedIn =!!this.cookieService.get('accessToken');
-   
-if(this.isLoggedIn){
-  const user = this.cookieService.get('accaccessToken');
-  
-}
-
-    this.getListProduct();
-    this.getBaskerOrder();
-    this.loyalityPoints()
-
+  private roles: string[] = [];
+  logedin:boolean=false;
+  isLoggedIn=false;
+  ret:boolean=false;
   sess:boolean=false;
 
-  ngOnInit() {
+  ngOnInit() :void {
+   this.isLoggedIn =!!this.cookieService.get('accessToken');
+
+    if(this.isLoggedIn){
+      const user = this.cookieService.get('accaccessToken');
+    }
+    this.getListProduct();
+    this.getBaskerOrder();
+    this.loyalityPoints();
 
     this.home.sessionReteurn().subscribe(data=>{this.sess=data;
     if(this.sess){
@@ -146,7 +142,9 @@ if(this.isLoggedIn){
       this.points = data
     })
   }
+
   aff:boolean=false;
+
   loyaltyToken()
   {
     this.aff=true;
@@ -179,15 +177,15 @@ if(this.isLoggedIn){
   {
     this.router.navigate(["/buyer/shop-side"]);
   }
- 
-
-logout(){
-  localStorage.clear()
-  this.router.navigate(['/user/signin'])
-}
 
 
-   
+  logout(){
+    localStorage.clear()
+    this.router.navigate(['/user/signin'])
   }
+
+
+
+}
 
 

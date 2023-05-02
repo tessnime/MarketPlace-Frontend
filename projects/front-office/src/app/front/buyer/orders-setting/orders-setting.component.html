@@ -55,6 +55,8 @@
                       <span class="dash__text u-s-m-b-16">Hello, {{orderList[0].buyer.firstName+' '+orderList[0].buyer.lastName}}</span>
                       <ul class="dash__f-list">
                         <li>
+                          <a (click)="change(1,1,0)">Profile</a></li>
+                        <li>
 
                           <a (click)="change(1,0,0)">All Orders</a></li>
                         <li>
@@ -118,6 +120,7 @@
                   <!--====== End - Dashboard Features ======-->
                 </div>
                 <div class="col-lg-9 col-md-12">
+                <app-affichage-profile *ngIf="ab && ao"></app-affichage-profile>
                 <app-all-ordrs *ngIf="ao==1" ></app-all-ordrs>
                 <app-address-book *ngIf="ab==1"></app-address-book>
                 <app-track-order *ngIf="!mrc && !ab && !ao"></app-track-order>

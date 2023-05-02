@@ -15,7 +15,7 @@ export class CookieServiceService {
     return this.ngxCookieService.get(key);
   }
 
-  delete(key: string, path?: string, domain?: string): string{
+  delete(key: string, path?: string, domain?: string): void{
      return this.ngxCookieService.delete(key, path, domain);
   }
 

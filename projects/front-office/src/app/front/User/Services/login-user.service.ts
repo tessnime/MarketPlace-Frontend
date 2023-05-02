@@ -22,19 +22,23 @@ const options = { withCredentials: true };
 export class LoginUserService {
   Upload="http://localhost:8081/User/upload";
 
-  constructor( private http: HttpClient, private cookieService: CookieService) { 
+  constructor( private http: HttpClient, private cookieService: CookieService) {
 
   }
-  
+
     register (user: User,idRole:number):Observable<Object>{
       return this.http.post('http://localhost:8081/User/add?idRole='+`${idRole}`,user);
      }
-   
+
     login(email: string, password: string){
-      
+      const token = localStorage.getItem('token');
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      });
    return this.http.post<any>('http://localhost:8081/Authentication/auth',{ login: email, password: password },httpOptions)
   //  .pipe(map(AuthenticationResponse => {
-  
+
   //   const token = AuthenticationResponse.accessToken;
   //   this.cookieService.set('accessToken', token);
 
@@ -73,5 +77,5 @@ export class LoginUserService {
 
 
 
-    
+
 }

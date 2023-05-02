@@ -82,7 +82,6 @@ import { FrontModule  } from './front/front.module';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { UpdateProductComponent } from './seller/update-product/update-product.component';
 import { SupplierRequestsListComponent } from './seller/supplier-requests-list/supplier-requests-list.component';
-import { TableModule } from 'primeng/table';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -92,7 +91,6 @@ import { AddStoreComponent } from './seller/add-store/add-store.component';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { DialogModule } from 'primeng/dialog';
 import { ProductSupplierListComponent } from './supplier/product-supplier-list/product-supplier-list.component';
-import {MatDialogModule} from '@angular/material/dialog';
 import { StoreSupplierMapComponent } from './supplier/store-supplier-map/store-supplier-map.component';
 
 
@@ -101,7 +99,6 @@ import {JwtModule} from '@auth0/angular-jwt';
 
 import { ToastrModule } from 'ngx-toastr';
 import { CarDashboardComponent } from './freelancer/car-dashboard/car-dashboard.component';
-import { AgmCoreModule } from '@agm/core';
 import { AddBranchInMapComponent } from './agency/add-branch-in-map/add-branch-in-map.component';
 import { AgencyMapComponent } from './agency/agency-map/agency-map.component';
 import { MapDetailsAgencyComponent } from './agency/map-details-agency/map-details-agency.component';
@@ -175,7 +172,7 @@ import { ViewDeliveryMenOfPickupComponent } from './sellerMohsen/view-delivery-m
     ViewDeliveryMenOfPickupComponent,
   ],
   imports: [
-   
+
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -242,7 +239,7 @@ import { ViewDeliveryMenOfPickupComponent } from './sellerMohsen/view-delivery-m
         },
         allowedDomains:['localhost']
       }
-      })
+      }),
     ChartModule,
     MatInputModule,
     ToastrModule,
