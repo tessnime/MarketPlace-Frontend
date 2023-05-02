@@ -207,6 +207,7 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
+
           "options": {
             "outputPath": "dist/frontoffice",
             "index": "projects/frontoffice/src/index.html",
@@ -226,6 +227,7 @@
             "scripts": []
           },
           "configurations": {
+
             "production": {
               "budgets": [
                 {

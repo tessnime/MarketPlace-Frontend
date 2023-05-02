@@ -44,7 +44,7 @@ export class AppMenuComponent implements OnInit {
                     { label: 'Chart', icon: 'pi pi-fw pi-chart-bar', routerLink: ['/uikit/charts'] },
                     { label: 'Misc', icon: 'pi pi-fw pi-circle', routerLink: ['/uikit/misc'] },
                     { label: 'claim', icon: 'pi pi-fw pi-circle', routerLink: ['/claimlist'] }
-                    
+
 
                 ]
             },
@@ -52,7 +52,8 @@ export class AppMenuComponent implements OnInit {
                 label: 'Delivery Management',
                 items: [
                     { label: 'Dashboard ', icon: 'pi pi-fw pi-eye', routerLink: ['/PickupDashboard'], badge: 'NEW' },
-                    { label: 'Predict', icon: 'pi pi-fw pi-globe', routerLink: ['/predictCoco'], target: '_blank' },
+                    { label: 'Predict', icon: 'pi pi-fw pi-globe', routerLink: ['/predictCoco'], target: '_blank' }
+                ]
              },
             {
                 label: 'Front Dashboard',

@@ -36,7 +36,7 @@ export class AddAdsComponent {
   this.ads.gender=t7.controls['Gender'].value;
   this.ads.objectiveType=t7.controls['ObjectiveType'].value;
   this.ads.adsPoints=t7.controls['price'].value;
-  this.adsService.assignAdsToProduct(this.ads,this.idProduct).subscribe(()=>{this.r.navigateByUrl("/Seller/myAds");
+  this.adsService.assignAdsToProduct(this.ads,this.idProduct).subscribe(()=>{this.r.navigateByUrl("/store/myAds");
   this.snackBar.open('The Ads added with success!', 'Close', {
     duration: 3000,
     verticalPosition: 'top',

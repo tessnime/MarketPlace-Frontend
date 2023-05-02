@@ -104,6 +104,18 @@ const routes: Routes = [
       {path:'list/updateP/:id',component:UpdateProductComponent},
       {path:'stores',component:StoresListComponent},
       {path:'AddStore',component:AddStoreComponent},
+    { path:'DashboardDelivery', component: StoreListComponent },
+    {path:'storess',component:ListOfStoreComponent},
+    {path:'storess/orders/:idStore',component:OrderListMComponent},
+    {path:'storess/orders/:idStore/:idOrder',component:addpickupseller},
+    {path:'pickups',component:PickupListSeller},
+    {path:'pickups/requests/:idP',component:RequestListSellerComponent},
+    {path:'pickups/update/:idPickup',component:PickupUpdateComponent},
+    {path:'pickupsInProgress',component:PikupInProgressSellerComponent},
+    {path:'pickupsInProgress/:CodePickup',component:TrakingPickupSellerComponent},
+    {path:'addAds',component:AddAdsComponent},
+    {path:'HistoryPickups',component:HistoryPickupsSellerComponent},
+    {path:'myAds',component:MyAdsComponent}
 
 
 
@@ -192,7 +204,7 @@ const routes: Routes = [
 },
 */
 
-
+/*
 {
   path:'Seller',component:sellerlayoutCMohsen,
   children:[
@@ -210,7 +222,7 @@ const routes: Routes = [
     {path:'myAds',component:MyAdsComponent}
   ]
 }
-
+*/
 
 ];
 

@@ -68,7 +68,7 @@ export class PickupUpdateComponent {
   UpdatePickup(p:Pickup,idPickup:number){
     this.pickupService.UpdatePickup(p,idPickup).subscribe
       (res =>{console.log('Pickup updatedd');
-      this.route.navigateByUrl('/Seller/pickups');
+      this.route.navigateByUrl('/store/pickups');
       this.snackBar.open('The pickup Updated with success!', 'Close', {
         duration: 3000,
         verticalPosition: 'top',
