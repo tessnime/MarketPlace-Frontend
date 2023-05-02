@@ -126,4 +126,15 @@ getClaims(): Observable<ClaimSav[]> {
     formData.append('file', image, image.name);
     return this.http.post(this.Upload,formData, {headers});
   }
+
+  getReviewsByProductId(productId:number): Observable<Review[]> {
+
+    const options = { withCredentials: true };
+
+    return this.http.get<Review[]>(this.getreviewsbyProductId+`${productId}`, options);
+
+
+
+  }
+  getreviewsbyProductId="http://localhost:8081/Review/getreviewsbyProductId?productId="
 }

@@ -24,7 +24,7 @@ export class ReviewComponent implements OnInit{
     this.claimService.getUserSession().subscribe(data=>{this.user=data;
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.claimService.getProductById(this.id).subscribe(data=>{this.product=data
-    this.getallreview();
+    this.getReviewsByProductId(this.id);
   })
   })
   }
@@ -115,5 +115,12 @@ export class ReviewComponent implements OnInit{
     }
   }
 
+  getReviewsByProductId(productId:number){
+    this.claimService.getReviewsByProductId(productId).subscribe(
+      data=>{
+        this.review= data;
+      },
+    )
+  }
 
 }
