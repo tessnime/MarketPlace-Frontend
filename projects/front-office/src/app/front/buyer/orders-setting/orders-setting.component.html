@@ -121,8 +121,8 @@
                 </div>
                 <div class="col-lg-9 col-md-12">
                 <app-affichage-profile *ngIf="ab && ao"></app-affichage-profile>
-                <app-all-ordrs *ngIf="ao==1" ></app-all-ordrs>
-                <app-address-book *ngIf="ab==1"></app-address-book>
+                <app-all-ordrs *ngIf="!mrc && !ab && ao" ></app-all-ordrs>
+                <app-address-book *ngIf="!mrc && ab && !ao"></app-address-book>
                 <app-track-order *ngIf="!mrc && !ab && !ao"></app-track-order>
                 </div>
               </div>
