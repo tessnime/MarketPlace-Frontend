@@ -1,7 +1,7 @@
 <div class="pd-ltr-20 xs-pd-20-10">
   <div class="min-height-200px">
 
-      <div class="page-header">
+      <div class="page-header" style="margin-top: 3px;">
         <div class="row">
           <div class="col-md-12 col-sm-12">
             <div class="title">
@@ -24,7 +24,7 @@
         </div>
       </div>
 <div class="row">
-      <div class="col-md-3 mb-30" *ngFor="let o of order; let i = index" >
+      <div class="col-md-4 mb-30" *ngFor="let o of order; let i = index" >
 
         <div class="card-box pricing-card mt-30 mb-30">
           <div class="pricing-icon">
@@ -33,17 +33,25 @@
           <div class="price-title">Order Ref#{{o.ref}}</div>
           <div class="pricing-price" >{{SumProduct[i]}}<sub>/Dt</sub></div>
           <div class="text">
-            <div *ngFor="let p of product; let c = index ">
-                <p>Product Name: {{ p.name[c] }}</p>
-          </div>
-        </div>
-          <div class="cta">
-            <a [routerLink]="['/Seller/stores/orders', idStore, o.id]" class="btn btn-primary btn-rounded btn-lg">Picked Now</a>
-          </div>
-        </div>
-      </div>
+            <div *ngFor="let row of product ;let c=index">
+              <div *ngFor="let product of row;let j=index">
+                <div class="product">
+                  <p><a href="">{{ product.name[c][i] }} </a></p>
 
-    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+          <div class="cta" >
+            <a [routerLink]="['/store/storess/orders', idStore, o.id]"
+            [ngClass]="{'disabled-link': i>=1}"
+            class="btn btn-primary btn-rounded btn-lg ">
+            Picked Now
+         </a>          </div>
+        </div>
+
+      </div>
+</div>
 
 
   </div>

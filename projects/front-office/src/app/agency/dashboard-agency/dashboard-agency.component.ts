@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { User } from 'Models/User';
 import { PickupService } from '../../sellerMohsen/servicesM/pickup.service';
+import { AgencyService } from '../../sellerMohsen/servicesM/agency.service';
+import { AgencyDeliveryMan } from 'Models/AgencyDeliveryMan';
+import { AgencyBranch } from 'Models/AgencyBranch';
 
 @Component({
   selector: 'app-dashboard-agency',
@@ -8,7 +11,7 @@ import { PickupService } from '../../sellerMohsen/servicesM/pickup.service';
   styleUrls: ['./dashboard-agency.component.scss']
 })
 export class DashboardAgencyComponent {
-  constructor(private pickupService:PickupService){}
+  constructor(private pickupService:PickupService,private agencyService:AgencyService){}
   user!:User;
 ngOnInit(){
   this.GetUser()
@@ -23,6 +26,10 @@ ngOnInit(){
   this.countPickupOnTheWayForAgency();
   this.countPickupRefundedForAgency();
   this.countPickupReturnedForAgency();
+  this.countPickupTakedForAgency();
+  this.countPickupAssignedForAgency();
+  this.TopDeliveryMenByPickupDelivered();
+  this.TopDeliveryAgencyByPickupDelivered();
 }
 
   GetUser(){
@@ -90,5 +97,21 @@ ngOnInit(){
    countPickupReturnedForAgency(){
     this.pickupService.countPickupReturnedForAgency().subscribe(data=>{this.nbrrdta=data});
 
+   }
+   cpafa!:number;
+   countPickupAssignedForAgency(){
+    this.pickupService.countPickupAssignedForAgency().subscribe(data=>{this.cpafa=data});
+   }
+   cpta!:number;
+   countPickupTakedForAgency(){
+    this.pickupService.countPickupTakedForAgency().subscribe(data=>{this.cpta=data});
+   }
+  agencyDM!:AgencyDeliveryMan[];
+   TopDeliveryMenByPickupDelivered(){
+    this.agencyService.TopDeliveryMenByPickupDelivered().subscribe(data=>this.agencyDM=data);
+   }
+   agencyy!:AgencyBranch[];
+   TopDeliveryAgencyByPickupDelivered(){
+     this.agencyService.TopDeliveryAgencyByPickupDelivered().subscribe(data=>this.agencyy=data);
    }
 }

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ProductQuantity} from "../../../../../../../Models/ProductQuantity";
 
 
@@ -9,6 +9,7 @@ import {EventModel} from "../../../../../../../Models/EventModel";
 import {Shipping} from "../../../../../../../Models/Shipping";
 import {ProductCategory} from "../../../../../../../Models/ProductCategory";
 import {CustemerModel} from "../../../../../../../Models/CustemerModel";
+import { Observable } from 'rxjs';
 
 
 
@@ -44,6 +45,10 @@ export class HomeService {
   Payements='http://localhost:8081/order/payements'
   EndPaimentProcess='http://localhost:8081/order/EndPaimentProcess?paymentType=CASH_ON_DELIVERY&cardPaiment=false'
   GetAllOrdersByUserId='http://localhost:8081/order/getAllOrdersByUserId'
+  urlsession='http://localhost:8081/User/session';
+
+  SessionReteurn='http://localhost:8081/order/sessionReteurn'
+  AddOrder='http://localhost:8081/order/AddOrder'
 
 
 
@@ -54,23 +59,49 @@ export class HomeService {
 
 
   loadPosts() {
-    return this.http.get<ProductQuantity[]>(this.GetBasketProduct, this.options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<ProductQuantity[]>(this.GetBasketProduct, {headers});
   }
 
   loadOrder() {
-    return this.http.get<Order>(this.GetBasketOrder, this.options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Order>(this.GetBasketOrder, {headers});
   }
 
   deleteCart() {
-    return this.http.delete<Order>(this.DeleteBasket, this.options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.delete<Order>(this.DeleteBasket, {headers});
   }
 
   updateQuantity(ref: string, quan: number) {
-    return this.http.put<ProductQuantity>('http://localhost:8081/order/UpdateQuantityInOrder?refProuct=' + `${ref}` + '&quantity=' + `${quan}`, null, this.options)
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.put<ProductQuantity>('http://localhost:8081/order/UpdateQuantityInOrder?refProuct=' + `${ref}` + '&quantity=' + `${quan}`, null, {headers})
   }
 
   deleteProductFromOrder(ref: string) {
-    return this.http.delete<ProductQuantity>('http://localhost:8081/order/DeleteProductFromOrder?refProduct=' + `${ref}`, this.options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.delete<ProductQuantity>('http://localhost:8081/order/DeleteProductFromOrder?refProduct=' + `${ref}`, {headers});
   }
 
   searchProduct(maxprix: number, minprix: number, nameProd: string, mark: string, categorie: string, filtre: String) {
@@ -85,28 +116,55 @@ export class HomeService {
       url = url + '&mark=' + `${mark}`;
 
     url = url + '&productFiltre=' + `${filtre}`;
+
+
     return this.http.get<Product[]>(url, this.options);
 
   }
 
   lastVude() {
-    return this.http.get<Product[]>(this.DisplayAllLastVued, this.options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Product[]>(this.DisplayAllLastVued, {headers});
   }
 
   eventDisplay() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
     return this.http.get<EventModel[]>(this.displayRunningEvents, this.options);
   }
 
   productsInEvents(id: number) {
-    return this.http.get<Product[]>(this.GetProductsForEvent + `${id}`, this.options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Product[]>(this.GetProductsForEvent + `${id}`, {headers});
   }
 
   addShippingToOrder(ship: number) {
-    return this.http.put<Order>(this.AddShippingToCard, ship, this.options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put<Order>(this.AddShippingToCard, ship, {headers});
   }
 
   addNewLastVuedProduct(idp: number) {
-    return this.http.post(this.CreateNewVued + `${idp}`, null, this.options)
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post(this.CreateNewVued + `${idp}`, null, {headers})
   }
 
   getProductById(idp: number) {
@@ -114,49 +172,123 @@ export class HomeService {
   }
 
   addProductToOrder(pq: ProductQuantity) {
-    return this.http.put(this.AddProductToOrder, pq, this.options)
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put(this.AddProductToOrder, pq, {headers})
   }
 
   lyaltypoints() {
-    return this.http.get<number>(this.Loyaltypoints, this.options)
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<number>(this.Loyaltypoints, {headers})
   }
 
   loyaltyToken() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    const options = { headers: headers, responseType: 'text' };
     // @ts-ignore
-    return this.http.get(this.LoyaltyToken, this.option);
+    return this.http.get(this.LoyaltyToken, options);
   }
 
   getAllProductCategories() {
+
     return this.http.get<ProductCategory[]>(this.GetAllProductCategories, this.options)
   }
 
   getAllUserShippings() {
-    return this.http.get<Shipping[]>(this.GetAllUserShippings, this.options)
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Shipping[]>(this.GetAllUserShippings, {headers})
   }
 
   createNewShipping(s: Shipping) {
-    return this.http.post<Shipping>(this.CreateNewShipping, s, this.options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<Shipping>(this.CreateNewShipping, s, {headers});
   }
 
   deleteShippingAdresse(id:number)
   {
-    return this.http.delete(this.DeleteShippingAdresse + `${id}`, this.options)
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.delete(this.DeleteShippingAdresse + `${id}`, {headers})
   }
 
   payementsStripe(cs:CustemerModel)
   {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
     // @ts-ignore
-    return this.http.post<CustemerModel>(this.Payements,cs,this.options);
+    return this.http.post<CustemerModel>(this.Payements,cs,{headers});
   }
 
   endPaimentProcess()
   {
-    return this.http.put(this.EndPaimentProcess,null,this.options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put(this.EndPaimentProcess,null,{headers});
   }
 
   getAllOrdersByUserId()
   {
-    return this.http.get<Order[]>(this.GetAllOrdersByUserId,this.options)
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Order[]>(this.GetAllOrdersByUserId,{headers})
   }
+
+  sessionReteurn()
+  {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    // @ts-ignore
+    return this.http.get<boolean>(this.SessionReteurn,{headers})
+  }
+
+  addOrder(order:Order)
+  {
+
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post(this.AddOrder,order,{headers})
+  }
+
+getSession(){
+  //@ts-ignore
+  return this.http.get<boolean>(this.urlsession,this.options)
+}
 
 }

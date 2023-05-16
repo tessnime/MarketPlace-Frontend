@@ -71,7 +71,7 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import {ToastModule} from 'primeng/toast';
 import {MAT_CHIPS_DEFAULT_OPTIONS, MatChipsModule} from '@angular/material/chips';
 import {COMMA, SPACE} from "@angular/cdk/keycodes";
-import {MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -82,7 +82,6 @@ import { FrontModule  } from './front/front.module';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { UpdateProductComponent } from './seller/update-product/update-product.component';
 import { SupplierRequestsListComponent } from './seller/supplier-requests-list/supplier-requests-list.component';
-import { TableModule } from 'primeng/table';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -92,11 +91,31 @@ import { AddStoreComponent } from './seller/add-store/add-store.component';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { DialogModule } from 'primeng/dialog';
 import { ProductSupplierListComponent } from './supplier/product-supplier-list/product-supplier-list.component';
-import {MatDialogModule} from '@angular/material/dialog';
 import { StoreSupplierMapComponent } from './supplier/store-supplier-map/store-supplier-map.component';
 
 
 
+import {JwtModule} from '@auth0/angular-jwt';
+
+import { ToastrModule } from 'ngx-toastr';
+import { CarDashboardComponent } from './freelancer/car-dashboard/car-dashboard.component';
+import { AddBranchInMapComponent } from './agency/add-branch-in-map/add-branch-in-map.component';
+import { AgencyMapComponent } from './agency/agency-map/agency-map.component';
+import { MapDetailsAgencyComponent } from './agency/map-details-agency/map-details-agency.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MapOfPickupStoreComponent } from './agency/map-of-pickup-store/map-of-pickup-store.component';
+import { PickupListGridComponent } from './agency/pickup-list-grid/pickup-list-grid.component';
+import { AddAdsComponent } from './sellerMohsen/add-ads/add-ads.component';
+import { MyAdsComponent } from './sellerMohsen/my-ads/my-ads.component';
+import { ChartModule } from 'primeng/chart';
+import { HistoryPickupsComponent } from './agency/history-pickups/history-pickups.component';
+import { HistoryRequestsComponent } from './agency/history-requests/history-requests.component';
+import { TableModule } from 'primeng/table';
+import { BuyerOfPickupComponent } from './agency/buyer-of-pickup/buyer-of-pickup.component';
+import { HistoryPickupsSellerComponent } from './sellerMohsen/history-pickups-seller/history-pickups-seller.component';
+import { HistoryPickupsFreelancerComponent } from './freelancer/history-pickups-freelancer/history-pickups-freelancer.component';
+import { HistoryRequestFreelancerComponent } from './freelancer/history-request-freelancer/history-request-freelancer.component';
+import { ViewDeliveryMenOfPickupComponent } from './sellerMohsen/view-delivery-men-of-pickup/view-delivery-men-of-pickup.component';
 
 
 @NgModule({
@@ -136,10 +155,24 @@ import { StoreSupplierMapComponent } from './supplier/store-supplier-map/store-s
     AddStoreComponent,
     ProductSupplierListComponent,
     StoreSupplierMapComponent,
-    
+    CarDashboardComponent,
+    AddBranchInMapComponent,
+    AgencyMapComponent,
+    MapDetailsAgencyComponent,
+    MapOfPickupStoreComponent,
+    PickupListGridComponent,
+    AddAdsComponent,
+    MyAdsComponent,
+    HistoryPickupsComponent,
+    HistoryRequestsComponent,
+    BuyerOfPickupComponent,
+    HistoryPickupsSellerComponent,
+    HistoryPickupsFreelancerComponent,
+    HistoryRequestFreelancerComponent,
+    ViewDeliveryMenOfPickupComponent,
   ],
   imports: [
-   
+
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -184,28 +217,36 @@ import { StoreSupplierMapComponent } from './supplier/store-supplier-map/store-s
     RippleModule,
     SplitButtonModule,
     ToastModule,
+    TableModule,
     MatSnackBarModule,
     MatChipsModule,
     MatIconModule,
     MatButtonModule,
-    BrowserModule,
     NgImageSliderModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatInputModule,
     TableModule,
     ConfirmDialogModule,
     CarouselModule,
     OverlayPanelModule,
    DialogModule,
+    JwtModule.forRoot({
+      config:{
+        tokenGetter: ()=>{
+          return localStorage.getItem('token');
+        },
+        allowedDomains:['localhost']
+      }
+      }),
+    ChartModule,
+    MatInputModule,
+    ToastrModule,
+    MatDialogModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBdVAHuNwlcMICaKUcx8RNGUb5dBiMYIIo'
-    }),
-    MatDialogModule
-    
-    
+    })
 
   ],
   providers: [
@@ -215,8 +256,14 @@ import { StoreSupplierMapComponent } from './supplier/store-supplier-map/store-s
         separatorKeyCodes: [COMMA, SPACE]
       }
     },
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: { panelClass: ['green-snackbar'] },
+    },
     MatSnackBar
-  ],
+    ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+

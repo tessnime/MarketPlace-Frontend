@@ -149,7 +149,7 @@ export class FinalizeOrderComponent {
         console.log(stripeToken);
         this.cutemer.paidAmount = amount* 100;
         // Call the payementsStripe method after the Stripe token is generated
-        this.home.payementsStripe(this.cutemer).subscribe(data => {console.log(data);this.msg='Payement Succeeded';this.showSuccessAlert()},
+        this.home.payementsStripe(this.cutemer).subscribe(data => {console.log(data);this.msg='Payement Succeeded';this.showSuccessAlert();this.gotoHome()},
           error => {
             console.log(error);
             this.msg = 'Payment Failed';
@@ -163,6 +163,7 @@ export class FinalizeOrderComponent {
       description: 'Make sur to fill with correct coordination',
       amount: amount * 100,
     });
+
   }
 
   invokeStripe() {
@@ -185,6 +186,7 @@ export class FinalizeOrderComponent {
 
       window.document.body.appendChild(script);
     }
+
   }
 
   pay:string='cash';
@@ -194,8 +196,9 @@ export class FinalizeOrderComponent {
     this.pay=s;
     if (s=='cash')
     this.msg='Confirmation Email is Sent'
-    else
-      this.msg='Payement Succeeded';
+    else {
+      this.msg = 'Payement Succeeded';
+    }
   }
   endPaimentProcess()
   {

@@ -1,6 +1,5 @@
-<div class="pd-ltr-20 xs-pd-20-10">
-  <div class="min-height-200px">
-    <div class="page-header">
+  <div class="min-height-200px" >
+    <div class="page-header" style="margin-top: 3px;">
       <div class="row">
         <div class="col-md-6 col-sm-12">
           <div class="title">
@@ -19,6 +18,7 @@
         </div>
       </div>
     </div>
+
     	<!-- Simple Datatable start -->
       <div class="card-box mb-30">
         <div class="pd-20">
@@ -30,27 +30,36 @@
               <tr>
                 <th class="table-plus datatable-nosort">#Traking Id</th>
                 <th>Sum</th>
-                <th>Governorate - City</th>
+                <th>Store</th>
+                <th>Buyer</th>
                 <th>Nb Requests</th>
+                <th>Connects</th>
                 <th>Creation Date</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let p of pickup">
+              <tr *ngFor="let p of pickup;let i=index">
                 <td class="table-plus">{{p.codePickup}}</td>
                 <td>{{p.sum}}</td>
+                <td >
+                  <div *ngIf="store[i].x">
+                  <a (click)="markerClick(store[i])"> <i class="bi bi-geo-fill">
+                </i></a>{{store[i].governorate}}-{{store[i].city}}
+                </div>
+                </td>
                 <td>{{p.governorate}}-{{p.city}}</td>
                 <td>{{p.nbRequest}}</td>
+                <td>{{p.points}}</td>
                 <td>{{p.dateCreationPickup}}</td>
-                <td>
+                <td >
                   <a
                     href="#"
                     class="btn-block"
                     data-toggle="modal"
                     data-target="#confirmation-modal"
                     type="button"
-                  ><button type="button" class="btn btn-primary"  [(ngModel)]="idPickup" [value]="p.id" (click)="getDeliveryManByPickup(p.id)">Apply</button>
+                  ><button type="button" class="btn btn-primary"  [(ngModel)]="idPickup" [value]="p.id" (click)="getDeliveryManByPickup(p.id)" >Apply</button>
                   </a>
                   <div
                     class="modal fade"

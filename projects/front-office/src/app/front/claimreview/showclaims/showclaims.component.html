@@ -1,0 +1,112 @@
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+
+<!--====== Vendor Css ======-->
+<link rel="stylesheet" href="../../../../assets/front-template/css/vendor.css">
+
+<!--====== Utility-Spacing ======-->
+<link rel="stylesheet" href="../../../../assets/front-template/css/utility.css">
+
+<!--====== App ======-->
+<link rel="stylesheet" href="../../../../assets/front-template/css/app.css">
+
+
+
+<body class="config">
+
+<!--====== Main App ======-->
+<div id="app">
+
+   <!--====== Main Header ======-->
+   <app-header></app-header>
+
+   <!--====== End - Main Header ======-->
+
+
+    <!--====== App Content ======-->
+    <div class="app-content">
+
+        <!--====== Section 1 ======-->
+        <div class="u-s-p-y-60">
+
+            <!--====== Section Content ======-->
+            <div class="section__content">
+                <div class="container">
+                    <div class="breadcrumb">
+                        <div class="breadcrumb__wrap">
+                            <ul class="breadcrumb__list">
+                                <li class="has-separator">
+
+                                    <a href="index.html">Home</a></li>
+                                <li class="is-marked">
+
+                                    <a href="signin.html">Claims list</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--====== End - Section 1 ======-->
+
+
+        <!--====== Section 2 ======-->
+        <div class="u-s-p-b-60">
+
+            <!--====== Section Intro ======-->
+            <div class="section__intro u-s-m-b-60">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section__text-wrap">
+                                <h1 class="checkout-f__h1">Welcome To your Claims Management</h1>
+                                <input class="input-text input-text--border-radius input-text--style-1" type="text" [(ngModel)]="searchTerm" (input)="filterClaims()" placeholder="Search for claims">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--====== End - Section Intro ======-->
+
+            <div class="container u-s-p-b-60">
+            <!--====== Section Content ======-->
+            <div class="dash__table-search">
+              </div>
+            <div class="dash__box dash__box--shadow dash__box--bg-white dash__box--radius u-s-m-b-30">
+                <div class="dash__table-2-wrap gl-scroll">
+                    <table class="dash__table-2">
+                        <thead>
+                          <tr>
+                            <th>REFERENCE</th>
+                            <th>OBJECT</th>
+                            <th>STATUS</th>
+                            <th>ACTIONS</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <ng-container *ngFor="let claim of claims | paginate: paginationConfig">
+                            <tr *ngIf="claim.user.id==user.id">
+                              <td>{{ claim.reference }}</td>
+                              <td>{{ claim.object }}</td>
+                              <td>{{ claim.status }}</td>
+                              <td>
+                                <button class="btn btn-outline-secondary mr-2" (click)="updateClaim(claim)">Edit</button>
+                                <button class="btn btn-outline-danger mr-2" (click)="deleteClaim(claim.id)">Delete</button>
+                              </td>
+                            </tr>
+                          </ng-container>
+                        </tbody>
+                      </table>
+                      <pagination-controls (pageChange)="onPageChange($event)" class="my-pagination" [id]="paginationConfig?.id || ''"></pagination-controls>
+        </div>
+            <!--====== End - Section Content ======-->
+            </div>
+        </div>
+        <!--====== End - Section 2 ======-->
+    </div>
+    <!--====== End - App Content ======-->
+
+
+    <!--====== Main Footer ======-->
+    <app-footer></app-footer>
+</div>
+<!--====== End - Main App ======-->

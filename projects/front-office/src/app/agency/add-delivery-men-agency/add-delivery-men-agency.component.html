@@ -1,7 +1,6 @@
 
-<div class="pd-ltr-20 xs-pd-20-10">
   <div class="min-height-200px">
-    <div class="page-header">
+    <div class="page-header" style="margin-top: 3px;">
       <div class="row">
         <div class="col-md-6 col-sm-12">
           <div class="title">
@@ -34,50 +33,58 @@
         <div class="form-group row">
           <label class="col-sm-12 col-md-2 col-form-label">First Name:</label>
           <div class="col-sm-12 col-md-10">
-            <input class="form-control" id="firstName" name="firstName" ngModel>
+            <input class="form-control" id="firstName" name="firstName" ngModel required #fn="ngModel">
+            <div *ngIf="fn.invalid" class="has-danger">First name is required</div>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-12 col-md-2 col-form-label">Last Name:</label>
           <div class="col-sm-12 col-md-10">
-            <input class="form-control" id="lastName" name="lastName" ngModel>
+            <input class="form-control" id="lastName" name="lastName" ngModel required #ln="ngModel">
+            <div *ngIf="ln.invalid" class="has-danger">Last name is required</div>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-12 col-md-2 col-form-label">CIN:</label>
           <div class="col-sm-12 col-md-10">
-            <input class="form-control" id="cin" name="cin" ngModel>
+            <input class="form-control" id="cin" name="cin" ngModel required #ci="ngModel" pattern="{{cinPattern}}">
+            <div *ngIf="ci?.errors?.['required']" class="has-danger">CIN is required</div>
+            <div *ngIf="ci?.errors?.['pattern']" class="has-danger">CIN is Only with 8 numbers </div>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-12 col-md-2 col-form-label">Governorate</label>
           <div class="col-sm-12 col-md-10">
-            <select class="custom-select col-12" id="governorate" name="governorate" [(ngModel)]="selectedGovernorate"  ngModel (ngModelChange)="updateCities()">
+            <select class="custom-select col-12" id="governorate" name="governorate" [(ngModel)]="selectedGovernorate"  ngModel (ngModelChange)="updateCities()" required #gov="ngModel">
               <option *ngFor="let gov of governorates" [value]="gov.name">{{ gov.name }}</option>
             </select>
+            <div *ngIf="gov.invalid" class="has-danger">Governorate is required</div>
           </div>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row" *ngIf="selectedGovernorate">
           <label class="col-sm-12 col-md-2 col-form-label">City</label>
           <div class="col-sm-12 col-md-10">
-            <select class="custom-select col-12"id="city" name="city" ngModel >
+            <select class="custom-select col-12"id="city" name="city" ngModel #cit="ngModel" required >
             <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
             </select>
+            <div *ngIf="cit.invalid" class="has-danger">City is required</div>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-12 col-md-2 col-form-label">Type Of Gear:</label>
           <div class="col-sm-12 col-md-10">
-            <select class="custom-select col-12"id="typeOfGear" name="typeOfGearr" [(ngModel)]="typeOfGearr" >
+            <select class="custom-select col-12"id="typeOfGear" name="typeOfGearr" [(ngModel)]="typeOfGearr" required #ge="ngModel" >
             <option *ngFor="let type of typeOfGear" [value]="type">{{ type }}</option>
             </select>
+            <div *ngIf="ge.invalid" class="has-danger">Gear Type is required</div>
           </div>
         </div>
         <div class="form-group row" *ngIf="typeOfGearr==='CAR'">
           <label class="col-sm-12 col-md-2 col-form-label">Gear Matricule:</label>
           <div class="col-sm-12 col-md-10">
-            <input class="form-control" id="gearMatricule" name="gearMatricule" ngModel>
+            <input class="form-control" id="gearMatricule" name="gearMatricule" ngModel required #mat="ngModel">
+            <div *ngIf="mat.invalid" class="has-danger">Gear Matricule is required</div>
           </div>
         </div>
 
@@ -86,6 +93,7 @@
           <button
             type="submit"
             class="btn btn-primary btn-lg btn-block"
+            [disabled]="addform.invalid"
           >
           Add Delivery Men
           </button>

@@ -1,0 +1,58 @@
+  <div class="min-height-200px">
+    <div class="page-header" style="margin-top: 3px;">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="title">
+            <h4>Branch Management</h4>
+          </div>
+          <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item active" aria-current="page">
+                The Branch
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+      </div>
+      <div class="pd-20 card-box mb-30">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <form #addform="ngForm" (ngSubmit)="addForm(addform)">
+            <div class="form-group" style="margin-top: 50px;">
+              <label class="col-sm-12 col-md-2 col-form-label" >Latitude:</label>
+              <div class="col-sm-12 col-md-10">
+                <input class="form-control" id="Latitude" name="Latitude" ngModel required #fn="ngModel">
+                <div *ngIf="fn.invalid" class="has-danger">Latitude is required</div>
+              </div>
+            </div>
+            <br>
+            <div class="form-group" style="margin-top: 50px;">
+              <label class="col-sm-12 col-md-2 col-form-label">Longitude:</label>
+              <div class="col-sm-12 col-md-10">
+                <input class="form-control" id="Longitude" name="Longitude" ngModel required #fn1="ngModel">
+                <div *ngIf="fn1.invalid" class="has-danger">Longitude is required</div>
+              </div>
+            </div>
+              <button
+                type="submit"
+                class="btn btn-primary btn-lg btn-block"
+                [disabled]="addform.invalid"
+                style="margin-top: 100px;"
+              >
+              Add Localisation
+              </button>
+          </form>
+        </div>
+        <div class="col-md-6 col-sm-12 text-center">
+          <div *ngIf="agencyBranch.x">
+            <agm-map [latitude]="agencyBranch.x" [longitude]="agencyBranch.y">
+
+              <agm-marker [latitude]="agencyBranch.x" [longitude]="agencyBranch.y"></agm-marker>
+
+            </agm-map>
+          </div>
+        </div>
+       </div>
+      </div>
+  </div>

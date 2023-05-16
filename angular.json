@@ -33,7 +33,9 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+
+            ]
           },
           "configurations": {
             "production": {
@@ -205,6 +207,7 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
+
           "options": {
             "outputPath": "dist/frontoffice",
             "index": "projects/frontoffice/src/index.html",
@@ -224,6 +227,7 @@
             "scripts": []
           },
           "configurations": {
+
             "production": {
               "budgets": [
                 {
