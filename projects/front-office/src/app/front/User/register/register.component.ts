@@ -21,7 +21,7 @@ export class RegisterComponent  implements OnInit{
   getRoleByType(role:RoleType){
     this.LoginUserService.getRoleByType(role).subscribe(data=>{this.role1=data});
  }*/
- 
+
 
   form:any ={}
   error:string = '';
@@ -33,18 +33,18 @@ export class RegisterComponent  implements OnInit{
     buyer:new User(),
   };
   user:  User  = new User();
-  
+
 
   constructor( private LoginUserService:LoginUserService ,private router:Router ,private route: ActivatedRoute){
 
   }
 
-idRole=4;
-idUser!:number;  
+idRole=1;
+idUser!:number;
 rolefinal!:Role;
 
   ngOnInit(): void {
-    
+
   }
   RoleF!:Role;
 
@@ -94,18 +94,18 @@ rolefinal!:Role;
     this.user.image = this.selectedFile1.name;
     }
 
-   
-  
+
+
     this.user.governorate=t7.controls["governorate"].value;
     this.user.city=t7.controls["city"].value;
     this.LoginUserService.register(this.user,this.idRole).subscribe(()=>{
-     
-   
+
+
      alert("Successfully User is register")
-     
+
     },
     ()=>alert("Sorry User not register"));
-   
+
   }
   nagivateToSeller(){
     this.router.navigate(['/user/seller']);
@@ -151,6 +151,7 @@ rolefinal!:Role;
       this.cities = [];
     }
   }
+
   cinPattern = '^[0-9]{8}$';
 
   Gender=['MAN','WOMEN','Other']

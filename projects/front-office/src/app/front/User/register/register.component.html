@@ -24,7 +24,7 @@
   <!--====== Main App ======-->
   <div id="app">
     <!--====== Main Header ======-->
-   <app-header></app-header> 
+   <app-header></app-header>
     <!--====== End - Main Header ======-->
 
     <!--====== App Content ======-->
@@ -79,7 +79,7 @@
                     <h1 class="gl-h1">PERSONAL INFORMATION</h1>
 
                     <form class="l-f-o__form" name="form"(ngSubmit)="Create(f)" #f="ngForm">
-                      
+
 
                       <div class="u-s-m-b-30">
                         <label class="gl-label" for="photo"
@@ -134,7 +134,7 @@
                             <option *ngFor="let d of Gender">{{ d }}</option>
                           </select>
                           <div *ngIf="fn8.invalid" class="has-danger">Gender: is required</div>
-                         
+
                         </div>
                       </div>
 
@@ -148,7 +148,7 @@
                           type="tel"
                           id="phone"
                           name="phone"
-                         
+
                           placeholder="Enter phone-Number"  [(ngModel)]="user.phoneNumber" ngModel required #ci="ngModel" pattern="{{phonePattern}}"
                           required
                         />
@@ -169,10 +169,10 @@
                           <div *ngIf="ci?.errors?.['pattern']" class="has-danger">Identity is Only with 8 numbers </div>
                         </div>
 
-                       
+
 
                         <div class="u-s-m-b-30">
-                        <label class="gl-label">GOVERNORATE *</label>
+                          <label class="gl-label">GOVERNORATE *</label>
 
                           <select class="select-box select-box--primary-style u-w-100" id="governorate" name="governorate" [(ngModel)]="selectedGovernorate"  [(ngModel)]="shipping.governorate"(ngModelChange)="updateCities()" required #gov="ngModel">
                             <option *ngFor="let gov of governorates" [value]="gov.name">{{ gov.name }}</option>
@@ -181,13 +181,13 @@
                         </div>
 
                         <div class="u-s-m-b-30">
-                            <label class="gl-label">CITY *</label>
+                          <label class="gl-label">CITY *</label>
 
-                            <select  class="select-box select-box--primary-style u-w-100" id="city" name="city" [(ngModel)]="shipping.city"  ngModel #cit="ngModel" required >
+                          <select  class="select-box select-box--primary-style u-w-100" id="city" name="city" [(ngModel)]="shipping.city"  ngModel #cit="ngModel" required >
                             <option>{{ shipping.city }}</option>
                             <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
-                            </select>
-                            <div *ngIf="cit.invalid" class="has-danger">City is required</div>
+                          </select>
+                          <div *ngIf="cit.invalid" class="has-danger">City is required</div>
 
                         </div>
                         <label for="email" class="gl-label" for="reg-email">E-MAIL *</label>
@@ -196,22 +196,22 @@
                           class="input-text input-text--primary-style"
                           type="email"
                           id="reg-email"
-                          placeholder="Enter E-mail" name="email"  [(ngModel)]="user.email" ngModel #email="ngModel" required 
+                          placeholder="Enter E-mail" name="email"  [(ngModel)]="user.email" ngModel #email="ngModel" required
                         />
-                      
+
                           <div *ngIf="cit.invalid" class="has-danger">Email is required</div>
-                          
-                     
+
+
                       </div>
                       <div class="u-s-m-b-30">
                         <label class="gl-label" for="reg-password"
                           >PASSWORD *</label
                         >
 
-                        <input   class="input-text input-text--primary-style" type="password" id="password" name="password"  ngModel #password="ngModel" required [(ngModel)]="user.password" 
+                        <input   class="input-text input-text--primary-style" type="password" id="password" name="password"  ngModel #password="ngModel" required [(ngModel)]="user.password"
                         />
                         <div *ngIf="password?.errors?.['required']" class="has-danger">password is required</div>
-                  
+
                       </div>
                       <div class="u-s-m-b-15">
                         <button
@@ -407,7 +407,7 @@
     ga("send", "pageview");
   </script>
   <script
-    src="https://www.google-analytics.com/analytics.js" 
+    src="https://www.google-analytics.com/analytics.js"
     async
     defer
   ></script>

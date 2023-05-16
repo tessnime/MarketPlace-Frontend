@@ -31,12 +31,12 @@ export class SupplierComponent {
 
   }
 
-idRole=6;
+idRole=8;
 idUser!:number;
 rolefinal!:Role;
 
   ngOnInit(): void {
-  
+
   }
   selectedFile1!: File | null | undefined;
   onUploadImage1() {
@@ -99,7 +99,7 @@ rolefinal!:Role;
       this.onUploadImage2();
       // @ts-ignore
       this.user.justification = this.selectedFile2.name;
-    }  
+    }
 
     if(this.selectedFile3!=null)
     {
@@ -110,12 +110,12 @@ rolefinal!:Role;
     this.user.governorate=t7.controls["governorate"].value;
     this.user.city=t7.controls["city"].value;
     this.LoginUserService.register(this.user,this.idRole).subscribe(()=>{
-     
-   
+
+
      alert("Successfully User is register")
     },
     ()=>alert("Sorry User not register"));
-   
+
   }
 
 

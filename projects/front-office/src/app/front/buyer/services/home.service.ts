@@ -118,14 +118,7 @@ export class HomeService {
     url = url + '&productFiltre=' + `${filtre}`;
 
 
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
-
-
-    return this.http.get<Product[]>(url, {headers});
+    return this.http.get<Product[]>(url, this.options);
 
   }
 
@@ -144,7 +137,7 @@ export class HomeService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
-    return this.http.get<EventModel[]>(this.displayRunningEvents, {headers});
+    return this.http.get<EventModel[]>(this.displayRunningEvents, this.options);
   }
 
   productsInEvents(id: number) {
@@ -175,12 +168,7 @@ export class HomeService {
   }
 
   getProductById(idp: number) {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
-    return this.http.get<Product>(this.GetProductById + `${idp}`, {headers});
+    return this.http.get<Product>(this.GetProductById + `${idp}`, this.options);
   }
 
   addProductToOrder(pq: ProductQuantity) {
@@ -213,12 +201,8 @@ export class HomeService {
   }
 
   getAllProductCategories() {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
-    return this.http.get<ProductCategory[]>(this.GetAllProductCategories, {headers})
+
+    return this.http.get<ProductCategory[]>(this.GetAllProductCategories, this.options)
   }
 
   getAllUserShippings() {
@@ -293,6 +277,7 @@ export class HomeService {
 
   addOrder(order:Order)
   {
+
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

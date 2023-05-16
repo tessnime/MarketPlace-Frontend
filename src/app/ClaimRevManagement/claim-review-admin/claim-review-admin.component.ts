@@ -6,6 +6,9 @@ import {ClaimSav} from "../../../../Models/ClaimSav";
 import {ClaimSavStatusType} from "../../../../Models/Enum/ClaimSavStatusType";
 import {LayoutService} from "../../layoutB/service/app.layout.service";
 import {Subscription} from "rxjs";
+import { BadWords } from 'Models/BadWords';
+import { GoodFeelings } from 'Models/GoodFeelings';
+import { BadFeelings } from 'Models/BadFeelings';
 
 
 @Component({
@@ -18,6 +21,12 @@ export class ClaimReviewAdminComponent implements OnInit{
   constructor(private service:ClaimServiceService) {
   }
 
+  breadcrumbItems=[
+    {'label':'HOME'},
+    {'label':'CLAIM'},
+    {'label':'DASHBOARD'},
+  ]
+
   APPROVED:number=0;
   REJECTED:number=0;
   NONTRAITE:number=0;
@@ -26,10 +35,17 @@ export class ClaimReviewAdminComponent implements OnInit{
 
   stats:claimStatsModel[]=[]
   claims:ClaimSav[]=[];
+  badwords:BadWords[]=[];
+  goodfeeling:GoodFeelings[]=[];
+  badfeeling:BadFeelings[]=[];
   ngOnInit(): void {
+
+
     this.service.getClaims().subscribe(da=>{
 
       this.claims=da;
+
+
 
     this.service.ClaimStats().subscribe(
       data=>{
@@ -52,6 +68,17 @@ export class ClaimReviewAdminComponent implements OnInit{
     );
       }
     )
+    this.service.getAllBadWords().subscribe(
+      badwords => {
+        this.badwords = badwords;
+        console.log(this.badwords);
+      },
+      error => {
+        console.error(error);
+      }
+    );
+    this.getAllGoodFeelings();
+    this.getAllBadFeelings();
   }
   refresh() {
     const currentUrl = window.location.href;
@@ -112,4 +139,90 @@ export class ClaimReviewAdminComponent implements OnInit{
     table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
   }
 
+  addgood:GoodFeelings=new GoodFeelings();
+  addGoodFeeling() {
+
+    this.service.addNewGoodFeelings(this.addgood).subscribe(
+      response => {console.log(response),
+        this.refresh();
+      },
+      error => console.error(error)
+    );
+  }
+
+
+add:BadWords=new BadWords();
+addBadWord() {
+  this.service.addBadWord(this.add).subscribe(
+    response => {
+      console.log('Bad word added successfully!');
+      this.refresh();
+    },
+    error => console.log('Error adding bad word', error)
+  );
+}
+
+getAllGoodFeelings(){
+  this.service.getAllGoodFeelings().subscribe(
+    goodfeeling=>{this.goodfeeling=goodfeeling
+      console.log(this.goodfeeling)
+    },
+    error => {
+      console.error(error);
+    }
+  )
+}
+
+
+  deleteBadWord(id: number) {
+    this.service.deleteBadWord(id).subscribe(
+      response => {console.log('Bad word deleted successfully!'),
+      this.refresh();
+    },
+    error => console.log('Error deleting bad word', error)
+    );
+  }
+
+  deleteGoodFeelings(id: number){
+    this.service.deleteGoodFeelings(id).subscribe(
+      response=>{console.log('good feelings deleted successfully!'),
+      this.refresh();
+
+      },
+      error => console.log('error deleting good feelings',error)
+    );
+  }
+
+  deleteBadFeelings(id: number){
+    this.service.deleteBadFeelings(id).subscribe(
+      response=>{console.log('bad feelings deleted successfully!'),
+      this.refresh();
+
+      },
+      error => console.log('error deleting bad feelings',error)
+    );
+  }
+
+  addbad:BadFeelings=new BadFeelings();
+  addBadFeelings(){
+    this.service.addNewBadFeelings(this.addbad).subscribe(
+      response => {
+        console.log('Bad feeling added successfully!');
+        this.refresh();
+      },
+      error => console.log('Error adding bad feeling', error)
+    );
+
+    }
+
+    getAllBadFeelings(){
+      this.service.getAllBadFeelings().subscribe(
+        badfeeling=>{this.badfeeling=badfeeling
+          console.log(this.badfeeling)
+        },
+        error => {
+          console.error(error);
+        }
+      )
+    }
 }

@@ -29,7 +29,7 @@ export class ShopSideComponent {
 
   categories!:ProductCategory[];
 
-  pageSize = 8;
+  pageSize = 6;
   currentPage = 1;
 
   sort:string='';
@@ -180,7 +180,7 @@ export class ShopSideComponent {
   ngOnInit() {
     this.form.max=0;
     this.form.min=0;
-    this.getAllCategories()
+    this.getAllCategories();
     this.getAllProducts();
     this.getProducts();
     this.getCurrentPageItems();
