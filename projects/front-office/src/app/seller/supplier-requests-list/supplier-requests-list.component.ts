@@ -20,7 +20,7 @@ interface expandedRows {
 export class SupplierRequestsListComponent implements OnInit {
   constructor(private MessageService: MessageService, private confirmationService: ConfirmationService, private productService: ProductSreviceService, private storeservice: SupplierRequestService) {
   }
-  displayConfirmationDialog!: Boolean;
+  displayConfirmationDialog= false;
 
   ngOnInit(): void {
 
@@ -48,7 +48,8 @@ export class SupplierRequestsListComponent implements OnInit {
       accept: () => {
         this.MessageService.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' });
         this.storeservice.accpetRequestBySeller(id).subscribe(r => console.log(r));
-        console.log("test2222");
+        this.dipslay=false;
+         // this.refresh();
 
       },
       reject: () => {
@@ -58,8 +59,26 @@ export class SupplierRequestsListComponent implements OnInit {
       }
     });
   }
-
+  refresh() {
+    const currentUrl = window.location.href;
+    // @ts-ignore
+    window.history.replaceState(null, null, currentUrl);
+    window.location.reload();
+  }
   isApproved(request: SupplierRequest) {
-    return request.requestStatus === ('ACCEPTED' || 'WAITING_FOR_VALIDATION');
+    return request.requestStatus === 'WAITING_FOR_VALIDATION' || request.requestStatus ===  'ACCEPTED';
+  }
+
+  selectedSuppRequest: any; // change 'any' to the correct type of suppRequest
+
+  dipslay=false
+
+  showConfirmationDialog(suppRequest: any) {
+    this.selectedSuppRequest = suppRequest;
+    this.displayConfirmationDialog = true;
+  }
+
+  cofirmDelivery(id:number){
+    this.storeservice.ConfirmDelivery(id).subscribe();
   }
 }
