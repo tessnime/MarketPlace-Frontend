@@ -63,22 +63,26 @@ export class OrderStatsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.statuses = [
-      { label: 'BASKET', value: 'BASKET' },
-      { label: 'WAITING_FOR_PAYMENT', value: 'WAITING_FOR_PAYMENT' },
-      { label: 'ACCEPTED_PAYMENT', value: 'ACCEPTED_PAYMENT' },
-      { label: 'REFUSED_PAYMENT', value: 'REFUSED_PAYMENT' }
-    ];
-    this.service.getBestUserOrders().subscribe(data=>{this.orders=data;
-      this.orders.forEach(customer => customer.creationDate = new Date(customer.creationDate));
-    this.service.orderStatsByStatusType().subscribe(data=>{this.status=data;
-    this.service.rankGouvernoratByOrdersNumber().subscribe(data=>{this.rankGovData=data;
-    this.service.orderRankForUsersByStatusType().subscribe(data=>{this.orderRank=data;
-    this.initCharts();
-    });
-    });
-    });
-    });
+      this.statuses = [
+        {label: 'BASKET', value: 'BASKET'},
+        {label: 'WAITING_FOR_PAYMENT', value: 'WAITING_FOR_PAYMENT'},
+        {label: 'ACCEPTED_PAYMENT', value: 'ACCEPTED_PAYMENT'},
+        {label: 'REFUSED_PAYMENT', value: 'REFUSED_PAYMENT'}
+      ];
+      this.service.getBestUserOrders().subscribe(data => {
+        this.orders = data;
+        this.orders.forEach(customer => customer.creationDate = new Date(customer.creationDate));
+        this.service.orderStatsByStatusType().subscribe(data => {
+          this.status = data;
+          this.service.rankGouvernoratByOrdersNumber().subscribe(data => {
+            this.rankGovData = data;
+            this.service.orderRankForUsersByStatusType().subscribe(data => {
+              this.orderRank = data;
+              this.initCharts();
+            });
+          });
+        });
+      });
   }
 
   initCharts() {

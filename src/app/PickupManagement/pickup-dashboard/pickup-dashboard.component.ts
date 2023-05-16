@@ -8,6 +8,13 @@ import { PickupService } from 'projects/front-office/src/app/sellerMohsen/servic
 })
 export class PickupDashboardComponent {
 constructor(private pickupService:PickupService){}
+
+  breadcrumbItems=[
+    {'label':'HOME'},
+    {'label':'PICKUP'},
+    {'label':'DASHBOARD'},
+  ]
+
 ngOnInit(){
   this.countOfPickupDeliveredweekAdministrator();
   this.countPickupDeliveredTodayAdministrator();

@@ -65,3 +65,13 @@
   .custom-file-upload:hover {
     background-color: #d93d00;
   }
+
+  .ngx-pagination li:first-child a:before {
+    content: "Previous";
+    font-weight: bold;
+  }
+  
+  .ngx-pagination li:last-child a:after {
+    content: "Next";
+    font-weight: bold;
+  }

@@ -81,6 +81,11 @@ export class ServiceAdminService {
   upload(image: File | null | undefined)
   {
     const formData = new FormData();
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
     // @ts-ignore
     formData.append('file', image, image.name);
     return this.http.post(this.Upload,formData,options);

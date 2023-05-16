@@ -111,6 +111,7 @@ export class HomeComponent {
   searchProduct(maxprix:number,minprix:number,nameProd:string,mark:string,categorie:string,filtre:String)
   {
     this.home.searchProduct(maxprix,minprix,nameProd,mark,categorie,filtre).subscribe(data =>{this.request=data;})
+
   }
 
 

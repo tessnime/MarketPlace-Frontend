@@ -33,14 +33,7 @@ export class CartComponent {
   }
 
   gotoFinalize() {
-    this.home.sessionReteurn().subscribe(data => {
-      this.sess = data;
-      if (this.sess) {
         this.router.navigate(["buyer/cart/finaliseOrder"]);
-      } else {
-        this.router.navigate(["user/signin"]);
-      }
-    });
   }
 
   sess: boolean = false;

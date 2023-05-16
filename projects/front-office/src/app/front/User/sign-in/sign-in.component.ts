@@ -19,7 +19,7 @@ export class SignInComponent implements OnInit {
   //submitted = false;
   //returnUrl!: string;
   error = '';
-   user:  User  = new User();;
+   user:  User  = new User();
   role!:string;
   constructor(private jwtHelper:JwtHelperService,  public LoginUserService:LoginUserService ,private router:Router ,private route: ActivatedRoute,private cookieService: CookieService ){}
   ngOnInit() {

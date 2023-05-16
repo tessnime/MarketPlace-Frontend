@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { AppLayoutModule } from './layoutB/app.layout.module';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AddUserComponent } from './add-user/add-user.component';
 import { PickupDashboardComponent } from './PickupManagement/pickup-dashboard/pickup-dashboard.component';
 import { PredictAdminComponent } from './PickupManagement/predict-admin/predict-admin.component';

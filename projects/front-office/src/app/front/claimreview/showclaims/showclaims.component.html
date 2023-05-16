@@ -39,7 +39,7 @@
                                     <a href="index.html">Home</a></li>
                                 <li class="is-marked">
 
-                                    <a href="signin.html">Signin</a></li>
+                                    <a href="signin.html">Claims list</a></li>
                             </ul>
                         </div>
                     </div>
@@ -58,7 +58,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="section__text-wrap">
-                                <h1 class="section__heading u-c-secondary">Claim Service Management</h1>
+                                <h1 class="checkout-f__h1">Welcome To your Claims Management</h1>
+                                <input class="input-text input-text--border-radius input-text--style-1" type="text" [(ngModel)]="searchTerm" (input)="filterClaims()" placeholder="Search for claims">
                             </div>
                         </div>
                     </div>
@@ -68,34 +69,34 @@
 
             <div class="container u-s-p-b-60">
             <!--====== Section Content ======-->
+            <div class="dash__table-search">
+              </div>
             <div class="dash__box dash__box--shadow dash__box--bg-white dash__box--radius u-s-m-b-30">
                 <div class="dash__table-2-wrap gl-scroll">
                     <table class="dash__table-2">
-                <thead>
-                  <tr>
-                    <th>Reference</th>
-                    <th>Object</th>
-                    <th>Status</th>
-
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <ng-container *ngFor="let claim of claims">
-                <tr >
-                    <td>{{ claim.reference }}</td>
-                    <td>{{ claim.object }}</td>
-                    <td>{{ claim.status }}</td>
-
-                    <td>
-                      <button class="btn btn-sm btn-primary" (click)="updateClaim(claim)">Edit</button>
-                      <button class="btn btn-sm btn-danger" (click)="deleteClaim(claim.id)">Delete</button>
-                    </td>
-                  </tr>
-                </ng-container>
-                </tbody>
-              </table>
-            </div>
+                        <thead>
+                          <tr>
+                            <th>REFERENCE</th>
+                            <th>OBJECT</th>
+                            <th>STATUS</th>
+                            <th>ACTIONS</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <ng-container *ngFor="let claim of claims | paginate: paginationConfig">
+                            <tr *ngIf="claim.user.id==user.id">
+                              <td>{{ claim.reference }}</td>
+                              <td>{{ claim.object }}</td>
+                              <td>{{ claim.status }}</td>
+                              <td>
+                                <button class="btn btn-outline-secondary mr-2" (click)="updateClaim(claim)">Edit</button>
+                                <button class="btn btn-outline-danger mr-2" (click)="deleteClaim(claim.id)">Delete</button>
+                              </td>
+                            </tr>
+                          </ng-container>
+                        </tbody>
+                      </table>
+                      <pagination-controls (pageChange)="onPageChange($event)" class="my-pagination" [id]="paginationConfig?.id || ''"></pagination-controls>
         </div>
             <!--====== End - Section Content ======-->
             </div>

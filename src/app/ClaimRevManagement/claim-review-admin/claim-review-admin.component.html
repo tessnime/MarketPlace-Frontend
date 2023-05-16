@@ -1,4 +1,9 @@
 <div class="surface-ground px-4 py-5 md:px-6 lg:px-8">
+  <div class="col-12">
+    <div class="card card-w-title">
+      <p-breadcrumb [model]="breadcrumbItems" [home]="{icon: 'pi pi-home'}"></p-breadcrumb>
+    </div>
+  </div>
   <div class="grid">
     <div class="col-12 md:col-6 lg:col-3">
       <div class="surface-card shadow-2 p-3 border-round">
@@ -73,13 +78,13 @@
   <div class="col-12">
     <div class="card">
       <h5>Claims Data</h5>
-      <p-table #dt1 [value]="claims" dataKey="id" [rows]="4" [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['reference','user.firstName','object','body','screenshot','status','ClaimSavType','createdAt','updatedAt']" responsiveLayout="scroll">
+      <p-table #dt9 [value]="claims" dataKey="id" [rows]="4" [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['reference','user.firstName','object','body','screenshot','status','ClaimSavType','createdAt','updatedAt']" responsiveLayout="scroll">
         <ng-template pTemplate="caption">
           <div class="flex justify-content-between flex-column sm:flex-row">
-            <button pButton label="Clear" class="p-button-outlined mb-2" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+            <button pButton label="Clear" class="p-button-outlined mb-2" icon="pi pi-filter-slash" (click)="clear(dt9)"></button>
             <span class="p-input-icon-left mb-2">
             <i class="pi pi-search"></i>
-            <input pInputText type="text" #filter (input)="onGlobalFilter(dt1, $event)" placeholder="Search Keyword" class="w-full"/>
+            <input pInputText type="text" #filter (input)="onGlobalFilter(dt9, $event)" placeholder="Search Keyword" class="w-full"/>
           </span>
           </div>
         </ng-template>
@@ -188,6 +193,181 @@
           </tr>
         </ng-template>
       </p-table>
+      <br>
+      <br>
+</div>
+</div>
+<div class="col-12">
+  <div class="card">
+  <div class="col-5 my-2">
+    <input class="mr-2" pInputText type="text" [(ngModel)]="add.word"#filter placeholder="Add BadWord"/><button class="btn btn-outline-secondary" (click)="addBadWord()">Add</button>
+   </div>
+    <p-table #dt6 [value]="badwords" dataKey="id" [rows]="4" [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['word']" responsiveLayout="scroll">
+        <ng-template pTemplate="caption">
+          <div class="flex justify-content-between flex-column sm:flex-row">
+            <span class="p-input-icon-left mb-2">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" #filter (input)="onGlobalFilter(dt6, $event)" placeholder="Search Keyword" class="w-full"/>
+          </span>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="min-width: 12rem">
+              <div class="flex justify-content-between align-items-center">
+                BadWords
+              </div>
+            </th>
+            <th style="min-width: 12rem">
+              <div class="flex justify-content-between align-items-center">
+
+              </div>
+            </th>
+
+
+
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-b >
+          <tr>
+            <td>
+              {{b.word}}
+            </td>
+            <td>
+
+              <button class="btn btn-outline-danger mr-2" (click)="deleteBadWord(b.id)">Delete</button>
+          </td>
+
+
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="8">No customers found.</td>
+          </tr>
+        </ng-template>
+
+
+
+
+      </p-table>
+
     </div>
   </div>
+  <div class="col-12">
+    <div class="card">
+    <div class="col-5 my-2">
+
+          <input class="mr-2" pInputText type="text" [(ngModel)]="addgood.name" #filter placeholder="Add Feelings">
+            <button class="btn btn-outline-secondary mr-2" (click)="addGoodFeeling()" >Add</button>
+            </div>
+      <p-table #dt4 [value]="goodfeeling" dataKey="id" [rows]="4" [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['name']" responsiveLayout="scroll">
+        <ng-template pTemplate="caption">
+          <div class="flex justify-content-between flex-column sm:flex-row">
+
+
+            <span class="p-input-icon-left mb-2">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" #filter (input)="onGlobalFilter(dt4, $event)" placeholder="Search Keyword" class="w-full"/>
+          </span>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="min-width: 12rem">
+              <div class="flex justify-content-between align-items-center">
+                GoodFeelings
+              </div>
+            </th>
+            <th style="min-width: 12rem">
+              <div class="flex justify-content-between align-items-center">
+
+              </div>
+            </th>
+
+
+
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-g >
+          <tr>
+            <td>
+              {{g.name}}
+            </td>
+            <td>
+
+              <button class="btn btn-outline-danger mr-2" (click)="deleteGoodFeelings(g.id)">Delete</button>
+          </td>
+
+
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="8">No customers found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+
+
+  <div class="col-12">
+    <div class="card">
+      <div class="d-flex align-items-center">
+        <input class="mr-2" pInputText type="text" [(ngModel)]="addbad.name" #filter placeholder="Add Feelings">
+        <button class="btn btn-outline-secondary" (click)="addBadFeelings()">Add</button>
+      </div>
+  <p-table #dt2 [value]="badfeeling" dataKey="id" [rows]="4" [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['name']" responsiveLayout="scroll">
+    <ng-template pTemplate="caption">
+      <div class="flex justify-content-between flex-column sm:flex-row">
+
+        <span class="p-input-icon-left mb-2">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" #filter (input)="onGlobalFilter(dt2, $event)" placeholder="Search Keyword" class="w-full"/>
+      </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="min-width: 12rem">
+          <div class="flex justify-content-between align-items-center">
+            BadFeelings
+          </div>
+        </th>
+        <th style="min-width: 12rem">
+          <div class="flex justify-content-between align-items-center">
+
+          </div>
+        </th>
+
+
+
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-bd >
+      <tr>
+        <td>
+          {{bd.name}}
+        </td>
+        <td>
+
+          <button class="btn btn-outline-danger mr-2"(click)="deleteBadFeelings(bd.id)" >Delete</button>
+      </td>
+
+
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8">No customers found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
 </div>
+</div>
+</div>
+
+
+
+

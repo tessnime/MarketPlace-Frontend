@@ -33,6 +33,7 @@ import { ClaimComponent } from './claimreview/claim/claim.component';
 import { ShowclaimsComponent } from './claimreview/showclaims/showclaims.component';
 import { EditClaimComponent } from './claimreview/edit-claim/edit-claim.component';
 import { ReviewComponent } from './claimreview/review/review.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
@@ -63,8 +64,9 @@ import { ReviewComponent } from './claimreview/review/review.component';
     ClaimComponent,
     ShowclaimsComponent,
     EditClaimComponent,
-    ReviewComponent
-],
+    ReviewComponent,
+
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -73,8 +75,9 @@ import { ReviewComponent } from './claimreview/review/review.component';
     HttpClientModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatSelectModule
-   // AutocompleteLibModule
+    MatSelectModule,
+    NgxPaginationModule
+    // AutocompleteLibModule
   ]
 })
 
