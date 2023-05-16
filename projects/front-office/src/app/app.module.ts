@@ -266,3 +266,4 @@ import { ViewDeliveryMenOfPickupComponent } from './sellerMohsen/view-delivery-m
 })
 
 export class AppModule { }
+

@@ -77,4 +77,5 @@ import { ReviewComponent } from './claimreview/review/review.component';
    // AutocompleteLibModule
   ]
 })
+
 export class FrontModule { }

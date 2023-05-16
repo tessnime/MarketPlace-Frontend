@@ -32,11 +32,11 @@ export class SignInComponent implements OnInit {
     let decodedToken = this.jwtHelper.decodeToken(response.accessToken)
     let role = decodedToken.role[0];
     if (role === 'BUYER') {
-      this.router.navigate(['/']); 
+      this.router.navigate(['/']);
     } else if (role === 'SELLER') {
-      this.router.navigate(['/store']); 
+      this.router.navigate(['/store']);
     }else if (role === 'DELIVERYMEN') {
-      this.router.navigate(['/freelancer']);  
+      this.router.navigate(['/freelancer']);
     }
   },(error) =>{
     if(error.error){
@@ -47,8 +47,8 @@ export class SignInComponent implements OnInit {
 
 
   }
-  
-   
+
+
 
   goToForgetPass(){
     this.router.navigate(['/forgetPassword']);
