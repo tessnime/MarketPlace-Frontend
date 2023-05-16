@@ -16,7 +16,7 @@
                     <th>Image</th>
                     <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
                     <th pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon></th>
-                    <th pSortableColumn="rating">Reviews <p-sortIcon field="rating"></p-sortIcon></th>
+                    <th pSortableColumn="rating">Stats <p-sortIcon field="rating"></p-sortIcon></th>
                     <th pSortableColumn="inventoryStatus">Status <p-sortIcon field="inventoryStatus"></p-sortIcon></th>
                 </tr>
             </ng-template>
@@ -32,8 +32,10 @@
                             width="100" class="shadow-4" /></td>
                     <td style="min-width: 8rem;">{{product.productPrice | currency:'TND '}}</td>
                     <td style="min-width: 10rem;">{{product.productCategory.name}}</td>
-                    <td style="min-width: 10rem;"><p-rating [ngModel]="product.rating" [readonly]="true"
-                            [cancel]="false"></p-rating></td>
+                    <td style="min-width: 10rem;">							
+                        
+                        <a type="button" class="btn btn-primary" href="http://localhost:8081/product/allSupplierRequestsOnProduct?id={{product.id}}&status=ALL" target="_blank">PDF</a>
+                    </td>
                     <td><span
                             [class]="'product-badge status-' + product.productStatus.toLowerCase()">{{product.productStatus}}</span>
                     </td>
@@ -70,9 +72,12 @@
                     <td>
                         <div class="grid">
                             <div class="col-12">
-                                <button type="text" (click)="confirm1(suppRequest)" pButton icon="pi pi-check"
+                                <button type="text" *ngIf="suppRequest.requestStatus != 'ACCEPTED'" (click)="confirm1(suppRequest);dipslay=true" pButton icon="pi pi-check"
                                     class="p-button-success mr-2"></button>
-                                <p-confirmDialog header="Confirmation" key="confirm1" icon="pi pi-exclamation-triangle"
+                                    <button type="text" *ngIf="suppRequest.requestStatus == 'ACCEPTED'" (click)="cofirmDelivery(suppRequest.id)" pButton icon="pi pi-check"
+                                    class="p-button-success mr-2"></button>
+
+                                <p-confirmDialog *ngIf="dipslay==true" header="Confirmation" key="confirm1" icon="pi pi-exclamation-triangle"
                                     message="Are you sure you want to proceed?" [style]="{width: '350px'}"
                                     acceptButtonStyleClass="p-button-text"
                                     rejectButtonStyleClass="p-button-text"></p-confirmDialog>
@@ -95,4 +100,4 @@
     </p-table>
 </div>
 <!-- <button type="text" (click)="confirm1(28)" pButton icon="pi pi-check"></button> -->
-</div>
+</div>s

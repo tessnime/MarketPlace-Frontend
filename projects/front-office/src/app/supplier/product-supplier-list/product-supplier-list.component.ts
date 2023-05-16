@@ -43,7 +43,7 @@ clear(table: Table) {
   table.clear();
   this.filter.nativeElement.value = '';
 }
-supplierReq!:SupplierRequest;
+supplierReq:SupplierRequest=new SupplierRequest();
 
 addresquest(F:NgForm,idP:number){
 this.supplierReq.deliveryDate=this.delivDate;
