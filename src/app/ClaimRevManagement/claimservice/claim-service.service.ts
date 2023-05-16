@@ -21,7 +21,12 @@ export class ClaimServiceService {
   option1 = {withCredentials: true, responseType: 'json'};
   ClaimStats()
   {
-    return this.http.get<claimStatsModel[]>(this.claimStats,this.options);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<claimStatsModel[]>(this.claimStats,{headers});
   }
 
   getClaims(): Observable<ClaimSav[]> {

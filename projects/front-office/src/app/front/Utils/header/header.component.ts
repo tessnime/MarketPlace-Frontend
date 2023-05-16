@@ -35,15 +35,7 @@ export class HeaderComponent {
   sess:boolean=false;
 
   ngOnInit() :void {
-   this.isLoggedIn =!!this.cookieService.get('accessToken');
-
-    if(this.isLoggedIn){
-      const user = this.cookieService.get('accaccessToken');
-    }
-    this.getListProduct();
-    this.getBaskerOrder();
-    this.loyalityPoints();
-
+    const token = localStorage.getItem('token');
     this.home.sessionReteurn().subscribe(data=>{this.sess=data;
     if(data==null)
       this.sess=false;
@@ -92,14 +84,9 @@ export class HeaderComponent {
   }
   gotoFinalize()
   {
-    this.home.sessionReteurn().subscribe(data=>{this.sess=data;if(this.sess) {
       this.router.navigate(["buyer/cart/finaliseOrder"]);
     }
-    else
-    {
-      this.router.navigate(["user/signin"]);
-    }});
-  }
+
   gotoOrderSettings()
   {
     this.router.navigate(["buyer/Orders"]);

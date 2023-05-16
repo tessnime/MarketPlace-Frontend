@@ -25,7 +25,7 @@ export class ServicesService {
   DeleteEvent="http://localhost:8081/Event/deleteEvent?id="
   Upload="http://localhost:8081/Event/upload"
   AddEvent="http://localhost:8081/Event/addEvent"
-
+  PDF_order_stat="http://localhost:8081/orderStats/PDF_OrderRankForUsersByStatusType"
 
     options = {withCredentials: true};
   option = {withCredentials: true, responseType: 'text'};

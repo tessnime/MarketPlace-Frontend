@@ -39,7 +39,7 @@
                                     <a href="index.html">Home</a></li>
                                 <li class="is-marked">
 
-                                    <a href="signin.html">Signin</a></li>
+                                    <a href="signin.html">Claims list</a></li>
                             </ul>
                         </div>
                     </div>
@@ -70,8 +70,6 @@
             <div class="container u-s-p-b-60">
             <!--====== Section Content ======-->
             <div class="dash__table-search">
-                
-            
               </div>
             <div class="dash__box dash__box--shadow dash__box--bg-white dash__box--radius u-s-m-b-30">
                 <div class="dash__table-2-wrap gl-scroll">
@@ -86,7 +84,7 @@
                         </thead>
                         <tbody>
                           <ng-container *ngFor="let claim of claims | paginate: paginationConfig">
-                            <tr>
+                            <tr *ngIf="claim.user.id==user.id">
                               <td>{{ claim.reference }}</td>
                               <td>{{ claim.object }}</td>
                               <td>{{ claim.status }}</td>

@@ -23,7 +23,7 @@ export class DeliveryMenComponent {
     buyer:new User(),
   };
   user:  User  = new User();
-  
+
   Gender=['MAN','WOMEN','Other']
   passwordPattern="[a-zA-Z0-9]*"
   phonePattern="[0-9]{2}-[0-9]{3}-[0-9]{3}"
@@ -32,12 +32,12 @@ export class DeliveryMenComponent {
 
   }
 
-idRole=2;
+idRole=5;
 idUser!:number;
 rolefinal!:Role;
 
   ngOnInit(): void {
-  
+
   }
   RoleF!:Role;
   selectedFile1!: File | null | undefined;
@@ -100,7 +100,7 @@ rolefinal!:Role;
       this.onUploadImage2();
       // @ts-ignore
       this.user.justification = this.selectedFile2.name;
-    }  
+    }
 
     if(this.selectedFile3!=null)
     {
@@ -108,17 +108,17 @@ rolefinal!:Role;
         // @ts-ignore
         this.user.brandLogo = this.selectedFile3.name;
     }
-  
-  
+
+
     this.user.governorate=t7.controls["governorate"].value;
     this.user.city=t7.controls["city"].value;
     this.LoginUserService.register(this.user,this.idRole).subscribe(()=>{
-     
-   
+
+
      alert("Successfully User is register")
     },
     ()=>alert("Sorry User not register"));
-   
+
   }
 
 
@@ -170,5 +170,5 @@ rolefinal!:Role;
     }
   }
 
- 
+
 }

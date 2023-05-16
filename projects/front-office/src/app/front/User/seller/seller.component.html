@@ -82,14 +82,14 @@
 
                     <form class="l-f-o__form" name="form"(ngSubmit)="Create(f)" #f="ngForm">
                       <div class="gl-s-api">
-                       
+
                       </div>
 
                       <div class="u-s-m-b-30">
                         <label class="gl-label" for="photo"
                           >PROFILE PICTURE *</label
                         >
-                        <input type="file"  accept=".png" id="photo" name="photo" [(ngModel)]="user.image"  />
+                        <input type="file"  accept="image/*" (change)="handleFileInput1($event)"  id="photo" name="photo" [(ngModel)]="user.image"  />
                       </div>
 
                       <div class="u-s-m-b-30">
@@ -139,7 +139,7 @@
                               <option *ngFor="let d of Gender">{{ d }}</option>
                             </select>
                             <div *ngIf="fn8.invalid" class="has-danger">Gender: is required</div>
-                           
+
                           </div>
                         </div>
 
@@ -153,9 +153,9 @@
                           type="tel"
                           id="phone"
                           name="phone"
-                         
+
                           placeholder="Enter phone-Number"  [(ngModel)]="user.phoneNumber" ngModel required #ci="ngModel" pattern="{{phonePattern}}"
-                      
+
                         />
                         <div *ngIf="ci?.errors?.['required']" class="has-danger">phone is required</div>
                         <div *ngIf="ci?.errors?.['pattern']" class="has-danger">phone number must be in a valid format</div>
@@ -183,22 +183,22 @@
                             class="input-text input-text--primary-style"
                             type="text"
                             id="reg-bname"
-                            placeholder="BrandName"   name="brandName"  [(ngModel)]="user.brandName"  ngModel required #fn8="ngModel" 
+                            placeholder="BrandName"   name="brandName"  [(ngModel)]="user.brandName"  ngModel required #fn8="ngModel"
                           />
                           <div *ngIf="fn8.invalid" class="has-danger">BrandName is required</div>
                         </div>
 
                         <div class="u-s-m-b-30">
-                          <label class="gl-label" id="espace" for="reg-bLname" 
+                          <label class="gl-label" id="espace" for="reg-bLname"
                             >BRAND LOGO *</label
                           >
 
                           <input
 
                             type="file"
-                            accept=".png"
+                            accept="image/*" (change)="handleFileInput3($event)"
                             id="reg-bLname"
-                            placeholder="BrandLogo"   name="brandlogo"  [(ngModel)]="user.brandLogo" ngModel required #fn8="ngModel" 
+                            placeholder="BrandLogo"   name="brandlogo"  [(ngModel)]="user.brandLogo" ngModel required #fn8="ngModel"
                           />
                           <div *ngIf="fn8.invalid" class="has-danger">BrandLogo is required</div>
                         </div>
@@ -212,23 +212,23 @@
                           <input
 
                             type="file"
-                            accept=".pdf"
+                            accept="image/*" (change)="handleFileInput2($event)"
                             id="reg-Jname"
                             placeholder="Justification"  name="Justification"  [(ngModel)]="user.justification" ngModel required #fn8="ngModel"
                           />
                           <div *ngIf="fn8.invalid" class="has-danger">Justification is required</div>
                         </div>
 
-                       
+
                         <div class="u-s-m-b-30">
                           <label class="gl-label">GOVERNORATE *</label>
-  
+
                             <select class="select-box select-box--primary-style u-w-100" id="governorate" name="governorate" [(ngModel)]="selectedGovernorate"  [(ngModel)]="shipping.governorate"(ngModelChange)="updateCities()" required #gov="ngModel">
                               <option *ngFor="let gov of governorates" [value]="gov.name">{{ gov.name }}</option>
                             </select>
                             <div *ngIf="gov.invalid" class="has-danger">Governorate is required</div>
                           </div>
-  
+
                           <div class="u-s-m-b-30">
                             <label class="gl-label">CITY *</label>
 
@@ -245,19 +245,19 @@
                             class="input-text input-text--primary-style"
                             type="email"
                             id="reg-email"
-                            placeholder="Enter E-mail" name="email"  [(ngModel)]="user.email" ngModel #email="ngModel" required 
+                            placeholder="Enter E-mail" name="email"  [(ngModel)]="user.email" ngModel #email="ngModel" required
                           />
-                        
+
                             <div *ngIf="cit.invalid" class="has-danger">Email is required</div>
-                            
-                       
+
+
                         </div>
                         <div class="u-s-m-b-30">
                           <label class="gl-label" for="reg-password"
                             >PASSWORD *</label
                           >
-  
-                          <input   class="input-text input-text--primary-style" type="password" id="password" name="password"  minlength="6" ngModel #password="ngModel" required  [(ngModel)]="user.password" 
+
+                          <input   class="input-text input-text--primary-style" type="password" id="password" name="password"  minlength="6" ngModel #password="ngModel" required  [(ngModel)]="user.password"
                           />
                           <div *ngIf="password?.errors?.['required']" class="has-danger">password is required</div>
                           <div *ngIf="password?.errors?.['pattern']" class="has-danger">password must only contain letters and numbers </div>

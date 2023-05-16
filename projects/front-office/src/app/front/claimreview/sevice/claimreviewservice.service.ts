@@ -76,7 +76,6 @@ getClaims(): Observable<ClaimSav[]> {
   addReview(review:Review,idProduct:number,rate:number): Observable<Review> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });    return this.http.post<Review>(this.addreview+`${idProduct}`+'&rating='+`${rate}`,review,{headers});
   }

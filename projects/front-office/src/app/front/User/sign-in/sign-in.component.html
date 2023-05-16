@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../../../../assets/front-template/css/app.css">
 
 <body class="config">
-   
+
 
     <!--====== Main App ======-->
     <div id="app">
@@ -82,12 +82,25 @@
                                             <a class="l-f-o__create-link btn--e-transparent-brand-b-2" href="signup.html">CREATE AN ACCOUNT</a></div>
                                         <h1 class="gl-h1">SIGNIN</h1>
 
+                                      <div class="gl-s-api">
+                                        <div class="u-s-m-b-15">
+
+                                          <button class="gl-s-api__btn gl-s-api__btn--fb" type="button"><i class="fab fa-facebook-f"></i>
+
+                                            <span>Signup with Facebook</span></button></div>
+                                        <div class="u-s-m-b-30">
+
+                                          <button class="gl-s-api__btn gl-s-api__btn--gplus" type="button"><i class="fab fa-google"></i>
+
+                                            <span>Signup with Google</span></button></div>
+                                      </div>
+
                                         <span class="gl-text u-s-m-b-30">If you have an account with us, please log in.</span>
                                        <!--<div *ngIf="!LoginUserService.getAccessToken()">
-                                            <p>Please login to access this page.</p>--> 
+                                            <p>Please login to access this page.</p>-->
                                         <form class="l-f-o__form" name="form" (ngSubmit)="userLogin()"  #f="ngForm" novalidate  >
-                                    
-                                          
+
+
                                             <div class="u-s-m-b-30">
 
                                                 <label class="gl-label" for="login-email">E-MAIL *</label>
@@ -101,13 +114,13 @@
                                             <div class="gl-inline">
                                                 <div class="u-s-m-b-30">
 
-                                                    <button class="btn btn--e-transparent-brand-b-2" type="submit">LOGIN</button></div> 
-                                                    
+                                                    <button class="btn btn--e-transparent-brand-b-2" type="submit">LOGIN</button></div>
+
                                                 <div class="u-s-m-b-30">
-                                               
+
                                                     <a class="gl-link" (click)="goToForgetPass()">Lost Your Password?</a></div>
                                             </div>
-                                       
+
                                             <div class="u-s-m-b-30">
 
                                                 <!--====== Check Box ======-->
@@ -132,7 +145,7 @@
             <!--====== End - Section 2 ======-->
         </div>
         <!--====== End - App Content ======-->
-       
+
 
         <!--====== Main Footer ======-->
         <app-footer></app-footer>
@@ -176,8 +189,8 @@
                 </div>
             </div>
         </div>
-  
+
     </noscript>
-   
+
 </body>
 
