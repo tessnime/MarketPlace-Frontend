@@ -80,4 +80,5 @@ import {NgxPaginationModule} from "ngx-pagination";
     // AutocompleteLibModule
   ]
 })
+
 export class FrontModule { }

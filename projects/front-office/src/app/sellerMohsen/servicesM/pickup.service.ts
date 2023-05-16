@@ -525,21 +525,33 @@ return this.http.get<Store>(this.urlgetStoreByPickup+`${idPickup}`,{headers});
 //Freelancer
 urlkilometreTotalConsommerParFreelancerDelivery="http://localhost:8081/Pickup/kilometreTotalConsommerParFreelancerDelivery";
 kilometreTotalConsommerParFreelancerDelivery(){
-  const options = { withCredentials:true };
-return this.http.get<number>(this.urlkilometreTotalConsommerParFreelancerDelivery,options);
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+return this.http.get<number>(this.urlkilometreTotalConsommerParFreelancerDelivery,{headers});
 }
 
 //Administrateur
 urlcountPickupDeliveredTodayAdministrator="http://localhost:8081/Pickup/countPickupDeliveredTodayAdministrator";
 
 countPickupDeliveredTodayAdministrator(){
-  const options = { withCredentials:true };
-  return this.http.get<number>(this.urlcountPickupDeliveredTodayAdministrator,options)
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+  return this.http.get<number>(this.urlcountPickupDeliveredTodayAdministrator,{headers})
 }
 urlcountOfPickupDeliveredweekAdministrator="http://localhost:8081/Pickup/countOfPickupDeliveredweekAdministrator";
 countOfPickupDeliveredweekAdministrator(){
-  const options = { withCredentials:true };
-  return this.http.get<number>(this.urlcountOfPickupDeliveredweekAdministrator,options);
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+  return this.http.get<number>(this.urlcountOfPickupDeliveredweekAdministrator,{headers});
 }
 
 
@@ -547,75 +559,131 @@ countOfPickupDeliveredweekAdministrator(){
 urlSumOfPricePickupDeliveredToday="http://localhost:8081/Pickup/SumOfPricePickupDeliveredToday";
 
 SumOfPricePickupDeliveredToday(){
-  const options = { withCredentials:true };
-  return this.http.get<number>(this.urlSumOfPricePickupDeliveredToday,options);
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+  return this.http.get<number>(this.urlSumOfPricePickupDeliveredToday,{headers});
 }
 
 urlcountAllAgencyAdmin="http://localhost:8081/AgencyBranch/countAllAgencyAdmin";
 countAllAgencyAdmin(){
-  const options = { withCredentials:true };
-  return this.http.get<any>(this.urlcountAllAgencyAdmin,options);
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+  return this.http.get<any>(this.urlcountAllAgencyAdmin,{headers});
 }
 urlgetNumberOfPickupByStatus="http://localhost:8081/Pickup/getNumberOfPickupByStatus";
 getNumberOfPickupByStatus(){
-  const options = { withCredentials:true };
-  return this.http.get<any>(this.urlgetNumberOfPickupByStatus,options);
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+  return this.http.get<any>(this.urlgetNumberOfPickupByStatus,{headers});
 }
 urlgetNumberOfPickupByStatusByMonthAndYearAndAll="http://localhost:8081/Pickup/getNumberOfPickupByStatusByMonthAndYearAndAll";
 getNumberOfPickupByStatusByMonthAndYearAndAll(){
-  const options = { withCredentials:true };
-  return this.http.get<any>(this.urlgetNumberOfPickupByStatusByMonthAndYearAndAll,options);
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+  return this.http.get<any>(this.urlgetNumberOfPickupByStatusByMonthAndYearAndAll,{headers});
 }
 urlpredict="http://localhost:8081/Pickup/predictc";
 sendDataRegLineaire(){
-  const options = { withCredentials:true };
-  return this.http.get<any>(this.urlpredict,options);
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+  return this.http.get<any>(this.urlpredict,{headers});
 }
 urlgetPredictCo2="http://localhost:8081/Pickup/predictco2?gearage=";
 getPredictCo2(gearAge:number){
-  const options = { withCredentials:true };
-  return this.http.get<number>(this.urlgetPredictCo2+`${gearAge}`,options);
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+  return this.http.get<number>(this.urlgetPredictCo2+`${gearAge}`,{headers});
 }
 urlAllCo2User="http://localhost:8081/Pickup/AllCo2User";
 AllCo2User(){
-  const options = { withCredentials:true };
-  return this.http.get<number>(this.urlAllCo2User,options);
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+  return this.http.get<number>(this.urlAllCo2User,{headers});
 }
 urlgetNumberRequestsInMonth="http://localhost:8081/Pickup/getNumberRequestsInMonth";
 getNumberRequestsInMonth(){
-  const options = { withCredentials:true };
-  return this.http.get<any>(this.urlgetNumberRequestsInMonth,options);
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+  return this.http.get<any>(this.urlgetNumberRequestsInMonth,{headers});
 }
 urlgetNumberPickupsInMonth="http://localhost:8081/Pickup/getNumberPickupsInMonth";
 getNumberPickupsInMonth(){
-  const options = { withCredentials:true };
-  return this.http.get<any>(this.urlgetNumberPickupsInMonth,options);
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+  return this.http.get<any>(this.urlgetNumberPickupsInMonth,{headers});
  }
  urlRetrieveAllPickupsOfUser="http://localhost:8081/Pickup/RetrieveAllPickupsOfUser";
  RetrieveAllPickupsOfUser(){
-  const options = { withCredentials:true };
-  return this.http.get<Pickup[]>(this.urlRetrieveAllPickupsOfUser,options);
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+  return this.http.get<Pickup[]>(this.urlRetrieveAllPickupsOfUser,{headers});
  }
 urlRetrieveAllPickupsOfSeller="http://localhost:8081/Pickup/RetrieveAllPickupsOfSeller";
 RetrieveAllPickupsOfSeller(){
-  const options = { withCredentials:true };
-  return this.http.get<Pickup[]>(this.urlRetrieveAllPickupsOfSeller,options);
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+  return this.http.get<Pickup[]>(this.urlRetrieveAllPickupsOfSeller,{headers});
 }
 //predict admin
 urlpredictrequest="http://localhost:8081/Pickup/predictrequest";
 preductRequest(){
-  const options = { withCredentials:true };
-  return this.http.get<any>(this.urlpredictrequest,options)
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+  return this.http.get<any>(this.urlpredictrequest,{headers})
 }
 urlgetprdeuctRequest="http://localhost:8081/Pickup/predict/requedt?r=";
 getprdeuctRequest(nbRequest:number){
-  const options = { withCredentials:true };
- return this.http.get<number>(this.urlgetprdeuctRequest+`${nbRequest}`,options);
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+ return this.http.get<number>(this.urlgetprdeuctRequest+`${nbRequest}`,{headers});
 }
 //seller
 urlretrieveTheFreelancerOfPickup="http://localhost:8081/Pickup/retrieveTheFreelancerOfPickup?idPickup=";
 retrieveTheFreelancerOfPickup(idPickup:number){
-  const options = { withCredentials:true };
-  return this.http.get<User>(this.urlretrieveTheFreelancerOfPickup+`${idPickup}`,options);
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+  return this.http.get<User>(this.urlretrieveTheFreelancerOfPickup+`${idPickup}`,{headers});
 }
 }

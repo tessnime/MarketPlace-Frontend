@@ -32,7 +32,7 @@ assignRequesttoseller(idRequest:number,statusRequest:String,idPickup:number){
 addForm(_t51: NgForm) {
    this.request1=new Request;
    this.idRequest = _t51.controls["ir"].value;
-   this.requestService.assignRequesttoseller(this.idRequest,this.statusRequest,this.idPickup).subscribe(data=>{this.request1=data;this.route.navigateByUrl('/Seller/pickupsInProgress');
+   this.requestService.assignRequesttoseller(this.idRequest,this.statusRequest,this.idPickup).subscribe(data=>{this.request1=data;this.route.navigateByUrl('/store/pickupsInProgress');
     this.snackBar.open('The Request is Approved!', 'Close', {
     duration: 3000,
     verticalPosition: 'top',

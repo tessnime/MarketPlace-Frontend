@@ -23,24 +23,24 @@ export class AppMenuComponent implements OnInit {
             {
               label: 'Delivery Management',
               items: [
-                  { label: 'Dashboard', icon: 'pi pi-fw pi-id-card', routerLink: ['/Seller/DashboardDelivery'] },
-                  { label: 'add Pickup', icon: 'pi pi-fw pi-check-square', routerLink: ['/Seller/stores'] },
-                  { label: 'Pickups Waiting', icon: 'pi pi-fw pi-bookmark', routerLink: ['/Seller/pickups'] },
-                  { label: 'Pickups In Progress', icon: 'pi pi-fw pi-check-square', routerLink: ['/Seller/pickupsInProgress'] },
+                  { label: 'Dashboard', icon: 'pi pi-fw pi-id-card', routerLink: ['/store/DashboardDelivery'] },
+                  { label: 'add Pickup', icon: 'pi pi-fw pi-check-square', routerLink: ['/store/stores'] },
+                  { label: 'Pickups Waiting', icon: 'pi pi-fw pi-bookmark', routerLink: ['/store/pickups'] },
+                  { label: 'Pickups In Progress', icon: 'pi pi-fw pi-check-square', routerLink: ['/store/pickupsInProgress'] },
               ]
           },
           {
             label: 'Ads Library',
             items: [
-                { label: 'Add Ads', icon: 'pi pi-fw pi-id-card', routerLink: ['/Seller/addAds'] },
-                { label: 'My Ads', icon: 'pi pi-fw pi-id-card', routerLink: ['/Seller/myAds'] }
+                { label: 'Add Ads', icon: 'pi pi-fw pi-id-card', routerLink: ['/store/addAds'] },
+                { label: 'My Ads', icon: 'pi pi-fw pi-id-card', routerLink: ['/store/myAds'] }
 
             ]
         },
         {
           label: 'History delivery Management',
           items: [
-              { label: 'All Pickups', icon: 'pi pi-fw pi-id-card', routerLink: ['/Seller/HistoryPickups'] },
+              { label: 'All Pickups', icon: 'pi pi-fw pi-id-card', routerLink: ['/store/HistoryPickups'] },
               { label: 'Statistical', icon: 'pi pi-fw pi-id-card', routerLink: ['/c/DashboardDelivery'] }
 
           ]

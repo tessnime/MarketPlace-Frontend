@@ -47,7 +47,7 @@ export class AddPickupComponent {
     this.pickup.availableDeliver=_t7.controls['availability'].value;
     this.pickupService.addPickup(this.pickup,this.idOrder,this.idStore).subscribe
     (res =>{console.log('Pickup created');
-    this.route.navigateByUrl('/Seller/pickups');
+    this.route.navigateByUrl('/store/pickups');
     this.snackBar.open('The pickup added with success!', 'Close', {
       duration: 3000,
       verticalPosition: 'top',

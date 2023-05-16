@@ -264,4 +264,6 @@ import { ViewDeliveryMenOfPickupComponent } from './sellerMohsen/view-delivery-m
     ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
